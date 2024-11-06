@@ -1,0 +1,30 @@
+BROKER SCHEMA Execute
+
+
+CREATE COMPUTE MODULE ValidateHeaders
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- copiar todo el mensaje
+		SET OutputRoot = InputRoot;
+		
+		-- copiar variables de sesión
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		DECLARE messageUuid CHARACTER;
+		DECLARE requestAppId CHARACTER;
+		
+		-- recuperar datos de ejecución
+		SET messageUuid = InputRoot.HTTPInputHeader."Message-Uuid";
+		SET requestAppId = InputRoot.HTTPInputHeader."Request-App-Id";
+		
+		
+		-- validar datos de ejecución
+		IF messageUuid IS NULL THEN
+			THROW EXCEPTION MESSAGE 500 VALUES('requestError' , 'Error en los headers, el header message-uuid es obligatorio'); 
+		END IF;
+		IF requestAppId IS NULL THEN
+			THROW EXCEPTION MESSAGE 500 VALUES('requestError' , 'Error en los headers, el header request-app-id es obligatorio'); 
+		END IF;
+
+		RETURN TRUE; 
+	END;
+END MODULE;

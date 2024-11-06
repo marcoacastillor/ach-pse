@@ -1,0 +1,25 @@
+BROKER SCHEMA co.com.ach.payment.createPayment
+
+
+CREATE COMPUTE MODULE CreateInitiatePayment_2_ValidateResponse
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE refInp REFERENCE TO InputRoot.JSON.Data;
+		MOVE refInp LASTCHILD;
+		
+		-- validar si es exitoso, continúa proceso
+		--header, httpstatuscode = 200
+		IF refInp.headers.httpStatusCode = '200' THEN
+			--copias mensaje
+			RETURN TRUE;
+		ELSE
+			-- si no es exitoso, responde al servicio
+			--header, httpstatuscode <> 200
+			--propagar el mensaje de error. Mapeo de getProduct -> ISO.
+			
+			PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+		END IF;
+		
+		RETURN FALSE;
+	END;
+END MODULE;

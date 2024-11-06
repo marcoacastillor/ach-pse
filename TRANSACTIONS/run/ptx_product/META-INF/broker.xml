@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Broker deployBarfile="Z:\20.Assist\1.ACH\WorkspaceACE\GeneratedBarFiles\ptx_productproject.generated.bar" deployTimestamp="2024-10-18 02:13:24">
+  <CompiledApplication>
+    <ConfigurableProperty uri="startMode">
+    </ConfigurableProperty>
+  </CompiledApplication>
+  <CompiledMessageFlow name="gen.ptx_product" deployBarfile="Z:\20.Assist\1.ACH\WorkspaceACE\GeneratedBarFiles\ptx_productproject.generated.bar" deployTimestamp="2024-10-18 02:13:24">
+    <ConfigurableProperty uri="gen.ptx_product#HTTP Input.URLSpecifier" override="/v1/ptx/product*">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#HTTP Input.decompressInputMessage">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#HTTP Input.faultFormat" override="JSON">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#HTTP Input.securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#HTTP Input.timeoutForClient">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#HTTP Input.useHTTPS">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#HTTP Input.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#HTTP Reply.compressionType">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#HTTP Reply.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#additionalInstances" override="3">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#commitCount">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#commitInterval">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#consumerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#consumerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#coordinatedTransaction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#maximumRateMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#monitoringProfile">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#notificationThresholdMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#processingTimeoutAction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#processingTimeoutSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#providerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#providerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#startInstancesWhenFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#startMode">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ptx_product#wlmPolicy">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="getProducts" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\WorkspaceACE\GeneratedBarFiles\ptx_productproject.generated.bar" deployTimestamp="2024-10-18 02:13:24">
+    <ConfigurableProperty uri="getProducts#Callable Flow Invoke.requestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProducts#Callable Flow Invoke.targetApplication" override="ptx_product_app">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProducts#Callable Flow Invoke.targetEndpointName" override="getProducts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProducts#GetRESTInfoError.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProducts#GetRESTInfoError.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProducts#GetRESTInfoError.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProducts#RequestMessage.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProducts#RequestMessage.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProducts#RequestMessage.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProducts#Trace.filePath">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProducts#Validate headers.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProducts#Validate headers.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProducts#Validate headers.validateMaster">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="getVarid" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\WorkspaceACE\GeneratedBarFiles\ptx_productproject.generated.bar" deployTimestamp="2024-10-18 02:13:24">
+    <ConfigurableProperty uri="getVarid#Callable Flow Invoke.requestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVarid#Callable Flow Invoke.targetApplication" override="ptx_product_app">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVarid#Callable Flow Invoke.targetEndpointName" override="getVarid">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVarid#GetRESTInfoError.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVarid#GetRESTInfoError.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVarid#GetRESTInfoError.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVarid#RequestMessage.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVarid#RequestMessage.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVarid#RequestMessage.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVarid#Trace.filePath">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVarid#Validate headers.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVarid#Validate headers.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVarid#Validate headers.validateMaster">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="getVars" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\WorkspaceACE\GeneratedBarFiles\ptx_productproject.generated.bar" deployTimestamp="2024-10-18 02:13:24">
+    <ConfigurableProperty uri="getVars#Callable Flow Invoke.requestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVars#Callable Flow Invoke.targetApplication" override="ptx_product_app">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVars#Callable Flow Invoke.targetEndpointName" override="getVars">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVars#GetRESTInfoError.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVars#GetRESTInfoError.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVars#GetRESTInfoError.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVars#RequestMessage.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVars#RequestMessage.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVars#RequestMessage.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVars#Trace.filePath">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVars#Validate headers.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVars#Validate headers.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getVars#Validate headers.validateMaster">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="patchProductid" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\WorkspaceACE\GeneratedBarFiles\ptx_productproject.generated.bar" deployTimestamp="2024-10-18 02:13:24">
+    <ConfigurableProperty uri="patchProductid#Callable Flow Invoke.requestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#Callable Flow Invoke.targetApplication" override="ptx_product_app">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#Callable Flow Invoke.targetEndpointName" override="patchProductid">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#GetRESTInfoError.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#GetRESTInfoError.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#GetRESTInfoError.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#RequestMessage.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#RequestMessage.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#RequestMessage.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#SetTrackingRequest.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#SetTrackingRequest.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#SetTrackingRequest.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.AddRequestToGroup">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.GroupRequestFolderName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.GroupRequestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.SSLCertificateLabel">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.SSLCipherSpec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.SSLPeerName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.channelName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.connection">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.destinationQueueManagerName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.listenerPortNumber">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.policyUrl" override="{CommonPolicies}:MQEndpoint">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.queueManagerHostname">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.queueManagerName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.queueName" override="TRACKING.REQ">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.replyToQ">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.replyToQMgr">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.securityIdentity">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.useSSL">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#TRACKING.REQ.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#Trace.filePath">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#Validate headers.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#Validate headers.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchProductid#Validate headers.validateMaster">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="postVars" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\WorkspaceACE\GeneratedBarFiles\ptx_productproject.generated.bar" deployTimestamp="2024-10-18 02:13:24">
+    <ConfigurableProperty uri="postVars#Callable Flow Invoke.requestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postVars#Callable Flow Invoke.targetApplication" override="ptx_product_app">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postVars#Callable Flow Invoke.targetEndpointName" override="postVars">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postVars#GetRESTInfoError.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postVars#GetRESTInfoError.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postVars#GetRESTInfoError.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postVars#RequestMessage.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postVars#RequestMessage.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postVars#RequestMessage.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postVars#Trace.filePath">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postVars#Validate headers.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postVars#Validate headers.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postVars#Validate headers.validateMaster">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="getProductid" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\WorkspaceACE\GeneratedBarFiles\ptx_productproject.generated.bar" deployTimestamp="2024-10-18 02:13:24">
+    <ConfigurableProperty uri="getProductid#Callable Flow Invoke.requestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProductid#Callable Flow Invoke.targetApplication" override="ptx_product_app">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProductid#Callable Flow Invoke.targetEndpointName" override="getProductid">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProductid#GetRESTInfoError.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProductid#GetRESTInfoError.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProductid#GetRESTInfoError.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProductid#RequestMessage.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProductid#RequestMessage.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProductid#RequestMessage.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProductid#Trace.filePath">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProductid#Validate headers.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProductid#Validate headers.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="getProductid#Validate headers.validateMaster">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="patchVarid" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\WorkspaceACE\GeneratedBarFiles\ptx_productproject.generated.bar" deployTimestamp="2024-10-18 02:13:24">
+    <ConfigurableProperty uri="patchVarid#Callable Flow Invoke.requestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#Callable Flow Invoke.targetApplication" override="ptx_product_app">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#Callable Flow Invoke.targetEndpointName" override="patchVarid">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#GetRESTInfoError.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#GetRESTInfoError.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#GetRESTInfoError.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#MQ Header.mqdlhDestQMgrName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#MQ Header.mqdlhDestQName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#MQ Header.mqmdReplyToQ">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#MQ Header.mqmdReplyToQMgr">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#RequestMessage.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#RequestMessage.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#RequestMessage.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#SetTrackingRequest.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#SetTrackingRequest.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#SetTrackingRequest.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.AddRequestToGroup">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.GroupRequestFolderName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.GroupRequestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.SSLCertificateLabel">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.SSLCipherSpec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.SSLPeerName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.channelName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.connection">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.destinationQueueManagerName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.listenerPortNumber">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.policyUrl" override="{CommonPolicies}:MQEndpoint">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.queueManagerHostname">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.queueManagerName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.queueName" override="TRACKING.REQ">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.replyToQ">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.replyToQMgr">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.securityIdentity">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.useSSL">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#TRACKING.REQ.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#Trace.filePath">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#Validate headers.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#Validate headers.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="patchVarid#Validate headers.validateMaster">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="postProducts" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\WorkspaceACE\GeneratedBarFiles\ptx_productproject.generated.bar" deployTimestamp="2024-10-18 02:13:24">
+    <ConfigurableProperty uri="postProducts#Callable Flow Invoke.requestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#Callable Flow Invoke.targetApplication" override="ptx_product_app">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#Callable Flow Invoke.targetEndpointName" override="postProducts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#GetRESTInfoError.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#GetRESTInfoError.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#GetRESTInfoError.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#RequestMessage.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#RequestMessage.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#RequestMessage.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#SetTrackingRequest.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#SetTrackingRequest.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#SetTrackingRequest.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.AddRequestToGroup">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.GroupRequestFolderName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.GroupRequestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.SSLCertificateLabel">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.SSLCipherSpec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.SSLPeerName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.channelName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.connection">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.destinationQueueManagerName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.listenerPortNumber">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.policyUrl" override="{CommonPolicies}:MQEndpoint">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.queueManagerHostname">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.queueManagerName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.queueName" override="TRACKING.REQ">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.replyToQ">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.replyToQMgr">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.securityIdentity">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.useSSL">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#TRACKING.REQ.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#Trace.filePath">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#Validate headers.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#Validate headers.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="postProducts#Validate headers.validateMaster">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+</Broker>

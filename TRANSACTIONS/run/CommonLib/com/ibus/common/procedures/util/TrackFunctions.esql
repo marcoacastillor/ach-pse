@@ -1,0 +1,45 @@
+BROKER SCHEMA com.ibus.common.procedures.util
+
+DECLARE PRODUCT_NAME CONSTANT CHARACTER 'Procesador Transacciona';
+
+/*
+* Función que devuelve una representación BLOB del mensaje entrante en refInp
+*/
+CREATE FUNCTION getStringFromBody(IN refInp REFERENCE)RETURNS CHARACTER
+BEGIN
+    DECLARE message CHARACTER;
+    DECLARE messageTreeBlob BLOB;
+
+     SET messageTreeBlob = ASBITSTREAM(refInp, 273, 1208,'','','',FolderBitStream);
+     SET message = CAST(messageTreeBlob AS CHARACTER CCSID 1208);
+   
+    RETURN message;           
+END;
+
+
+/*
+* Procedimiento que crea un mensaje para enviarlo a auditoría.
+*/
+CREATE PROCEDURE createMessageTrackReq(INOUT refMQRFH2 REFERENCE, IN username CHARACTER, IN method CHARACTER )
+BEGIN
+	
+	SET refMQRFH2.product			= PRODUCT_NAME;
+	SET refMQRFH2.dateTime   		= CURRENT_TIMESTAMP;
+	SET refMQRFH2.user  			= username;
+	SET refMQRFH2.userName   		= '';
+	SET refMQRFH2.email 			= '';
+	SET refMQRFH2.documentType    	= '';
+	SET refMQRFH2.documentNumber  	= '';
+	SET refMQRFH2.ip    			= '';
+	SET refMQRFH2.userNote   		= '';
+	SET refMQRFH2.clientType 		= '';
+	SET refMQRFH2.clientId   		= '';
+	SET refMQRFH2.client     		= '';
+	SET refMQRFH2.module     		= '';
+	SET refMQRFH2.submodule  		= '';
+	SET refMQRFH2.action     		= '';
+	SET refMQRFH2.dataBeforeUpdate  = '';
+	SET refMQRFH2.request     		= '';
+	SET refMQRFH2.response   		= '';
+	 
+END;

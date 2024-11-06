@@ -1,0 +1,65 @@
+BROKER SCHEMA common
+
+
+CREATE COMPUTE MODULE prepare_error
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		--Declarar referencia a lista de excepciones.
+		DECLARE refExceptionList REFERENCE TO InputExceptionList;
+		
+		DECLARE exceptionDetails ROW;
+		CALL getDescriptionExceptionList(refExceptionList, exceptionDetails);
+		DECLARE flujo CHARACTER;
+		SET flujo = Environment.flujo;
+		
+		IF flujo is not null THEN
+			THROW EXCEPTION MESSAGE 500 VALUES('customError' , 'Error en subflujo ' || flujo  || '. ErrorDesc: ' || exceptionDetails.errorDesc);
+		END IF;
+		THROW EXCEPTION MESSAGE 500 VALUES('customError' , 'Error en subflujo no identificado, ErrorDesc:: ' || exceptionDetails.errorDesc);
+		
+	END;
+	
+END MODULE;
+
+
+CREATE PROCEDURE getDescriptionExceptionList(IN exceptionList REFERENCE, IN exceptionDetails REFERENCE)
+BEGIN
+	
+	DECLARE INI_POSITION CONSTANT INTEGER 1;
+	DECLARE MAX_LENGTH CONSTANT INTEGER 300;
+	DECLARE EMPTY_STRING CONSTANT CHARACTER '';
+	DECLARE DELIMITER CONSTANT CHARACTER ' : ';
+	
+	--capturar nombre del nodo donde se origina de la excepcion
+	SET exceptionDetails.errorNodeName = COALESCE(exceptionList.RecoverableException.Label,EMPTY_STRING); 
+	
+	--Moverse hasta el último nodo
+	WHILE(LASTMOVE(exceptionList)) DO
+		MOVE exceptionList LASTCHILD;
+	END WHILE;
+
+	MOVE exceptionList PARENT;
+	DECLARE exceptionTextChild CHARACTER COALESCE(SUBSTRING(exceptionList.Text FROM INI_POSITION FOR MAX_LENGTH), EMPTY_STRING);
+	MOVE exceptionList PREVIOUSSIBLING;
+	DECLARE previousException CHARACTER COALESCE(SUBSTRING(exceptionList.Text FROM INI_POSITION FOR MAX_LENGTH), EMPTY_STRING);
+	
+	MOVE exceptionList PARENT;
+	
+	SET exceptionDetails.errorCode = CAST(COALESCE(exceptionList.Number, EMPTY_STRING) AS CHARACTER);
+	SET exceptionDetails.errorName = FIELDNAME (exceptionList);
+	DECLARE exceptionText CHARACTER previousException || DELIMITER || COALESCE(SUBSTRING(exceptionList.Text FROM INI_POSITION FOR MAX_LENGTH), EMPTY_STRING);
+	
+	MOVE exceptionList PARENT;
+	DECLARE exceptionTextRoot CHARACTER COALESCE(SUBSTRING(exceptionList.Text FROM INI_POSITION FOR MAX_LENGTH), EMPTY_STRING);
+	
+	MOVE exceptionList PARENT;
+	DECLARE tmp ROW;
+	CREATE LASTCHILD OF tmp DOMAIN('XMLNSC') NAME 'XMLNSC';         
+	SET tmp.XMLNSC.ExceptionList =  exceptionList;
+	
+	DECLARE msgBlob BLOB ASBITSTREAM(tmp.XMLNSC.ExceptionList OPTIONS FolderBitStream CCSID 1208);
+	DECLARE FULLEXCEPTION CHAR CAST(msgBlob AS CHAR CCSID 1208);
+	
+	SET exceptionDetails.errorDesc = exceptionText || ':' || exceptionTextChild; 
+	SET exceptionDetails.stackDesc = FULLEXCEPTION; 
+END;

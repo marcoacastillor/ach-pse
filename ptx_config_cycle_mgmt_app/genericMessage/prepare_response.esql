@@ -1,0 +1,14 @@
+BROKER SCHEMA genericMessage
+
+
+CREATE COMPUTE MODULE prepare_response
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

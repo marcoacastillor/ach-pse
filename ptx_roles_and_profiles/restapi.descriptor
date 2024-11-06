@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:restapiDescriptor xmlns="http://com.ibm.etools.mft.descriptor.base" xmlns:ns2="http://com.ibm.etools.mft.descriptor.restapi" definitionType="openapi_3" definitionFile="roles_and_profiles_v1.0.0.yaml" implementation="gen/ptx_roles_and_profiles.msgflow" https="false" definitionWithExtRef="false" faultFormat="JSON">
+    <references>
+        <sharedLibraryReference>
+            <libraryName>CommonLib</libraryName>
+        </sharedLibraryReference>
+    </references>
+    <ns2:operations>
+        <ns2:operation name="deleteErase-user-rol" implementation="deleteErase_user_rol.subflow"/>
+        <ns2:operation name="getActuator" implementation="getActuator.subflow"/>
+        <ns2:operation name="getGet-apps" implementation="getGet_apps.subflow"/>
+        <ns2:operation name="getGet-roles" implementation="getGet_roles.subflow"/>
+        <ns2:operation name="getList-app-users" implementation="getList_app_users.subflow"/>
+        <ns2:operation name="getUserEmail" implementation="getUserEmail.subflow"/>
+        <ns2:operation name="getUserId" implementation="getUserId.subflow"/>
+        <ns2:operation name="postAsign-user-rol" implementation="postAsign_user_rol.subflow"/>
+    </ns2:operations>
+    <ns2:errorHandlers/>
+</ns2:restapiDescriptor>

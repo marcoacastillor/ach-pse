@@ -1,0 +1,44 @@
+
+==============================================
+
+!Thu Oct 17 21:13:23 COT 2024
+
+Successfully added file ptx_product\gen\ptx_product.msgflow to BAR file.
+
+Successfully added file ptx_product\getProductid.subflow to BAR file.
+
+Successfully added file ptx_product\getProducts.subflow to BAR file.
+
+Successfully added file ptx_product\getVarid.subflow to BAR file.
+
+Successfully added file ptx_product\getVars.subflow to BAR file.
+
+Successfully added file ptx_product\patchProductid.subflow to BAR file.
+
+Successfully added file ptx_product\patchProductid.subflow_SetTrackingRequest.esql to BAR file.
+
+Successfully added file ptx_product\patchProductid.subflow_SetTrackingRequest.esql to BAR file.
+
+Successfully added file ptx_product\patchVarid.subflow to BAR file.
+
+Successfully added file ptx_product\postProducts.subflow to BAR file.
+
+Successfully added file ptx_product\postVars.subflow to BAR file.
+
+Successfully added file ptx_product\product\RequestMessage.esql to BAR file.
+
+Successfully added file ptx_product\product\ValidateHeaders.esql to BAR file.
+
+Successfully added file ptx_product\product\ValidateHeaders.esql to BAR file.
+
+Successfully added file ptx_product\ptx-product_1.0.0.yaml to BAR file.
+
+Successfully added file ptx_product\ptx-product_1.0.0.yaml to BAR file.
+
+Successfully added file ptx_product\restapi.descriptor to BAR file.
+
+Successfully added file ptx_product\restapi.descriptor to BAR file.
+
+Successfully added file ptx_product\restapi.descriptor to BAR file.
+
+Successfully added file ptx_product\restapi.descriptor to BAR file.

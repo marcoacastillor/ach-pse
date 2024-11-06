@@ -1,0 +1,147 @@
+/*
+ *
+ * File name: LogDAO.esql
+ *
+ * Purpose:   ESQL empleado para el procesmiento de excepciones
+ *
+ * Authors:   Assist
+ *            
+
+ *
+ * Version:   1.0
+ *
+ * @copyright Assist  All rights reserved.
+ *
+ */
+
+BROKER SCHEMA com.ibus.common.procedures.util
+
+/*
+* Revisa el tipo de error y retorna  y coloca el numero del error
+*
+* Parameters:
+* IN:  REFERENCE exceptionRef - Referencia del arbol de excepciones
+* OUT: CHARACTER errorNumber  - Código de error
+*
+*/
+CREATE PROCEDURE searchErrorNumber(IN exceptionRef REFERENCE, OUT errorNumber CHARACTER) BEGIN
+  	
+  	DECLARE errorNodeName CHARACTER COALESCE(exceptionRef.RecoverableException.Label, exceptionRef.UserException.Label, '');
+  	
+  	DECLARE parserError REFERENCE TO exceptionRef;
+  	MOVE parserError LASTCHILD;
+  	
+  	WHILE LASTMOVE(parserError) DO
+  		MOVE parserError LASTCHILD NAME 'ParserException';
+  	END WHILE;
+  	
+  	-- Busqueda del UserException
+  	DECLARE userException REFERENCE TO exceptionRef;
+  	MOVE userException LASTCHILD;
+  	
+  	WHILE LASTMOVE(userException) DO
+  		MOVE userException LASTCHILD NAME 'RecoverableException';
+  	END WHILE;
+  	
+  	-- Adicion de Manejo de nodos Fail
+  	MOVE userException LASTCHILD NAME 'UserException';
+
+	DECLARE exceptionNumber CHARACTER NULL;
+  	IF LASTMOVE(userException) THEN
+  		SET exceptionNumber = userException.Number;
+  	ELSE
+  		IF parserError.Number IN('300', '600') THEN
+  			SET exceptionNumber = parserError.Number;
+  		END IF;
+  	END IF;
+  	
+	IF ENDSWITH(errorNodeName, 'Request') OR ENDSWITH(errorNodeName, 'Extract') THEN
+		SET errorNumber = '300';
+	ELSEIF parserError.Label LIKE '%SOAP%Inp%' THEN
+		SET errorNumber = '600';
+	ELSE
+		SET errorNumber = COALESCE(exceptionNumber, '700');	
+	END IF;
+END;
+
+
+/*
+* Obtiene la dscripcion de la excepcin
+*
+* Parameters:
+* IN: REFERENCE exceptionList - Referencia del arbol de excepciones
+* IN: REFERENCE exceptionDetails  - Referencia del arbol con los detalles de las excepciones
+*
+*/
+CREATE PROCEDURE getDescriptionExceptionList(IN exceptionList REFERENCE, IN exceptionDetails REFERENCE)
+BEGIN
+	
+	DECLARE INI_POSITION CONSTANT INTEGER 1;
+	DECLARE MAX_LENGTH CONSTANT INTEGER 300;
+	DECLARE EMPTY_STRING CONSTANT CHARACTER '';
+	DECLARE DELIMITER CONSTANT CHARACTER ' : ';
+	
+	--capturar nombre del nodo donde se origina de la excepcion
+	SET exceptionDetails.errorNodeName = COALESCE(exceptionList.RecoverableException.Label,EMPTY_STRING); 
+	
+	--Moverse hasta el último nodo
+	WHILE(LASTMOVE(exceptionList)) DO
+		MOVE exceptionList LASTCHILD;
+	END WHILE;
+
+	MOVE exceptionList PARENT;
+	DECLARE exceptionTextChild CHARACTER COALESCE(SUBSTRING(exceptionList.Text FROM INI_POSITION FOR MAX_LENGTH), EMPTY_STRING);
+	MOVE exceptionList PREVIOUSSIBLING;
+	DECLARE previousException CHARACTER COALESCE(SUBSTRING(exceptionList.Text FROM INI_POSITION FOR MAX_LENGTH), EMPTY_STRING);
+	
+	MOVE exceptionList PARENT;
+	
+	SET exceptionDetails.errorCode = CAST(COALESCE(exceptionList.Number, EMPTY_STRING) AS CHARACTER);
+	SET exceptionDetails.errorName = FIELDNAME (exceptionList);
+	DECLARE exceptionText CHARACTER previousException || DELIMITER || COALESCE(SUBSTRING(exceptionList.Text FROM INI_POSITION FOR MAX_LENGTH), EMPTY_STRING);
+	
+	MOVE exceptionList PARENT;
+	DECLARE exceptionTextRoot CHARACTER COALESCE(SUBSTRING(exceptionList.Text FROM INI_POSITION FOR MAX_LENGTH), EMPTY_STRING);
+	
+	MOVE exceptionList PARENT;
+	DECLARE tmp ROW;
+	CREATE LASTCHILD OF tmp DOMAIN('XMLNSC') NAME 'XMLNSC';         
+	SET tmp.XMLNSC.ExceptionList =  exceptionList;
+	
+	DECLARE msgBlob BLOB ASBITSTREAM(tmp.XMLNSC.ExceptionList OPTIONS FolderBitStream CCSID 1208);
+	DECLARE FULLEXCEPTION CHAR CAST(msgBlob AS CHAR CCSID 1208);
+	
+	SET exceptionDetails.errorDesc = exceptionTextChild; 
+	SET exceptionDetails.stackDesc = FULLEXCEPTION; 
+END;
+
+
+
+CREATE PROCEDURE getDescriptionExceptionListV2(IN exceptionList reference, INOUT codeError CHARACTER, INOUT nameError CHARACTER, INOUT descError CHARACTER)
+BEGIN
+	-- Crear una referencia al primer hijo de la lista de excepciones
+	DECLARE refList REFERENCE TO exceptionList.*[1];
+	-- Seguir con el bucle mientras actúan los desplazamientos
+	WHILE LASTMOVE(refList) DO
+		-- Almacenar los valores actuales para el número de error y el texto
+		IF refList.Number IS NOT NULL THEN
+			SET codeError = refList.Number;
+			SET nameError = refList.Text;
+
+			DECLARE numInserts REFERENCE TO refList.Insert;
+			IF LENGTH(numInserts.Text) > 0 THEN
+				SET descError = descError || ' - ' || numInserts.Text || ' - ';
+			END IF;
+			
+			MOVE numInserts NEXTSIBLING;
+			WHILE LASTMOVE(numInserts) DO
+				IF LENGTH(numInserts.Text) > 0 THEN
+					SET descError = descError || ' - ' || COALESCE(numInserts.Text,'') || ' - '; 
+				END IF;
+				MOVE numInserts NEXTSIBLING;
+			END WHILE;
+		END IF;
+		-- Ahora ir al último hijo, que debería ser la próxima lista de excepciones
+		MOVE refList LASTCHILD;
+	END WHILE;
+END;

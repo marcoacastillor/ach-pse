@@ -1,0 +1,30 @@
+BROKER SCHEMA patchProductid
+
+
+
+
+
+DECLARE accountManagementUrl 	EXTERNAL CHARACTER '';
+DECLARE customerId 	EXTERNAL CHARACTER '';
+DECLARE accountId 	EXTERNAL CHARACTER '';
+DECLARE backTimeout EXTERNAL INTEGER 300;
+CREATE COMPUTE MODULE prepare_request
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET Environment.flujo = 'get_account';
+		--Headers
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."message-uuid" = InputRoot.HTTPInputHeader."Message-Uuid";
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."request-app-id" = InputRoot.HTTPInputHeader."Request-App-Id";
+		
+		--Path params
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."customerId" = customerId;
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."accountId" = accountId;
+		
+		--Configuraciones
+		SET OutputLocalEnvironment.Destination.REST.Request.Accept 		= 'application/json';
+		SET OutputLocalEnvironment.Destination.REST.Request.Timeout 	= backTimeout;
+		SET OutputLocalEnvironment.Destination.REST.Request.BaseURL 	= accountManagementUrl;
+		RETURN TRUE;
+	END;
+
+END MODULE;

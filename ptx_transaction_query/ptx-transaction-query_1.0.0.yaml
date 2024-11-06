@@ -1,0 +1,2116 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "ptx-transaction-query",
+    "description": "This API allows Query Transaction All relevant methods are included  during the service client integration process.",
+    "contact": {
+      "name": "https://www.achcolombia.com.co/contactenos",
+      "url": "https://www.achcolombia.com.co/contactenos",
+      "email": "admin@ach.com.co"
+    },
+    "x-ibm-name": "ptx-transaction-query"
+  },
+  "servers": [
+    {
+      "url": "/v1/ptx/consult"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Transaction"
+    }
+  ],
+  "paths": {
+    "/consult-trx-mgmt/schema-search-trx": {
+      "get": {
+        "tags": [
+          "Transaction"
+        ],
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "instructionIdentification",
+            "in": "query",
+            "description": "Corresponde al CUS id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "APPROVED",
+                "REJECTED",
+                "FAILED",
+                "ACEPTED",
+                "PENDING"
+              ]
+            }
+          },
+          {
+            "name": "creationDatetime",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "creationDatetimeFrom",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "creationDatetimeTo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "merchantCustomerName",
+            "in": "query",
+            "description": "Corresponde al nomber de la empresa",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "financialInstitution",
+            "in": "query",
+            "description": "Corresponde al banco originador",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cicle",
+            "in": "query",
+            "required": true,
+            "description": "Corresponde al id del ciclo al que pertenece la transacci�n",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction Search",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchTransactionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error.",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/consult-trx-mgmt/search-trx": {
+      "get": {
+        "tags": [
+          "Transaction"
+        ],
+        "summary": "Transaction Query API",
+        "description": "Transaction Query API",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "instructionIdentification",
+            "in": "query",
+            "description": "Corresponde al CUS id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "APPROVED",
+                "REJECTED",
+                "FAILED",
+                "ACEPTED",
+                "PENDING"
+              ]
+            }
+          },
+          {
+            "name": "productId",
+            "in": "query",
+            "description": "product id",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "creationDatetime",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "creationDatetimeFrom",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "creationDatetimeTo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "merchantCustomerName",
+            "in": "query",
+            "description": "Corresponde al nomber de la empresa",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "financialInstitution",
+            "in": "query",
+            "description": "Corresponde al  banco originador",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cicle",
+            "in": "query",
+            "description": "Corresponde al  id del ciclo al que pertenece la transacción",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction Search",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchTransactionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error.",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "clientId": [],
+            "clientSecret": []
+          }
+        ]
+      }
+    },
+    "/consult-trx-mgmt/search-trx-find-by/{id}": {
+      "get": {
+        "tags": [
+          "Transaction"
+        ],
+        "summary": "Transaction Query API",
+        "description": "Transaction Query API",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id de la transaccion",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "productId",
+            "in": "query",
+            "description": "product id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction Search",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchTransactionByIdResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error.",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/consult-trx-mgmt/get-trx-info": {
+      "post": {
+        "tags": [
+          "Transaction"
+        ],
+        "summary": "Transaction Query API",
+        "description": "Transaction Query API",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Objeto de llave que contiene los detalles de actualizaci�n.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/searStateTrxRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Transaction Search",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searStateTrxResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error.",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/consult-trx-mgmt/get-cycle-state/{id}": {
+      "get": {
+        "tags": [
+          "Transaction"
+        ],
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "id de la transaccion"
+          },
+          {
+            "name": "cycleDate",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "cycle date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cycle states",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchCycleStateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error.",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/consult-trx-mgmt/actuator/": {
+      "get": {
+        "tags": [
+          "Transaction"
+        ],
+        "summary": "API Monitoring",
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {}
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "initiation": {
+        "required": [
+          "authorizationCode",
+          "channel",
+          "cicle",
+          "creationDatetime",
+          "endtoendIdentification",
+          "geolocalization",
+          "initiationType",
+          "instructionIdentification",
+          "mandateId",
+          "productId",
+          "status",
+          "validationPayeer"
+        ],
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer"
+          },
+          "initiationType": {
+            "maxLength": 10,
+            "type": "string"
+          },
+          "instructionIdentification": {
+            "maxLength": 50,
+            "type": "string",
+            "example": "0120240620############"
+          },
+          "endtoendIdentification": {
+            "maxLength": 100,
+            "type": "string"
+          },
+          "creationDatetime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "APPROVED",
+              "REJECTED",
+              "FAILED",
+              "ACEPTED",
+              "PENDING"
+            ]
+          },
+          "authorizationCode": {
+            "maxLength": 20,
+            "type": "string"
+          },
+          "validationPayeer": {
+            "maxLength": 1,
+            "type": "string"
+          },
+          "geolocalization": {
+            "maxLength": 255,
+            "type": "string"
+          },
+          "channel": {
+            "maxLength": 255,
+            "type": "string"
+          },
+          "mandateId": {
+            "maxLength": 255,
+            "type": "string"
+          },
+          "cicle": {
+            "maxLength": 10,
+            "type": "string"
+          }
+        }
+      },
+      "instructedAmount": {
+        "required": [
+          "amount",
+          "chargesAmount",
+          "currency"
+        ],
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "currency": {
+            "maxLength": 10,
+            "type": "string"
+          },
+          "chargesAmount": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "instructedAmounts": {
+        "required": [
+          "amount",
+          "chargesAmount",
+          "currency"
+        ],
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "currency": {
+            "maxLength": 10,
+            "type": "string"
+          },
+          "chargesAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "gmftaxIndicator": {
+            "type": "string"
+          }
+        }
+      },
+      "remittanceInformation": {
+        "required": [
+          "identificationNumber",
+          "identificationType",
+          "merchantCustomerCategoryCode",
+          "merchantCustomerName",
+          "method",
+          "reference1",
+          "reference2",
+          "reference3",
+          "serviceCode",
+          "unstructured"
+        ],
+        "type": "object",
+        "properties": {
+          "remittanceId": {
+            "type": "number"
+          },
+          "identificationType": {
+            "type": "string",
+            "enum": [
+              "CC",
+              "CE",
+              "NUIP",
+              "PPT",
+              "NIT",
+              "PEP",
+              "PA",
+              "OTRO"
+            ]
+          },
+          "identificationNumber": {
+            "maxLength": 15,
+            "type": "string"
+          },
+          "merchantCustomerName": {
+            "maxLength": 255,
+            "type": "string"
+          },
+          "merchantCustomerCategoryCode": {
+            "maxLength": 200,
+            "type": "string"
+          },
+          "serviceCode": {
+            "maxLength": 10,
+            "type": "string"
+          },
+          "reference2": {
+            "maxLength": 200,
+            "type": "string"
+          },
+          "reference3": {
+            "maxLength": 200,
+            "type": "string"
+          },
+          "unstructured": {
+            "maxLength": 100,
+            "type": "string"
+          },
+          "reference1": {
+            "maxLength": 200,
+            "type": "string"
+          },
+          "method": {
+            "maxLength": 100,
+            "type": "string"
+          }
+        }
+      },
+      "beneficiaryAgent": {
+        "required": [
+          "account",
+          "accountType",
+          "financial_institution"
+        ],
+        "type": "object",
+        "properties": {
+          "financial_institution": {
+            "maxLength": 255,
+            "type": "string"
+          },
+          "account": {
+            "maxLength": 50,
+            "type": "string"
+          },
+          "accountType": {
+            "maxLength": 20,
+            "type": "string"
+          }
+        }
+      },
+      "debtorAgent": {
+        "required": [
+          "financialInstitution"
+        ],
+        "type": "object",
+        "properties": {
+          "financialInstitution": {
+            "maxLength": 255,
+            "type": "string"
+          }
+        }
+      },
+      "debtorAgents": {
+        "required": [
+          "financialInstitution"
+        ],
+        "type": "object",
+        "properties": {
+          "financialInstitution": {
+            "maxLength": 255,
+            "type": "string"
+          },
+          "account": {
+            "maxLength": 50,
+            "type": "string"
+          },
+          "accountType": {
+            "maxLength": 20,
+            "type": "string"
+          }
+        }
+      },
+      "initiatingParty": {
+        "required": [
+          "ciiu",
+          "identificationNumber",
+          "identificationType",
+          "instructionIdentification",
+          "name",
+          "serviceCode"
+        ],
+        "type": "object",
+        "properties": {
+          "identificationType": {
+            "maxLength": 4,
+            "type": "string"
+          },
+          "identificationNumber": {
+            "maxLength": 15,
+            "type": "string"
+          },
+          "name": {
+            "maxLength": 255,
+            "type": "string"
+          },
+          "ciiu": {
+            "maxLength": 15,
+            "type": "string"
+          },
+          "serviceCode": {
+            "maxLength": 15,
+            "type": "string"
+          },
+          "instructionIdentification": {
+            "maxLength": 50,
+            "type": "string"
+          }
+        }
+      },
+      "debtor": {
+        "required": [
+          "address",
+          "email",
+          "identificationNumber",
+          "identificationType",
+          "name",
+          "phoneNumber",
+          "userType"
+        ],
+        "type": "object",
+        "properties": {
+          "userType": {
+            "type": "string",
+            "enum": [
+              "PJ",
+              "PN"
+            ]
+          },
+          "identificationType": {
+            "type": "string",
+            "enum": [
+              "CC",
+              "CE",
+              "NUIP",
+              "PPT",
+              "NIT",
+              "PEP",
+              "PA",
+              "OTRO"
+            ]
+          },
+          "identificationNumber": {
+            "maxLength": 15,
+            "type": "string"
+          },
+          "name": {
+            "maxLength": 255,
+            "type": "string"
+          },
+          "phoneNumber": {
+            "maxLength": 15,
+            "type": "string"
+          },
+          "email": {
+            "maxLength": 200,
+            "type": "string"
+          },
+          "address": {
+            "maxLength": 255,
+            "type": "string"
+          }
+        }
+      },
+      "thirdParty": {
+        "required": [
+          "email",
+          "identificationNumber",
+          "identificationType",
+          "name",
+          "phoneNumber",
+          "userType"
+        ],
+        "type": "object",
+        "properties": {
+          "userType": {
+            "type": "string",
+            "enum": [
+              "PJ",
+              "PN"
+            ]
+          },
+          "identificationType": {
+            "type": "string",
+            "enum": [
+              "CC",
+              "CE",
+              "NUIP",
+              "PPT",
+              "NIT",
+              "PEP",
+              "PA",
+              "OTRO"
+            ]
+          },
+          "identificationNumber": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "SearchResult": {
+        "type": "object",
+        "properties": {
+          "initiationId": {
+            "type": "integer"
+          },
+          "creationDatetime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "instructionIdentification": {
+            "maxLength": 50,
+            "type": "string",
+            "example": "0120240620############"
+          },
+          "productId": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string"
+          },
+          "authorizationCode": {
+            "type": "string"
+          },
+          "remittanceInformation": {
+            "$ref": "#/components/schemas/remittanceInformation"
+          },
+          "instructedAmount": {
+            "$ref": "#/components/schemas/instructedAmount"
+          },
+          "debtorAgent": {
+            "$ref": "#/components/schemas/debtorAgent"
+          }
+        }
+      },
+      "SearchByIdResult": {
+        "type": "object",
+        "properties": {
+          "initiation": {
+            "$ref": "#/components/schemas/initiation"
+          },
+          "instructedAmount": {
+            "$ref": "#/components/schemas/instructedAmounts"
+          },
+          "remittanceInformation": {
+            "$ref": "#/components/schemas/remittanceInformation"
+          },
+          "beneficiaryAgent": {
+            "$ref": "#/components/schemas/beneficiaryAgent"
+          },
+          "debtorAgent": {
+            "$ref": "#/components/schemas/debtorAgents"
+          },
+          "initiatingParty": {
+            "$ref": "#/components/schemas/initiatingParty"
+          },
+          "debtor": {
+            "$ref": "#/components/schemas/debtor"
+          },
+          "thirdParty": {
+            "$ref": "#/components/schemas/thirdParty"
+          }
+        }
+      },
+      "SearchCycleStateResult": {
+        "type": "object",
+        "properties": {
+          "cycleState": {
+            "type": "string",
+            "example": "Cerrado"
+          },
+          "processState": {
+            "type": "string",
+            "example": "En Proceso"
+          }
+        }
+      },
+      "SearchTransactionResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/SearchResult"
+          }
+        }
+      },
+      "SearchTransactionByIdResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/SearchByIdResult"
+          }
+        }
+      },
+      "SearchCycleStateResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/SearchCycleStateResult"
+          }
+        }
+      },
+      "generalResponseHeaders200": {
+        "required": [
+          "httpStatusCode",
+          "httpStatusDesc",
+          "messageUuid",
+          "requestAppId",
+          "requestDatetime"
+        ],
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "number",
+            "example": 200
+          },
+          "httpStatusDesc": {
+            "type": "string",
+            "example": "OK"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestDatetime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        },
+        "description": "Traceability data and technical information from message."
+      },
+      "generalResponseHeaders201": {
+        "required": [
+          "httpStatusCode",
+          "httpStatusDesc",
+          "messageUuid",
+          "requestAppId",
+          "requestDatetime"
+        ],
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "number",
+            "example": 201
+          },
+          "httpStatusDesc": {
+            "type": "string",
+            "example": "CREATED"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestDatetime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        },
+        "description": "Traceability data and technical information from message."
+      },
+      "generalResponseHeaders202": {
+        "required": [
+          "httpStatusCode",
+          "httpStatusDesc",
+          "messageUuid",
+          "requestAppId",
+          "requestDatetime"
+        ],
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "number",
+            "example": 202
+          },
+          "httpStatusDesc": {
+            "type": "string",
+            "example": "ACCEPTED"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestDatetime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        },
+        "description": "Traceability data and technical information from message."
+      },
+      "messageResponse": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "0000"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Success Transaction."
+          },
+          "responseDetails": {
+            "type": "string",
+            "example": "System process information."
+          }
+        }
+      },
+      "generalError400": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError400"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError400"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors400"
+          }
+        }
+      },
+      "generalError401": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError401"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError401"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors401"
+          }
+        }
+      },
+      "generalError404": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError404"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError404"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors404"
+          }
+        }
+      },
+      "generalError405": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError405"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError405"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors405"
+          }
+        }
+      },
+      "generalError409": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError409"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError409"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors409"
+          }
+        }
+      },
+      "generalError415": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError415"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError415"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors415"
+          }
+        }
+      },
+      "generalError500": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError500"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError500"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors500"
+          }
+        }
+      },
+      "generalError502": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError502"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError502"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors502"
+          }
+        }
+      },
+      "generalError503": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError503"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError503"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors503"
+          }
+        }
+      },
+      "headersError400": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 400
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "BAD_REQUEST"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56.000Z"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError401": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 401
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "UNAUTHORIZED"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56.000Z"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError404": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 404
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "NOT_FOUND"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56.000Z"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError405": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 405
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "METHOD_NOT_ALLOWED"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56.000Z"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError409": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 409
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "CONFLICT"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56.000Z"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError415": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 415
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "UNSOPORTED MEDIA TYPE"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56.000Z"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError500": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 500
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "INTERNAL_SERVER_ERROR"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56.000Z"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError502": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 502
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "BAD_GATEWAY"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56.000Z"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError503": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 503
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "SERVICE_UNAVAILABLE"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56.000Z"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "messageResponseError400": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Bad Request Message"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError401": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Bad Credentials"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError404": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "NO PERSISTAN DATA"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError405": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Method Not Allowed"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError409": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Conflict"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError415": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Unsupported Media Type"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError500": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Error Message"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError502": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Error Message"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError503": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Error Message"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "exampleErrors400": {
+        "uniqueItems": true,
+        "type": "array",
+        "description": "Array for 400 errors.",
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors401": {
+        "uniqueItems": true,
+        "type": "array",
+        "description": "Array for 401 errors.",
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors404": {
+        "uniqueItems": true,
+        "type": "array",
+        "description": "Array for 404 errors.",
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors405": {
+        "uniqueItems": true,
+        "type": "array",
+        "description": "Array for 405 errors.",
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors409": {
+        "uniqueItems": true,
+        "type": "array",
+        "description": "Array for 409 errors.",
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors415": {
+        "uniqueItems": true,
+        "type": "array",
+        "description": "Array for 415 errors.",
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors500": {
+        "uniqueItems": true,
+        "type": "array",
+        "description": "Array for 500 errors.",
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors502": {
+        "uniqueItems": true,
+        "type": "array",
+        "description": "Array for 500 errors.",
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors503": {
+        "uniqueItems": true,
+        "type": "array",
+        "description": "Array for 500 errors.",
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "generalError": {
+        "type": "object",
+        "properties": {
+          "errorCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "errorDetail": {
+            "type": "string",
+            "example": "Some Error Detail"
+          }
+        }
+      },
+      "searStateTrxRequest": {
+        "type": "object",
+        "required": [
+          "productId",
+          "trazabilityCode",
+          "entityCode"
+        ],
+        "properties": {
+          "productId": {
+            "type": "integer"
+          },
+          "trazabilityCode": {
+            "type": "string",
+            "maxLength": 50,
+            "example": "0120240620############"
+          },
+          "entityCode": {
+            "type": "string",
+            "maxLength": 50
+          }
+        }
+      },
+      "searStateTrxResponseData": {
+        "type": "object",
+        "properties": {
+          "trazabilityCode": {
+            "type": "integer",
+            "maxLength": 50
+          },
+          "entityCode": {
+            "type": "string",
+            "maxLength": 50,
+            "example": "0120240620############"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "FAILED",
+              "REJECTED",
+              "APPROVED",
+              "PENDING"
+            ]
+          }
+        }
+      },
+      "searStateTrxResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/searStateTrxResponseData"
+          }
+        }
+      },
+      "pagination": {
+        "type": "object",
+        "properties": {
+          "totalElement": {
+            "type": "number",
+            "example": 10
+          },
+          "pageSize": {
+            "type": "number",
+            "example": 10
+          },
+          "pageNumber": {
+            "type": "number",
+            "example": 1
+          },
+          "hasMoreElements": {
+            "type": "boolean",
+            "example": false
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "clientId": {
+        "type": "apiKey",
+        "description": "",
+        "name": "Client-Id",
+        "in": "header",
+        "x-key-type": "client_id"
+      },
+      "clientSecret": {
+        "type": "apiKey",
+        "description": "",
+        "name": "Client-Secret",
+        "in": "header",
+        "x-key-type": "client_secret"
+      }
+    }
+  }
+}

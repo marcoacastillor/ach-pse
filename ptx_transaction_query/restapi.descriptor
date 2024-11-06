@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:restapiDescriptor xmlns="http://com.ibm.etools.mft.descriptor.base" xmlns:ns2="http://com.ibm.etools.mft.descriptor.restapi" definitionType="openapi_3" definitionFile="ptx-transaction-query_1.0.0.yaml" implementation="gen/ptx_transaction_query.msgflow" https="false" definitionWithExtRef="false" faultFormat="JSON">
+    <references>
+        <sharedLibraryReference>
+            <libraryName>CommonLib</libraryName>
+        </sharedLibraryReference>
+    </references>
+    <ns2:operations>
+        <ns2:operation name="getId" implementation="getId.subflow"/>
+        <ns2:operation name="getId1" implementation="getId1.subflow"/>
+        <ns2:operation name="getSchema-search-trx" implementation="getSchema_search_trx.subflow"/>
+        <ns2:operation name="getSearch-trx" implementation="getSearch_trx.subflow"/>
+        <ns2:operation name="postGet-trx-info" implementation="postGet_trx_info.subflow"/>
+    </ns2:operations>
+    <ns2:errorHandlers/>
+</ns2:restapiDescriptor>

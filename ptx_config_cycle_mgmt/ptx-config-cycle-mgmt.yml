@@ -1,0 +1,3923 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ptx-config-cycle-mgmt",
+    "description": "This API is aimed at managing cycles and exceptions calendar",
+    "contact": {
+      "name": "https://www.achcolombia.com.co/contactenos",
+      "url": "https://www.achcolombia.com.co/contactenos",
+      "email": "admin@ach.com.co"
+    },
+    "version": "1.0.0",
+    "x-ibm-name": "ptx-config-cycle-mgmt"
+  },
+  "servers": [
+    {
+      "url": "/v1/ptx/cycle"
+    }
+  ],
+  "tags": [
+    {
+      "name": "config-cycle-mgmt",
+      "description": "Operations to perform API monitoring."
+    }
+  ],
+  "paths": {
+    "/config-cycle-mgmt/find-cycle": {
+      "get": {
+        "tags": [
+          "config-cycle-mgmt"
+        ],
+        "summary": "Consultation of Cycle Information",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "cicleId",
+            "in": "query",
+            "description": "id del ciclo",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "stage",
+            "in": "query",
+            "description": "Etapa",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "Start Date and Time",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "endtDate",
+            "in": "query",
+            "description": "End date and time",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successfully generated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/findResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Variable Not Found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "clientId": [],
+            "clientSecret": []
+          },
+          {
+            "OAuth2--ptx": [
+              "transaction-query"
+            ]
+          }
+        ]
+      }
+    },
+    "/config-cycle-mgmt/reprocessing": {
+      "post": {
+        "tags": [
+          "config-cycle-mgmt"
+        ],
+        "summary": "Cycle Reprocessing",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/reprocessingRq"
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "The request was successfully generated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/reprocessingResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Variable Not Found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "clientId": [],
+            "clientSecret": []
+          }
+        ],
+        "x-codegen-request-body-name": "product"
+      }
+    },
+    "/config-cycle-mgmt/file-cycle-download": {
+      "post": {
+        "tags": [
+          "config-cycle-mgmt"
+        ],
+        "summary": "Download File",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/downloadFileRq"
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "The request was successfully generated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/downloadFileResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Variable Not Found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "clientId": [],
+            "clientSecret": []
+          }
+        ],
+        "x-codegen-request-body-name": "product"
+      }
+    },
+    "/config-cycle-mgmt/delete-cycle/{cycleId}": {
+      "delete": {
+        "tags": [
+          "config-cycle-mgmt"
+        ],
+        "summary": "Cycle Elimination",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "cycleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successfully generated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/deleteCicleResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Variable Not Found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "clientId": [],
+            "clientSecret": []
+          }
+        ]
+      }
+    },
+    "/config-cycle-mgmt/get-cycle_id/{cycleId}": {
+      "get": {
+        "tags": [
+          "config-cycle-mgmt"
+        ],
+        "summary": "Consult cycle by cycleId",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "cycleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successfully generated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/cycleByIdResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Variable Not Found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "clientId": [],
+            "clientSecret": []
+          }
+        ]
+      }
+    },
+    "/config-cycle-mgmt/get-cycle_date/{startDate}": {
+      "get": {
+        "tags": [
+          "config-cycle-mgmt"
+        ],
+        "summary": "Consultar Ciclo Por Fecha",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successfully generated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCycleByDateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Variable Not Found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "clientId": [],
+            "clientSecret": []
+          }
+        ]
+      }
+    },
+    "/config-cycle-mgmt/delete/{exceptionid}": {
+      "delete": {
+        "tags": [
+          "config-cycle-mgmt"
+        ],
+        "summary": "Delete cycle",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "exceptionid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success Transaction",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/exceptionResponseUpdate"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Variable Not Found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "clientId": [],
+            "clientSecret": []
+          }
+        ]
+      }
+    },
+    "/config-cycle-mgmt/get-all-exceptions": {
+      "get": {
+        "tags": [
+          "config-cycle-mgmt"
+        ],
+        "summary": "Check cycle by date",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "endtDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successfully generated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/allExceptionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Variable Not Found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "clientId": [],
+            "clientSecret": []
+          }
+        ]
+      }
+    },
+    "/config-cycle-mgmt/actuator/": {
+      "get": {
+        "tags": [
+          "config-cycle-mgmt"
+        ],
+        "summary": "API Monitoring",
+        "responses": {
+          "200": {
+            "description": "200 OK",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/config-cycle-mgmt/create-cycle": {
+      "post": {
+        "tags": [
+          "config-cycle-mgmt"
+        ],
+        "summary": "Cycle Creation",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is   d for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/cyleRq"
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "201": {
+            "description": "Transaction created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/postCycleResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError409"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "clientId": [],
+            "clientSecret": []
+          }
+        ],
+        "x-codegen-request-body-name": "cycle"
+      }
+    },
+    "/config-cycle-mgmt/cycle-calendar": {
+      "get": {
+        "tags": [
+          "config-cycle-mgmt"
+        ],
+        "summary": "Get the Cycle Closures",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "typeCycle",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "AUTOMATIC",
+                "MANUAL"
+              ]
+            }
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successfully generated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/allCyclesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "clientId": [],
+            "clientSecret": []
+          },
+          {
+            "OAuth2--ptx": [
+              "transaction-query"
+            ]
+          }
+        ]
+      }
+    },
+    "/config-cycle-mgmt/update-cycle/{cycleid}": {
+      "patch": {
+        "tags": [
+          "config-cycle-mgmt"
+        ],
+        "summary": "Modify cycle information",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "cycleid",
+            "in": "path",
+            "description": "Cycle ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/patchCycleRq"
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "202": {
+            "description": "The request was successfully generated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/patchCycleResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Variable Not Found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "clientId": [],
+            "clientSecret": []
+          }
+        ],
+        "x-codegen-request-body-name": "cycleid"
+      }
+    },
+    "/config-cycle-mgmt/exception-calendar": {
+      "get": {
+        "tags": [
+          "config-cycle-mgmt"
+        ],
+        "summary": "Get calendar exceptions",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "AUTOMATIC",
+                "MANUAL"
+              ]
+            }
+          },
+          {
+            "name": "starDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successfully generated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/allExceptionCalendarResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "clientId": [],
+            "clientSecret": []
+          }
+        ]
+      }
+    },
+    "/config-cycle-mgmt/create-exception": {
+      "post": {
+        "tags": [
+          "config-cycle-mgmt"
+        ],
+        "summary": "Creating a calendar exception",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is   d for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/exceptionReq"
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "201": {
+            "description": "Transaction created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/excepResponseCreate"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError409"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "clientId": [],
+            "clientSecret": []
+          }
+        ],
+        "x-codegen-request-body-name": "exception"
+      }
+    },
+    "/config-cycle-mgmt/update-exception/{exceptionid}": {
+      "patch": {
+        "tags": [
+          "config-cycle-mgmt"
+        ],
+        "summary": "Modify exception information",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "exceptionid",
+            "in": "path",
+            "description": "Exception ID",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/patchExcepRq"
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "Success Transaction",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/exceptionResponseUpdate"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Variable Not Found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError404"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "clientId": [],
+            "clientSecret": []
+          }
+        ],
+        "x-codegen-request-body-name": "exceptionid"
+      }
+    },
+    "/config-cycle-mgmt/search-cycle-log-by/{cycleId}": {
+      "get": {
+        "tags": [
+          "config-cycle-mgmt"
+        ],
+        "summary": "Get all logs by cycle id",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "cycleId",
+            "in": "path",
+            "description": "Cycle id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successfully generated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/allCycleLogResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "clientId": [],
+            "clientSecret": []
+          }
+        ]
+      }
+    },
+    "/config-cycle-mgmt/aws-batch-job-submitter": {
+      "post": {
+        "tags": [
+          "config-cycle-mgmt"
+        ],
+        "summary": "batch job submitter",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/jobRequest"
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "The request was successfully generated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/responseJob"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "clientId": [],
+            "clientSecret": []
+          }
+        ]
+      }
+    },
+    "/config-cycle-mgmt/download-control-file": {
+      "get": {
+        "tags": [
+          "config-cycle-mgmt"
+        ],
+        "summary": "download control file",
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "description": "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.  Example: c4e6bd04-5149-11e7-b114-12654765af2f.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "idCycle",
+            "in": "query",
+            "description": "Cycle id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "cycleDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "processType",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success Transaction",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/responseDownloadFile"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or mal formatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {}
+          }
+        },
+        "security": [
+          {
+            "clientId": [],
+            "clientSecret": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "cycles": {
+        "required": [
+          "commentsLog",
+          "dateLog",
+          "id",
+          "idCycle",
+          "nameStage",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "idCycle": {
+            "type": "number"
+          },
+          "nameStage": {
+            "type": "string"
+          },
+          "dateLog": {
+            "type": "string"
+          },
+          "starttime": {
+            "type": "string"
+          },
+          "endtime": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "commentsLog": {
+            "type": "string"
+          }
+        }
+      },
+      "cyleRq": {
+        "required": [
+          "numberCycle",
+          "endDate",
+          "startDate",
+          "typeCycle",
+          "startTime",
+          "endTime"
+        ],
+        "type": "object",
+        "properties": {
+          "typeCycle": {
+            "type": "string",
+            "enum": [
+              "AUTOMATIC",
+              "MANUAL"
+            ]
+          },
+          "numberCycle": {
+            "type": "integer"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-08-23T00:00:00.000Z"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-08-23T00:00:00.000Z"
+          },
+          "startTime": {
+            "type": "string",
+            "format": "time",
+            "example": "08:00:00"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "time",
+            "example": "18:00:00"
+          }
+        }
+      },
+      "patchCycleRq": {
+        "type": "object",
+        "properties": {
+          "typeCycle": {
+            "type": "string",
+            "enum": [
+              "AUTOMATIC",
+              "MANUAL"
+            ]
+          },
+          "numberCycle": {
+            "type": "number"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          }
+        }
+      },
+      "cycle": {
+        "required": [
+          "createdDt",
+          "endDate",
+          "id",
+          "numberCycle",
+          "startDate",
+          "typeCycle",
+          "updateDt"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "typeCycle": {
+            "type": "string",
+            "enum": [
+              "AUTOMATIC",
+              "MANUAL"
+            ]
+          },
+          "numberCycle": {
+            "type": "number"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "startTime": {
+            "type": "string",
+            "format": "time",
+            "example": "17:30:00"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "time",
+            "example": "17:30:00"
+          },
+          "createdDt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updateDt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "patchExcepRq": {
+        "type": "object",
+        "properties": {
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "typeException": {
+            "type": "string",
+            "example": "AUTOMATIC",
+            "enum": [
+              "AUTOMATIC",
+              "MANUAL"
+            ]
+          }
+        }
+      },
+      "jobRequest": {
+        "required": [
+          "schema",
+          "numberCycle",
+          "startDate",
+          "endDate"
+        ],
+        "type": "object",
+        "properties": {
+          "schema": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "numberCycle": {
+            "type": "integer"
+          },
+          "startDate": {
+            "type": "string",
+            "maxLength": 19,
+            "format": "date-time",
+            "example": "2024-07-05 12:00:00"
+          },
+          "endDate": {
+            "type": "string",
+            "maxLength": 19,
+            "format": "date-time",
+            "example": "2024-07-05 12:00:00"
+          },
+          "isRetry": {
+            "type": "boolean"
+          },
+          "retryType": {
+            "type": "string",
+            "enum": [
+              "PARTIAL",
+              "ALL"
+            ]
+          }
+        }
+      },
+      "responseJob": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/responseJobData"
+          }
+        }
+      },
+      "responseJobData": {
+        "properties": {
+          "jobId": {
+            "type": "string",
+            "format": "uuid",
+            "example": "e34f644a-92e0-4ac8-8c8d-b7a9c893794e"
+          }
+        }
+      },
+      "responseDownloadFile": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/responseDownloadFileData"
+          }
+        }
+      },
+      "responseDownloadFileData": {
+        "type": "object",
+        "properties": {
+          "cycleFiles": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "fileControlDownloadPath": {
+                  "type": "string",
+                  "example": "20240822/pse/1/0001020.001.D.pse"
+                }
+              }
+            }
+          },
+          "fileDownloadedName": {
+            "type": "string",
+            "example": "CYCLE_1_TYPE_DEBIT_FILE.zip"
+          },
+          "fileToBase64": {
+            "type": "string",
+            "example": "Very large text value",
+            "description": "Very large text value"
+          }
+        }
+      },
+      "exception": {
+        "required": [
+          "createdDt",
+          "endDate",
+          "id",
+          "startDate",
+          "type",
+          "updateDt",
+          "description"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-01-24T05:00:00.000Z"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-01-24T05:00:00.000Z"
+          },
+          "type": {
+            "type": "string",
+            "example": "AUTOMATIC",
+            "enum": [
+              "AUTOMATIC",
+              "MANUAL"
+            ]
+          },
+          "numberCycle": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "createdDt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-01-24T05:00:00.000Z"
+          },
+          "updateDt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-01-24T05:00:00.000Z"
+          }
+        }
+      },
+      "exceptionReq": {
+        "required": [
+          "endDate",
+          "startDate",
+          "typeException",
+          "description"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "typeException": {
+            "type": "string",
+            "example": "AUTOMATIC",
+            "enum": [
+              "AUTOMATIC",
+              "MANUAL"
+            ]
+          },
+          "numberCycle": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "patchCycleResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders202"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/cycle"
+          }
+        }
+      },
+      "postCycleResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders201"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/cycle"
+          }
+        }
+      },
+      "excepResponseCreate": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders201"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseCreate"
+          },
+          "data": {
+            "$ref": "#/components/schemas/exception"
+          }
+        }
+      },
+      "exceptionResponseUpdate": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders202"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/exception"
+          }
+        }
+      },
+      "allCyclesResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "products": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/cycle"
+                }
+              }
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/pagination"
+          }
+        }
+      },
+      "allExceptionCalendarResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "exceptions": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/exception"
+                }
+              }
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/pagination"
+          }
+        }
+      },
+      "allCycleLogResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "cycles": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/cycles"
+                }
+              }
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/pagination"
+          }
+        }
+      },
+      "pagination": {
+        "type": "object",
+        "properties": {
+          "totalElement": {
+            "type": "number",
+            "example": 100
+          },
+          "pageSize": {
+            "type": "number",
+            "example": 10
+          },
+          "pageNumber": {
+            "type": "number",
+            "example": 1
+          },
+          "hasMoreElements": {
+            "type": "boolean",
+            "example": true
+          }
+        }
+      },
+      "deleteExceptionDateResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/exception"
+          }
+        }
+      },
+      "reprocessingRq": {
+        "required": [
+          "cicleId",
+          "endTime",
+          "stage",
+          "startTime"
+        ],
+        "type": "object",
+        "properties": {
+          "stage": {
+            "type": "string"
+          },
+          "cicleId": {
+            "type": "integer"
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      },
+      "downloadFileRq": {
+        "required": [
+          "createDate",
+          "cycleId",
+          "processType",
+          "productId"
+        ],
+        "type": "object",
+        "properties": {
+          "cycleId": {
+            "type": "integer"
+          },
+          "createDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "processType": {
+            "type": "string"
+          },
+          "productId": {
+            "type": "integer"
+          }
+        }
+      },
+      "findResponseData": {
+        "type": "object",
+        "properties": {
+          "stage": {
+            "type": "string"
+          },
+          "dateLog": {
+            "type": "string",
+            "format": "date"
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "date"
+          },
+          "status": {
+            "type": "string"
+          },
+          "comments": {
+            "type": "string"
+          }
+        }
+      },
+      "findResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "products": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/findResponseData"
+                }
+              }
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/pagination"
+          }
+        }
+      },
+      "reprocessingResponseData": {
+        "type": "object",
+        "properties": {
+          "statusProcess": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "downloadFileResponseData": {
+        "type": "array",
+        "example": [
+          "path/file1.txt",
+          "path/file2.txt",
+          "path/file3.txt"
+        ],
+        "items": {
+          "type": "string"
+        }
+      },
+      "reprocessingResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/reprocessingResponseData"
+          }
+        }
+      },
+      "downloadFileResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "downloadedFiles": {
+            "$ref": "#/components/schemas/downloadFileResponseData"
+          }
+        }
+      },
+      "deleteCicleResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/cycle"
+          }
+        }
+      },
+      "cycleByIdResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/cycle"
+          }
+        }
+      },
+      "getCycleByDateResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "cycles": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/cycle"
+                }
+              }
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/pagination"
+          }
+        }
+      },
+      "allExceptionResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "exceptions": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/exception"
+                }
+              }
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/pagination"
+          }
+        }
+      },
+      "generalResponseHeaders200": {
+        "required": [
+          "httpStatusCode",
+          "httpStatusDesc",
+          "messageUuid",
+          "requestAppId",
+          "requestDatetime"
+        ],
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "number",
+            "example": 200
+          },
+          "httpStatusDesc": {
+            "type": "string",
+            "example": "OK"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestDatetime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        },
+        "description": "Traceability data and technical information from message."
+      },
+      "generalResponseHeaders201": {
+        "required": [
+          "httpStatusCode",
+          "httpStatusDesc",
+          "messageUuid",
+          "requestAppId",
+          "requestDatetime"
+        ],
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "number",
+            "example": 201
+          },
+          "httpStatusDesc": {
+            "type": "string",
+            "example": "CREATED"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestDatetime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        },
+        "description": "Traceability data and technical information from message."
+      },
+      "generalResponseHeaders202": {
+        "required": [
+          "httpStatusCode",
+          "httpStatusDesc",
+          "messageUuid",
+          "requestAppId",
+          "requestDatetime"
+        ],
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "number",
+            "example": 200
+          },
+          "httpStatusDesc": {
+            "type": "string",
+            "example": "ACCEPTED"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestDatetime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        },
+        "description": "Traceability data and technical information from message."
+      },
+      "messageResponse": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "0000"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Success Transaction."
+          },
+          "responseDetails": {
+            "type": "string",
+            "example": "System process information."
+          }
+        }
+      },
+      "messageResponseCreate": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "0000"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Success Create Transaction"
+          },
+          "responseDetails": {
+            "type": "string",
+            "example": "Customer Created Id: XXXX-XXXX-XXXX-XXX"
+          }
+        }
+      },
+      "generalError400": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError400"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError400"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors400"
+          }
+        }
+      },
+      "generalError401": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError401"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError401"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors401"
+          }
+        }
+      },
+      "generalError404": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError404"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError404"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors404"
+          }
+        }
+      },
+      "generalError405": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError405"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError405"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors405"
+          }
+        }
+      },
+      "generalError409": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError409"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError409"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors409"
+          }
+        }
+      },
+      "generalError415": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError415"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError415"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors415"
+          }
+        }
+      },
+      "generalError500": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError500"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError500"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors500"
+          }
+        }
+      },
+      "generalError502": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError502"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError502"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors502"
+          }
+        }
+      },
+      "generalError503": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError503"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError503"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors503"
+          }
+        }
+      },
+      "headersError400": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 400
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "BAD_REQUEST"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56.000Z"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError401": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 401
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "UNAUTHORIZED"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56.000Z"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError404": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 404
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "NOT_FOUND"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56.000Z"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError405": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 405
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "METHOD_NOT_ALLOWED"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56.000Z"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError409": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 409
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "CONFLICT"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56.000Z"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError415": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 415
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "UNSOPORTED MEDIA TYPE"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56.000Z"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError500": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 500
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "INTERNAL_SERVER_ERROR"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56.000Z"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError502": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 502
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "BAD_GATEWAY"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56.000Z"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError503": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 503
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "SERVICE_UNAVAILABLE"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56.000Z"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "messageResponseError400": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Bad Request Message"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError401": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Bad Credentials"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError404": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "NO PERSISTAN DATA"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError405": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Method Not Allowed"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError409": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Conflict"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError415": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Unsupported Media Type"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError500": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Error Message"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError502": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Error Message"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError503": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Error Message"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "exampleErrors400": {
+        "uniqueItems": true,
+        "type": "array",
+        "description": "Array for 400 errors.",
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors401": {
+        "uniqueItems": true,
+        "type": "array",
+        "description": "Array for 401 errors.",
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors404": {
+        "uniqueItems": true,
+        "type": "array",
+        "description": "Array for 404 errors.",
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors405": {
+        "uniqueItems": true,
+        "type": "array",
+        "description": "Array for 405 errors.",
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors409": {
+        "uniqueItems": true,
+        "type": "array",
+        "description": "Array for 409 errors.",
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors415": {
+        "uniqueItems": true,
+        "type": "array",
+        "description": "Array for 415 errors.",
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors500": {
+        "uniqueItems": true,
+        "type": "array",
+        "description": "Array for 500 errors.",
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors502": {
+        "uniqueItems": true,
+        "type": "array",
+        "description": "Array for 500 errors.",
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors503": {
+        "uniqueItems": true,
+        "type": "array",
+        "description": "Array for 500 errors.",
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "generalError": {
+        "type": "object",
+        "properties": {
+          "errorCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "errorDetail": {
+            "type": "string",
+            "example": "Some Error Detail"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "clientId": {
+        "type": "apiKey",
+        "description": "",
+        "name": "Client-Id",
+        "in": "header",
+        "x-key-type": "client_id"
+      },
+      "clientSecret": {
+        "type": "apiKey",
+        "description": "",
+        "name": "Client-Secret",
+        "in": "header",
+        "x-key-type": "client_secret"
+      }
+    }
+  }
+}

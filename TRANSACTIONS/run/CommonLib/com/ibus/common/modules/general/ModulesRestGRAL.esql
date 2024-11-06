@@ -1,0 +1,215 @@
+/*
+ *
+ * File name: EmailConfigParams.esql
+ *
+ * Purpose:   ESQL de modulos generales Framework Integracion
+ *
+ * Authors:   Assist
+ *            
+ *
+ * Version:   1.0
+ *
+ * @copyright Assist  All rights reserved.
+ *
+ */
+BROKER SCHEMA com.ibus.common.modules.general
+
+/*
+ * Crea el mensaje de excepción cuando existe un error en el flujo del servicio específico 
+ */
+CREATE COMPUTE MODULE CreateRestErrorMessage
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE codeError, nameError, descError CHARACTER '';
+		DECLARE refEnvUsr REFERENCE TO Environment.MQRFH2.usr;
+		
+		--Poner información de configuración en cabecera de mensaje.
+		IF EXISTS(InputRoot.MQMD[]) THEN
+			SET OutputRoot.MQMD =  Environment.MQMD;
+		ELSE
+			SET OutputRoot.MQMD =  InputRoot.MQMD;
+		END IF;
+		SET OutputRoot.MQMD.ReplyToQ	= COALESCE(NULLIF(InputRoot.MQMD.ReplyToQ, ''), refEnvUsr.response.REST.replyToQ)  ;
+		IF EXISTS(InputRoot.MQRFH2[]) THEN
+			SET OutputRoot.MQRFH2 =  InputRoot.MQRFH2;
+		ELSE
+			SET OutputRoot.MQRFH2 =  Environment.MQRFH2;			
+		END IF;
+		
+		DECLARE refLog REFERENCE TO  OutputRoot.MQRFH2.usr.log;
+		SET refLog.prevTransactionDate 	= refLog.transactionDate;
+		SET refLog.transactionDate 		= CURRENT_TIMESTAMP;
+		
+		--Declarar referencia a lista de excepciones.
+		DECLARE refExceptionList REFERENCE TO InputExceptionList;
+		DECLARE exceptionDetails ROW;
+		
+		CALL com.ibus.common.procedures.util.getDescriptionExceptionList(refExceptionList, exceptionDetails);
+	
+		CREATE FIELD OutputRoot.JSON.exceptionReq.exception;
+		DECLARE refOutException REFERENCE TO OutputRoot.JSON.exceptionReq.exception;
+
+		CALL com.ibus.common.procedures.general.createErrorLogMessage(refOutException,exceptionDetails);
+
+		--Enviar a registro de error
+		PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+		SET OutputRoot.JSON = NULL;
+				
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+				
+		SET refEnvUsr.exception = exceptionDetails;
+		SET refEnvUsr.errorCode = 500;
+		SET refEnvUsr.errorDesc = 'Internal Error';
+		
+		CALL com.ibus.common.procedures.general.createRESTErrorsMessage(refExceptionList,refEnvUsr,refOut);
+		SET OutputLocalEnvironment.Destination.MQ.DestinationData[1].queueName = COALESCE(NULLIF(InputRoot.MQMD.ReplyToQ, ''), refEnvUsr.response.REST.replyToQ)  ;
+				                                  
+		RETURN TRUE;		
+	END;
+END MODULE;
+
+
+/*
+ * Crea el mensaje de excepción cuando existe un error en el flujo del framework
+ */
+CREATE COMPUTE MODULE CreateRestExceptionMessage
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE codeError, nameError, descError CHARACTER '';
+		DECLARE refEnvUsr REFERENCE TO Environment.MQRFH2.usr;
+		
+		--Poner información de configuración en cabecera de mensaje.
+		IF EXISTS(InputRoot.MQMD[]) THEN
+			SET OutputRoot.MQMD =  InputRoot.MQMD;
+		ELSE
+			SET OutputRoot.MQMD =  Environment.MQMD;			
+		END IF;
+		SET OutputRoot.MQMD.ReplyToQ	= COALESCE(NULLIF(InputRoot.MQMD.ReplyToQ, ''), refEnvUsr.response.REST.replyToQ)  ;
+		IF EXISTS(InputRoot.MQRFH2[]) THEN
+			SET OutputRoot.MQRFH2 =  InputRoot.MQRFH2;
+		ELSE
+			SET OutputRoot.MQRFH2 =  Environment.MQRFH2;			
+		END IF;
+		
+		DECLARE refLog REFERENCE TO  OutputRoot.MQRFH2.usr.log;
+		SET refLog.prevTransactionDate 	= refLog.transactionDate;
+		SET refLog.transactionDate 		= CURRENT_TIMESTAMP;
+		
+		--Declarar referencia a lista de excepciones.
+		DECLARE refExceptionList REFERENCE TO InputExceptionList;
+		DECLARE exceptionDetails ROW;
+		
+		CALL com.ibus.common.procedures.util.getDescriptionExceptionList(refExceptionList, exceptionDetails);
+	
+		CREATE FIELD OutputRoot.XMLNSC.exceptionReq.exception;
+		DECLARE refOutException REFERENCE TO OutputRoot.XMLNSC.exceptionReq.exception;
+
+		CALL com.ibus.common.procedures.general.createErrorLogMessage(refOutException,exceptionDetails);
+		SET OutputLocalEnvironment.Destination.MQ.DestinationData[1].queueName = COALESCE(NULLIF(InputRoot.MQMD.ReplyToQ, ''), refEnvUsr.response.REST.replyToQ)  ;
+		RETURN TRUE;		
+	END;
+END MODULE;
+		
+
+/*
+ * Crea el mensaje de excepción cuando existe un error en el flujo del servicio específico 
+ */
+CREATE COMPUTE MODULE CreateRestExtErrorMessage
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE codeError, nameError, descError CHARACTER '';
+		DECLARE refEnvUsr REFERENCE TO Environment.MQRFH2.usr;
+		
+		--Poner información de configuración en cabecera de mensaje.
+		IF EXISTS(InputRoot.MQMD[]) THEN
+			SET OutputRoot.MQMD =  InputRoot.MQMD;
+		ELSE
+			SET OutputRoot.MQMD =  Environment.MQMD;			
+		END IF;
+		SET OutputRoot.MQMD.ReplyToQ	= COALESCE(NULLIF(InputRoot.MQMD.ReplyToQ, ''), refEnvUsr.response.REST.replyToQ)  ;
+		IF EXISTS(InputRoot.MQRFH2[]) THEN
+			SET OutputRoot.MQRFH2 =  InputRoot.MQRFH2;
+		ELSE
+			SET OutputRoot.MQRFH2 =  Environment.MQRFH2;			
+		END IF;
+		
+		DECLARE refLog REFERENCE TO  OutputRoot.MQRFH2.usr.log;
+		SET refLog.prevTransactionDate 	= refLog.transactionDate;
+		SET refLog.transactionDate 		= CURRENT_TIMESTAMP;
+		
+		--Declarar referencia a lista de excepciones.
+		DECLARE refExceptionList REFERENCE TO InputExceptionList;
+		DECLARE exceptionDetails ROW;
+		
+		CALL com.ibus.common.procedures.util.getDescriptionExceptionList(refExceptionList, exceptionDetails);
+	
+		CREATE FIELD OutputRoot.JSON.exceptionReq.exception;
+		DECLARE refOutException REFERENCE TO OutputRoot.JSON.exceptionReq.exception;
+
+		CALL com.ibus.common.procedures.general.createErrorLogMessage(refOutException,exceptionDetails);
+
+		--Enviar a registro de error
+		PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+		SET OutputRoot.JSON = NULL;
+				
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		SET refOut.meta = refEnvUsr.response.REST.META; 
+		
+		SET refEnvUsr.exception = exceptionDetails;
+		SET refEnvUsr.errorCode = 503;
+		SET refEnvUsr.errorDesc = 'Gateway Error';
+				
+		CALL com.ibus.common.procedures.general.createRESTErrorsMessage(refExceptionList,refEnvUsr,refOut);
+		SET OutputLocalEnvironment.Destination.MQ.DestinationData[1].queueName = COALESCE(NULLIF(InputRoot.MQMD.ReplyToQ, ''), refEnvUsr.response.REST.replyToQ)  ;
+				                                  
+		RETURN TRUE;		
+	END;
+END MODULE;
+
+/*
+ * Crea el mensaje de excepción cuando existe un error en el flujo del servicio específico 
+ */
+CREATE COMPUTE MODULE CreateRestExtErrorMessageV2
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE codeError, nameError, descError CHARACTER '';
+		DECLARE refEnv REFERENCE TO Environment;
+		
+		--Poner información de configuración en cabecera de mensaje.
+		SET OutputRoot.MQMD 			= refEnv.MQMD;
+		SET OutputRoot.MQRFH2 			= refEnv.MQRFH2;
+		
+		DECLARE refLog REFERENCE TO  OutputRoot.MQRFH2.usr.log;
+		SET refLog.prevTransactionDate 	= refLog.transactionDate;
+		SET refLog.transactionDate 		= CURRENT_TIMESTAMP;
+		
+		--Declarar referencia a lista de excepciones.
+		DECLARE refExceptionList REFERENCE TO InputExceptionList;
+		DECLARE exceptionDetails ROW;
+		
+		CALL com.ibus.common.procedures.util.getDescriptionExceptionList(refExceptionList, exceptionDetails);
+	
+		CREATE FIELD OutputRoot.JSON.exceptionReq.exception;
+		DECLARE refOutException REFERENCE TO OutputRoot.JSON.exceptionReq.exception;
+
+		CALL com.ibus.common.procedures.general.createErrorLogMessage(refOutException,exceptionDetails);
+
+		--Enviar a registro de error
+		PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+		SET OutputRoot.JSON = NULL;
+				
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		SET refEnv.MQRFH2.usr.errorCode = 503;
+		SET refEnv.MQRFH2.usr.errorDesc = 'Gateway Error';
+		CALL com.ibus.common.procedures.general.createRESTErrorsMessage(refExceptionList,refEnv.MQRFH2.usr,refOut);
+		
+				                                  
+		RETURN TRUE;		
+	END;
+END MODULE;
+

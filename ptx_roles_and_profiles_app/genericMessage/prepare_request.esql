@@ -1,0 +1,27 @@
+BROKER SCHEMA genericMessage
+
+
+DECLARE backUrl 		EXTERNAL CHARACTER '';
+DECLARE customerId 		EXTERNAL CHARACTER '';
+DECLARE accountId 		EXTERNAL CHARACTER '';
+DECLARE backTimeout 	EXTERNAL INTEGER 300;
+DECLARE operationName   EXTERNAL CHARACTER '';
+
+CREATE COMPUTE MODULE prepare_request
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET Environment.flujo = operationName;
+		--SET OutputRoot.HTTPRequestHeader."message-uuid" = InputLocalEnvironment.REST.Input.Parameters."message-uuid";
+		--SET OutputRoot.HTTPRequestHeader."request-app-id" = InputLocalEnvironment.REST.Input.Parameters."request-app-id";
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters=  InputLocalEnvironment.REST.Input.Parameters;
+
+		--Configuraciones
+		SET OutputLocalEnvironment.Destination.REST.Request.Accept 		= 'application/json';
+		SET OutputLocalEnvironment.Destination.REST.Request.Timeout 	= backTimeout;
+		SET OutputLocalEnvironment.Destination.REST.Request.BaseURL 	= backUrl;
+		SET OutputRoot.JSON.Data = InputRoot.JSON.Data;		
+			
+		RETURN TRUE;
+	END;
+
+END MODULE;

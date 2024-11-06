@@ -1,0 +1,13 @@
+BROKER SCHEMA getSearch_trx
+
+
+
+
+
+CREATE COMPUTE MODULE prepare_response
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot= InputRoot;
+		RETURN TRUE;
+	END;
+END MODULE;

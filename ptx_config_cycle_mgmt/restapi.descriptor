@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:restapiDescriptor xmlns="http://com.ibm.etools.mft.descriptor.base" xmlns:ns2="http://com.ibm.etools.mft.descriptor.restapi" definitionType="openapi_3" definitionFile="ptx-config-cycle-mgmt.yml" implementation="gen/ptx_config_cycle_mgmt.msgflow" https="false" definitionWithExtRef="false" faultFormat="JSON">
+    <references>
+        <sharedLibraryReference>
+            <libraryName>CommonLib</libraryName>
+        </sharedLibraryReference>
+    </references>
+    <ns2:operations>
+        <ns2:operation name="deleteCycleId" implementation="deleteCycleId.subflow"/>
+        <ns2:operation name="deleteExceptionid" implementation="deleteExceptionid.subflow"/>
+        <ns2:operation name="getCycle-calendar" implementation="getCycle_calendar.subflow"/>
+        <ns2:operation name="getCycleId" implementation="getCycleId.subflow"/>
+        <ns2:operation name="getCycleId1" implementation="getCycleId1.subflow"/>
+        <ns2:operation name="getDownload-control-file" implementation="getDownload_control_file.subflow"/>
+        <ns2:operation name="getException-calendar" implementation="getException_calendar.subflow"/>
+        <ns2:operation name="getFind-cycle" implementation="getFind_cycle.subflow"/>
+        <ns2:operation name="getGet-all-exceptions" implementation="getGet_all_exceptions.subflow"/>
+        <ns2:operation name="getStartDate" implementation="getStartDate.subflow"/>
+        <ns2:operation name="patchCycleid" implementation="patchCycleid.subflow"/>
+        <ns2:operation name="patchExceptionid" implementation="patchExceptionid.subflow"/>
+        <ns2:operation name="postAws-batch-job-submitter" implementation="postAws_batch_job_submitter.subflow"/>
+        <ns2:operation name="postCreate-cycle" implementation="postCreate_cycle.subflow"/>
+        <ns2:operation name="postCreate-exception" implementation="postCreate_exception.subflow"/>
+        <ns2:operation name="postFile-cycle-download" implementation="postFile_cycle_download.subflow"/>
+        <ns2:operation name="postReprocessing" implementation="postReprocessing.subflow"/>
+    </ns2:operations>
+    <ns2:errorHandlers/>
+</ns2:restapiDescriptor>

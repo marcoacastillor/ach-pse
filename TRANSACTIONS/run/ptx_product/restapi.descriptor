@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:restapiDescriptor xmlns="http://com.ibm.etools.mft.descriptor.base" xmlns:ns2="http://com.ibm.etools.mft.descriptor.restapi" definitionType="openapi_3" definitionFile="ptx-product_1.0.0.yaml" implementation="gen/ptx_product.msgflow" https="false" definitionWithExtRef="false" faultFormat="JSON">
+    <references>
+        <sharedLibraryReference>
+            <libraryName>CommonLib</libraryName>
+        </sharedLibraryReference>
+    </references>
+    <ns2:operations>
+        <ns2:operation name="getProductid" implementation="getProductid.subflow"/>
+        <ns2:operation name="getProducts" implementation="getProducts.subflow"/>
+        <ns2:operation name="getVarid" implementation="getVarid.subflow"/>
+        <ns2:operation name="getVars" implementation="getVars.subflow"/>
+        <ns2:operation name="patchProductid" implementation="patchProductid.subflow"/>
+        <ns2:operation name="patchVarid" implementation="patchVarid.subflow"/>
+        <ns2:operation name="postProducts" implementation="postProducts.subflow"/>
+        <ns2:operation name="postVars" implementation="postVars.subflow"/>
+    </ns2:operations>
+    <ns2:errorHandlers/>
+</ns2:restapiDescriptor>

@@ -1,0 +1,18 @@
+BROKER SCHEMA common
+
+
+CREATE COMPUTE MODULE rest_error
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE STATUSCODE CHARACTER;
+		SET STATUSCODE = InputLocalEnvironment.WrittenDestination.REST.StatusCode;
+		IF STATUSCODE IS NOT NULL THEN 
+			THROW EXCEPTION MESSAGE 500 VALUES('restError' , 'Error en RestRequest. statusCode: '  || STATUSCODE );
+		END IF;
+		
+		THROW EXCEPTION MESSAGE 500 VALUES('restError' , 'Error en RestRequest. STATUS CODE no identificado');
+		
+	END;
+
+
+END MODULE;

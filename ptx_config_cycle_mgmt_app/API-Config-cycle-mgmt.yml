@@ -1,0 +1,2193 @@
+---
+swagger: "2.0"
+info:
+  title: "API Config-cycle-mgmt"
+  version: "2.0.0"
+  description: "Esta API tiene como objetivo la administracion de ciclos y las excepciones\
+    \ de calendario"
+host: "$(host.name)"
+paths:
+  /v1/po/config-cycle-mgmt/download-control-file:
+    get:
+      parameters:
+      - name: "message-uuid"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "Message identifier is used for traceability. This identifier\
+          \ allows you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "request-app-id"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "App identifier is   d for traceability. This identifier allows\
+          \ you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "idCycle"
+        in: "query"
+        required: true
+        type: "integer"
+      - name: "cycleDate"
+        in: "query"
+        type: "string"
+        format: "date-time"
+      - name: "processType"
+        in: "query"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/responseDownloadFile"
+          description: "Success Transaction"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: "Bad request or bad formatted data"
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: "Method Not Allowed."
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: "Unsupported Media Type."
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: "Internal Server Error"
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: "Bad Gateway"
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: "Service Unavailable"
+        default:
+          description: "Error."
+      tags:
+      - "config-cycle-mgmt"
+  /v1/po/config-cycle-mgmt/aws-batch-job-submitter:
+    post:
+      parameters:
+      - name: "message-uuid"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "Message identifier is used for traceability. This identifier\
+          \ allows you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "request-app-id"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "App identifier is   d for traceability. This identifier allows\
+          \ you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - in: "body"
+        name: "cycle"
+        schema:
+          $ref: "#/definitions/jobRequest"
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/responseJob"
+          description: "Success Transaction"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: "Bad request or bad formatted data"
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: "Method Not Allowed."
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: "Unsupported Media Type."
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: "Internal Server Error"
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: "Bad Gateway"
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: "Service Unavailable"
+        default:
+          description: "Error."
+      tags:
+      - "config-cycle-mgmt"
+  /v1/po/config-cycle-mgmt/cycle-calendar:
+    get:
+      summary: "Obtener los cierres de ciclo"
+      parameters:
+      - name: "message-uuid"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "Message identifier is used for traceability. This identifier\
+          \ allows you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "request-app-id"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "App identifier is used for traceability. This identifier allows\
+          \ you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "pageSize"
+        in: "query"
+        required: true
+        type: "integer"
+        minimum: 1
+        maximum: 100
+      - name: "pageNumber"
+        in: "query"
+        required: true
+        type: "integer"
+        minimum: 1
+      - name: "typeCycle"
+        in: "query"
+        type: "string"
+        enum:
+        - "AUTOMATIC"
+        - "MANUAL"
+      - name: "startDate"
+        in: "query"
+        type: "string"
+        format: "date-time"
+      - name: "endDate"
+        in: "query"
+        type: "string"
+        format: "date-time"
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/allCyclesResponse"
+          description: "La solicitud se ha generado correctamente"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: "Bad request or mal formatted data"
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: "Method Not Allowed."
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: "Unsupported Media Type."
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: "Internal Server Error"
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: "Bad Gateway"
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: "Service Unavailable"
+        default:
+          description: "Error."
+      tags:
+      - "config-cycle-mgmt"
+  /v1/po/config-cycle-mgmt/create-cycle:
+    post:
+      summary: "Creacion de ciclo"
+      parameters:
+      - name: "message-uuid"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "Message identifier is used for traceability. This identifier\
+          \ allows you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "request-app-id"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "App identifier is   d for traceability. This identifier allows\
+          \ you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - in: "body"
+        name: "cycle"
+        schema:
+          $ref: "#/definitions/cyleRq"
+      responses:
+        "201":
+          schema:
+            $ref: "#/definitions/postCycleResponse"
+          description: "Success Transaction"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: "Bad request or mal formatted data"
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: "Method Not Allowed."
+        "409":
+          schema:
+            $ref: "#/definitions/generalError409"
+          description: "Conflict."
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: "Unsupported Media Type."
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: "Internal Server Error"
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: "Bad Gateway"
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: "Service Unavailable"
+        default:
+          description: "Error inesperado."
+      tags:
+      - "config-cycle-mgmt"
+  /v1/po/config-cycle-mgmt/update-cycle/{cycleid}:
+    patch:
+      summary: "Modificar informacion de ciclo"
+      parameters:
+      - name: "message-uuid"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "Message identifier is used for traceability. This identifier\
+          \ allows you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "request-app-id"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "App identifier is used for traceability. This identifier allows\
+          \ you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - in: "path"
+        name: "cycleid"
+        required: true
+        type: "string"
+        description: "id del ciclo"
+      - in: "body"
+        name: "cycleid"
+        schema:
+          $ref: "#/definitions/patchCycleRq"
+      responses:
+        "202":
+          schema:
+            $ref: "#/definitions/patchCycleResponse"
+          description: "Success Transaction"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: "Bad request or mal formatted data"
+        "404":
+          schema:
+            $ref: "#/definitions/generalError404"
+          description: "Variable Not Found."
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: "Method Not Allowed."
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: "Unsupported Media Type."
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: "Internal Server Error"
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: "Bad Gateway"
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: "Service Unavailable"
+        default:
+          description: "Error."
+      tags:
+      - "config-cycle-mgmt"
+  /v1/po/config-cycle-mgmt/exception-calendar:
+    get:
+      summary: "Obtener las excepciones de calendario"
+      parameters:
+      - name: "message-uuid"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "Message identifier is used for traceability. This identifier\
+          \ allows you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "request-app-id"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "App identifier is used for traceability. This identifier allows\
+          \ you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "pageSize"
+        in: "query"
+        required: true
+        type: "integer"
+        minimum: 1
+        maximum: 100
+      - name: "pageNumber"
+        in: "query"
+        required: true
+        type: "integer"
+        minimum: 1
+      - name: "type"
+        in: "query"
+        type: "string"
+        enum:
+        - "AUTOMATIC"
+        - "MANUAL"
+      - name: "starDate"
+        in: "query"
+        type: "string"
+      - name: "endDate"
+        in: "query"
+        type: "string"
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/allExceptionCalendarResponse"
+          description: "Success Transaction"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: "Bad request or mal formatted data"
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: "Method Not Allowed."
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: "Unsupported Media Type."
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: "Internal Server Error"
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: "Bad Gateway"
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: "Service Unavailable"
+        default:
+          description: "Error."
+      tags:
+      - "config-cycle-mgmt"
+  /v1/po/config-cycle-mgmt/create-exception:
+    post:
+      summary: "Creacion de excepcion de calendario"
+      parameters:
+      - name: "message-uuid"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "Message identifier is used for traceability. This identifier\
+          \ allows you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "request-app-id"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "App identifier is   d for traceability. This identifier allows\
+          \ you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - in: "body"
+        name: "exception"
+        schema:
+          $ref: "#/definitions/exceptionReq"
+      responses:
+        "201":
+          schema:
+            $ref: "#/definitions/excepResponseCreate"
+          description: "Success Transaction"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: "Bad request or mal formatted data"
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: "Method Not Allowed."
+        "409":
+          schema:
+            $ref: "#/definitions/generalError409"
+          description: "Conflict."
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: "Unsupported Media Type."
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: "Internal Server Error"
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: "Bad Gateway"
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: "Service Unavailable"
+        default:
+          description: "Error inesperado."
+      tags:
+      - "config-cycle-mgmt"
+  /v1/po/config-cycle-mgmt/update-exception/{exceptionid}:
+    patch:
+      summary: "Modificar informacion de excepcion"
+      parameters:
+      - name: "message-uuid"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "Message identifier is used for traceability. This identifier\
+          \ allows you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "request-app-id"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "App identifier is used for traceability. This identifier allows\
+          \ you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - in: "path"
+        name: "exceptionid"
+        required: true
+        type: "number"
+        description: "id de la excepcion"
+      - in: "body"
+        name: "exceptionid"
+        schema:
+          $ref: "#/definitions/patchExcepRq"
+      responses:
+        "202":
+          schema:
+            $ref: "#/definitions/exceptionResponseUpdate"
+          description: "Success Transaction"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: "Bad request or mal formatted data"
+        "404":
+          schema:
+            $ref: "#/definitions/generalError404"
+          description: "Variable Not Found."
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: "Method Not Allowed."
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: "Unsupported Media Type."
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: "Internal Server Error"
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: "Bad Gateway"
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: "Service Unavailable"
+        default:
+          description: "Error."
+      tags:
+      - "config-cycle-mgmt"
+  /v1/po/config-cycle-mgmt/find-cycle:
+    get:
+      summary: "Consulta de Informaciï¿½n de Ciclos"
+      parameters:
+      - name: "message-uuid"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "Message identifier is used for traceability. This identifier\
+          \ allows you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "request-app-id"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "App identifier is used for traceability. This identifier allows\
+          \ you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "cicleId"
+        in: "query"
+        required: true
+        type: "integer"
+        description: "id del ciclo"
+      - name: "stage"
+        in: "query"
+        type: "string"
+        description: "Etapa"
+      - name: "startDate"
+        in: "query"
+        type: "string"
+        format: "date"
+        description: "Fecha y hora inicio"
+      - name: "endtDate"
+        in: "query"
+        type: "string"
+        format: "date"
+        description: "Fecha y hora fin"
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/findResponse"
+          description: "La solicitud se ha generado correctamente"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: "Bad request or mal formatted data"
+        "404":
+          schema:
+            $ref: "#/definitions/generalError404"
+          description: "Variable Not Found."
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: "Method Not Allowed."
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: "Unsupported Media Type."
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: "Internal Server Error"
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: "Bad Gateway"
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: "Service Unavailable"
+        default:
+          description: "Error inesperado."
+      tags:
+      - "config-cycle-mgmt"
+  /v1/po/config-cycle-mgmt/reprocessing:
+    post:
+      summary: "Reprocesamiento de Ciclo"
+      parameters:
+      - name: "message-uuid"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "Message identifier is used for traceability. This identifier\
+          \ allows you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "request-app-id"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "App identifier is used for traceability. This identifier allows\
+          \ you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - in: "body"
+        name: "product"
+        schema:
+          $ref: "#/definitions/reprocessingRq"
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/reprocessingResponse"
+          description: "La solicitud se ha generado correctamente"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: "Bad request or mal formatted data"
+        "404":
+          schema:
+            $ref: "#/definitions/generalError404"
+          description: "Variable Not Found."
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: "Method Not Allowed."
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: "Unsupported Media Type."
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: "Internal Server Error"
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: "Bad Gateway"
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: "Service Unavailable"
+        default:
+          description: "Error inesperado."
+      tags:
+      - "config-cycle-mgmt"
+  /v1/po/config-cycle-mgmt/file-cycle-download:
+    post:
+      summary: "Descargar Archivo"
+      parameters:
+      - name: "message-uuid"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "Message identifier is used for traceability. This identifier\
+          \ allows you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "request-app-id"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "App identifier is used for traceability. This identifier allows\
+          \ you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - in: "body"
+        name: "product"
+        schema:
+          $ref: "#/definitions/downloadFileRq"
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/downloadFileResponse"
+          description: "La solicitud se ha generado correctamente"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: "Bad request or mal formatted data"
+        "404":
+          schema:
+            $ref: "#/definitions/generalError404"
+          description: "Variable Not Found."
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: "Method Not Allowed."
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: "Unsupported Media Type."
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: "Internal Server Error"
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: "Bad Gateway"
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: "Service Unavailable"
+        default:
+          description: "Error inesperado."
+      tags:
+      - "config-cycle-mgmt"
+  /v1/po/config-cycle-mgmt/delete-cycle/{cycleId}:
+    delete:
+      summary: "Eliminaciï¿½n de Ciclo"
+      parameters:
+      - name: "message-uuid"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "Message identifier is used for traceability. This identifier\
+          \ allows you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "request-app-id"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "App identifier is used for traceability. This identifier allows\
+          \ you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "cycleId"
+        in: "path"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/deleteCicleResponse"
+          description: "La solicitud se ha generado correctamente"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: "Bad request or mal formatted data"
+        "404":
+          schema:
+            $ref: "#/definitions/generalError404"
+          description: "Variable Not Found."
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: "Method Not Allowed."
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: "Unsupported Media Type."
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: "Internal Server Error"
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: "Bad Gateway"
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: "Service Unavailable"
+        default:
+          description: "Error inesperado."
+      tags:
+      - "config-cycle-mgmt"
+  /v1/po/config-cycle-mgmt/get-cycle_id/{cycleId}:
+    get:
+      summary: "Consultar Ciclo Por cycleId"
+      parameters:
+      - name: "message-uuid"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "Message identifier is used for traceability. This identifier\
+          \ allows you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "request-app-id"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "App identifier is used for traceability. This identifier allows\
+          \ you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "cycleId"
+        in: "path"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/cycleByIdResponse"
+          description: "La solicitud se ha generado correctamente"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: "Bad request or mal formatted data"
+        "404":
+          schema:
+            $ref: "#/definitions/generalError404"
+          description: "Variable Not Found."
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: "Method Not Allowed."
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: "Unsupported Media Type."
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: "Internal Server Error"
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: "Bad Gateway"
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: "Service Unavailable"
+        default:
+          description: "Error inesperado."
+      tags:
+      - "config-cycle-mgmt"
+  /v1/po/config-cycle-mgmt/get-cycle_date/{startDate}:
+    get:
+      summary: "Consultar Ciclo Por Fecha"
+      parameters:
+      - name: "message-uuid"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "Message identifier is used for traceability. This identifier\
+          \ allows you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "request-app-id"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "App identifier is used for traceability. This identifier allows\
+          \ you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "startDate"
+        in: "path"
+        required: true
+        type: "string"
+        format: "date"
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/getCycleByDateResponse"
+          description: "La solicitud se ha generado correctamente"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: "Bad request or mal formatted data"
+        "404":
+          schema:
+            $ref: "#/definitions/generalError404"
+          description: "Variable Not Found."
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: "Method Not Allowed."
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: "Unsupported Media Type."
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: "Internal Server Error"
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: "Bad Gateway"
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: "Service Unavailable"
+        default:
+          description: "Error inesperado."
+      tags:
+      - "config-cycle-mgmt"
+  /v1/po/config-cycle-mgmt/delete/{exceptionid}:
+    delete:
+      summary: "Consultar Ciclo Por Fecha"
+      parameters:
+      - name: "message-uuid"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "Message identifier is used for traceability. This identifier\
+          \ allows you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "request-app-id"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "App identifier is used for traceability. This identifier allows\
+          \ you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "exceptionid"
+        in: "path"
+        required: true
+        type: "number"
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/exceptionResponseUpdate"
+          description: "Success Transaction"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: "Bad request or mal formatted data"
+        "404":
+          schema:
+            $ref: "#/definitions/generalError404"
+          description: "Variable Not Found."
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: "Method Not Allowed."
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: "Unsupported Media Type."
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: "Internal Server Error"
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: "Bad Gateway"
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: "Service Unavailable"
+        default:
+          description: "Error."
+      tags:
+      - "config-cycle-mgmt"
+  /v1/po/config-cycle-mgmt/get-all-exceptions:
+    get:
+      summary: "Consultar Ciclo Por Fecha"
+      parameters:
+      - name: "message-uuid"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "Message identifier is used for traceability. This identifier\
+          \ allows you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "request-app-id"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "App identifier is used for traceability. This identifier allows\
+          \ you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "pageSize"
+        in: "query"
+        required: true
+        type: "integer"
+        minimum: 1
+        maximum: 100
+      - name: "pageNumber"
+        in: "query"
+        required: true
+        type: "integer"
+        minimum: 1
+      - name: "startDate"
+        in: "query"
+        type: "string"
+        format: "date"
+      - name: "endtDate"
+        in: "query"
+        type: "string"
+        format: "date"
+      - name: "type"
+        in: "query"
+        type: "string"
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/allExceptionResponse"
+          description: "La solicitud se ha generado correctamente"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: "Bad request or mal formatted data"
+        "404":
+          schema:
+            $ref: "#/definitions/generalError404"
+          description: "Variable Not Found."
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: "Method Not Allowed."
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: "Unsupported Media Type."
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: "Internal Server Error"
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: "Bad Gateway"
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: "Service Unavailable"
+        default:
+          description: "Error inesperado."
+      tags:
+      - "config-cycle-mgmt"
+  /v1/po/config-cycle-mgmt/search-cycle-log-by/{cycleId}:
+    get:
+      summary: "Obtener todos los logs por id de ciclo"
+      parameters:
+      - name: "message-uuid"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "Message identifier is used for traceability. This identifier\
+          \ allows you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - name: "request-app-id"
+        in: "header"
+        required: true
+        type: "string"
+        format: "uuid"
+        description: "App identifier is used for traceability. This identifier allows\
+          \ you to identify the logs of the calls to the APIs in the log repositories,\
+          \ it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+      - in: "path"
+        name: "cycleId"
+        required: true
+        type: "string"
+        description: "id del ciclo"
+      - name: "pageSize"
+        in: "query"
+        required: true
+        type: "integer"
+        minimum: 1
+        maximum: 100
+      - name: "pageNumber"
+        in: "query"
+        required: true
+        type: "integer"
+        minimum: 1
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/allCycleLogResponse"
+          description: "Success Transaction"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: "Bad request or mal formatted data"
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: "Method Not Allowed."
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: "Unsupported Media Type."
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: "Internal Server Error"
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: "Bad Gateway"
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: "Service Unavailable"
+        default:
+          description: "Error inesperado."
+      tags:
+      - "config-cycle-mgmt"
+  /v1/po/config-cycle-mgmt/actuator/:
+    get:
+      summary: "API Monitoring"
+      responses:
+        "200":
+          description: "200 OK"
+      tags:
+      - "config-cycle-mgmt"
+definitions:
+  responseDownloadFileData:
+    type: "object"
+    properties:
+      cycleFiles:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            fileControlDownloadPath:
+              type: "string"
+              example: "20240822/pse/1/0001020.001.D.pse"
+      fileDownloadedName:
+        type: "string"
+        example: "CYCLE_1_TYPE_DEBIT_FILE.zip"
+      fileToBase64:
+        type: "string"
+        example: "Very large text value"
+        description: "Very large text value"
+  responseDownloadFile:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders200"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        $ref: "#/definitions/responseDownloadFileData"
+  jobRequest:
+    required:
+    - "schema"
+    - "numberCycle"
+    - "startDate"
+    - "endDate"
+    properties:
+      schema:
+        type: "string"
+        maxLength: 200
+      numberCycle:
+        type: "integer"
+      startDate:
+        type: "string"
+        maxLength: 19
+        format: "date-time"
+        example: "2024-07-05 12:00:00"
+      endDate:
+        type: "string"
+        maxLength: 19
+        format: "date-time"
+        example: "2024-07-05 12:00:00"
+      isRetry:
+        type: "boolean"
+      retryType:
+        type: "string"
+        enum:
+        - "PARTIAL"
+        - "ALL"
+  responseJob:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders200"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        $ref: "#/definitions/responseJobData"
+  responseJobData:
+    properties:
+      jobId:
+        type: "string"
+        format: "uuid"
+        example: "e34f644a-92e0-4ac8-8c8d-b7a9c893794e"
+  cycles:
+    required:
+    - "id"
+    - "idCycle"
+    - "nameStage"
+    - "dateLog"
+    - "status"
+    - "commentsLog"
+    properties:
+      id:
+        type: "number"
+      idCycle:
+        type: "number"
+      nameStage:
+        type: "string"
+      dateLog:
+        type: "string"
+      starttime:
+        type: "string"
+      endtime:
+        type: "string"
+      status:
+        type: "string"
+      commentsLog:
+        type: "string"
+  cyleRq:
+    required:
+    - "cycleId"
+    - "typeCycle"
+    - "startDate"
+    - "endDate"
+    type: "object"
+    properties:
+      cycleId:
+        type: "string"
+      typeCycle:
+        type: "string"
+        enum:
+        - "AUTOMATIC"
+        - "MANUAL"
+      numberCycle:
+        type: "number"
+      startDate:
+        type: "string"
+        format: "date-time"
+        example: "2024-06-26T13:45:00"
+      endDate:
+        type: "string"
+        format: "date-time"
+        example: "2024-06-26T13:45:00"
+  patchCycleRq:
+    required: null
+    type: "object"
+    properties:
+      typeCycle:
+        type: "string"
+        enum:
+        - "AUTOMATIC"
+        - "MANUAL"
+      numberCycle:
+        type: "number"
+      startDate:
+        type: "string"
+      endDate:
+        type: "string"
+  cycle:
+    type: "object"
+    required:
+    - "id"
+    - "typeCycle"
+    - "numberCycle"
+    - "startDate"
+    - "endDate"
+    - "createdDt"
+    - "updateDt"
+    properties:
+      id:
+        type: "number"
+      typeCycle:
+        type: "string"
+        enum:
+        - "AUTOMATIC"
+        - "MANUAL"
+      numberCycle:
+        type: "number"
+      startDate:
+        type: "string"
+        format: "date-time"
+        example: "2017-01-24T05:00:00"
+      endDate:
+        type: "string"
+        format: "date-time"
+        example: "2017-01-24T05:00:00"
+      startTime:
+        type: "string"
+        format: "time"
+        example: "17:30:00"
+      endTime:
+        type: "string"
+        format: "time"
+        example: "17:30:00"
+      createdDt:
+        type: "string"
+        format: "date-time"
+        example: "2017-01-24T05:00:00"
+      updateDt:
+        type: "string"
+        format: "date-time"
+        example: "2017-01-24T05:00:00"
+  patchExcepRq:
+    required: null
+    type: "object"
+    properties:
+      startDate:
+        type: "string"
+        format: "date-time"
+        example: "2017-01-24T05:00:00"
+      endDate:
+        type: "string"
+        format: "date-time"
+        example: "2017-01-24T05:00:00"
+      typeException:
+        type: "string"
+        enum:
+        - "AUTOMATIC"
+        - "MANUAL"
+        example: "AUTOMATIC"
+  exception:
+    type: "object"
+    required:
+    - "id"
+    - "startDate"
+    - "endDate"
+    - "type"
+    - "createdDt"
+    - "updateDt"
+    - "description"
+    properties:
+      id:
+        type: "number"
+      startDate:
+        type: "string"
+        format: "date-time"
+        example: "2017-01-24T05:00:00"
+      endDate:
+        type: "string"
+        format: "date-time"
+        example: "2017-01-24T05:00:00"
+      type:
+        type: "string"
+        enum:
+        - "AUTOMATIC"
+        - "MANUAL"
+        example: "AUTOMATIC"
+      numberCycle:
+        type: "integer"
+      description:
+        type: "string"
+      createdDt:
+        type: "string"
+        format: "date-time"
+        example: "2017-01-24T05:00:00"
+      updateDt:
+        type: "string"
+        format: "date-time"
+        example: "2017-01-24T05:00:00"
+  exceptionReq:
+    type: "object"
+    required:
+    - "startDate"
+    - "endDate"
+    - "typeException"
+    - "description"
+    properties:
+      id:
+        type: "number"
+      startDate:
+        type: "string"
+        format: "date-time"
+        example: "2017-01-24T05:00:00"
+      endDate:
+        type: "string"
+        format: "date-time"
+        example: "2017-01-24T05:00:00"
+      typeException:
+        type: "string"
+        enum:
+        - "AUTOMATIC"
+        - "MANUAL"
+        example: "AUTOMATIC"
+      numberCycle:
+        type: "integer"
+      description:
+        type: "string"
+  patchCycleResponse:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders202"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        $ref: "#/definitions/cycle"
+  postCycleResponse:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders201"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        $ref: "#/definitions/cycle"
+  excepResponseCreate:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders201"
+      messageResponse:
+        $ref: "#/definitions/messageResponseCreate"
+      data:
+        $ref: "#/definitions/exception"
+  exceptionResponseUpdate:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders200"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        $ref: "#/definitions/exception"
+  allCyclesResponse:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders200"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        type: "object"
+        properties:
+          products:
+            type: "array"
+            items:
+              $ref: "#/definitions/cycle"
+      pagination:
+        $ref: "#/definitions/pagination"
+  allExceptionCalendarResponse:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders200"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        type: "object"
+        properties:
+          exceptions:
+            type: "array"
+            items:
+              $ref: "#/definitions/exception"
+      pagination:
+        $ref: "#/definitions/pagination"
+  allCycleLogResponse:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders200"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        type: "object"
+        properties:
+          cycles:
+            type: "array"
+            items:
+              $ref: "#/definitions/cycles"
+      pagination:
+        $ref: "#/definitions/pagination"
+  pagination:
+    type: "object"
+    properties:
+      totalElement:
+        type: "number"
+        example: 1
+      pageSize:
+        type: "number"
+        example: 10
+      pageNumber:
+        type: "number"
+        example: 1
+      hasMoreElements:
+        type: "boolean"
+        example: false
+  deleteExceptionDateResponse:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders200"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        $ref: "#/definitions/exception"
+  reprocessingRq:
+    type: "object"
+    required:
+    - "stage"
+    - "cicleId"
+    - "startTime"
+    - "endTime"
+    properties:
+      stage:
+        type: "string"
+      cicleId:
+        type: "integer"
+      startTime:
+        type: "string"
+        format: "date"
+        example: "2017-01-24T05:00:00"
+      endTime:
+        type: "string"
+        format: "date"
+        example: "2017-01-24T05:00:00"
+  downloadFileRq:
+    type: "object"
+    required:
+    - "cycleId"
+    - "createDate"
+    - "processType"
+    - "productId"
+    properties:
+      cycleId:
+        type: "integer"
+      createDate:
+        type: "string"
+        format: "date"
+        example: "2017-01-24T05:00:00"
+      processType:
+        type: "string"
+      productId:
+        type: "integer"
+  findResponseData:
+    type: "object"
+    properties:
+      stage:
+        type: "string"
+      dateLog:
+        type: "string"
+        format: "date"
+        example: "2017-01-24T05:00:00"
+      startTime:
+        type: "string"
+        format: "date"
+        example: "2017-01-24T05:00:00"
+      endTime:
+        type: "string"
+        format: "date"
+        example: "2017-01-24T05:00:00"
+      status:
+        type: "string"
+      comments:
+        type: "string"
+  findResponse:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders200"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        type: "object"
+        properties:
+          products:
+            type: "array"
+            items:
+              $ref: "#/definitions/findResponseData"
+      pagination:
+        $ref: "#/definitions/pagination"
+  reprocessingResponseData:
+    type: "object"
+    properties:
+      statusProcess:
+        type: "string"
+      message:
+        type: "string"
+  downloadFileResponseData:
+    type: "array"
+    items:
+      type: "string"
+    example:
+    - "path/file1.txt"
+    - "path/file2.txt"
+    - "path/file3.txt"
+  reprocessingResponse:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders200"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        $ref: "#/definitions/reprocessingResponseData"
+  downloadFileResponse:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders200"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      downloadedFiles:
+        $ref: "#/definitions/downloadFileResponseData"
+  deleteCicleResponse:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders200"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        $ref: "#/definitions/cycle"
+  cycleByIdResponse:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders200"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        $ref: "#/definitions/cycle"
+  getCycleByDateResponse:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders200"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        type: "object"
+        properties:
+          cycles:
+            type: "array"
+            items:
+              $ref: "#/definitions/cycle"
+      pagination:
+        $ref: "#/definitions/pagination"
+  allExceptionResponse:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders200"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        type: "object"
+        properties:
+          exceptions:
+            type: "array"
+            items:
+              $ref: "#/definitions/exception"
+      pagination:
+        $ref: "#/definitions/pagination"
+  generalResponseHeaders200:
+    description: "Traceability data and technical information from message."
+    type: "object"
+    required:
+    - "httpStatusCode"
+    - "httpStatusDesc"
+    - "messageUuid"
+    - "requestDatetime"
+    - "requestAppId"
+    properties:
+      httpStatusCode:
+        type: "number"
+        example: 200
+      httpStatusDesc:
+        type: "string"
+        example: "OK"
+      messageUuid:
+        type: "string"
+        example: "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+      requestDatetime:
+        type: "string"
+        format: "date-time"
+        example: "2017-01-24T05:00:00"
+      requestAppId:
+        type: "string"
+        example: "acxff62e-6f12-42de-9012-1e7304418abd"
+  generalResponseHeaders201:
+    description: "Traceability data and technical information from message."
+    type: "object"
+    required:
+    - "httpStatusCode"
+    - "httpStatusDesc"
+    - "messageUuid"
+    - "requestDatetime"
+    - "requestAppId"
+    properties:
+      httpStatusCode:
+        type: "number"
+        example: 201
+      httpStatusDesc:
+        type: "string"
+        example: "CREATED"
+      messageUuid:
+        type: "string"
+        example: "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+      requestDatetime:
+        type: "string"
+        format: "date-time"
+        example: "2017-01-24T05:00:00"
+      requestAppId:
+        type: "string"
+        example: "acxff62e-6f12-42de-9012-1e7304418abd"
+  generalResponseHeaders202:
+    description: "Traceability data and technical information from message."
+    type: "object"
+    required:
+    - "httpStatusCode"
+    - "httpStatusDesc"
+    - "messageUuid"
+    - "requestDatetime"
+    - "requestAppId"
+    properties:
+      httpStatusCode:
+        type: "number"
+        example: 202
+      httpStatusDesc:
+        type: "string"
+        example: "ACCEPTED"
+      messageUuid:
+        type: "string"
+        example: "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+      requestDatetime:
+        type: "string"
+        format: "date-time"
+        example: "2017-01-24T05:00:00"
+      requestAppId:
+        type: "string"
+        example: "acxff62e-6f12-42de-9012-1e7304418abd"
+  messageResponse:
+    type: "object"
+    properties:
+      responseCode:
+        type: "string"
+        example: "0000"
+      responseMessage:
+        type: "string"
+        example: "Success Transaction."
+      responseDetails:
+        type: "string"
+        example: "System process information."
+  messageResponseCreate:
+    type: "object"
+    properties:
+      responseCode:
+        type: "string"
+        example: "0000"
+      responseMessage:
+        type: "string"
+        example: "Success Create Transaction"
+      responseDetails:
+        type: "string"
+        example: "Customer Created Id: XXXX-XXXX-XXXX-XXX"
+  generalError400:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/headersError400"
+      messageResponse:
+        $ref: "#/definitions/messageResponseError400"
+      errors:
+        $ref: "#/definitions/exampleErrors400"
+  generalError401:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/headersError401"
+      messageResponse:
+        $ref: "#/definitions/messageResponseError401"
+      errors:
+        $ref: "#/definitions/exampleErrors401"
+  generalError404:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/headersError404"
+      messageResponse:
+        $ref: "#/definitions/messageResponseError404"
+      errors:
+        $ref: "#/definitions/exampleErrors404"
+  generalError405:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/headersError405"
+      messageResponse:
+        $ref: "#/definitions/messageResponseError405"
+      errors:
+        $ref: "#/definitions/exampleErrors405"
+  generalError409:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/headersError409"
+      messageResponse:
+        $ref: "#/definitions/messageResponseError409"
+      errors:
+        $ref: "#/definitions/exampleErrors409"
+  generalError415:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/headersError415"
+      messageResponse:
+        $ref: "#/definitions/messageResponseError415"
+      errors:
+        $ref: "#/definitions/exampleErrors415"
+  generalError500:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/headersError500"
+      messageResponse:
+        $ref: "#/definitions/messageResponseError500"
+      errors:
+        $ref: "#/definitions/exampleErrors500"
+  generalError502:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/headersError502"
+      messageResponse:
+        $ref: "#/definitions/messageResponseError502"
+      errors:
+        $ref: "#/definitions/exampleErrors502"
+  generalError503:
+    type: "object"
+    properties:
+      headers:
+        $ref: "#/definitions/headersError503"
+      messageResponse:
+        $ref: "#/definitions/messageResponseError503"
+      errors:
+        $ref: "#/definitions/exampleErrors503"
+  headersError400:
+    type: "object"
+    properties:
+      httpStatusCode:
+        type: "integer"
+        example: 400
+      htttpStatusDesc:
+        type: "string"
+        example: "BAD_REQUEST"
+      requestDateTime:
+        type: "string"
+        example: "2023-01-05T19:13:56"
+      messageUuid:
+        type: "string"
+        example: "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+      requestAppId:
+        type: "string"
+        example: "acxff62e-6f12-42de-9012-1e7304418abd"
+  headersError401:
+    type: "object"
+    properties:
+      httpStatusCode:
+        type: "integer"
+        example: 401
+      htttpStatusDesc:
+        type: "string"
+        example: "UNAUTHORIZED"
+      requestDateTime:
+        type: "string"
+        example: "2023-01-05T19:13:56"
+      messageUuid:
+        type: "string"
+        example: "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+      requestAppId:
+        type: "string"
+        example: "acxff62e-6f12-42de-9012-1e7304418abd"
+  headersError404:
+    type: "object"
+    properties:
+      httpStatusCode:
+        type: "integer"
+        example: 404
+      htttpStatusDesc:
+        type: "string"
+        example: "NOT_FOUND"
+      requestDateTime:
+        type: "string"
+        example: "2023-01-05T19:13:56"
+      messageUuid:
+        type: "string"
+        example: "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+      requestAppId:
+        type: "string"
+        example: "acxff62e-6f12-42de-9012-1e7304418abd"
+  headersError405:
+    type: "object"
+    properties:
+      httpStatusCode:
+        type: "integer"
+        example: 405
+      htttpStatusDesc:
+        type: "string"
+        example: "METHOD_NOT_ALLOWED"
+      requestDateTime:
+        type: "string"
+        example: "2023-01-05T19:13:56"
+      messageUuid:
+        type: "string"
+        example: "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+      requestAppId:
+        type: "string"
+        example: "acxff62e-6f12-42de-9012-1e7304418abd"
+  headersError409:
+    type: "object"
+    properties:
+      httpStatusCode:
+        type: "integer"
+        example: 409
+      htttpStatusDesc:
+        type: "string"
+        example: "CONFLICT"
+      requestDateTime:
+        type: "string"
+        example: "2023-01-05T19:13:56"
+      messageUuid:
+        type: "string"
+        example: "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+      requestAppId:
+        type: "string"
+        example: "acxff62e-6f12-42de-9012-1e7304418abd"
+  headersError415:
+    type: "object"
+    properties:
+      httpStatusCode:
+        type: "integer"
+        example: 415
+      htttpStatusDesc:
+        type: "string"
+        example: "UNSOPORTED MEDIA TYPE"
+      requestDateTime:
+        type: "string"
+        example: "2023-01-05T19:13:56"
+      messageUuid:
+        type: "string"
+        example: "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+      requestAppId:
+        type: "string"
+        example: "acxff62e-6f12-42de-9012-1e7304418abd"
+  headersError500:
+    type: "object"
+    properties:
+      httpStatusCode:
+        type: "integer"
+        example: 500
+      htttpStatusDesc:
+        type: "string"
+        example: "INTERNAL_SERVER_ERROR"
+      requestDateTime:
+        type: "string"
+        example: "2023-01-05T19:13:56"
+      messageUuid:
+        type: "string"
+        example: "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+      requestAppId:
+        type: "string"
+        example: "acxff62e-6f12-42de-9012-1e7304418abd"
+  headersError502:
+    type: "object"
+    properties:
+      httpStatusCode:
+        type: "integer"
+        example: 502
+      htttpStatusDesc:
+        type: "string"
+        example: "BAD_GATEWAY"
+      requestDateTime:
+        type: "string"
+        example: "2023-01-05T19:13:56"
+      messageUuid:
+        type: "string"
+        example: "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+      requestAppId:
+        type: "string"
+        example: "acxff62e-6f12-42de-9012-1e7304418abd"
+  headersError503:
+    type: "object"
+    properties:
+      httpStatusCode:
+        type: "integer"
+        example: 503
+      htttpStatusDesc:
+        type: "string"
+        example: "SERVICE_UNAVAILABLE"
+      requestDateTime:
+        type: "string"
+        example: "2023-01-05T19:13:56"
+      messageUuid:
+        type: "string"
+        example: "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+      requestAppId:
+        type: "string"
+        example: "acxff62e-6f12-42de-9012-1e7304418abd"
+  messageResponseError400:
+    type: "object"
+    properties:
+      responseCode:
+        type: "string"
+        example: "XXXX"
+      responseMessage:
+        type: "string"
+        example: "Bad Request Message"
+      responseDetail:
+        type: "string"
+        example: "Aditional Information [Optional Value]"
+  messageResponseError401:
+    type: "object"
+    properties:
+      responseCode:
+        type: "string"
+        example: "XXXX"
+      responseMessage:
+        type: "string"
+        example: "Bad Credentials"
+      responseDetail:
+        type: "string"
+        example: "Aditional Information [Optional Value]"
+  messageResponseError404:
+    type: "object"
+    properties:
+      responseCode:
+        type: "string"
+        example: "XXXX"
+      responseMessage:
+        type: "string"
+        example: "NO PERSISTAN DATA"
+      responseDetail:
+        type: "string"
+        example: "Aditional Information [Optional Value]"
+  messageResponseError405:
+    type: "object"
+    properties:
+      responseCode:
+        type: "string"
+        example: "XXXX"
+      responseMessage:
+        type: "string"
+        example: "Method Not Allowed"
+      responseDetail:
+        type: "string"
+        example: "Aditional Information [Optional Value]"
+  messageResponseError409:
+    type: "object"
+    properties:
+      responseCode:
+        type: "string"
+        example: "XXXX"
+      responseMessage:
+        type: "string"
+        example: "Conflict"
+      responseDetail:
+        type: "string"
+        example: "Aditional Information [Optional Value]"
+  messageResponseError415:
+    type: "object"
+    properties:
+      responseCode:
+        type: "string"
+        example: "XXXX"
+      responseMessage:
+        type: "string"
+        example: "Unsupported Media Type"
+      responseDetail:
+        type: "string"
+        example: "Aditional Information [Optional Value]"
+  messageResponseError500:
+    type: "object"
+    properties:
+      responseCode:
+        type: "string"
+        example: "XXXX"
+      responseMessage:
+        type: "string"
+        example: "Error Message"
+      responseDetail:
+        type: "string"
+        example: "Aditional Information [Optional Value]"
+  messageResponseError502:
+    type: "object"
+    properties:
+      responseCode:
+        type: "string"
+        example: "XXXX"
+      responseMessage:
+        type: "string"
+        example: "Error Message"
+      responseDetail:
+        type: "string"
+        example: "Aditional Information [Optional Value]"
+  messageResponseError503:
+    type: "object"
+    properties:
+      responseCode:
+        type: "string"
+        example: "XXXX"
+      responseMessage:
+        type: "string"
+        example: "Error Message"
+      responseDetail:
+        type: "string"
+        example: "Aditional Information [Optional Value]"
+  exampleErrors400:
+    type: "array"
+    description: "Array for 400 errors."
+    uniqueItems: true
+    items:
+      $ref: "#/definitions/generalError"
+  exampleErrors401:
+    type: "array"
+    description: "Array for 401 errors."
+    uniqueItems: true
+    items:
+      $ref: "#/definitions/generalError"
+  exampleErrors404:
+    type: "array"
+    description: "Array for 404 errors."
+    uniqueItems: true
+    items:
+      $ref: "#/definitions/generalError"
+  exampleErrors405:
+    type: "array"
+    description: "Array for 405 errors."
+    uniqueItems: true
+    items:
+      $ref: "#/definitions/generalError"
+  exampleErrors409:
+    type: "array"
+    description: "Array for 409 errors."
+    uniqueItems: true
+    items:
+      $ref: "#/definitions/generalError"
+  exampleErrors415:
+    type: "array"
+    description: "Array for 415 errors."
+    uniqueItems: true
+    items:
+      $ref: "#/definitions/generalError"
+  exampleErrors500:
+    type: "array"
+    description: "Array for 500 errors."
+    uniqueItems: true
+    items:
+      $ref: "#/definitions/generalError"
+  exampleErrors502:
+    type: "array"
+    description: "Array for 500 errors."
+    uniqueItems: true
+    items:
+      $ref: "#/definitions/generalError"
+  exampleErrors503:
+    type: "array"
+    description: "Array for 500 errors."
+    uniqueItems: true
+    items:
+      $ref: "#/definitions/generalError"
+  generalError:
+    type: "object"
+    properties:
+      errorCode:
+        type: "string"
+        example: "XXXX"
+      errorDetail:
+        type: "string"
+        example: "Some Error Detail"
+schemes:
+- "https"
+produces:
+- "application/json"
+consumes:
+- "application/json"
+tags:
+- name: "config-cycle-mgmt"
+  description: "Operaciones para realizar el monitoreo de la API."

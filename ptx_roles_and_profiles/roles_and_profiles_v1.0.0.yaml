@@ -1,0 +1,2245 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Role And Profile API",
+    "description": "Role and Profile administration API",
+    "contact": {
+      "name": "https://www.achcolombia.com.co/contactenos",
+      "url": "https://www.achcolombia.com.co/contactenos",
+      "email": "admin@ach.com.co"
+    },
+    "version": "1.0.0",
+    "x-ibm-name": "ptx-role-and-profile"
+  },
+  "servers": [
+    {
+      "url": "/v1/ptx/roles"
+    }
+  ],
+  "tags": [
+    {
+      "name": "role-and-profile",
+      "description": "Operations to perform API monitoring."
+    }
+  ],
+  "paths": {
+    "/security-mgmt/list-app-users": {
+      "get": {
+        "tags": [
+          "List App users"
+        ],
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "required": true,
+            "description": "Message identifier for traceability.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "required": true,
+            "description": "App identifier for traceability.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "fullName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rol",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successfully generated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListUsersResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or malformatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/security-mgmt/get-app-user/{userEmail}": {
+      "get": {
+        "tags": [
+          "Query for app user"
+        ],
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "required": true,
+            "description": "Message identifier for traceability.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "required": true,
+            "description": "App identifier for traceability.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "userEmail",
+            "in": "path",
+            "required": true,
+            "description": "User's email",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successfully generated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchAppUserByEmailAllResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or malformatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/security-mgmt/get-user-roles/{userId}": {
+      "get": {
+        "tags": [
+          "Query user roles"
+        ],
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "required": true,
+            "description": "Message identifier for traceability.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "required": true,
+            "description": "App identifier for traceability.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "User's ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successfully generated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchAppUserRolesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or malformatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/security-mgmt/asign-user-rol": {
+      "post": {
+        "tags": [
+          "Create user role"
+        ],
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "required": true,
+            "description": "Message identifier for traceability.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "required": true,
+            "description": "App identifier for traceability.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "User object that needs to be added",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/asignUserRolesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful response when assigning role to user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/asignRolResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or malformatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/security-mgmt/erase-user-rol": {
+      "delete": {
+        "tags": [
+          "Create user role"
+        ],
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "required": true,
+            "description": "Message identifier for traceability.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "required": true,
+            "description": "App identifier for traceability.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "description": "ID of the user whose role is being erased",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "enterpriseRolId",
+            "in": "query",
+            "required": false,
+            "description": "ID of the user whose role is being erased",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response when erasing role from user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/asignRolResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or malformatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/security-mgmt/get-apps": {
+      "get": {
+        "tags": [
+          "List registered Apps"
+        ],
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "required": true,
+            "description": "Message identifier for traceability.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "required": true,
+            "description": "App identifier for traceability.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successfully generated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListAppsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or malformatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/security-mgmt/get-roles": {
+      "get": {
+        "tags": [
+          "List registered Roles"
+        ],
+        "parameters": [
+          {
+            "name": "message-uuid",
+            "in": "header",
+            "required": true,
+            "description": "Message identifier for traceability.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "request-app-id",
+            "in": "header",
+            "required": true,
+            "description": "App identifier for traceability.",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was successfully generated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListRolesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or malformatted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError400"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError405"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError415"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError500"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError502"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/generalError503"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/security-mgmt/actuator/": {
+      "get": {
+        "summary": "API Monitoring",
+        "responses": {
+          "200": {
+            "description": "200 OK"
+          }
+        },
+        "tags": [
+          "security-mgmt"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "asignRolResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders201"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/asignUserRolesResponse"
+          }
+        }
+      },
+      "pagination": {
+        "type": "object",
+        "properties": {
+          "totalElement": {
+            "type": "number",
+            "example": 10
+          },
+          "pageSize": {
+            "type": "number",
+            "example": 10
+          },
+          "pageNumber": {
+            "type": "number",
+            "example": 1
+          },
+          "hasMoreElements": {
+            "type": "boolean",
+            "example": false
+          }
+        }
+      },
+      "app": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 10
+          },
+          "name": {
+            "type": "string",
+            "example": "Procesador Transaccional",
+            "maxLength": 50
+          },
+          "description": {
+            "type": "string",
+            "example": "Aplicación .........",
+            "maxLength": 255
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "SUSPEND",
+              "INACTIVE"
+            ]
+          },
+          "tag": {
+            "type": "string",
+            "example": "ID001A",
+            "maxLength": 10
+          },
+          "create_dt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "update_dt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "productRefId": {
+            "type": "integer",
+            "example": 234
+          },
+          "redirectUri": {
+            "type": "string",
+            "maxLength": 250
+          }
+        }
+      },
+      "enterpriseRol": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": 10
+          },
+          "name": {
+            "type": "string",
+            "example": "TransactionsAdmin",
+            "maxLength": 50
+          },
+          "description": {
+            "type": "string",
+            "example": "Aplicación .........",
+            "maxLength": 255
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "SUSPEND",
+              "INACTIVE"
+            ]
+          },
+          "tag": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "rol": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": 101
+          },
+          "rolName": {
+            "type": "string",
+            "example": "TransactionsAdmin",
+            "maxLength": 255
+          },
+          "tag": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "internalRol": {
+        "type": "object",
+        "properties": {
+          "rol": {
+            "$ref": "#/components/schemas/rol"
+          },
+          "internal": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/internal"
+            }
+          }
+        }
+      },
+      "searchByEmailUserInternalRol": {
+        "type": "object",
+        "properties": {
+          "rol": {
+            "$ref": "#/components/schemas/rol"
+          },
+          "internal": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/searchUserByEmailInternal"
+            }
+          }
+        }
+      },
+      "internalRolModule": {
+        "type": "object",
+        "required": [
+          "id",
+          "moduleId",
+          "name",
+          "tag",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 25
+          },
+          "moduleId": {
+            "type": "integer",
+            "example": 10
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 50,
+            "example": "Cierre de ciclo"
+          },
+          "tag": {
+            "type": "string",
+            "maxLength": 5,
+            "example": ""
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "SUSPEND",
+              "INACTIVE"
+            ]
+          },
+          "createDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updateDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "internal": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 101
+          },
+          "name": {
+            "type": "string",
+            "example": "Consultar logs"
+          }
+        }
+      },
+      "searchUserByEmailInternal": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": 101
+          },
+          "name": {
+            "type": "string",
+            "example": "Gestion ciclos"
+          },
+          "moduleTag": {
+            "type": "string",
+            "example": "ADMCYCLE"
+          },
+          "subModules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/internalModule"
+            }
+          }
+        }
+      },
+      "internalModule": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "Calendario y excepciones Ciclo"
+          },
+          "tag": {
+            "type": "string",
+            "example": ""
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/internalScope"
+            }
+          }
+        }
+      },
+      "internalScope": {
+        "type": "object",
+        "properties": {
+          "scopeId": {
+            "type": "string",
+            "example": 23
+          },
+          "submoduleId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "tag": {
+            "type": "string"
+          }
+        }
+      },
+      "ListRolResult": {
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "type": "string",
+            "example": "camilo Arturo Becerra Benavides"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/rol"
+            }
+          }
+        }
+      },
+      "ListAppsResult": {
+        "type": "object",
+        "properties": {
+          "apps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/app"
+            }
+          }
+        }
+      },
+      "ListRolesResult": {
+        "type": "object",
+        "properties": {
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/enterpriseRol"
+            }
+          }
+        }
+      },
+      "SearchUserByEmailAllResult": {
+        "type": "object",
+        "properties": {
+          "userExist": {
+            "type": "boolean",
+            "example": true
+          },
+          "userData": {
+            "$ref": "#/components/schemas/SearchUserDataResult"
+          }
+        }
+      },
+      "SearchUserDataResult": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "example": 1
+          },
+          "documentType": {
+            "type": "string",
+            "example": "CC"
+          },
+          "documentNumber": {
+            "type": "string",
+            "example": 234565445
+          },
+          "fullName": {
+            "type": "string",
+            "example": "Camilo Arturo Lopez Suarez"
+          },
+          "status": {
+            "type": "string",
+            "example": "ACTIVE"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/userRolData"
+            }
+          }
+        }
+      },
+      "userRolData": {
+        "type": "object",
+        "properties": {
+          "rolId": {
+            "type": "string",
+            "example": "a01f0aba-b22a-11ed-afa1-0242ac120002"
+          },
+          "rolName": {
+            "type": "string",
+            "example": "TransactionsAdmin"
+          },
+          "tag": {
+            "type": "string",
+            "example": "TRANADM"
+          },
+          "mainAdminRole": {
+            "type": "boolean",
+            "example": true
+          },
+          "status": {
+            "type": "string",
+            "example": "ACTIVE"
+          },
+          "scopes": {
+            "type": "string",
+            "example": "TRANS.PSE.QUERY,TRANS.PSE.UNMASK,TRANS.PSE.EXPORT"
+          }
+        }
+      },
+      "SearchByIdResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "userId": {
+            "type": "integer",
+            "example": 1
+          },
+          "enterpriseId": {
+            "type": "integer",
+            "example": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "SUSPEND",
+              "INACTIVE"
+            ]
+          },
+          "startSuspendDate": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-01-24T05:00:00"
+          },
+          "endSuspendDate": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-01-24T05:00:00"
+          },
+          "mainAdminRol": {
+            "type": "boolean"
+          },
+          "suspendedRole": {
+            "type": "string",
+            "enum": [
+              "YES",
+              "NO"
+            ]
+          },
+          "userName": {
+            "type": "string",
+            "example": "usuario123"
+          },
+          "email": {
+            "type": "string",
+            "example": "usuario.application@email.com"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/internalRol"
+            }
+          }
+        }
+      },
+      "SearchUserRolesResult": {
+        "type": "object",
+        "properties": {
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/rol"
+            }
+          }
+        }
+      },
+      "SearchInternalRoleModuleResult": {
+        "type": "object",
+        "properties": {
+          "internalRolesModules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/internalRolModule"
+            }
+          }
+        }
+      },
+      "createUserResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "userId": {
+            "type": "integer",
+            "example": 1
+          },
+          "enterpriseId": {
+            "type": "integer",
+            "example": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "SUSPEND",
+              "INACTIVE"
+            ]
+          },
+          "startSuspendDate": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-01-24T05:00:00"
+          },
+          "endSuspendDate": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-01-24T05:00:00"
+          },
+          "mainAdminRol": {
+            "type": "boolean"
+          },
+          "suspendedRole": {
+            "type": "string",
+            "enum": [
+              "YES",
+              "NO"
+            ]
+          },
+          "userName": {
+            "type": "string",
+            "example": "usuario123"
+          },
+          "email": {
+            "type": "string",
+            "example": "usuario.application@email.com"
+          }
+        }
+      },
+      "asignUserRolesRequest": {
+        "type": "object",
+        "required": [
+          "userId",
+          "appId",
+          "name",
+          "status",
+          "tag",
+          "rolId"
+        ],
+        "properties": {
+          "userId": {
+            "type": "string",
+            "example": 1
+          },
+          "enterpriseRolId": {
+            "type": "string",
+            "example": 1
+          }
+        }
+      },
+      "asignUserRolesResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1023
+          },
+          "userId": {
+            "type": "integer",
+            "example": 1
+          },
+          "appId": {
+            "type": "integer",
+            "example": 1
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "SUSPEND",
+              "INACTIVE"
+            ]
+          },
+          "tag": {
+            "type": "string"
+          },
+          "rolId": {
+            "type": "integer",
+            "example": 20
+          }
+        }
+      },
+      "ListRolesResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ListRolesResult"
+          }
+        }
+      },
+      "ListAppsResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ListAppsResult"
+          }
+        }
+      },
+      "ListUsersResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListRolResult"
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/pagination"
+          }
+        }
+      },
+      "SearchAppUserByEmailResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/SearchByIdResult"
+          }
+        }
+      },
+      "SearchAppUserByEmailAllResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/SearchUserByEmailAllResult"
+          }
+        }
+      },
+      "SearchAppUserRolesResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/SearchUserRolesResult"
+          }
+        }
+      },
+      "SearchInternalRolModuleResponse": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/generalResponseHeaders200"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponse"
+          },
+          "data": {
+            "$ref": "#/components/schemas/SearchInternalRoleModuleResult"
+          }
+        }
+      },
+      "generalResponseHeaders200": {
+        "description": "Traceability data and technical information from message.",
+        "type": "object",
+        "required": [
+          "httpStatusCode",
+          "httpStatusDesc",
+          "messageUuid",
+          "requestDatetime",
+          "requestAppId"
+        ],
+        "properties": {
+          "httpStatusCode": {
+            "type": "number",
+            "example": 200
+          },
+          "httpStatusDesc": {
+            "type": "string",
+            "example": "OK"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestDatetime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-01-24T05:00:00"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "generalResponseHeaders201": {
+        "description": "Traceability data and technical information from message.",
+        "type": "object",
+        "required": [
+          "httpStatusCode",
+          "httpStatusDesc",
+          "messageUuid",
+          "requestDatetime",
+          "requestAppId"
+        ],
+        "properties": {
+          "httpStatusCode": {
+            "type": "number",
+            "example": 201
+          },
+          "httpStatusDesc": {
+            "type": "string",
+            "example": "CREATED"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestDatetime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-01-24T05:00:00"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "generalResponseHeaders202": {
+        "description": "Traceability data and technical information from message.",
+        "type": "object",
+        "required": [
+          "httpStatusCode",
+          "httpStatusDesc",
+          "messageUuid",
+          "requestDatetime",
+          "requestAppId"
+        ],
+        "properties": {
+          "httpStatusCode": {
+            "type": "number",
+            "example": 202
+          },
+          "httpStatusDesc": {
+            "type": "string",
+            "example": "ACCEPTED"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestDatetime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2017-01-24T05:00:00"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "messageResponse": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "0000"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Success Transaction."
+          },
+          "responseDetails": {
+            "type": "string",
+            "example": "System process information."
+          }
+        }
+      },
+      "generalError400": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError400"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError400"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors400"
+          }
+        }
+      },
+      "generalError401": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError401"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError401"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors401"
+          }
+        }
+      },
+      "generalError404": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError404"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError404"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors404"
+          }
+        }
+      },
+      "generalError405": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError405"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError405"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors405"
+          }
+        }
+      },
+      "generalError409": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError409"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError409"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors409"
+          }
+        }
+      },
+      "generalError415": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError415"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError415"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors415"
+          }
+        }
+      },
+      "generalError500": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError500"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError500"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors500"
+          }
+        }
+      },
+      "generalError502": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError502"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError502"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors502"
+          }
+        }
+      },
+      "generalError503": {
+        "type": "object",
+        "properties": {
+          "headers": {
+            "$ref": "#/components/schemas/headersError503"
+          },
+          "messageResponse": {
+            "$ref": "#/components/schemas/messageResponseError503"
+          },
+          "errors": {
+            "$ref": "#/components/schemas/exampleErrors503"
+          }
+        }
+      },
+      "headersError400": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 400
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "BAD_REQUEST"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError401": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 401
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "UNAUTHORIZED"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError404": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 404
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "NOT_FOUND"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError405": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 405
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "METHOD_NOT_ALLOWED"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError409": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 409
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "CONFLICT"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError415": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 415
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "UNSOPORTED MEDIA TYPE"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError500": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 500
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "INTERNAL_SERVER_ERROR"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError502": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 502
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "BAD_GATEWAY"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "headersError503": {
+        "type": "object",
+        "properties": {
+          "httpStatusCode": {
+            "type": "integer",
+            "example": 503
+          },
+          "htttpStatusDesc": {
+            "type": "string",
+            "example": "SERVICE_UNAVAILABLE"
+          },
+          "requestDateTime": {
+            "type": "string",
+            "example": "2023-01-05T19:13:56"
+          },
+          "messageUuid": {
+            "type": "string",
+            "example": "c4e6bd04-5149-11e7-b114-a2f933d5fe66"
+          },
+          "requestAppId": {
+            "type": "string",
+            "example": "acxff62e-6f12-42de-9012-1e7304418abd"
+          }
+        }
+      },
+      "messageResponseError400": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Bad Request Message"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError401": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Bad Credentials"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError404": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "NO PERSISTAN DATA"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError405": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Method Not Allowed"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError409": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Conflict"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError415": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Unsupported Media Type"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError500": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Error Message"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError502": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Error Message"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "messageResponseError503": {
+        "type": "object",
+        "properties": {
+          "responseCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "responseMessage": {
+            "type": "string",
+            "example": "Error Message"
+          },
+          "responseDetail": {
+            "type": "string",
+            "example": "Aditional Information [Optional Value]"
+          }
+        }
+      },
+      "exampleErrors400": {
+        "type": "array",
+        "description": "Array for 400 errors.",
+        "uniqueItems": true,
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors401": {
+        "type": "array",
+        "description": "Array for 401 errors.",
+        "uniqueItems": true,
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors404": {
+        "type": "array",
+        "description": "Array for 404 errors.",
+        "uniqueItems": true,
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors405": {
+        "type": "array",
+        "description": "Array for 405 errors.",
+        "uniqueItems": true,
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors409": {
+        "type": "array",
+        "description": "Array for 409 errors.",
+        "uniqueItems": true,
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors415": {
+        "type": "array",
+        "description": "Array for 415 errors.",
+        "uniqueItems": true,
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors500": {
+        "type": "array",
+        "description": "Array for 500 errors.",
+        "uniqueItems": true,
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors502": {
+        "type": "array",
+        "description": "Array for 500 errors.",
+        "uniqueItems": true,
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "exampleErrors503": {
+        "type": "array",
+        "description": "Array for 500 errors.",
+        "uniqueItems": true,
+        "items": {
+          "$ref": "#/components/schemas/generalError"
+        }
+      },
+      "generalError": {
+        "type": "object",
+        "properties": {
+          "errorCode": {
+            "type": "string",
+            "example": "XXXX"
+          },
+          "errorDetail": {
+            "type": "string",
+            "example": "Some Error Detail"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "clientId": {
+        "type": "apiKey",
+        "description": "",
+        "name": "Client-Id",
+        "in": "header",
+        "x-key-type": "client_id"
+      },
+      "clientSecret": {
+        "type": "apiKey",
+        "description": "",
+        "name": "Client-Secret",
+        "in": "header",
+        "x-key-type": "client_secret"
+      }
+    }
+  }
+}

@@ -1,0 +1,125 @@
+BROKER SCHEMA com.ibus.common.procedures.util
+
+DECLARE PRODUCT_NAME CONSTANT CHARACTER 'Procesador Transacciona';
+
+/*
+* Función que devuelve una representación BLOB del mensaje entrante en refInp
+*/
+CREATE FUNCTION getStringFromBody(IN refInp REFERENCE)RETURNS CHARACTER
+BEGIN
+    DECLARE message CHARACTER;
+    DECLARE messageTreeBlob BLOB;
+
+     SET messageTreeBlob = ASBITSTREAM(refInp, 273, 1208,'','','',FolderBitStream);
+     SET message = CAST(messageTreeBlob AS CHARACTER CCSID 1208);
+   
+    RETURN message;           
+END;
+
+
+/*
+* Módulo que guarda información de log para mensajes Request
+*/
+CREATE COMPUTE MODULE SetTrackingRequest
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- crear cabecera MQ
+		--SET OutputRoot.MQMD 		= InputRoot.MQMD;
+		CREATE FIELD OutputRoot.MQMD;
+		SET OutputRoot.Properties 	= NULL;
+		
+		DECLARE refInp REFERENCE TO InputRoot;
+		MOVE refInp LASTCHILD;
+		
+		-- crear mensaje de salida
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		SET refOut.product			= 'Procesador Transaccional';
+		SET refOut.messageUUID		= InputRoot.HTTPInputHeader."Message-Uuid";
+		SET refOut.messageType		= 'Request';
+		SET refOut.dateTime   		= CURRENT_TIMESTAMP;
+		SET refOut.user  			= '';
+		SET refOut.userName   		= '';
+		SET refOut.email 			= '';
+		SET refOut.documentType    	= '';
+		SET refOut.documentNumber  	= '';
+		SET refOut.ip    			= InputRoot.HTTPInputHeader."X-Remote-Addr";
+		SET refOut.userNote   		= '';
+		SET refOut.clientType 		= '';
+		SET refOut.clientId   		= InputRoot.HTTPInputHeader."Client-Id";
+		SET refOut.client     		= '';
+		SET refOut.module     		= InputLocalEnvironment.REST.Input.Operation;
+		SET refOut.submodule  		= InputLocalEnvironment.REST.Input.URI;
+		SET refOut.action     		= InputLocalEnvironment.REST.Input.Method;
+		SET refOut.dataBeforeUpdate  = '';
+		SET refOut.request     		= com.ibus.common.procedures.util.getStringFromBody(refInp);
+		
+		RETURN TRUE;
+	END;
+END MODULE;
+
+
+/*
+* Módulo que guarda información de log para mensajes Response
+*/
+CREATE COMPUTE MODULE SetTrackingResponse
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- crear cabecera MQ
+		--SET OutputRoot.MQMD 		= InputRoot.MQMD;
+		CREATE FIELD OutputRoot.MQMD;
+		SET OutputRoot.Properties 	= NULL;
+		
+		DECLARE refInp REFERENCE TO InputRoot;
+		MOVE refInp LASTCHILD;
+		
+		-- crear mensaje de salida
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		SET refOut.product			= 'Procesador Transaccional';
+		SET refOut.messageUUID		= refInp.Data.headers.messageUuid;
+		SET refOut.messageType		= 'Response';
+		SET refOut.dateTime   		= CURRENT_TIMESTAMP;
+		SET refOut.user  			= '';--llega desde cliente
+		SET refOut.userName   		= '';--llega desde cliente
+		SET refOut.email 			= '';--llega desde cliente
+		SET refOut.documentType    	= '';--llega desde cliente
+		SET refOut.documentNumber  	= '';--llega desde cliente
+		SET refOut.ip    			= InputRoot.HTTPInputHeader."X-Remote-Addr";
+		SET refOut.userNote   		= '';--Pendiente
+		SET refOut.clientType 		= '';--Pendiente
+		SET refOut.clientId   		= InputRoot.HTTPInputHeader."Client-Id";
+		SET refOut.client     		= '';--Pendiente
+		SET refOut.module     		= '';--llega desde el cliente
+		SET refOut.submodule  		= '';--llega desde el cliente
+		SET refOut.action     		= InputLocalEnvironment.REST.Input.Method;
+		SET refOut.dataBeforeUpdate  = '';--solo para PUT
+		SET refOut.response     		= com.ibus.common.procedures.util.getStringFromBody(refInp);
+		
+		RETURN TRUE;
+	END;
+END MODULE;
+		
+		
+		
+/*
+* Módulo que guarda información de log para mensajes Response
+*/
+CREATE COMPUTE MODULE CopyEntireMessageWithTrackingResponse
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot= InputRoot;
+		
+		/***************************************************************************/
+		-- bloque para crear mensaje de auditoría request. 
+		-- Solo para métodos PUT, POST, PATCH
+		/***************************************************************************/
+		IF Environment.service.needTrackingResp THEN
+			PROPAGATE TO TERMINAL 'out1' DELETE NONE;	
+		END IF;
+		
+		RETURN TRUE;
+	END;
+END MODULE;		
