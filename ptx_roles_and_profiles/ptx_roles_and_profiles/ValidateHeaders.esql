@@ -18,15 +18,6 @@ CREATE COMPUTE MODULE ValidateHeaders
 		IF requestAppId IS NULL THEN
 			THROW EXCEPTION MESSAGE 500 VALUES('requestError' , 'Error en los headers, el header request-app-id es obligatorio'); 
 		END IF;
-		
-		/***************************************************************************/
-		-- bloque para crear mensaje de auditoría request. 
-		-- Solo para métodos PUT, POST, PATCH
-		/***************************************************************************/
-		IF InputLocalEnvironment.REST.Input.Method <> 'GET' THEN
-			SET Environment.service.needTrackingResp = TRUE;
-			PROPAGATE TO TERMINAL 'out1' DELETE NONE;	
-		END IF;
 
 		RETURN TRUE; 
 	END;

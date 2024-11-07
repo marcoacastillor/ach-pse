@@ -5,7 +5,7 @@ BROKER SCHEMA getProductid
 CREATE COMPUTE MODULE prepare_response
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		SET OutputRoot=InputRoot;
+		SET OutputRoot = InputRoot;
 		RETURN TRUE;
 	END;
 END MODULE;

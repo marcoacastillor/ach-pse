@@ -9,15 +9,6 @@ CREATE COMPUTE MODULE RequestMessage
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		SET OutputRoot= InputRoot;
-		
-		/***************************************************************************/
-		-- bloque para crear mensaje de auditoría request. 
-		-- Solo para métodos PUT, POST, PATCH
-		/***************************************************************************/
-		IF OutputLocalEnvironment.service.needTrackingResp THEN
-			PROPAGATE TO TERMINAL 'out1' DELETE NONE;	
-		END IF;
-		
 		RETURN TRUE;
 	END;
 END MODULE;

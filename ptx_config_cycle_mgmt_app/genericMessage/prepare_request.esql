@@ -1,6 +1,5 @@
 BROKER SCHEMA genericMessage
 
-
 DECLARE backUrl 		EXTERNAL CHARACTER '';
 DECLARE customerId 		EXTERNAL CHARACTER '';
 DECLARE accountId 		EXTERNAL CHARACTER '';
@@ -11,7 +10,7 @@ CREATE COMPUTE MODULE prepare_request
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		SET Environment.flujo = operationName;
-		SET OutputRoot.HTTPRequestHeader."Content-Type" = 'application/json';
+		-- SET OutputRoot.HTTPRequestHeader = InputRoot.HTTPInputHeader;
 		SET OutputLocalEnvironment.Destination.REST.Request.Parameters=  InputLocalEnvironment.REST.Input.Parameters;
 
 		--Configuraciones

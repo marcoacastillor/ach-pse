@@ -17,6 +17,7 @@ CREATE COMPUTE MODULE ValidateHeaders
 		IF requestAppId IS NULL THEN
 			THROW EXCEPTION MESSAGE 500 VALUES('requestError' , 'Error en los headers, el header request-app-id es obligatorio'); 
 		END IF;
+
 		
 		RETURN TRUE; 
 	END;

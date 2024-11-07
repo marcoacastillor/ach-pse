@@ -4,11 +4,7 @@ BROKER SCHEMA ptx_config_cycle_mgmt
 CREATE COMPUTE MODULE RequestMessage
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		CREATE FIELD OutputRoot.JSON.Data;
-		DECLARE refOut REFERENCE TO OutputRoot.JSON;
-		
-		SET refOut.Data = InputRoot.JSON.Data;
-		
+		SET OutputRoot= InputRoot;
 		RETURN TRUE;
 	END;
 END MODULE;

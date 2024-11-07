@@ -8,7 +8,7 @@ BROKER SCHEMA getVars
 CREATE COMPUTE MODULE prepare_response
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		SET OutputRoot.JSON.Data = InputRoot.JSON.Data;
+		SET OutputRoot = InputRoot;
 		RETURN TRUE;
 	END;
 END MODULE;

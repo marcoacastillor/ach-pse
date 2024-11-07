@@ -1345,7 +1345,7 @@
             "in": "query",
             "schema": {
               "type": "string",
-              "format": "date-time"
+              "format": "date"
             }
           },
           {
@@ -1353,7 +1353,7 @@
             "in": "query",
             "schema": {
               "type": "string",
-              "format": "date-time"
+              "format": "date"
             }
           }
         ],

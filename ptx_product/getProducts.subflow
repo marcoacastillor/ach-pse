@@ -6,7 +6,7 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ptx_product/icons/full/obj16/getProducts.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ptx_product/icons/full/obj30/getProducts.gif"/>
     <composition>
-      <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input_1" location="109,25">
+      <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input_1" location="25,25">
         <translation xmi:type="utility:TranslatableString" key="Input" bundleName="getProducts" pluginId="ptx_product"/>
       </nodes>
       <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output_1" location="1447,23">
