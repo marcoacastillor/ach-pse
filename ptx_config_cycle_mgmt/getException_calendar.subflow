@@ -18,10 +18,10 @@
       <nodes xmi:type="ComIbmCallableFlowInvoke.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="652,282" targetApplication="ptx_config_cycle_mgmt_app" targetEndpointName="getException_calendar">
         <translation xmi:type="utility:ConstantString" string="Callable Flow Invoke"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="888,281" computeExpression="esql://routine/ptx_config_cycle_mgmt#RequestMessage.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="888,281" computeExpression="esql://routine/#ResponseMessage.Main">
         <translation xmi:type="utility:ConstantString" string="RequestMessage"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="415,281" computeExpression="esql://routine/ptx_config_cycle_mgmt#ValidateHeaders.Main" computeMode="destinationAndMessage">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="415,281" computeExpression="esql://routine/#Validate_headers.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="Validate headers"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="646,137" computeExpression="esql://routine/com.ibus.common.modules.fcd#GetRESTInfoError.Main">

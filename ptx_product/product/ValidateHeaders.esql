@@ -1,28 +1,26 @@
 BROKER SCHEMA product
 
-
-
-
-
 CREATE COMPUTE MODULE ValidateHeaders
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		SET OutputRoot = InputRoot;
-		SET OutputLocalEnvironment = InputLocalEnvironment;
-		DECLARE messageUuid CHARACTER;
-		DECLARE requestAppId CHARACTER;
+		-- copiar todo el mensaje
+		SET OutputRoot 				= InputRoot;
 		
-		SET messageUuid = InputRoot.HTTPInputHeader."Message-Uuid";
-		SET requestAppId = InputRoot.HTTPInputHeader."Request-App-Id";
+		-- copiar variables de sesión
+		SET OutputLocalEnvironment 	= InputLocalEnvironment;
 		
+		-- declaración y asignación de variables
+		DECLARE messageUuid CHARACTER InputRoot.HTTPInputHeader."Message-Uuid";
+		DECLARE requestAppId CHARACTER InputRoot.HTTPInputHeader."Request-App-Id";
+		
+		-- validación de campos obligatorios
 		IF messageUuid IS NULL THEN
 			THROW EXCEPTION MESSAGE 500 VALUES('requestError' , 'Error en los headers, el header message-uuid es obligatorio'); 
 		END IF;
 		IF requestAppId IS NULL THEN
 			THROW EXCEPTION MESSAGE 500 VALUES('requestError' , 'Error en los headers, el header request-app-id es obligatorio'); 
 		END IF;
-
 		
-		RETURN TRUE; 
+		RETURN TRUE;
 	END;
 END MODULE;

@@ -101,25 +101,3 @@ CREATE COMPUTE MODULE SetTrackingResponse
 		RETURN TRUE;
 	END;
 END MODULE;
-		
-		
-		
-/*
-* Módulo que guarda información de log para mensajes Response
-*/
-CREATE COMPUTE MODULE CopyEntireMessageWithTrackingResponse
-	CREATE FUNCTION Main() RETURNS BOOLEAN
-	BEGIN
-		SET OutputRoot= InputRoot;
-		
-		/***************************************************************************/
-		-- bloque para crear mensaje de auditoría request. 
-		-- Solo para métodos PUT, POST, PATCH
-		/***************************************************************************/
-		IF Environment.service.needTrackingResp THEN
-			PROPAGATE TO TERMINAL 'out1' DELETE NONE;	
-		END IF;
-		
-		RETURN TRUE;
-	END;
-END MODULE;		

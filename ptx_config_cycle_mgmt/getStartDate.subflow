@@ -12,7 +12,7 @@
       <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output_1" location="1058,148">
         <translation xmi:type="utility:TranslatableString" key="Output" bundleName="getStartDate" pluginId="ptx_config_cycle_mgmt"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="416,291" computeExpression="esql://routine/ptx_config_cycle_mgmt#ValidateHeaders.Main" computeMode="destinationAndMessage">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="416,291" computeExpression="esql://routine/#Validate_headers.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="Validate headers"/>
       </nodes>
       <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="412,148">
@@ -24,7 +24,7 @@
       <nodes xmi:type="ComIbmTryCatch.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="184,152">
         <translation xmi:type="utility:ConstantString" string="Try Catch"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="889,291" computeExpression="esql://routine/ptx_config_cycle_mgmt#RequestMessage.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="889,291" computeExpression="esql://routine/#ResponseMessage.Main">
         <translation xmi:type="utility:ConstantString" string="RequestMessage"/>
       </nodes>
       <nodes xmi:type="ComIbmCallableFlowInvoke.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="653,292" targetApplication="ptx_config_cycle_mgmt_app" targetEndpointName="getStartDate">

@@ -21,13 +21,13 @@
       <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="413,116">
         <translation xmi:type="utility:ConstantString" string="Trace"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="417,259" computeExpression="esql://routine/ptx_config_cycle_mgmt#ValidateHeaders.Main" computeMode="destinationAndMessage">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="417,259" computeExpression="esql://routine/#Validate_headers.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="Validate headers"/>
       </nodes>
       <nodes xmi:type="ComIbmCallableFlowInvoke.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="654,260" targetApplication="ptx_config_cycle_mgmt_app" targetEndpointName="getCycle_calendar">
         <translation xmi:type="utility:ConstantString" string="Callable Flow Invoke"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="890,259" computeExpression="esql://routine/ptx_config_cycle_mgmt#RequestMessage.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="890,259" computeExpression="esql://routine/#ResponseMessage.Main">
         <translation xmi:type="utility:ConstantString" string="RequestMessage"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.catch" targetTerminalName="InTerminal.in"/>
