@@ -232,11 +232,68 @@ CREATE COMPUTE MODULE specificPrepareError
 		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
 		
 		-- setear valores de respuesta
-		SET refOut.meta.requestDt 	= CURRENT_TIMESTAMP;
-		SET refOut.statusCode		= 500;
-		SET refOut.statusDesc		= 'Internal Error ' || COALESCE(flujo,'');
-		SET refOut.(JSON.Array)errors.d[1].errorCode 	= 'ACH.500';
-		SET refOut.(JSON.Array)errors.d[1].errorDetail 	= codeError|| ':' || nameError || '->' || descError;
+		SET refOut.headers.httpStatusCode 			= 500;
+		SET refOut.headers.httpStatusDesc 			= 'Error';
+		SET refOut.headers.messageUUID				= 'pendiente-mapeo';
+		SET refOut.headers.requestDateTime			= CURRENT_TIMESTAMP;
+		SET refOut.headers.requestAppId				= 'pendiente-mapeo';
+		
+		SET refOut.messageResponse.responseCode		= 'PSE.500';
+		SET refOut.messageResponse.responseMessage	= 'Error en servicio';
+		SET refOut.messageResponse.responseDetail	= nameError;		
+		
+		SET refOut.(JSON.Array)errors.d[1].errorCode 	= codeError;
+		SET refOut.(JSON.Array)errors.d[1].errorDetail 	= descError;
+		
+		RETURN TRUE;
+	END;
+	
+END MODULE;
+
+
+
+
+CREATE COMPUTE MODULE specificPrepareErrorAggregation
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- declarar referencias a objetos de entrada
+		DECLARE refEchoMessage REFERENCE TO InputRoot.ComIbmAggregateReplyBody.EchoMessage;
+		MOVE refEchoMessage LASTCHILD;
+		MOVE refEchoMessage LASTCHILD;
+		
+		-- setar código statusHttpCode
+		SET OutputRoot.HTTPReplyHeader."Content-Type" 					= 'application/json';
+		SET OutputRoot.HTTPReplyHeader."X-Original-HTTP-Status-Code" 	= 500;
+		
+		-- copiar información de sesión
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		
+		--Declarar referencia a lista de excepciones.
+		DECLARE refExceptionList REFERENCE TO InputExceptionList;
+		
+		DECLARE flujo CHARACTER Environment.flujo;
+		DECLARE codeError, nameError, descError CHARACTER '';
+		
+		-- sacar información técnica desde inputExceptionList
+		CALL com.ibus.common.procedures.util.getDescriptionExceptionListV2(refExceptionList, codeError, nameError, descError); 
+		
+		-- crear mensaje de respuesta
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		-- setear valores de respuesta
+		SET refOut.headers.httpStatusCode 			= 500;
+		SET refOut.headers.httpStatusDesc 			= 'Error';
+		SET refOut.headers.messageUUID				= 'pendiente-mapeo';
+		SET refOut.headers.requestDateTime			= CURRENT_TIMESTAMP;
+		SET refOut.headers.requestAppId				= 'pendiente-mapeo';
+		
+		SET refOut.messageResponse.responseCode		= 'PSE.500';
+		SET refOut.messageResponse.responseMessage	= 'Error en servicio';
+		SET refOut.messageResponse.responseDetail	= nameError;		
+		
+		SET refOut.(JSON.Array)errors.d[1].errorCode 	= codeError;
+		SET refOut.(JSON.Array)errors.d[1].errorDetail 	= descError;
 		
 		RETURN TRUE;
 	END;

@@ -15,7 +15,7 @@ info:
   version: 1.0.0
   
 servers:
-  - url: http://localhost:/v1/pse-transaction/pse/payment
+  - url: https://localhost/v1/pse-transaction/pse/payment
 
 tags:
   - name: x-initiate
@@ -172,6 +172,10 @@ components:
           items:
             #Objeto que representa el resultado de la transacción
             $ref: '#/components/schemas/OriginalPaymentInformationAndStatus'
+        supplementary_data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupplementaryData'
             
     InitBankPaymentResponse:
       required:
@@ -214,7 +218,7 @@ components:
           type: string
           minLength: 1
           maxLength: 36
-          example: rn-00234
+          example: CUS
           
         creation_date_time:
           description: Date and time at which the message was created.
@@ -608,6 +612,13 @@ components:
           minLength: 1
           maxLength: 2
           example: 01
+          
+        orderListBank:
+          description: order it should occupy in the bank deployment list
+          type: number
+          minLength: 1
+          maxLength: 2
+          example: 1
         
         device_finger_print:
           description: Fingerprint with the information captured by the list of banks or the agile payment dialing list through a dynamic Javascript that was integrated into the new PSE site to which end users are directed. This javascript is a coded string that includes information from the device of the user who performs the transaction.
@@ -781,7 +792,9 @@ components:
       type: object
       properties:
         identification:
-          $ref: '#/components/schemas/IdentificationV3'
+          description: last four digits of the account 
+          type: string
+          example: "****3454"
           
           
     CreditTransferTransactionInformation:
@@ -861,12 +874,7 @@ components:
         organisation_identification:
           $ref: '#/components/schemas/OrganisationIdentification'
           
-    IdentificationV3:
-      type: object
-      properties:
-        other:
-          $ref: '#/components/schemas/Other'
-        
+    
     OrganisationIdentification:
       type: object
       properties:
@@ -910,7 +918,7 @@ components:
           minLength: 1
           maxLength: 4
           example: "NIT"
-        propieraty:
+        propieraty: 
           description: Name of the identification scheme, in a free text form.
           type: string
           minLength: 1

@@ -2,56 +2,54 @@ openapi: 3.0.3
 info:
   title: Transactional Middleware
   description: |-
-    Services exposed in middleware that comply with integration agreements to expose information about Banks, Customers and Products.
+    Services exposed in middleware that comply with integration agreements to expose information about Banks, Customers, and Products.
 
     _Middleware_
-    
   contact:
     name: ACH
     url: https://www.achcolombia.com.co/contactenos
     email: admin@ach.com.co
-  
   version: "1.0"
-  
+
 servers:
   - url: https://localhost:/ACH/middleware/v1.0
 
 tags:
   - name: Banks
-    description: Get All financial institutions with which they have a relationship with ACH in online payment processes.
+    description: Get all financial institutions related to ACH in online payment processes.
     externalDocs:
       description: Search more...
       url: https://ach.com.co
   - name: Bank
-    description: Get a financial institutions with which they have a relationship with ACH in online payment processes.
+    description: Get a specific financial institution related to ACH in online payment processes.
     externalDocs:
       description: Search more...
       url: https://ach.com.co
   - name: Customer
-    description: Get a customer with which they have a relationship with ACH in online payment processes.
+    description: Get customer information related to ACH in online payment processes.
     externalDocs:
       description: Search more...
       url: https://ach.com.co
-      
   - name: Products
-    description: Get a customer with which they have a relationship with ACH in online payment processes.
+    description: Get product information related to ACH in online payment processes.
     externalDocs:
       description: Search more...
       url: https://ach.com.co
+
 paths:
   /banks:
     get:
       tags:
         - Banks
-      summary: Consult the information of a all banking entity.
-      description: Consult the information of a all banking entity.
+      summary: Retrieve all banking entities.
+      description: Retrieve information of all banking entities.
       operationId: GetBanks
       parameters:
         - $ref: '#/components/parameters/message-uuid'
-        - $ref: '#/components/parameters/application-id'          
+        - $ref: '#/components/parameters/application-id'
       responses:
         '200':
-          $ref: '#/components/responses/RetrieveBanksResponse'          
+          $ref: '#/components/responses/RetrieveBanksResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -62,21 +60,21 @@ paths:
           $ref: '#/components/responses/InternalServerError'
       security:
         - api_key: []
-        
+
   /banks/{bankId}:
     get:
       tags:
         - Bank
-      summary: Consult the information of a banking entity given its identifier.
-      description: Consult the information of a banking entity given its identifier.
+      summary: Retrieve a specific banking entity by ID.
+      description: Retrieve information of a banking entity given its identifier.
       operationId: GetBankById
       parameters:
         - $ref: '#/components/parameters/message-uuid'
-        - $ref: '#/components/parameters/application-id'          
-        - $ref: '#/components/parameters/bankId'          
+        - $ref: '#/components/parameters/application-id'
+        - $ref: '#/components/parameters/bankId'
       responses:
         '200':
-          $ref: '#/components/responses/RetrieveBankResponse'          
+          $ref: '#/components/responses/RetrieveBankResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -87,24 +85,24 @@ paths:
           $ref: '#/components/responses/InternalServerError'
       security:
         - api_key: []
-        
+
   /customers/{customerId}:
     get:
       tags:
         - Customer
-      summary: Consult the information of a customer. entity given its identifier.
-      description: Consult the information of a customer entity given its identifier.
+      summary: Retrieve customer information by ID.
+      description: Retrieve customer information given its identifier.
       operationId: GetCustomerById
       parameters:
         - $ref: '#/components/parameters/message-uuid'
-        - $ref: '#/components/parameters/application-id'          
-        - $ref: '#/components/parameters/customerId'  
+        - $ref: '#/components/parameters/application-id'
+        - $ref: '#/components/parameters/customerId'
         - $ref: '#/components/parameters/customerType'
         - $ref: '#/components/parameters/serviceCode'
         - $ref: '#/components/parameters/businessServiceCode'
       responses:
         '200':
-          $ref: '#/components/responses/RetrieveCustomerResponse'          
+          $ref: '#/components/responses/RetrieveCustomerResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -115,21 +113,21 @@ paths:
           $ref: '#/components/responses/InternalServerError'
       security:
         - api_key: []
-        
+
   /products/{productTag}:
     get:
       tags:
         - Products
-      summary: Consult the information of a product. entity given its identifier.
-      description: Consult the information of a product entity given its identifier.
+      summary: Retrieve product information by tag.
+      description: Retrieve product information given its identifier.
       operationId: GetProductById
       parameters:
         - $ref: '#/components/parameters/message-uuid'
-        - $ref: '#/components/parameters/application-id'          
-        - $ref: '#/components/parameters/productId'  
+        - $ref: '#/components/parameters/application-id'
+        - $ref: '#/components/parameters/productTag'
       responses:
         '200':
-          $ref: '#/components/responses/RetrieveProductResponse'          
+          $ref: '#/components/responses/RetrieveProductResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -140,56 +138,67 @@ paths:
           $ref: '#/components/responses/InternalServerError'
       security:
         - api_key: []
-    
+
 components:
-  #Objectos de respuesta
   schemas:
     HTTPError:
       type: object
+      description: Status Attributes
       properties:
         headers:
           $ref: '#/components/schemas/Headers'
         messageResponse:
           $ref: '#/components/schemas/MessageResponse'
         errors:
-          $ref: '#/components/schemas/Errors'
-      description: Status Attributes
-      
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+
+    Error:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          description: Error code
+        errorDetail:
+          type: string
+          description: Error detail
+
     Headers:
       type: object
       properties:
         httpStatusCode:
           type: string
-          description: http status code
+          description: HTTP status code
         httpStatusDesc:
           type: string
-          description: http status desc
+          description: HTTP status description
         messageUUID:
           type: string
-          description: message uuid
+          description: Message UUID
           format: uuid
         requestDateTime:
           type: string
-          description: request date time
+          description: Request date-time
           format: date-time
         requestAppId:
           type: string
-          description: request date time
+          description: Application ID
           format: uuid
-          
+
     MessageResponse:
       type: object
       properties:
         responseCode:
           type: string
-          description: response code
+          description: Response code
         responseMessage:
           type: string
-          description: response message
+          description: Response message
         responseDetail:
           type: string
-          description: response detail
-      
+          description: Response detail
+
     RetrieveBanksResponse:
       type: object
       properties:
@@ -199,7 +208,7 @@ components:
           $ref: '#/components/schemas/MessageResponse'
         data:
           $ref: '#/components/schemas/Banks'
-          
+
     RetrieveBankResponse:
       type: object
       properties:
@@ -209,7 +218,7 @@ components:
           $ref: '#/components/schemas/MessageResponse'
         data:
           $ref: '#/components/schemas/Bank'
-          
+
     RetrieveCustomersResponse:
       type: object
       properties:
@@ -218,8 +227,10 @@ components:
         messageResponse:
           $ref: '#/components/schemas/MessageResponse'
         data:
-          $ref: '#/components/schemas/Customers'
-          
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
+
     RetrieveCustomerResponse:
       type: object
       properties:
@@ -229,7 +240,7 @@ components:
           $ref: '#/components/schemas/MessageResponse'
         data:
           $ref: '#/components/schemas/Customer'
-          
+
     RetrieveProductResponse:
       type: object
       properties:
@@ -239,50 +250,48 @@ components:
           $ref: '#/components/schemas/MessageResponse'
         data:
           $ref: '#/components/schemas/Product'
-          
+
     Banks:
       type: array
       items:
         $ref: '#/components/schemas/Bank'
-          
+
     Bank:
       type: object
       properties:
         bankId:
           type: string
-          description: defines an entity name identifier
+          description: Bank identifier
           format: uuid
-        name:
-          type: string
-          description: defines an entity name identifier
         financialInstitutionCode:
           type: string
-          description: financialInstitutionCode
+          description: Financial institution code
+        customerName:
+          type: string
+          description: Customer name
+        businessName:
+          type: string
+          description: Business name
         logo:
           type: string
-          description: image logo to show in the UI
+          description: Logo image URL
         order:
           type: integer
-          description: order to show in the UI
+          description: Display order
         urlRedirect:
           type: string
-          description: url to redirect
+          description: Redirect URL
         urlKeyRegistry:
           type: string
-          description: url to key registry
-          
-    Customers:
-      type: array 
-      items:
-        $ref: '#/components/schemas/Customer'
-        
+          description: URL for key registry
+
     Product:
       type: object
       properties:
         productId:
           type: integer
           example: 132
-          description: Product Id from Payment Order Component
+          description: Product ID from Payment Order Component
         productUuid:
           type: string
           format: uuid
@@ -294,9 +303,9 @@ components:
         name:
           type: string
           example: Some name of the product
-        businessLine: 
+        businessLine:
           type: string
-          enum: 
+          enum:
             - TX
             - PAGOS
           example: "TX"
@@ -310,321 +319,208 @@ components:
         docVersionTreatment:
           type: string
           example: 1.0.0
-          
-    CustomerTypeRelations:
-      type: array
-      items:
-        $ref: '#/components/schemas/CustomerTypeRelation'
-    
-    CustomerTypeRelation:
-      type: object
-      properties:
-        customerTypeId:
-          type: string
-          format: uuid
-          example: "a01f0aba-b22a-11ed-afa1-0242ac120002"
-          description: customerTypeId (UUID)
-        customerTypeValue:
-          type: string
-          enum:
-            - COMPANY
-            - FINANCIAL_INSTITUTION
-            - INFORMATION_PARTNERS
-            - ADMINISTRATOR_PARTNERS
-          example: COMPANY
-        customerTypeLabel:
-          type: string
-          example: EMPRESA
-          
+
     Customer:
       type: object
       properties:
         id:
           type: string
-          description: defines an entity name identifier
+          description: Customer ID
           format: uuid
         name:
           type: string
-          description: name customer
+          nullable: true
+          description: Customer name
         businessName:
           type: string
-          description: defines an entity name identifier
+          description: Business name
         phoneNumber:
           type: string
-          description: phoneNumber
+          nullable: true
+          description: Phone number
         documentType:
           type: string
-          description: documentType
+          nullable: true
+          description: Document type
         documentNumber:
           type: string
-          description: documentNumber
+          nullable: true
+          description: Document number
         customerCode:
           type: string
-          description: customerCode
+          description: Customer code
         logo:
           type: string
-          description: logo
+          description: Logo
         incomes:
           type: string
-          description: incomes
+          nullable: true
+          description: Incomes
         expenses:
           type: string
-          description: expenses
+          nullable: true
+          description: Expenses
         customerType:
           type: string
-          description: customerType
+          nullable: true
+          description: Customer type
         address:
           type: string
-          description: address
+          nullable: true
+          description: Address
         email:
           type: string
-          description: email
+          nullable: true
+          description: Email
         financialInstitutionCode:
           type: string
-          description: financialInstitutionCode
-        ciiuCodes:
-          $ref: '#/components/schemas/CiiuCodes'
+          description: Financial institution code
         subscriptions:
-          $ref: '#/components/schemas/Subscriptions'
-          
-    CiiuCodes:
-      type: array
-      items:
-        $ref: '#/components/schemas/CiiuCode'
-        
-    CiiuCode:
-      type: object
-      properties:
-        code:
-          type: string
-          description: code
-        activity:
-          type: string
-          description: activity
-          
-    Errors:
-      type: array
-      items:
-        $ref: '#/components/schemas/Error'
-        
-    Error:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: error code
-        errorDetail:
-          type: string
-          description: error detail
-          
-    Subscriptions:
-      type: array
-      items:
-        $ref: '#/components/schemas/Subscription'
-      
-      
+          type: array
+          items:
+            $ref: '#/components/schemas/Subscription'
+
     Subscription:
       type: object
       properties:
         id:
           type: string
-          description: id
+          description: Subscription ID
           format: uuid
         productId:
           type: string
-          description: product id
+          description: Product ID
           format: uuid
         customerTypeId:
           type: string
-          description: customer type id
+          description: Customer type ID
+          format: uuid
         name:
           type: string
-          description: name
+          description: Subscription name
         domains:
-          $ref: '#/components/schemas/Domains'
+          type: array
+          items:
+            $ref: '#/components/schemas/Domain'
 
-    Domains:
-      type: array
-      items:
-        $ref: '#/components/schemas/Domain'
-    
     Domain:
       type: object
       properties:
         id:
           type: string
-          description: id
+          description: Domain ID
           format: uuid
         name:
           type: string
-          description: name
+          description: Domain name
         tag:
           type: string
-          description: tag
+          nullable: true
+          description: Domain tag
         parameters:
-          $ref: '#/components/schemas/Parameters'
-          
-    Parameters:
-      type: array
-      items:
-        $ref: '#/components/schemas/Parameter'
+          type: array
+          items:
+            $ref: '#/components/schemas/Parameter'
 
     Parameter:
       type: object
       properties:
         id:
           type: string
-          description: id
+          description: Parameter ID
           format: uuid
         subscriptionId:
           type: string
-          description: name
-          format: uuid
+          nullable: true
+          description: Subscription ID
         key:
           type: string
-          description: key
+          description: Parameter key
         name:
           type: string
-          description: name
+          description: Parameter name
         description:
           type: string
-          description: description
-        parameterDomain:
-          $ref: '#/components/schemas/ParameterDomain'
+          description: Parameter description
         values:
           type: array
           items:
-            $ref: '#/components/schemas/Values'
-    
-    ParameterDomain:
-      type: object
-      properties:
-        id:
-          type: string
-          description: id
-          format: uuid
-        key:
-          type: string
-          description: key
-        name:
-          type: string
-          description: name
-        description:
-          type: string
-          description: description
-        
-    Values:
-      type: array
-      items:
-        $ref: '#/components/schemas/Value'
-  
+            $ref: '#/components/schemas/Value'
+
     Value:
       type: object
       properties:
-        key:
+        parameterId:
           type: string
-          description: key
-        value:
+          description: Parameter ID
+        serviceCode:
           type: string
-          description: value
-        name:
+          description: Service code
+        accountId:
           type: string
-          description: name
-        type:
-          type: string
-          description: name
-        mandatory:
-          type: string
-          description: name
-        enable:
-          type: string
-          description: name
-        valueMin:
-          type: string
-          description: name
-        valueMax:
-          type: string
-          description: name
-        enumValues:
-          type: string
-          description: name
-        description:
-          type: string
-          description: name
+          description: Account ID
 
-  #parameters of resources
   parameters:
     message-uuid:
-      #unique id of transaction
       name: message-uuid
       in: header
       required: true
-      style: simple
       schema:
         type: string
-        
+      description: Unique transaction ID
     application-id:
-      #unique id of application
       name: application-id
       in: header
       required: true
-      style: simple
       schema:
         type: string
-    
+      description: Application ID
     bankId:
-      #identifier bank
       name: bankId
       in: path
       required: true
-      style: simple
       schema:
         type: string
+      description: Bank identifier
     customerId:
-      #identifier customer
       name: customerId
       in: path
       required: true
-      style: simple
       schema:
         type: string
+      description: Customer identifier
     customerType:
-      #type customer
       name: customerType
       in: query
       required: true
-      style: form
       schema:
         type: string
+      description: Customer type
     serviceCode:
-      #service code of entity
       name: serviceCode
       in: query
       required: true
-      style: form
       schema:
         type: string
+      description: Service code of the entity
     businessServiceCode:
-      #business service code
       name: businessServiceCode
       in: query
       required: true
-      style: form
       schema:
         type: string
-    productId:
-      #identifier product
+      description: Business service code
+    productTag:
       name: productTag
       in: path
       required: true
-      style: simple
       schema:
         type: string
-        
-  #objetos de respuestas
+      description: Product identifier
+
   responses:
     BadRequest:
-      description: BadRequest
+      description: Bad Request
       content:
         application/json:
           schema:
@@ -635,58 +531,49 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
-    
     NotFound:
-      description: NotFound
+      description: Not Found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
-            
-    
     InternalServerError:
-      description: InternalServerError
+      description: Internal Server Error
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/HTTPError'
-            
     RetrieveBanksResponse:
-      description: RetrieveBanksResponse
+      description: Retrieve Banks Response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/RetrieveBanksResponse'
-            
     RetrieveBankResponse:
-      description: RetrieveBankResponse
+      description: Retrieve Bank Response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/RetrieveBankResponse'
-            
     RetrieveCustomersResponse:
-      description: RetrieveBanksResponse
+      description: Retrieve Customers Response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/RetrieveCustomersResponse'
-            
     RetrieveCustomerResponse:
-      description: RetrieveCustomerResponse
+      description: Retrieve Customer Response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/RetrieveCustomerResponse'
-            
     RetrieveProductResponse:
-      description: RetrieveProductResponse
+      description: Retrieve Product Response
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/RetrieveProductResponse'
-    
-            
+
   securitySchemes:
     api_key:
       type: apiKey
