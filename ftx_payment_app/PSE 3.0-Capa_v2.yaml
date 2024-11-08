@@ -15,11 +15,7 @@ info:
   version: 1.0.0
   
 servers:
-<<<<<<< HEAD
   - url: https://localhost/v1/pse-transaction/pse/payment
-=======
-  - url: https://localhost:/v1/pse-transaction/pse/payment
->>>>>>> 5de701c505acdb550e2cdc19675e2ba22d9efd3f
 
 tags:
   - name: x-initiate

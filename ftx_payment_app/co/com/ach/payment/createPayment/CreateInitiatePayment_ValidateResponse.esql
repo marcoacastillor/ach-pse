@@ -9,7 +9,7 @@ CREATE COMPUTE MODULE CreateInitiatePayment_ValidateResponse
 		DECLARE refResponse REFERENCE TO InputRoot.ComIbmAggregateReplyBody.Transversales_getProductData;
 		
 		-- copiar cabeceras
-		--SET OutputLocalEnvironment = InputLocalEnvironment;
+		SET OutputLocalEnvironment = InputLocalEnvironment;
 		
 		
 		-- mover referencias

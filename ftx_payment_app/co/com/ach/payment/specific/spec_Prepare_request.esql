@@ -9,9 +9,6 @@ CREATE COMPUTE MODULE spec_Prepare_request
 		-- configurar url y parámetros de invocación
 		--SET Environment.flujo = 'GetProductData'; --TODO: Se debe esperar si en auditoría se requiere o no.
 		
-		-- copiar parámetros en url
-		SET OutputLocalEnvironment.Destination.REST.Request.Parameters.productTag	=  'prueba';
-
 		--Configuraciones
 		SET OutputLocalEnvironment.Destination.REST.Request.Accept 					= 'application/json';
 		SET OutputLocalEnvironment.Destination.REST.Request.Timeout 				= backTimeout;
@@ -19,11 +16,12 @@ CREATE COMPUTE MODULE spec_Prepare_request
 		
 		-- copiar datos en header
 		--TODO: Validar desde mapeo.
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters.productTag				= 'b70215ce-fd76-4c94-b83b-19379633c9b9';
 		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."message-uuid" 			= 'uuid';
 		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."application-id" 		= 'app-id';
 		
+		
 		-- enviar mensaje, en método get va nulo
-		--SET OutputRoot.JSON.Data = InputRoot.JSON.Data;		
 		
 		RETURN TRUE;
 	END;

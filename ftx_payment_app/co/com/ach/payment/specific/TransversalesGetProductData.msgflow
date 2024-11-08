@@ -29,7 +29,7 @@
       <nodes xmi:type="ComIbmCallableFlowReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="1120,144">
         <translation xmi:type="utility:ConstantString" string="Callable Reply"/>
       </nodes>
-      <nodes xmi:type="ComIbmCallableFlowInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="81,72" callableInputEndpoint="Transversales_getProductData">
+      <nodes xmi:type="ComIbmCallableFlowInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="68,72" callableInputEndpoint="Transversales_getProductData">
         <translation xmi:type="utility:ConstantString" string="Transversales_getProductData"/>
       </nodes>
       <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="690,144" definitionFile="PSE 3.0-Middleware_v2.3.yaml" definitionType="openapi_3" operationName="GetProductById" acceptCompressedResponses="true">

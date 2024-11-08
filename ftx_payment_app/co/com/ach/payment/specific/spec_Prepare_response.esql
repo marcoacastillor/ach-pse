@@ -5,32 +5,9 @@ CREATE COMPUTE MODULE spec_Prepare_response
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		-- devuelven todo el mensaje
-		--SET OutputRoot = InputRoot;
+		SET OutputRoot = InputRoot;
 		
-		
-		--TODO: Actualizar mapeos cuando llegue backend.
-		CREATE FIELD OutputRoot.JSON.Data;
-		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
-		
-		-- setear valores de respuesta
-		SET refOut.headers.httpStatusCode 			= 200;
-		SET refOut.headers.httpStatusDesc 			= 'Success';
-		SET refOut.headers.messageUUID				= 'pendiente-mapeo';
-		SET refOut.headers.requestDateTime			= CURRENT_TIMESTAMP;
-		SET refOut.headers.requestAppId				= 'pendiente-mapeo';
-		
-		SET refOut.messageResponse.responseCode		= 'PSE.200';
-		SET refOut.messageResponse.responseMessage	= 'Transacción Exitosa';
-		SET refOut.messageResponse.responseDetail	= '';
-		
-		SET refOut.data.productId					= '132';
-		SET refOut.data.productUuid					= '64715fcb-2f37-4a56-8750-6cf2d1b08d5c';
-		SET refOut.data.productTag					= 'OPEN_FIN';
-		SET refOut.data.name						= 'Name';
-		SET refOut.data.businessLine				= 'Line';
-		SET refOut.data.sessionExpireTime			= '3000';
-		SET refOut.data.docVersionTerms				= '1.0';
-		SET refOut.data.docVersionTreatment			= '1.0';
+		--TODO: Pendiente de mapeos cuando se haga la integración.
 		
 		RETURN TRUE;
 	END;
