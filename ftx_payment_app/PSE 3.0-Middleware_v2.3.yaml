@@ -124,7 +124,11 @@ paths:
       parameters:
         - $ref: '#/components/parameters/message-uuid'
         - $ref: '#/components/parameters/application-id'
+<<<<<<< HEAD:ftx_payment_app/PSE 3.0-Middleware_v2.2.yaml
         - $ref: '#/components/parameters/productTag'
+=======
+        - $ref: '#/components/parameters/productId'
+>>>>>>> 5de701c505acdb550e2cdc19675e2ba22d9efd3f:ftx_payment_app/PSE 3.0-Middleware_v2.3.yaml
       responses:
         '200':
           $ref: '#/components/responses/RetrieveProductResponse'
@@ -510,7 +514,11 @@ components:
       schema:
         type: string
       description: Business service code
+<<<<<<< HEAD:ftx_payment_app/PSE 3.0-Middleware_v2.2.yaml
     productTag:
+=======
+    productId:
+>>>>>>> 5de701c505acdb550e2cdc19675e2ba22d9efd3f:ftx_payment_app/PSE 3.0-Middleware_v2.3.yaml
       name: productTag
       in: path
       required: true

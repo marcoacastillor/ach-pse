@@ -31,10 +31,14 @@
       <nodes xmi:type="ComIbmCallableFlowInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="81,72" callableInputEndpoint="Transversales_getCustomerData">
         <translation xmi:type="utility:ConstantString" string="Transversales_getCustomerData"/>
       </nodes>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="690,144" definitionFile="HU02 - Contrato Crear Tansaccion-V0.4.R16JUL2024.yaml" definitionType="openapi_3" operationName="InitiatePayment" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="690,144" definitionFile="PSE 3.0-Middleware_v2.3.yaml" definitionType="openapi_3" operationName="GetCustomerById" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="PostCustomers"/>
-        <parameters name="request-app-id" expression=""/>
+        <parameters name="customerType" expression=""/>
+        <parameters name="serviceCode" expression=""/>
+        <parameters name="customerId" expression=""/>
         <parameters name="message-uuid" expression=""/>
+        <parameters name="businessServiceCode" expression=""/>
+        <parameters name="application-id" expression=""/>
       </nodes>
       <nodes xmi:type="ComIbmCallableFlowReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="739,70">
         <translation xmi:type="utility:ConstantString" string="Callable Reply1"/>

@@ -15,7 +15,11 @@ info:
   version: 1.0.0
   
 servers:
+<<<<<<< HEAD
   - url: https://localhost/v1/pse-transaction/pse/payment
+=======
+  - url: https://localhost:/v1/pse-transaction/pse/payment
+>>>>>>> 5de701c505acdb550e2cdc19675e2ba22d9efd3f
 
 tags:
   - name: x-initiate
@@ -35,7 +39,8 @@ paths:
       operationId: InitiatePayment
       parameters:
         - $ref: '#/components/parameters/message-uuid'
-        - $ref: '#/components/parameters/request-app-id'          
+        - $ref: '#/components/parameters/request-app-id'
+        - $ref: '#/components/parameters/session-storage'          
       requestBody:
         $ref: '#/components/requestBodies/CreateTransactionPaymentRequest'
       responses:
@@ -66,7 +71,8 @@ paths:
       operationId: ExecutePayment
       parameters:
         - $ref: '#/components/parameters/message-uuid'
-        - $ref: '#/components/parameters/request-app-id'          
+        - $ref: '#/components/parameters/request-app-id'
+        - $ref: '#/components/parameters/session-storage'          
       requestBody:
         $ref: '#/components/requestBodies/InitBankPaymentRequest'
       responses:
@@ -89,7 +95,7 @@ paths:
       x-codegen-request-body-name: body
       
       
-  /x-notity:
+  /x-notify:
     post:
       tags:
         - x-notify
@@ -127,7 +133,7 @@ components:
     CreateTransactionPaymentRequest:
       required:
         - group_header
-        - paymentInformation
+        - payment_information
       type: object
       properties:
         group_header:
@@ -138,7 +144,7 @@ components:
     InitBankPaymentRequest:
       required:
         - group_header
-        - paymentInformation
+        - payment_information
       type: object
       properties:
         group_header:
@@ -149,7 +155,7 @@ components:
     NotifyPaymentRequest:
       required:
         - group_header
-        - paymentInformation
+        - payment_information
       type: object
       properties:
         group_header:
@@ -647,7 +653,7 @@ components:
           type: string
           minLength: 1
           maxLength: 35
-          example: ""
+          example: "01"
           
         flow_type:
           description: Defines the type of flow True - fast payment; False - Registration
@@ -1097,6 +1103,17 @@ components:
       schema:
         type: string
         format: uuid
+        
+    session-storage:
+      #unique id of transaction
+      name: session-storage
+      description:
+        Message identifier is used for traceability. Token sesión generado por navegador - (Se recomiendo generar el token como un UUID - sessionStorage.setItem('Token', UUID)).
+      in: header
+      required: true
+      style: simple
+      schema:
+        type: string
         
   requestBodies:
     CreateTransactionPaymentRequest:

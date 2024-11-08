@@ -31,7 +31,7 @@
       <nodes xmi:type="ComIbmCallableFlowInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="70,73" callableInputEndpoint="Transversales_getCUS">
         <translation xmi:type="utility:ConstantString" string="Transversales_getCUS"/>
       </nodes>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="690,144" definitionFile="HU02 - Contrato Crear Tansaccion-V0.4.R16JUL2024.yaml" definitionType="openapi_3" operationName="InitiatePayment" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="690,144" definitionFile="HU-PSE30-Transversales -Contrato-User vault mgmt V1.0.0 R23 OCT.yaml" definitionType="swagger_20" operationName="postEncrypt" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="PostIdgenerator"/>
         <parameters name="request-app-id" expression=""/>
         <parameters name="message-uuid" expression=""/>
