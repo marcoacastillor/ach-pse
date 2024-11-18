@@ -38,7 +38,7 @@ CREATE COMPUTE MODULE SetTrackingRequest
 		SET refOut.productTag			= 'Procesador Transaccional';
 		SET refOut.messageUUID		= InputRoot.HTTPInputHeader."Message-Uuid";
 		SET refOut.messageType		= 'Request';
-		SET refOut.dateTime   		= CAST(CURRENT_TIMESTAMP AS CHARACTER FORMAT 'yyyyMMdd HHmmss');
+		SET refOut.dateTime   		= CAST(CURRENT_TIMESTAMP AS CHARACTER FORMAT 'yyyy-MM-dd HH:mm:ss.SSS');
 		SET refOut.user  			= '';
 		SET refOut.userName   		= '';
 		SET refOut.email 			= '';
@@ -81,7 +81,7 @@ CREATE COMPUTE MODULE SetTrackingResponse
 		SET refOut.productTag			= 'procesador-transaccional';
 		SET refOut.messageUUID		= refInp.Data.headers.messageUuid;
 		SET refOut.messageType		= 'Response';
-		SET refOut.dateTime   		= CAST(CURRENT_TIMESTAMP AS CHARACTER FORMAT 'yyyyMMdd HHmmss');
+		SET refOut.dateTime   		= CAST(CURRENT_TIMESTAMP AS CHARACTER FORMAT 'yyyy-MM-dd HH:mm:ss.SSS');
 		SET refOut.user  			= '';--llega desde cliente
 		SET refOut.userName   		= '';--llega desde cliente
 		SET refOut.email 			= '';--llega desde cliente

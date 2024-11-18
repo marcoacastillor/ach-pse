@@ -22,6 +22,9 @@ CREATE COMPUTE MODULE Common_ValidateHeaders
 			THROW EXCEPTION MESSAGE 500 VALUES('requestError' , 'Error en los headers, el header request-app-id es obligatorio'); 
 		END IF;
 		
+		DECLARE tmp CHARACTER CAST(CURRENT_TIMESTAMP AS CHARACTER FORMAT 'yyyy-MM-dd HH:mm:ss.SSS');
+		
+		
 		/***************************************************************************/
 		-- bloque para crear mensaje de auditoría request. 
 		-- Solo para métodos PUT, POST, PATCH
