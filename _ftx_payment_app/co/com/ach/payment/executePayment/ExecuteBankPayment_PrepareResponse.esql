@@ -1,0 +1,19 @@
+BROKER SCHEMA co.com.ach.payment.executePayment
+
+
+CREATE COMPUTE MODULE ExecuteBankPayment_PrepareResponse
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- copiar información de respuesta
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		
+		-- copiar todo el mensaje
+		SET OutputRoot = InputRoot;
+		
+		-- devolver cabeceras de respuesta
+		SET OutputRoot.HTTPResponseHeader."message-uuid" = InputLocalEnvironment.Destination.REST.Request.Parameters."message-uuid";
+		SET OutputRoot.HTTPResponseHeader."session-storage" = InputLocalEnvironment.Destination.REST.Request.Parameters."session-storage";
+		
+		RETURN TRUE;
+	END;
+END MODULE;

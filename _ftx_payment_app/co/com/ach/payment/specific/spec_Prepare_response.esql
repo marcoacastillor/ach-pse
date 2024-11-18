@@ -1,0 +1,14 @@
+BROKER SCHEMA co.com.ach.payment.specific
+
+
+CREATE COMPUTE MODULE spec_Prepare_response
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- devuelven todo el mensaje
+		SET OutputRoot = InputRoot;
+		
+		--TODO: Pendiente de mapeos cuando se haga la integración.
+		
+		RETURN TRUE;
+	END;
+END MODULE;

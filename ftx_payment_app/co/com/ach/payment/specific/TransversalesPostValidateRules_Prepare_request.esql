@@ -1,0 +1,141 @@
+BROKER SCHEMA co.com.ach.payment.specific
+
+
+CREATE COMPUTE MODULE TransversalesPostValidateRules_Prepare_request
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- configurar url y parámetros de invocación
+		--SET Environment.flujo = 'GetProductData'; --TODO: Se debe esperar si en auditoría se requiere o no.
+		
+		DECLARE refInp REFERENCE TO InputRoot.MQRFH2.usr;
+		
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		--Configuraciones 
+		SET OutputLocalEnvironment.Destination.REST.Request.Accept 					= 'application/json';
+		SET OutputLocalEnvironment.Destination.REST.Request.Timeout 				= backTimeout;
+		SET OutputLocalEnvironment.Destination.REST.Request.BaseURL 				= backUrl;
+		
+		-- copiar datos en header
+		--TODO: Validar desde mapeo.
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."message-uuid" 			= refInp.prop.messageUUID;
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."request-app-id" 		= refInp.prop.requestAppId;
+
+		MOVE refInp TO refInp.msgs;
+		
+		SET refOut.productId                             = refInp.prop.producttag;
+		SET refOut.entityCode                            = '';
+		SET refOut.financialInstitutionCode              = refInp.respgetCustData.data.financialInstitutionCode;
+		SET refOut.serviceCode                           = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.service_code;
+		SET refOut.transactionValue                      = '';
+		SET refOut.vatValue                              = '';
+		SET refOut.ticketId                              = '';
+		SET refOut.entityurl                             = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.entity_url;  ---ACTULIZAR A RESPUESTA DE PRODUCTO
+		SET refOut.userType                              = refInp.respgetCustData.data.customerType;
+		SET refOut.referenceNumber1                      = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.reference_1;
+		SET refOut.referenceNumber2                      = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.reference_2;
+		SET refOut.referenceNumber3                      = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.reference_3;
+		SET refOut.soliciteDate                          = refInp.origen.Data.payment_information.requested_execution_date.dateTime;    --------validar----------
+		SET refOut.paymentDescription                    = '';
+		SET refOut.identificationType                    = refInp.origen.Data.payment_information.debtor.identification.private_identification.other.scheme_name.code;
+		SET refOut.identificationNumber                  = refInp.origen.Data.payment_information.debtor.identification.private_identification.other.identification;
+		SET refOut.fullName                              = refInp.origen.Data.payment_information.debtor.name;
+		SET refOut.cellphoneNumber                       = refInp.origen.Data.payment_information.debtor.identification.contact_details.mobile_number;
+		SET refOut.address                               = refInp.origen.Data.payment_information.debtor.postal_address.address_line;
+		SET refOut.email                                 = refInp.origen.Data.payment_information.debtor.identification.contact_details.email_address;
+		SET refOut.beneficiaryEntityIdentificationType   = refInp.origen.Data.payment_information.credit_transfer_transaction_information.creditor.identification.organisation_identification.other.identification;
+		SET refOut.beneficiaryEntityIdentification       = refInp.origen.Data.payment_information.credit_transfer_transaction_information.creditor.identification.organisation_identification.other.scheme_name.code;
+		SET refOut.beneficiaryEntityName                 = refInp.origen.Data.payment_information.credit_transfer_transaction_information.creditor.name;
+		SET refOut.beneficiaryEntityCIIUCategory         = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.creditor_ciiu;
+		SET refOut.beneficiaryEntityCIIUCategory         = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.creditor_ciiu;
+		SET refOut.beneficiaryIdentificationType    	 = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.creditor.identification.organisation_identification.other.Item.scheme_name.code;
+		SET refOut.beneficiaryIdentification             = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.creditor.identification.organisation_identification.other.Item.identification;
+		SET refOut.indicator4per1000                     = '';
+		SET refOut.entityType                            = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.creditor.identification.organisation_identification.anyBIC;
+		SET refOut.entityCodeTr                          = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.payment_identification.instruction_identification;
+		SET refOut.entityNit                             = refInp.origen.Data.payment_information.debtor.identification.private_identification.other.identification;
+		SET refOut.entityEANCode                         = '';
+		SET refOut.modalityPayments                      = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.purpose.code;
+		SET refOut.typeVinculation                       = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.purpose.propietary;
+		SET refOut.entityName                            = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.creditor.name;
+		SET refOut.economicActivity                      = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.creditor_ciiu;
+		SET refOut.codeEconomicActivity                  = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.creditor_ciiu;
+		SET refOut.clientRegistry                        = refInp.origen.Data.payment_information.payment_information_identification;
+		SET refOut.parameterPOST                         = '';
+		SET refOut.entityDirection                       = refInp.origen.Data.payment_information.debtor.postal_address.address_line;
+		SET refOut.entityCountry                         = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.transunion_info.device_rea_ip_co;
+		SET refOut.entityCity                            = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.transunion_info.device_rea_ip_ci;
+		SET refOut.transactionCalendar                   = refInp.origen.Data.payment_information.requested_execution_date.dateTime;
+		SET refOut.transactionRestrictionCalendar        = '';
+		SET refOut.transactionCredit                     = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.amount.instructed_amount;
+		SET refOut.entityPerformanceMonitoring           = '';
+		SET refOut.entityEnabled                         = '';
+		SET refOut.consumerBankList                      = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.orderListBank;
+		SET refOut.entityNF                              = '';
+		SET refOut.directColection                       = '';
+		SET refOut.entityGateway                         = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.entity_url;
+		SET refOut.entityUseGateway                      = '';
+		SET refOut.associatedGateway                     = '';
+		SET refOut.entitySocialSecurity                  = '';
+		SET refOut.administratorSocialSecurity           = '';
+		SET refOut.directSpins                           = '';
+		SET refOut.changeTransactionState                = '';
+		SET refOut.entitySusceptibleReversal             = '';
+		SET refOut.entityListBank                        = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.orderListBank;
+		SET refOut.serviceCodeTr                         = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.service_code;
+		SET refOut.serviceName                           = '';
+		SET refOut.serviceDescription                    = '';
+		SET refOut.serviceAprobation                     = '';
+		SET refOut.serviceState                          = '';
+
+		SET refOut.serviceSucursal                       = '';
+		SET refOut.serviceNIT                            = refInp.origen.Data.payment_information.debtor.identification.private_identification.other.identification;	
+		SET refOut.serviceNameAssociate                  = '';-- siguiendo el mismo caso de ariba prodria ser payment_information.credit_transfer_transaction_information.creditor.name
+		SET refOut.serviceCategoryCIIU                   = '';-- payment_information.supplementary_data.Item.any.Item.additional_payment_info.creditor_ciiu
+		SET refOut.serviceMulticredit                    = '';
+		SET refOut.serviceCodeMulticredit                = '';
+		SET refOut.serviceNameMulticredit                = '';
+		SET refOut.serviceDescriptionMulticredit         = '';
+		SET refOut.serviceAprobationMulticredit          = '';
+		SET refOut.serviceStateMulticredit               = '';
+		SET refOut.serviceTypeIntegration                = '';-- algo relacionado con type payment_information.supplementary_data.Item.any.Item.additional_payment_info.flow_type
+		SET refOut.serviceAssociateGateway               = '';-- 
+		SET refOut.serviceLimitCategoryNatural           = '';
+		SET refOut.serviceLimitCategoryJuridic           = '';
+		SET refOut.serviceTypePayment                    = '';-- medianmente relaciono el campo con los tag de  payment_information.credit_transfer_transaction_information.purpose.code
+		SET refOut.serviceTypeCollection                 = '';
+		SET refOut.accountNumber                         = '';-- medianmente relaciono el campo MiddlewareCustomers.data.subscriptions.domains.parameters.values.accountId
+		SET refOut.accountType                           = '';-- medianmente relaciono el campo MiddlewareCustomers.data.customerType
+		SET refOut.accountFinancialInstitution           = '';-- medianmente relaciono el campo MiddlewareCustomers.data.financialInstitutionCode
+		SET refOut.accountNIT                            = refInp.origen.Data.payment_information.debtor.identification.private_identification.other.identification;
+																											   	
+		SET refOut.accountAprobation                     = '';
+		SET refOut.accountState                          = '';
+		SET refOut.typeCompensation                      = '';
+		SET refOut.codeRouteTransit                      = '';
+		SET refOut.codeCompensation                      = '';
+		SET refOut.percentageUseLimits                   = '';
+		SET refOut.financialInstitutionEnabled           = '';
+		SET refOut.financialInstitutionCollecting        = '';
+		SET refOut.financialInstitutionWSFraudPrevention = '';
+		SET refOut.financialInstitutionHold              = '';
+		SET refOut.financialInstitutionWSCredit          = '';
+		SET refOut.financialInstitutionWSNF              = '';
+		SET refOut.financialInstitutionReport            = '';
+		SET refOut.financialInstitutionMonthlyReport     = '';
+		
+		--Validar si es arreglo
+		SET refOut.credits.serviceCode                   = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.service_code;
+		SET refOut.credits.companyIdentification         = '';
+		SET refOut.credits.transactionValue              = '';-- creo que peude ser el mesaje de entrada payment_information.credit_transfer_transaction_information.amount.instructed_amount o tambien payment_information.credit_transfer_transaction_information.creditor.tax.
+		SET refOut.credits.vatValue                      = '';
+		SET refOut.credits.extraData                     = '';-- -- algo relacionado con type payment_information.supplementary_data
+		
+		
+		SET Environment.Variables.MQRFH2 = InputRoot.MQRFH2;
+		-- enviar mensaje, en método get va nulo
+		
+		RETURN TRUE;
+	END;
+END MODULE;

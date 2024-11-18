@@ -1,0 +1,15 @@
+BROKER SCHEMA co.com.ach.payment.createPayment
+
+
+CREATE COMPUTE MODULE CreateInitiatePayment_1_EchoMessage
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN		
+		-- copiar variables de sesión
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		
+		-- crear mapeo de mensajes, solo si es necesario.
+		SET OutputRoot.JSON = InputRoot.JSON;
+		
+		RETURN TRUE;
+	END;
+END MODULE;

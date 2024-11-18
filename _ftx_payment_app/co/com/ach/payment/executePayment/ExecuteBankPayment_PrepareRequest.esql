@@ -1,0 +1,31 @@
+BROKER SCHEMA co.com.ach.payment.executePayment
+
+DECLARE backUrl 	EXTERNAL CHARACTER '';
+DECLARE backTimeout EXTERNAL INTEGER 3000;
+
+CREATE COMPUTE MODULE ExecuteBankPayment_PrepareRequest
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- nombre de componente
+		SET Environment.flujo = 'POSTExecuteBankPayment';
+		
+		-- copiar parámetros
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters=  InputLocalEnvironment.REST.Input.Parameters;
+		
+		--Configuraciones
+		SET OutputLocalEnvironment.Destination.REST.Request.Accept 					= 'application/json';
+		SET OutputLocalEnvironment.Destination.REST.Request.Timeout 				= backTimeout;
+		SET OutputLocalEnvironment.Destination.REST.Request.BaseURL 				= backUrl;
+		
+		-- copiar datos en header
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."session-storage"		= 'b70215ce-fd76-4c94-b83b-19379633c9b9';
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."message-uuid" 			= 'uuid';
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."application-id" 		= 'app-id';
+		
+		-- copiar cuerpo del mensaje
+		SET OutputRoot.JSON.Data = InputRoot.JSON.Data;		
+		RETURN TRUE;
+	END;
+
+END MODULE;
+	

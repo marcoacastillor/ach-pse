@@ -1,0 +1,54 @@
+BROKER SCHEMA co.com.ach.payment.createPayment
+
+
+CREATE COMPUTE MODULE CreateInitiatePayment_ValidateResponse
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- declarar referencia a mensajes que llegan
+		DECLARE refEchoMessage REFERENCE TO InputRoot.ComIbmAggregateReplyBody.EchoMessage;
+		DECLARE refResponse REFERENCE TO InputRoot.ComIbmAggregateReplyBody.Transversales_getProductData;
+		
+		-- copiar cabeceras
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		
+		
+		-- mover referencias
+		MOVE refResponse LASTCHILD;
+		MOVE refResponse LASTCHILD;
+		
+		-- declarar referencia de salida
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		-- validar si es exitoso, continúa proceso
+		--header, httpstatuscode = 200
+		IF refResponse.headers.httpStatusCode = '200' THEN
+			
+			--copias mensaje
+			SET refOut.original = refEchoMessage.JSON;
+			SET refOut.customer = refResponse.JSON;
+			
+			RETURN TRUE;
+		ELSE
+			-- mover referencias
+			MOVE refEchoMessage LASTCHILD;
+			MOVE refEchoMessage LASTCHILD;
+			
+			-- si no es exitoso, responde al servicio
+			--header, httpstatuscode <> 200
+			--propagar el mensaje de error. Mapeo de getProduct -> ISO.
+			SET refOut.group_header 	= refEchoMessage.group_header;
+			
+			SET refOut.original_payment_information_and_status.original_payment_information_identification 											= refEchoMessage.payment_information.payment_information_identification;
+			SET refOut.original_payment_information_and_status.transaction_information_and_status.transaction_status 								= refResponse.headers.httpStatusCode;
+			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.originator.name 		= 'GetproductData';
+			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.code				= refResponse.messageResponse.responseCode;
+			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.property			= refResponse.messageResponse.responseMessage;
+			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.additional_information	= refResponse.messageResponse.responseDetail;
+			
+			PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+		END IF;
+		
+		RETURN FALSE;
+	END;
+END MODULE;

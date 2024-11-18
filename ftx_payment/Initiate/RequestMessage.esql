@@ -4,11 +4,11 @@ BROKER SCHEMA Initiate
 CREATE COMPUTE MODULE RequestMessage
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		CREATE FIELD OutputRoot.JSON.Data;
-		DECLARE refOut REFERENCE TO OutputRoot.JSON;
+		-- copiar información para respuesta
+		SET OutputLocalEnvironment = InputLocalEnvironment;
 		
-		
-		SET refOut.Data = InputRoot.JSON.Data;
+		-- copiar mensaje
+		SET OutputRoot = InputRoot;
 					
 		RETURN TRUE;
 	END;

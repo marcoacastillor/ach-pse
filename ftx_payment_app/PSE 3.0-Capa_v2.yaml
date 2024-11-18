@@ -15,7 +15,7 @@ info:
   version: 1.0.0
   
 servers:
-  - url: https://localhost/v1/pse-transaction/pse/payment
+  - url: https://localhost:/v1/pse-transaction/pse/payment
 
 tags:
   - name: x-initiate
@@ -37,6 +37,7 @@ paths:
         - $ref: '#/components/parameters/message-uuid'
         - $ref: '#/components/parameters/request-app-id'
         - $ref: '#/components/parameters/session-storage'          
+        - $ref: '#/components/parameters/product-tag'
       requestBody:
         $ref: '#/components/requestBodies/CreateTransactionPaymentRequest'
       responses:
@@ -174,10 +175,6 @@ components:
           items:
             #Objeto que representa el resultado de la transacciÃ³n
             $ref: '#/components/schemas/OriginalPaymentInformationAndStatus'
-        supplementary_data:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupplementaryData'
             
     InitBankPaymentResponse:
       required:
@@ -220,7 +217,7 @@ components:
           type: string
           minLength: 1
           maxLength: 36
-          example: CUS
+          example: rn-00234
           
         creation_date_time:
           description: Date and time at which the message was created.
@@ -614,13 +611,6 @@ components:
           minLength: 1
           maxLength: 2
           example: 01
-          
-        orderListBank:
-          description: order it should occupy in the bank deployment list
-          type: number
-          minLength: 1
-          maxLength: 2
-          example: 1
         
         device_finger_print:
           description: Fingerprint with the information captured by the list of banks or the agile payment dialing list through a dynamic Javascript that was integrated into the new PSE site to which end users are directed. This javascript is a coded string that includes information from the device of the user who performs the transaction.
@@ -794,9 +784,7 @@ components:
       type: object
       properties:
         identification:
-          description: last four digits of the account 
-          type: string
-          example: "****3454"
+          $ref: '#/components/schemas/IdentificationV3'
           
           
     CreditTransferTransactionInformation:
@@ -876,7 +864,12 @@ components:
         organisation_identification:
           $ref: '#/components/schemas/OrganisationIdentification'
           
-    
+    IdentificationV3:
+      type: object
+      properties:
+        other:
+          $ref: '#/components/schemas/Other'
+        
     OrganisationIdentification:
       type: object
       properties:
@@ -920,7 +913,7 @@ components:
           minLength: 1
           maxLength: 4
           example: "NIT"
-        propieraty: 
+        propieraty:
           description: Name of the identification scheme, in a free text form.
           type: string
           minLength: 1
@@ -1105,6 +1098,17 @@ components:
       name: session-storage
       description:
         Message identifier is used for traceability. Token sesión generado por navegador - (Se recomiendo generar el token como un UUID - sessionStorage.setItem('Token', UUID)).
+      in: header
+      required: true
+      style: simple
+      schema:
+        type: string
+        
+    product-tag:
+      #product tag pse
+      name: product-tag
+      description:
+        Message identifier of product pse
       in: header
       required: true
       style: simple

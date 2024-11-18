@@ -3,7 +3,7 @@
     nsURI="co/com/ach/payment/specific/TransversalesPostValidateRules.msgflow" nsPrefix="co_com_ach_payment_specific_TransversalesPostValidateRules.msgflow">
   <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="RECTANGLE">
     <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1" defaultValueLiteral="http://localhost:7800/v1/pse-transaction/pse/payment/x-initiate">
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1" defaultValueLiteral="https://407793ed-04a2-4e60-9cf0-ab546ff63c36.mock.pstmn.io">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backTimeout" name="backTimeout" lowerBound="1" defaultValueLiteral="3000">
@@ -16,7 +16,7 @@
       <nodes xmi:type="ComIbmTryCatch.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="280,72">
         <translation xmi:type="utility:ConstantString" string="Try Catch"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="490,144" computeExpression="esql://routine/co.com.ach.payment.specific#spec_Prepare_request.Main" computeMode="destinationAndMessage">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="490,144" computeExpression="esql://routine/co.com.ach.payment.specific#TransversalesPostValidateRules_Prepare_request.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="Prepare request"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="503,68" computeExpression="esql://routine/com.ibus.common.procedures.general#specificPrepareError.Main">
@@ -31,8 +31,8 @@
       <nodes xmi:type="ComIbmCallableFlowInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="81,72" callableInputEndpoint="Transversales_postValidateRules">
         <translation xmi:type="utility:ConstantString" string="Transversales_postValidateRules"/>
       </nodes>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="690,144" definitionFile="HU03 – Contrato ValidatedRules AWS – v1.1.yaml" definitionType="openapi_3" operationName="InitiatePayment" acceptCompressedResponses="true">
-        <translation xmi:type="utility:ConstantString" string="GetProductById"/>
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="690,144" definitionFile="HU03 – Contrato ValidatedRules AWS – v1.1.yaml" definitionType="swagger_20" operationName="postValidate-rules" acceptCompressedResponses="true">
+        <translation xmi:type="utility:ConstantString" string="Validate-Rules"/>
         <parameters name="request-app-id" expression=""/>
         <parameters name="message-uuid" expression=""/>
       </nodes>
