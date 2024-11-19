@@ -31,7 +31,7 @@
       <nodes xmi:type="ComIbmCallableFlowInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="81,72" callableInputEndpoint="Transversales_postCreateTransaction">
         <translation xmi:type="utility:ConstantString" string="Transversales_postCreateTransaction"/>
       </nodes>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="690,144" definitionFile="TRANSACTION REGISTER-V0.1.R27MAY2024.yml" definitionType="swagger_20" operationName="postTransactions" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="690,144" definitionFile="TransversalesTransacctionRegisterV0.1.R27.yml" definitionType="swagger_20" operationName="postTransactions" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="PostTransaction"/>
         <parameters name="request-app-id" expression=""/>
         <parameters name="message-uuid" expression=""/>

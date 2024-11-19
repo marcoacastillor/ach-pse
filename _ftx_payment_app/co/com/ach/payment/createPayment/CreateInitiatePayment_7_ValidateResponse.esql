@@ -1,7 +1,7 @@
 BROKER SCHEMA co.com.ach.payment.createPayment
 
 
-CREATE COMPUTE MODULE CreateInitiatePayment_5_ValidateResponse
+CREATE COMPUTE MODULE CreateInitiatePayment_7_ValidateResponse
 CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		-- declarar referencia a mensajes que llegan
@@ -11,7 +11,7 @@ CREATE FUNCTION Main() RETURNS BOOLEAN
 		
 		SET OutputRoot.Properties = InputRoot.Properties;
 		SET OutputRoot.MQRFH2 	  = InputRoot.MQRFH2;
-		SET OutputRoot.MQRFH2.usr.msgs.respValidateRules = refInp;				
+		--SET OutputRoot.MQRFH2.usr.msgs.respEncryptcus = refInp;				
 		-- copiar cabeceras
 		SET OutputLocalEnvironment = InputLocalEnvironment;
 		
@@ -21,7 +21,7 @@ CREATE FUNCTION Main() RETURNS BOOLEAN
 		
 		-- validar si es exitoso, continúa proceso
 		--header, httpstatuscode = 200
-		IF refInp.headers.httpStatusCode = '200' THEN
+		IF refInp.headers.httpStatusCode = '201' THEN
 			
 			--copias mensaje
 			SET refOut = InputRoot.MQRFH2.usr.msgs.origen.Data;
@@ -42,7 +42,7 @@ CREATE FUNCTION Main() RETURNS BOOLEAN
 			
 			SET refOut.original_payment_information_and_status.original_payment_information_identification 											= refMOrig.payment_information.payment_information_identification;
 			SET refOut.original_payment_information_and_status.transaction_information_and_status.transaction_status 								= refInp.headers.httpStatusCode;
-			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.originator.name 		= 'PostValidateRules';
+			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.originator.name 		= 'PostEncryptCUS';
 			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.code				= refInp.messageResponse.responseCode;
 			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.property			= refInp.messageResponse.responseMessage;
 			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.additional_information	= refInp.messageResponse.responseDetail;
@@ -53,4 +53,3 @@ CREATE FUNCTION Main() RETURNS BOOLEAN
 		RETURN FALSE;
 	END;
 END MODULE;
-

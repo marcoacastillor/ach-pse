@@ -32,7 +32,7 @@
       <nodes xmi:type="ComIbmCallableFlowInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="68,72" callableInputEndpoint="Transversales_encriptCus">
         <translation xmi:type="utility:ConstantString" string="Transversales_getProductData"/>
       </nodes>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="690,144" definitionFile="HU-PSE30-Transversales -Contrato-User vault mgmt V1.0.0 R23 OCT.yaml" definitionType="swagger_20" operationName="postEncrypt" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="690,144" definitionFile="TransversalesContratoUserVaultV1.0.0 R23.yaml" definitionType="swagger_20" operationName="postEncrypt" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="Encrypt-Cus"/>
         <parameters name="request-app-id" expression=""/>
         <parameters name="message-uuid" expression=""/>

@@ -97,9 +97,34 @@ paths:
         - $ref: '#/components/parameters/message-uuid'
         - $ref: '#/components/parameters/application-id'
         - $ref: '#/components/parameters/customerId'
-        - $ref: '#/components/parameters/customerType'
-        - $ref: '#/components/parameters/serviceCode'
-        - $ref: '#/components/parameters/businessServiceCode'
+
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveCustomerResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - api_key: []
+
+  /customers/{documentType}/{documentNumber}:
+    get:
+      tags:
+        - Customer
+      summary: Retrieve customer information by documentType and documentNumber.
+      description: Retrieve customer information given its identifier.
+      operationId: GetCustomerBydocumentTypeAndDocumentNumber
+      parameters:
+        - $ref: '#/components/parameters/message-uuid'
+        - $ref: '#/components/parameters/application-id'
+        - $ref: '#/components/parameters/documentType'
+        - $ref: '#/components/parameters/documentNumber'
+
       responses:
         '200':
           $ref: '#/components/responses/RetrieveCustomerResponse'
@@ -124,8 +149,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/message-uuid'
         - $ref: '#/components/parameters/application-id'
-        - $ref: '#/components/parameters/productTag'
-
+        - $ref: '#/components/parameters/productId'
       responses:
         '200':
           $ref: '#/components/responses/RetrieveProductResponse'
@@ -490,29 +514,27 @@ components:
       schema:
         type: string
       description: Customer identifier
-    customerType:
-      name: customerType
-      in: query
+    documentType:
+      name: documentType
+      in: path
       required: true
       schema:
         type: string
-      description: Customer type
-    serviceCode:
-      name: serviceCode
-      in: query
+        enum:
+          - CC
+          - CE
+          - NIT
+          - TI
+          - NT
+          - NI
+    documentNumber:
+      name: documentNumber
+      in: path
       required: true
       schema:
         type: string
-      description: Service code of the entity
-    businessServiceCode:
-      name: businessServiceCode
-      in: query
-      required: true
-      schema:
-        type: string
-      description: Business service code
-
-    productTag:
+        pattern: '^\d+$'
+    productId:
       name: productTag
       in: path
       required: true

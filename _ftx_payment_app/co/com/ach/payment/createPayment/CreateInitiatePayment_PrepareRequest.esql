@@ -9,6 +9,12 @@ CREATE COMPUTE MODULE CreateInitiatePayment_PrepareRequest
 		
 		-- crear mapeo de mensajes, solo si es necesario.
 		--TODO: validar como se envía los datos
+		SET OutputRoot.MQRFH2.usr.msgs.origen = InputRoot.JSON;
+		
+		SET OutputRoot.MQRFH2.usr.prop.producttag = COALESCE(InputRoot.HTTPInputHeader."product-tag", InputRoot.HTTPInputHeader."Product-Tag");
+		SET OutputRoot.MQRFH2.usr.prop.messageUUID = COALESCE(InputRoot.HTTPInputHeader."message-uuid", InputRoot.HTTPInputHeader."Message-Uuid");
+		SET OutputRoot.MQRFH2.usr.prop.requestAppId = COALESCE(InputRoot.HTTPInputHeader."request-app-id", InputRoot.HTTPInputHeader."Request-App-Id");
+				
 		SET OutputRoot.JSON = InputRoot.JSON;
 		
 		RETURN TRUE;

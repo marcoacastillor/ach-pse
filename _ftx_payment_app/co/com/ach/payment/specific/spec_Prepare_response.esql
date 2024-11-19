@@ -5,7 +5,9 @@ CREATE COMPUTE MODULE spec_Prepare_response
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		-- devuelven todo el mensaje
-		SET OutputRoot = InputRoot;
+		SET OutputRoot.Properties = InputRoot.Properties;
+		SET OutputRoot.MQRFH2     = Environment.Variables.MQRFH2;
+		SET OutputRoot.JSON       = InputRoot.JSON;
 		
 		--TODO: Pendiente de mapeos cuando se haga la integración.
 		

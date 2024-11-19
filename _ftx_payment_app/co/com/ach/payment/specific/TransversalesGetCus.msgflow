@@ -3,7 +3,7 @@
     nsURI="co/com/ach/payment/specific/TransversalesGetCus.msgflow" nsPrefix="co_com_ach_payment_specific_TransversalesGetCus.msgflow">
   <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="RECTANGLE">
     <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1" defaultValueLiteral="http://localhost:7800/v1/pse-transaction/pse/payment/x-initiate">
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1" defaultValueLiteral="https://423dff43-4133-4576-9712-e5a9dd41bf2b.mock.pstmn.io">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backTimeout" name="backTimeout" lowerBound="1" defaultValueLiteral="3000">
@@ -16,7 +16,7 @@
       <nodes xmi:type="ComIbmTryCatch.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="280,72">
         <translation xmi:type="utility:ConstantString" string="Try Catch"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="490,144" computeExpression="esql://routine/co.com.ach.payment.specific#spec_Prepare_request.Main" computeMode="destinationAndMessage">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="490,144" computeExpression="esql://routine/co.com.ach.payment.specific#TransversalesGetCus_Prepare_request.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="Prepare request"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="503,68" computeExpression="esql://routine/com.ibus.common.procedures.general#specificPrepareError.Main">
@@ -31,7 +31,7 @@
       <nodes xmi:type="ComIbmCallableFlowInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="70,73" callableInputEndpoint="Transversales_getCUS">
         <translation xmi:type="utility:ConstantString" string="Transversales_getCUS"/>
       </nodes>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="690,144" definitionFile="HU-PSE30-Transversales -Contrato-User vault mgmt V1.0.0 R23 OCT.yaml" definitionType="swagger_20" operationName="postEncrypt" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="690,144" definitionFile="HU01 – Contrato GeneradorID AWS – v1.2.yaml" definitionType="swagger_20" operationName="postIdgenerator" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="PostIdgenerator"/>
         <parameters name="request-app-id" expression=""/>
         <parameters name="message-uuid" expression=""/>

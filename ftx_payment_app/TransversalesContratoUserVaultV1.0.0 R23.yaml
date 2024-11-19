@@ -1,39 +1,56 @@
 swagger: "2.0"
 info:
-  description: "API to validate transaction information"
-  version: "1.5.0"
-  title: "Validation Rules API"
+  description: "User vault manager documentation API"
+  version: "2.0.0"
+  title: "User Vault API"
 host: $(host.name)
+schemes:
+  - https
+produces:
+  - application/json
+consumes:
+  - application/json
+tags:
+  - name: encrypt
+    description: encrypt operation for user vault management
+  - name: decrypt
+    description: decrypt operation for user vault management
+
+
 paths:
-  /v1/po/validated-rules-mgmt/validate-rules:
+     
+  /v1/ft/user-vault-mgmt/encrypt:
     post:
-      summary: "Validate Rules API"
-      description: "Validate transaction information with the provided details"
+      tags:
+        - encrypt
       parameters:
+      
         - name: message-uuid
           in: header
           required: true
           type: string
           format: uuid
           description: "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+          
         - name: request-app-id
           in: header
           required: true
           type: string
           format: uuid
           description: "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+          
         - in: "body"
           name: "body"
-          description: "Transaction object that needs to be added"
+          description: "Object whith data to encrypt"
           required: true
           schema:
-            $ref: "#/definitions/TransactionRequest"
-            
+            $ref: "#/definitions/encryptRequest"          
+          
       responses:
         200:
-          description: "OK"
+          description: "Successful response of key user creation"
           schema:
-            $ref: "#/definitions/TransactionResponse"
+            $ref: "#/definitions/encryptResponse"
         "400":
           schema:
             $ref: "#/definitions/generalError400"
@@ -60,446 +77,139 @@ paths:
           description: Service Unavailable
         default:
           description: Error.
+
+  /v1/ft/user-vault-mgmt/decrypt:
+    post:
       tags:
-        - Validations rules
+        - decrypt
+      parameters:
+      
+        - name: message-uuid
+          in: header
+          required: true
+          type: string
+          format: uuid
+          description: "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+          
+        - name: request-app-id
+          in: header
+          required: true
+          type: string
+          format: uuid
+          description: "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+          
+        - in: "body"
+          name: "body"
+          description: "Object whith data to decrypt"
+          required: true
+          schema:
+            $ref: "#/definitions/decryptRequest"          
+          
+      responses:
+        200:
+          description: "Successful response of key user creation"
+          schema:
+            $ref: "#/definitions/decryptResponse"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: Bad request or mal formatted data
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: Method Not Allowed.
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: Unsupported Media Type.
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: Internal Server Error
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: Bad Gateway
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: Service Unavailable
+        default:
+          description: Error.          
+
+    
+  
+ 
+
         
-  /v1/po/validated-rules-mgmt/actuator/:
+  /v1/ft/user-vault-mgmt/actuator/:
     get:
-      summary: API monitoring
+      tags:
+        - actuator
+      summary: API Monitoring
       responses:
         "200":
           description: 200 OK
-      tags:
-        - Validations rules
+
+  
+ 
 
 definitions:
 
-  CreditsBody:
-    type: object
-    properties:
-      serviceCode:
-        type: string
-        maxLength: 80
-        minLength: 1
-      companyIdentification:
-        type: string
-        maxLength: 35
-        minLength: 1      
-      transactionValue:
-        type: number
-      vatValue:
-        type: number
-      extraData:
-        type: string
-        maxLength: 255
-        minLength: 1
-        
-  TransactionBody:
-    type: object
-    properties:
-      productId:
-        type: integer
-      entityCode:
-        type: string
-        maxLength: 13
-        minLength: 1
-        example: "1234567890123"
-      financialInstitutionCode:
-        type: string
-        maxLength: 9
-        minLength: 1
-        example: "987654321"
-      serviceCode:
-        type: string
-        maxLength: 10
-        minLength: 1
-        example: "SERVICE001"
-      transactionValue:
-        type: number
-        example: "1234567890.00"
-      vatValue:
-        type: number
-        example: "9876543210.00"
-      ticketId:
-        type: string
-        maxLength: 19
-        minLength: 1
-        example: "1234567890123456789"
-      entityurl:
-        type: string
-        maxLength: 512
-        minLength: 1
-        example: "https://example.com"
-      userType:
-        type: string
-        example: "Admin"
-      referenceNumber1:
-        type: string
-        maxLength: 80
-      referenceNumber2:
-        type: string
-        maxLength: 80
-      referenceNumber3:
-        type: string
-        maxLength: 80
-      soliciteDate:
-        type: string
-        format: date-time
-        example: "2024-07-05T12:00:00Z"
-      paymentDescription:
-        type: string
-        maxLength: 80
-        minLength: 1
-        example: "Payment for services"
-      identificationType:
-        type: string
-      identificationNumber:
-        type: string
-        maxLength: 15
-        minLength: 1
-        example: "123456789012345"
-      fullName:
-        type: string
-        maxLength: 64
-        minLength: 1
-        example: "John Doe"
-      cellphoneNumber:
-        type: string
-        maxLength: 10
-        minLength: 1
-        example: "1234567890"
-      address:
-        type: string
-        maxLength: 64
-        minLength: 1
-        example: "123 Main St"
-      email:
-        type: string
-        maxLength: 120
-        minLength: 1
-        example: "john.doe@example.com"
-      beneficiaryEntityIdentificationType:
-        type: string
-      beneficiaryEntityIdentification:
-        type: string
-        maxLength: 15
-        minLength: 1
-        example: "987654321098765"
-      beneficiaryEntityName:
-        type: string
-        maxLength: 64
-        minLength: 1
-        example: "Beneficiary Entity"
-      beneficiaryEntityCIIUCategory:
-        type: string
-        maxLength: 6
-        minLength: 1
-        example: "Category"
-      beneficiaryIdentificationType:
-        type: string
-      beneficiaryIdentification:
-        type: string
-        maxLength: 15
-        minLength: 1
-        example: "987654321098765"
-      indicator4per1000:
-        type: string
-        maxLength: 1
-        minLength: 1
-        example: "1"
-        description: "Recibe 1 o 0"
-      entityType:
-        type: string
-        maxLength: 10
-        minLength: 1
-      entityCodeTr:
-        type: string
-        maxLength: 35
-        minLength: 1
-        example: "EntityCode"
-      entityNit:
-        type: string
-        maxLength: 35
-        minLength: 1
-        example: "EntityNit"
-      entityEANCode:
-        type: string
-        maxLength: 35
-        minLength: 1
-      modalityPayments:
-        type: string
-        maxLength: 100
-        enum:
-          - FACTURAS
-          - FUNCIONALIDADES_TARJETAS_CREDITO
-      typeVinculation:
-        type: string
-        maxLength: 100
-        enum:
-          - PSE_DESARROLLO_PROPIO
-          - PASARELA_PAGOS
-          - AGREGADOR_PAGOS
-          - PSE_PAGOS_FORMULARIO_PAGO
-          - PSE_PAGOS_CARGA_FACTURA
-          - PSE_PAGOS_CONEXION_EN_LINEA
-          - PSE_PAGOS_CONEXION_INTEGRADA_FACTURA
-          - PSE_PAGOS_PASARELAS
-          - PSE_PAGOS_AGREGADORES PSE_PAGOS_DISTRIBUIDORES
-          - PSE_PAGOS_PORTALES_CARGA_FACTURA
-          - PSE_PAGOS_PORTALES_FORMULARIO_PAGO
-          - PSE_PAGOS_PORTALES_CONEXION_INTEGRADA_FACTURA
-          - EMPRESA_PASARELA
-      entityName:
-        type: string
-        maxLength: 255
-        minLength: 1
-        example: "Entity Name"
-      economicActivity:
-        type: string
-        maxLength: 255
-        minLength: 1
-        example: "Economic Activity"
-      codeEconomicActivity:
-        type: string
-        maxLength: 20
-        minLength: 1
-        example: "EconomicCode"
-      clientRegistry:
-        type: boolean
-      parameterPOST:
-        type: boolean
-      entityDirection:
-        type: string
-        maxLength: 100
-        minLength: 1
-        example: "123 Example St"
-      entityCountry:
-        type: string
-        maxLength: 100
-        minLength: 1
-        example: "Country"
-      entityCity:
-        type: string
-        maxLength: 100
-        minLength: 1
-        example: "City"
-      transactionCalendar:
-        type: string
-        maxLength: 255
-      transactionRestrictionCalendar:
-        type: string
-        maxLength: 255
-      transactionCredit:
-        type: boolean
-      entityPerformanceMonitoring:
-        type: boolean
-      entityEnabled:
-        type: boolean
-      consumerBankList:
-        type: boolean
-      entityNF:
-        type: boolean
-      directColection:
-        type: boolean
-      entityGateway:
-        type: boolean
-      entityUseGateway:
-        type: boolean
-      associatedGateway:
-        type: string
-        maxLength: 255
-      entitySocialSecurity:
-        type: boolean
-      administratorSocialSecurity:
-        type: boolean
-      directSpins:
-        type: boolean
-      changeTransactionState:
-        type: boolean
-      entitySusceptibleReversal:
-        type: boolean
-      entityListBank:
-        type: string
-        maxLength: 255
-        minLength: 1
-        example: "BankList"
-      serviceCodeTr:
-        type: string
-        maxLength: 80
-        minLength: 1
-        example: "ServiceCode"
-      serviceName:
-        type: string
-        maxLength: 255
-        minLength: 1
-        example: "Service Name"
-      serviceDescription:
-        type: string
-        maxLength: 255
-      serviceAprobation:
-        type: string
-        maxLength: 20
-        minLength: 1
-        example: "ServiceApproval"
-      serviceState:
-        type: string
-        maxLength: 20
-        minLength: 1
-        enum:
-          - ACTIVO
-          - INACTIVO
-          - ELIMINADO
-      serviceSucursal:
-        type: string
-        maxLength: 255
-      serviceNIT:
-        type: string
-        maxLength: 35
-      serviceNameAssociate:
-        type: string
-        maxLength: 255
-      serviceCategoryCIIU:
-        type: string
-        maxLength: 35
-      serviceMulticredit:
-        type: boolean
-      serviceCodeMulticredit:
-        type: string
-        maxLength: 35
-      serviceNameMulticredit:
-        type: string
-        maxLength: 255
-      serviceDescriptionMulticredit:
-        type: string
-        maxLength: 255
-      serviceAprobationMulticredit:
-        type: string
-        enum:
-          - SI
-          - NO
-          - PENDIENTE
-      serviceStateMulticredit:
-        type: string
-        enum: 
-          - ACTIVO 
-          - INACTIVO
-          - ELIMINADO
-      serviceTypeIntegration:
-        type: string
-        maxLength: 100
-      serviceAssociateGateway:
-        type: string
-        maxLength: 255
-      serviceLimitCategoryNatural:
-        type: string
-        maxLength: 255
-        minLength: 1
-        example: "LimitNatural"
-      serviceLimitCategoryJuridic:
-        type: string
-        maxLength: 255
-        minLength: 1
-        example: "LimitJuridic"
-      serviceTypePayment:
-        type: string
-        maxLength: 255
-        minLength: 1
-        enum:
-          - RECAUDOS
-          - COMPRAS
-          - B2B_RECAUDO
-      serviceTypeCollection:
-        type: string
-        maxLength: 255
-        minLength: 1
-        enum:
-          - RECAUDOS
-          - COMPRAS
-          - B2B_RECAUDO
-      accountNumber:
-        type: string
-        maxLength: 32
-        minLength: 1
-        example: "12345678901234567890123456789012"
-      accountType:
-        type: string
-        maxLength: 35
-        enum:
-          - AHORROS
-          - CORRIENTE
-      accountFinancialInstitution:
-        type: string
-        maxLength: 255
-      accountNIT:
-        type: string
-        maxLength: 35
-      accountAprobation:
-        type: string
-        maxLength: 20
-        minLength: 1
-        example: "AccountApproval"
-      accountState:
-        type: string
-        maxLength: 20
-        minLength: 1
-        example: "Active"
-      typeCompensation:
-        type: string
-        maxLength: 20
-        minLength: 1
-        enum:
-          - LINEA_ACH
-          - CORTE_ACH
-          - EXTERNO
-      codeRouteTransit:
-        type: string
-        maxLength: 32
-        minLength: 1
-        example: "RouteTransitCode"
-      codeCompensation:
-        type: string
-        maxLength: 32
-        minLength: 1
-        example: "CompensationCode"
-      percentageUseLimits:
-        type: string
-        maxLength: 32
-        minLength: 1
-        example: "PercentageUseLimits"
-      financialInstitutionEnabled:
-        type: boolean
-      financialInstitutionCollecting:
-        type: boolean
-      financialInstitutionWSFraudPrevention:
-        type: boolean
-      financialInstitutionHold:
-        type: string
-        maxLength: 32
-      financialInstitutionWSCredit:
-        type: boolean
-      financialInstitutionWSNF:
-        type: boolean
-      financialInstitutionReport:
-        type: boolean
-      financialInstitutionMonthlyReport:
-        type: boolean
-      credits:
-        type: array
-        items:
-          $ref: "#/definitions/CreditsBody"
 
-  TransactionRequest:
-        $ref: "#/definitions/TransactionBody"
-
-  TransactionResponse:
+  encryptResponse:
     type: object
     properties:
       headers:
-        $ref: "#/definitions/generalResponseHeaders200"
+        $ref: '#/definitions/generalResponseHeaders201'
       messageResponse:
         $ref: "#/definitions/messageResponse"
-
+      data:
+        $ref: "#/definitions/encryptResult"
         
+        
+  decryptResponse:
+    type: object
+    properties:
+      headers:
+        $ref: '#/definitions/generalResponseHeaders201'
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        $ref: "#/definitions/dencryptResult"    
+        
+        
+  encryptRequest:
+    type: object
+    properties: 
+      data:
+        type: string
+        example: CUS234552345
+
+  encryptResult:
+    type: object
+    properties: 
+      data:
+        type: string
+        example: Q1VTMjM0NTUyMzQ1        
+
+  decryptRequest:
+    type: object
+    properties: 
+      data:
+        type: string
+        example: Q1VTMjM0NTUyMzQ1    
+
+  dencryptResult:
+    type: object
+    properties: 
+      data:
+        type: string
+        example: CUS234552345                
+
+
+    
+          
   generalResponseHeaders200:
     description: Traceability data and technical information from message.
     type: object
@@ -590,7 +300,6 @@ definitions:
       responseDetails:
         type: string
         example: "System process information."
-        
   generalError400:
     type: object
     properties:
@@ -672,7 +381,6 @@ definitions:
         $ref: "#/definitions/messageResponseError503"
       errors:
         $ref: "#/definitions/exampleErrors503"
-
   headersError400:
     type: object
     properties:
@@ -835,38 +543,18 @@ definitions:
       requestAppId:
         type: string
         example: acxff62e-6f12-42de-9012-1e7304418abd
-  
   messageResponseError400:
-      type: object
-      properties:
-        responseCode:
-          type: string
-          example: "XXXX"
-          description: " CODIGOS DE EJEMPLO 00014 00018 00019 00020 00021 00022 00023 00025 00026"
-        responseMessage:
-          type: string
-          example: "VALIDATION FAIL"
-          description: "MENSAJES DE EJEMPLO FAIL_BANKNOTEXISTSORDISABLED
-FAIL_SERVICENOTEXISTSORNOTCONFIGURED
-FAIL_INVALIDAMOUNTORVATAMOUNT
-FAIL_INVALIDSOLICITDATE
-FAIL_CANNOTGETCURRENTCYCLE
-FAIL_ACCESSDENIED
-FAIL_EXCEEDEDLIMIT
-FAIL_TRANSACTIONNOTALLOWED
-FAIL_INVALIDPARAMETERS
-FAIL_GENERICERROR
-FAIL_BANKUNREACHEABLE
-FAIL_NOTCONFIRMEDBYBANK
-FAIL_TIMEOUT
-FAIL_ERRORRINCREDITS
-FAIL_ERRORINCREDITS" 
-        responseDetail:
-          type: string
-          example: "Validations not approved"
-  
-
-
+    type: object
+    properties:
+      responseCode:
+        type: string
+        example: "XXXX"
+      responseMessage:
+        type: string
+        example: "Bad Request Message"
+      responseDetail:
+        type: string
+        example: "Aditional Information [Optional Value]"
   messageResponseError401:
     type: object
     properties:
@@ -1026,12 +714,4 @@ FAIL_ERRORINCREDITS"
       errorDetail:
         type: string
         example: "Some Error Detail"
-schemes:
-  - https
-produces:
-  - application/json
-consumes:
-  - application/json
-tags:
-  - name: Validations rules
-    description: Operations to perform API monitoring.
+
