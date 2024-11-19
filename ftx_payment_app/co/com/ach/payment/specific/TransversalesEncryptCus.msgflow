@@ -23,7 +23,7 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="503,68" computeExpression="esql://routine/com.ibus.common.procedures.general#specificPrepareError.Main">
         <translation xmi:type="utility:ConstantString" string="Throw error"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="910,144" computeExpression="esql://routine/co.com.ach.payment.specific#spec_Prepare_response.Main" computeMode="destinationAndMessage">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="914,143" computeExpression="esql://routine/co.com.ach.payment.specific#spec_Prepare_response.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="Prepare response"/>
       </nodes>
       <nodes xmi:type="ComIbmCallableFlowReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="1120,144">

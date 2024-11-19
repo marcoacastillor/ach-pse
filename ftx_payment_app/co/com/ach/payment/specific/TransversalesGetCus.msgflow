@@ -31,7 +31,7 @@
       <nodes xmi:type="ComIbmCallableFlowInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="70,73" callableInputEndpoint="Transversales_getCUS">
         <translation xmi:type="utility:ConstantString" string="Transversales_getCUS"/>
       </nodes>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="690,144" definitionFile="HU01GeneradorIDAWS_V1.2.yaml" definitionType="swagger_20" operationName="postIdgenerator" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="697,145" definitionFile="HU01GeneradorIDAWS_V1.2.yaml" definitionType="swagger_20" operationName="postIdgenerator" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="PostIdgenerator"/>
         <parameters name="request-app-id" expression=""/>
         <parameters name="message-uuid" expression=""/>

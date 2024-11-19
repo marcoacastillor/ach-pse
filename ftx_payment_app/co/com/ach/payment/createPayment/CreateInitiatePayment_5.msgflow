@@ -14,7 +14,7 @@
         <translation xmi:type="utility:ConstantString" string="ValidateResponse"/>
       </nodes>
       <nodes xmi:type="ComIbmCallableFlowAsyncInvoke.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="781,267" asyncResponseCorrelator="CFAsync_TransversalesPostCreateTransaction001" targetApplication="ftx_payment_app" targetEndpointName="Transversales_postCreateTransaction">
-        <translation xmi:type="utility:ConstantString" string="CFAsync_TransversalesPostCreateTransaction001"/>
+        <translation xmi:type="utility:ConstantString" string="CFAsynRq_TransversalesPostCreateTransaction001"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="537,90" computeExpression="esql://routine/com.ibus.common.procedures.general#specificPrepareError.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="Throw error"/>

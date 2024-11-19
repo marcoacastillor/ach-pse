@@ -23,7 +23,7 @@
         <translation xmi:type="utility:ConstantString" string="Callable Reply1"/>
       </nodes>
       <nodes xmi:type="ComIbmCallableFlowAsyncResponse.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="64,175" asyncResponseCorrelator="CFAsync_TransversalesPostCreateTransaction001">
-        <translation xmi:type="utility:ConstantString" string="CFAsync_TransversalesPostCreateTransaction001"/>
+        <translation xmi:type="utility:ConstantString" string="CFAsyncRs_TransversalesPostCreateTransaction001"/>
       </nodes>
       <nodes xmi:type="ComIbmCallableFlowReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="782,181">
         <translation xmi:type="utility:ConstantString" string="Callable Reply"/>

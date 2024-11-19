@@ -51,7 +51,14 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-            
+      
+      security:
+        - clientId: []
+          clientSecret: []
+          oauth2-ptx:
+            - generate-tx-create
+      x-codegen-request-body-name: body
+      
   /x-execute-bank:
     post:
       tags:
@@ -77,6 +84,14 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
       
+      security:
+        - clientId: []
+          clientSecret: []
+          oauth2-ptx:
+            - generate-tx-create
+      x-codegen-request-body-name: body
+      
+      
   /x-notify:
     post:
       tags:
@@ -100,6 +115,15 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      
+      security:
+        - clientId: []
+          clientSecret: []
+          oauth2-ptx:
+            - generate-tx-create
+      x-codegen-request-body-name: body
+      
+    
           
 components:
   schemas:
@@ -1167,3 +1191,25 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/NotifyPaymentResponse'
+
+  securitySchemes:
+    clientId:
+      type: apiKey
+      description: ''
+      in: header
+      name: Client-Id
+      x-key-type: client_id
+    clientSecret:
+      type: apiKey
+      description: ''
+      in: header
+      name: Client-Secret
+      x-key-type: client_secret
+    oauth2-ptx:
+      type: oauth2
+      x-ibm-oauth-provider: ptx-token
+      flows:
+        clientCredentials:
+          tokenUrl: https://$(catalog.url)/ptx-token/oauth2/token
+          scopes:
+            generate-tx-create: Scope para creacion de transacciones

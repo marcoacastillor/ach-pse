@@ -31,7 +31,7 @@
       <nodes xmi:type="ComIbmCallableFlowInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="64,72" callableInputEndpoint="Transversales_getCustomerData">
         <translation xmi:type="utility:ConstantString" string="Transversales_getCustomerData"/>
       </nodes>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="690,144" definitionFile="PSE3.0Middleware_V2.4.yaml" definitionType="openapi_3" operationName="GetCustomerById" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="701,146" definitionFile="PSE3.0Middleware_V2.4.yaml" definitionType="openapi_3" operationName="GetCustomerById" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="PostCustomers"/>
         <parameters name="customerId" expression=""/>
         <parameters name="message-uuid" expression=""/>
