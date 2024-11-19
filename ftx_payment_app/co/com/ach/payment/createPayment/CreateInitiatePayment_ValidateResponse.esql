@@ -9,8 +9,8 @@ CREATE COMPUTE MODULE CreateInitiatePayment_ValidateResponse
 		DECLARE refMOrig REFERENCE TO InputRoot.MQRFH2.usr.msgs.origen.Data;
 		
 		
-		SET OutputRoot.Properties 					= InputRoot.Properties;
-		SET OutputRoot.MQRFH2 	  					= InputRoot.MQRFH2;
+		SET OutputRoot.Properties = InputRoot.Properties;
+		SET OutputRoot.MQRFH2 	  = InputRoot.MQRFH2;
 		SET OutputRoot.MQRFH2.usr.msgs.respProducts = refInp;				
 		-- copiar cabeceras
 		SET OutputLocalEnvironment = InputLocalEnvironment;

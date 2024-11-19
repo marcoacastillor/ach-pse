@@ -13,7 +13,7 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="536,180" computeExpression="esql://routine/co.com.ach.payment.createPayment#CreateInitiatePayment_6_ValidateResponse.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="ValidateResponse"/>
       </nodes>
-      <nodes xmi:type="ComIbmCallableFlowAsyncInvoke.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="781,267" asyncResponseCorrelator="CFAsync_TransversalesPostEncrypt001" targetApplication="ftx_payment_app" targetEndpointName="Transversales_getCustomerData">
+      <nodes xmi:type="ComIbmCallableFlowAsyncInvoke.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="781,267" asyncResponseCorrelator="CFAsync_TransversalesPostEncrypt001" targetApplication="ftx_payment_app" targetEndpointName="Transversales_postEncryptCUS">
         <translation xmi:type="utility:ConstantString" string="CFAsync_TransversalesGetTrxInfo001"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="537,90" computeExpression="esql://routine/com.ibus.common.procedures.general#specificPrepareError.Main" computeMode="destinationAndMessage">

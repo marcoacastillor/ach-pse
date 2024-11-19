@@ -23,17 +23,34 @@ CREATE FUNCTION Main() RETURNS BOOLEAN
 		--header, httpstatuscode = 200
 		IF refInp.headers.httpStatusCode = '201' THEN
 			
+			DECLARE urlred CHARACTER;
+			IF (UCASE(InputRoot.MQRFH2.usr.msgs.respgetCustData.data.agilPaymentEnable) = 'TRUE') THEN
+				SET urlred = SUBSTRING(InputRoot.MQRFH2.usr.msgs.respProducts.data.PSEBankKeyListURL BEFORE '=') || '/' ||refInp.data.data;
+			ELSE
+				SET urlred = SUBSTRING(InputRoot.MQRFH2.usr.msgs.respProducts.data.PSEBankListURL BEFORE '=') || '/' ||refInp.data.data;
+			END IF;
+			
 			--copias mensaje
-			SET refOut = InputRoot.MQRFH2.usr.msgs.origen.Data;
-			--SET refOut.msg.productsResponse = refInp;
+			SET refOut.group_header.message_identification = InputRoot.MQRFH2.usr.msgs.origen.Data.group_header.message_identification;
+			SET refOut.group_header.creation_date_time     = InputRoot.MQRFH2.usr.msgs.origen.Data.group_header.creation_date_time;
+			SET refOut.group_header.number_of_transactions = InputRoot.MQRFH2.usr.msgs.origen.Data.group_header.number_of_transactions;
+			SET refOut.group_header.control_sum            = InputRoot.MQRFH2.usr.msgs.origen.Data.group_header.control_sum;
 			
-			--SET OutputLocalEnvironment = NULL; 
+			SET refOut.original_payment_information_and_status.original_payment_information_identification 											= refMOrig.payment_information.payment_information_identification;
+			SET refOut.original_payment_information_and_status.transaction_information_and_status.transaction_status 								= refInp.headers.httpStatusCode;
+			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.originator.name 		= 'CreateInitiatePayment';
+			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.code				= refInp.messageResponse.responseCode;
+			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.property			= refInp.messageResponse.responseMessage;
+			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.additional_information	= refInp.messageResponse.responseDetail;			
 			
+			
+			SET refOut.supplementary_data.any.additional_payment_info."service_code"    = InputRoot.MQRFH2.usr.msgs.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.service_code;
+			SET refOut.supplementary_data.any.additional_payment_info.entity_url        = urlred; --SUBSTRING(InputRoot.MQRFH2.usr.msgs.respProducts.data.PSEBankListURL BEFORE '=') || '/' ||refInp.data.data;
+			SET refOut.supplementary_data.any.additional_payment_info.transaction_cycle = InputRoot.MQRFH2.usr.msgs.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.transaction_cycle;
+
+
 			RETURN TRUE;
 		ELSE
-			-- mover referencias
---			MOVE refMOrig LASTCHILD;
---			MOVE refMOrig LASTCHILD;
 			
 			-- si no es exitoso, responde al servicio
 			--header, httpstatuscode <> 200
@@ -47,7 +64,7 @@ CREATE FUNCTION Main() RETURNS BOOLEAN
 			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.property			= refInp.messageResponse.responseMessage;
 			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.additional_information	= refInp.messageResponse.responseDetail;
 			
-			PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+			RETURN TRUE;
 		END IF;
 		
 		RETURN FALSE;

@@ -303,12 +303,15 @@ components:
         order:
           type: integer
           description: Display order
-        urlRedirect:
+        urlGetKeyBank:
           type: string
-          description: Redirect URL
-        urlKeyRegistry:
+          description: http://AppFrontSampleBanki/get-transaction-key
+        urlRedirectFinancialInstitution:
           type: string
-          description: URL for key registry
+          example: http://AppFrontSampleBanki
+        
+        
+
 
     Product:
       type: object
@@ -344,6 +347,12 @@ components:
         docVersionTreatment:
           type: string
           example: 1.0.0
+        PSEBankListURL:
+          type: string
+          example: http://pse.ach.com/init-payment/init-bank?transactionId={{encrypted-cus}
+        PSEBankKeyListURL:
+          type: string
+          example: http://pse.ach.com/init-payment/init-agil?transactionId={{encrypted-cus}
 
     Customer:
       type: object
@@ -400,6 +409,15 @@ components:
         financialInstitutionCode:
           type: string
           description: Financial institution code
+        agilPaymentEnable:
+          type: string
+          description: Agil payment enable
+        userValidationRequiered:
+          type: string
+          description: User validation required
+        urlCommerceRedirect:
+          type: string
+          description: URL commerce redirect 
         subscriptions:
           type: array
           items:
