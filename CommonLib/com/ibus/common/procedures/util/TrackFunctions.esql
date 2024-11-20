@@ -1,6 +1,9 @@
 BROKER SCHEMA com.ibus.common.procedures.util
 
-DECLARE PRODUCT_NAME CONSTANT CHARACTER 'Procesador Transacciona';
+--DECLARE PRODUCT_NAME CONSTANT CHARACTER 'Procesador Transaccional';
+
+DECLARE UDP_MODULE EXTERNAL CHARACTER '';
+DECLARE UDP_SUBMODULE EXTERNAL CHARACTER '';
 
 /*
 * Función que devuelve una representación BLOB del mensaje entrante en refInp
@@ -24,9 +27,7 @@ CREATE COMPUTE MODULE SetTrackingRequest
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		-- crear cabecera MQ
-		--SET OutputRoot.MQMD 		= InputRoot.MQMD;
 		CREATE FIELD OutputRoot.MQMD;
-		SET OutputRoot.Properties 	= NULL;
 		
 		DECLARE refInp REFERENCE TO InputRoot;
 		MOVE refInp LASTCHILD;
@@ -35,6 +36,17 @@ CREATE COMPUTE MODULE SetTrackingRequest
 		CREATE FIELD OutputRoot.JSON.Data;
 		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
 		
+		-- declarar variables
+		DECLARE moduleSrv, subModuleSrv, action CHARACTER '';
+		CALL getAuditDataByMethodAndService(InputLocalEnvironment.REST.Input.Method, InputLocalEnvironment.REST.Input.Path, moduleSrv, subModuleSrv, action);
+		--InputLocalEnvironment.REST.Input.Operation
+		
+		-- guardar para mensaje de respuesta.
+		SET Environment.user.params.module 		= moduleSrv;
+		SET Environment.user.params.submodule 	= subModuleSrv;
+		SET Environment.user.params.action		= action;
+		
+		-- crear objeto para auditoría
 		SET refOut.productTag			= 'procesador-transaccional';
 		SET refOut.messageUUID		= InputRoot.HTTPInputHeader."Message-Uuid";
 		SET refOut.messageType		= 'Request';
@@ -50,9 +62,9 @@ CREATE COMPUTE MODULE SetTrackingRequest
 		SET refOut.clientType 		= '';
 		SET refOut.clientId   		= InputRoot.HTTPInputHeader."Client-Id";
 		SET refOut.client     		= '';
-		SET refOut.module     		= InputLocalEnvironment.REST.Input.Operation;
-		SET refOut.submodule  		= InputLocalEnvironment.REST.Input.URI;
-		SET refOut.action     		= InputLocalEnvironment.REST.Input.Method;
+		SET refOut.module     		= moduleSrv;
+		SET refOut.submodule  		= subModuleSrv;
+		SET refOut.action     		= action;
 		SET refOut.dataBeforeUpdate  = '';
 		SET refOut.request     		= com.ibus.common.procedures.util.getStringFromBody(refInp);
 		
@@ -68,7 +80,6 @@ CREATE COMPUTE MODULE SetTrackingResponse
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		-- crear cabecera MQ
-		--SET OutputRoot.MQMD 		= InputRoot.MQMD;
 		CREATE FIELD OutputRoot.MQMD;
 		SET OutputRoot.Properties 	= NULL;
 		
@@ -94,12 +105,59 @@ CREATE COMPUTE MODULE SetTrackingResponse
 		SET refOut.clientType 		= '';--Pendiente
 		SET refOut.clientId   		= InputRoot.HTTPInputHeader."Client-Id";
 		SET refOut.client     		= '';--Pendiente
-		SET refOut.module     		= '';--llega desde el cliente
-		SET refOut.submodule  		= '';--llega desde el cliente
-		SET refOut.action     		= InputLocalEnvironment.REST.Input.Method;
+		SET refOut.module     		= Environment.user.params.module;
+		SET refOut.submodule  		= Environment.user.params.submodule;
+		SET refOut.action     		= Environment.user.params.action;
 		SET refOut.dataBeforeUpdate  = '';--solo para PUT
 		SET refOut.response     		= com.ibus.common.procedures.util.getStringFromBody(refInp);
 		
 		RETURN TRUE;
 	END;
 END MODULE;
+
+
+
+CREATE PROCEDURE getAuditDataByMethodAndService(IN method CHARACTER, IN service CHARACTER, OUT moduleSrv CHARACTER, OUT subModuleSrv CHARACTER, OUT action CHARACTER)
+BEGIN
+	
+	IF method = 'POST' THEN
+		
+		IF CONTAINS(service, 'config-cycle-mgmt/create-exception' ) OR CONTAINS(service,'config-cycle-mgmt/create-cycle') THEN
+			SET moduleSrv 		= 'Gestión ciclo';
+	  		SET subModuleSrv	= 'Calendario y excepciones de ciclo';
+	  		SET action	= 'pending';
+	  	END IF;
+	  	
+	  	IF CONTAINS(service, 'get-cycle-state' ) OR CONTAINS(service, 'config-cycle-mgmt/aws-batch-job-submitter') THEN
+			SET moduleSrv 		= 'Gestión ciclo';
+	  		SET subModuleSrv	= 'Cierre de ciclo';
+	  		SET action	= 'pending';
+		END IF;
+		
+		IF CONTAINS(service, 'products') THEN
+			SET moduleSrv 		= 'Configuración CUS';
+	  		SET subModuleSrv	= 'Configuración CUS';
+	  		SET action	= 'pending';
+		END IF;
+		
+	END IF;
+	
+	IF method = 'PATCH' THEN
+		IF CONTAINS(service, 'products') THEN
+			SET moduleSrv 		= 'Configuración CUS';
+	  		SET subModuleSrv	= 'Configuración CUS';
+	  		SET action	= 'pending';
+		END IF;
+	END IF;
+	
+	IF method = 'DELETE' THEN
+		
+		IF CONTAINS(service, 'config-cycle-mgmt/delete' ) THEN
+	  		SEt moduleSrv 		= 'Gestión ciclo';
+	  		SEt subModuleSrv	= 'Calendario y excepciones de ciclo';
+	  		SET action	= 'pending';
+		END IF;
+		
+	END IF;
+			
+END;

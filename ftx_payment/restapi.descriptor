@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:restapiDescriptor xmlns="http://com.ibm.etools.mft.descriptor.base" xmlns:ns2="http://com.ibm.etools.mft.descriptor.restapi" definitionType="openapi_3" definitionFile="PSE 3.0-Capa_v2.yaml" implementation="gen/ftx_payment.msgflow" https="false" definitionWithExtRef="false" faultFormat="JSON">
+<ns2:restapiDescriptor xmlns="http://com.ibm.etools.mft.descriptor.base" xmlns:ns2="http://com.ibm.etools.mft.descriptor.restapi" definitionType="openapi_3" definitionFile="PSE 3.0-Capa_v2.yaml" implementation="gen/ftx_payment.msgflow" https="true" definitionWithExtRef="false" faultFormat="JSON">
     <references>
         <sharedLibraryReference>
             <libraryName>CommonLib</libraryName>

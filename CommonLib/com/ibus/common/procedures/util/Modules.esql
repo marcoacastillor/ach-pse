@@ -1,6 +1,5 @@
 BROKER SCHEMA com.ibus.common.procedures.util
 
-
 CREATE COMPUTE MODULE Common_ValidateHeaders
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
