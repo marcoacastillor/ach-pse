@@ -8,11 +8,8 @@ CREATE FUNCTION Main() RETURNS BOOLEAN
 		DECLARE refInp REFERENCE TO InputRoot.JSON.Data;
 		DECLARE refMOrig REFERENCE TO InputRoot.MQRFH2.usr.msgs.origen.Data;
 		
-		
-		SET OutputRoot.Properties = InputRoot.Properties;
-		SET OutputRoot.MQRFH2 	  = InputRoot.MQRFH2;
-		SET OutputRoot.MQRFH2.usr.msgs.respgetCustData = refInp;				
 		-- copiar cabeceras
+		SET OutputRoot.Properties = InputRoot.Properties;
 		SET OutputLocalEnvironment = InputLocalEnvironment;
 		
 		-- declarar referencia de salida
@@ -20,21 +17,17 @@ CREATE FUNCTION Main() RETURNS BOOLEAN
 		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
 		
 		-- validar si es exitoso, continúa proceso
-		--header, httpstatuscode = 200
+		-- header, httpstatuscode = 200 - 201
 		IF refInp.headers.httpStatusCode = '200' THEN
-			
+			--copiar contexto
+			SET OutputRoot.MQRFH2 	  = InputRoot.MQRFH2;
+			SET OutputRoot.MQRFH2.usr.msgs.respgetCustData = refInp;				
 			--copias mensaje
 			SET refOut = InputRoot.MQRFH2.usr.msgs.origen.Data;
-			--SET refOut.msg.productsResponse = refInp;
-			
-			--SET OutputLocalEnvironment = NULL; 
-			
+	
 			RETURN TRUE;
 		ELSE
-			-- mover referencias
---			MOVE refMOrig LASTCHILD;
---			MOVE refMOrig LASTCHILD;
-			
+
 			-- si no es exitoso, responde al servicio
 			--header, httpstatuscode <> 200
 			--propagar el mensaje de error. Mapeo de getProduct -> ISO.

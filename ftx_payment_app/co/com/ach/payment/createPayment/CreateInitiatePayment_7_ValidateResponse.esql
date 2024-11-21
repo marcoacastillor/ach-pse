@@ -1,6 +1,7 @@
 BROKER SCHEMA co.com.ach.payment.createPayment
 
 
+
 CREATE COMPUTE MODULE CreateInitiatePayment_7_ValidateResponse
 CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
@@ -8,10 +9,8 @@ CREATE FUNCTION Main() RETURNS BOOLEAN
 		DECLARE refInp REFERENCE TO InputRoot.JSON.Data;
 		DECLARE refMOrig REFERENCE TO InputRoot.MQRFH2.usr.msgs.origen.Data;
 		
-		
 		SET OutputRoot.Properties = InputRoot.Properties;
-		SET OutputRoot.MQRFH2 	  = InputRoot.MQRFH2;
-		--SET OutputRoot.MQRFH2.usr.msgs.respEncryptcus = refInp;				
+			
 		-- copiar cabeceras
 		SET OutputLocalEnvironment = InputLocalEnvironment;
 		
