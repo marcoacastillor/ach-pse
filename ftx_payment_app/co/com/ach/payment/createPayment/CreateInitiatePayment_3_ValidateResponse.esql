@@ -1,6 +1,5 @@
 BROKER SCHEMA co.com.ach.payment.createPayment
 
-
 CREATE COMPUTE MODULE CreateInitiatePayment_3_ValidateResponse
 CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN

@@ -19,7 +19,7 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="729,36" computeExpression="esql://routine/com.ibus.common.modules.fcd#GetRESTInfoError.Main">
         <translation xmi:type="utility:ConstantString" string="GetRESTInfoError"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="564,167" computeExpression="esql://routine/com.ibus.common.procedures.util#Common_ValidateHeaders.Main" computeMode="destinationAndMessage">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="564,167" computeExpression="esql://routine/#&quot;patchProductid.subflow_Validate_headers&quot;.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="Validate headers"/>
       </nodes>
       <nodes xmi:type="ComIbmCallableFlowInvoke.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="853,169" targetApplication="ptx_product_app" targetEndpointName="patchProductid">

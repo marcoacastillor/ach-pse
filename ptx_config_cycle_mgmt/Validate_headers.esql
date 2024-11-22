@@ -9,17 +9,11 @@ CREATE COMPUTE MODULE Validate_headers
 		-- copiar variables de sesión
 		SET OutputLocalEnvironment 	= InputLocalEnvironment;
 		
-		-- declaración y asignación de variables
-		DECLARE messageUuid CHARACTER InputRoot.HTTPInputHeader."Message-Uuid";
-		DECLARE requestAppId CHARACTER InputRoot.HTTPInputHeader."Request-App-Id";
+		-- declarar variable header
+		DECLARE refHeader REFERENCE TO InputRoot.HTTPInputHeader;
 		
-		-- validación de campos obligatorios
-		IF messageUuid IS NULL THEN
-			THROW EXCEPTION MESSAGE 500 VALUES('requestError' , 'Error en los headers, el header message-uuid es obligatorio'); 
-		END IF;
-		IF requestAppId IS NULL THEN
-			THROW EXCEPTION MESSAGE 500 VALUES('requestError' , 'Error en los headers, el header request-app-id es obligatorio'); 
-		END IF;
+		-- validar parametros de entrada
+		CALL com.ibus.common.procedures.util.validateParams(refHeader);
 		
 		RETURN TRUE;
 	END;

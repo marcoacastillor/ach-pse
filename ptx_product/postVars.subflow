@@ -25,7 +25,7 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="788,27" computeExpression="esql://routine/com.ibus.common.modules.fcd#GetRESTInfoError.Main">
         <translation xmi:type="utility:ConstantString" string="GetRESTInfoError"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="623,158" computeExpression="esql://routine/com.ibus.common.procedures.util#Common_ValidateHeaders.Main" computeMode="destinationAndMessage">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="623,158" computeExpression="esql://routine/#&quot;postVars.subflow_Validate_headers&quot;.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="Validate headers"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="1202,160" computeExpression="esql://routine/com.ibus.common.procedures.util#Common_CopyEntireMessageWithTrackingResponse.Main">

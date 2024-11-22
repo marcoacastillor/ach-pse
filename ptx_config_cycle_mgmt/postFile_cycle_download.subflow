@@ -28,7 +28,7 @@
       <nodes xmi:type="ComIbmCallableFlowInvoke.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="652,294" targetApplication="ptx_config_cycle_mgmt_app" targetEndpointName="postFile_cycle_download">
         <translation xmi:type="utility:ConstantString" string="Callable Flow Invoke"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="415,293" computeExpression="esql://routine/com.ibus.common.procedures.util#Common_ValidateHeaders.Main" computeMode="destinationAndMessage">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="415,293" computeExpression="esql://routine/#&quot;postFile_cycle_download.subflow_Validate_headers&quot;.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="Validate headers"/>
       </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="1109,294" computeExpression="esql://routine/com.ibus.common.procedures.util#SetTrackingResponse.Main" computeMode="destinationAndMessage">

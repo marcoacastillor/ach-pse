@@ -22,7 +22,7 @@
       <nodes xmi:type="ComIbmCallableFlowInvoke.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="654,286" targetApplication="ptx_config_cycle_mgmt_app" targetEndpointName="postCreate_exception">
         <translation xmi:type="utility:ConstantString" string="Callable Flow Invoke"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="417,285" computeExpression="esql://routine/com.ibus.common.procedures.util#Common_ValidateHeaders.Main" computeMode="destinationAndMessage">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="417,285" computeExpression="esql://routine/#&quot;postCreate_exception.subflow_Validate_headers&quot;.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="Validate headers"/>
       </nodes>
       <nodes xmi:type="ComIbmTryCatch.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="185,146">

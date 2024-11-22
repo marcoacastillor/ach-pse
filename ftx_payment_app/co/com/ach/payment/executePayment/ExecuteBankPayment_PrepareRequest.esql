@@ -28,4 +28,3 @@ CREATE COMPUTE MODULE ExecuteBankPayment_PrepareRequest
 	END;
 
 END MODULE;
-	

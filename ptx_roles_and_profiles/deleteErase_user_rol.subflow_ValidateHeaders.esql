@@ -1,0 +1,34 @@
+
+
+CREATE COMPUTE MODULE "deleteErase_user_rol.subflow_ValidateHeaders"
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE moduleSrv CONSTANT CHARACTER 'pendiente...';
+		DECLARE submoduleSrv CONSTANT CHARACTER 'pendiente...';
+		DECLARE actionSrv CONSTANT CHARACTER 'pendiente...';
+
+		-- copiar todo el mensaje
+		SET OutputRoot 				= InputRoot;
+		
+		-- copiar variables de sesión
+		SET OutputLocalEnvironment 	= InputLocalEnvironment;
+		
+		-- setear variables para auditoría
+		SET Environment.user.params.module 		= moduleSrv;
+		SET Environment.user.params.submodule 	= submoduleSrv;
+		SET Environment.user.params.action		= actionSrv;
+		
+		-- declarar variable header
+		DECLARE refHeader REFERENCE TO InputRoot.HTTPInputHeader;
+		
+		-- validar parametros de entrada
+		CALL com.ibus.common.procedures.util.validateParams(refHeader);
+		
+		-- envía para auditoria
+		/***************************************************************************/
+		SET Environment.service.needTrackingResp = TRUE;
+		PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+
+		RETURN TRUE;
+	END;
+END MODULE;
