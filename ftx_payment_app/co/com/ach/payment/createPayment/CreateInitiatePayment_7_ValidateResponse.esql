@@ -61,7 +61,7 @@ CREATE FUNCTION Main() RETURNS BOOLEAN
 			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.originator.name 		= 'PostEncryptCUS';
 			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.code				= refInp.messageResponse.responseCode;
 			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.property			= refInp.messageResponse.responseMessage;
-			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.additional_information	= refInp.messageResponse.responseDetail;
+			SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.additional_information	= COALESCE(refInp.errors.*.errorDetail, refInp.messageResponse.responseDetail);
 			
 			RETURN TRUE;
 		END IF;

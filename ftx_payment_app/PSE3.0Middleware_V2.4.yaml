@@ -58,8 +58,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - api_key: []
 
   /banks/{bankId}:
     get:
@@ -83,8 +81,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - api_key: []
 
   /customers/{customerId}:
     get:
@@ -109,8 +105,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - api_key: []
 
   /customers/{documentType}/{documentNumber}:
     get:
@@ -136,8 +130,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - api_key: []
 
   /products/{productTag}:
     get:
@@ -161,8 +153,6 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-      security:
-        - api_key: []
 
 components:
   schemas:
@@ -616,8 +606,3 @@ components:
           schema:
             $ref: '#/components/schemas/RetrieveProductResponse'
 
-  securitySchemes:
-    api_key:
-      type: apiKey
-      name: api_key
-      in: header

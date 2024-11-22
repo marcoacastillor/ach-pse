@@ -31,7 +31,7 @@
       <nodes xmi:type="ComIbmCallableFlowInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="81,72" callableInputEndpoint="Transversales_postValidateRules">
         <translation xmi:type="utility:ConstantString" string="Transversales_postValidateRules"/>
       </nodes>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="698,144" definitionFile="HU03ValidatedRulesAWS_V1.1.yaml" definitionType="swagger_20" operationName="postValidate-rules" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="698,144" definitionFile="HU03ValidatedRulesAWS_V1.1.yaml" definitionType="swagger_20" operationName="postValidate-rules" hostnameChecking="false" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="Validate-Rules"/>
         <parameters name="request-app-id" expression=""/>
         <parameters name="message-uuid" expression=""/>
