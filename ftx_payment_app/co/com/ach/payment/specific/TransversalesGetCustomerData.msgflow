@@ -3,7 +3,7 @@
     nsURI="co/com/ach/payment/specific/TransversalesGetCustomerData.msgflow" nsPrefix="co_com_ach_payment_specific_TransversalesGetCustomerData.msgflow">
   <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="RECTANGLE">
     <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1" defaultValueLiteral="http://6344fee8-a46d-4142-be39-2779c771b612.mock.pstmn.io">
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1" defaultValueLiteral="http://e0ef0ce7-b26f-4711-9d2c-6c8aaf1ee751.mock.pstmn.io">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backTimeout" name="backTimeout" lowerBound="1" defaultValueLiteral="3000">
@@ -31,7 +31,7 @@
       <nodes xmi:type="ComIbmCallableFlowInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="64,72" callableInputEndpoint="Transversales_getCustomerData">
         <translation xmi:type="utility:ConstantString" string="Transversales_getCustomerData"/>
       </nodes>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="701,146" definitionFile="PSE3.0Middleware_V2.4.yaml" definitionType="openapi_3" operationName="GetCustomerById" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="701,146" definitionFile="PSE3.0Middleware_V2.4.yaml" definitionType="openapi_3" operationName="GetCustomerById" hostnameChecking="false" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="PostCustomers"/>
         <parameters name="customerId" expression=""/>
         <parameters name="message-uuid" expression=""/>

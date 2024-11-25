@@ -212,8 +212,12 @@ CREATE COMPUTE MODULE specificPrepareError
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		-- setar código statusHttpCode
+		SET OutputRoot.Properties = InputRoot.Properties;
+		SET OutputRoot.MQRFH2 = InputRoot.MQRFH2;
+		
 		SET OutputRoot.HTTPReplyHeader."Content-Type" 					= 'application/json';
 		SET OutputRoot.HTTPReplyHeader."X-Original-HTTP-Status-Code" 	= 500;
+		
 		
 		-- copiar información de sesión
 		SET OutputLocalEnvironment = InputLocalEnvironment;
