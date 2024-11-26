@@ -6,7 +6,7 @@
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.operationName" name="operationName" lowerBound="1" defaultValueLiteral="patchCycleid">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1" defaultValueLiteral="https://alb-generator-trx-mgmtx-362950351.us-east-1.elb.amazonaws.com:8443">
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1" defaultValueLiteral="https://149.130.173.17.nip.io">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backTimeout" name="backTimeout" lowerBound="1" defaultValueLiteral="60">
