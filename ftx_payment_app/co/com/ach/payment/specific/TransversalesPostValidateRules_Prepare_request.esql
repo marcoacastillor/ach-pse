@@ -25,19 +25,20 @@ CREATE COMPUTE MODULE TransversalesPostValidateRules_Prepare_request
 		MOVE refInp TO refInp.msgs;
 		
 		SET refOut.productId                             = refInp.prop.producttag;
-		SET refOut.entityCode                            = '';
+		SET refOut.entityCode                            = refInp.origen.Data.payment_information.credit_transfer_transaction_information.creditor.identification.organisation_identification.anyBIC;
 		SET refOut.financialInstitutionCode              = refInp.respgetCustData.data.financialInstitutionCode;
 		SET refOut.serviceCode                           = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.service_code;
-		SET refOut.transactionValue                      = '';
-		SET refOut.vatValue                              = '';
-		SET refOut.ticketId                              = '';
-		SET refOut.entityurl                             = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.entity_url;  ---ACTULIZAR A RESPUESTA DE PRODUCTO
-		SET refOut.userType                              = refInp.respgetCustData.data.customerType;
+		SET refOut.transactionValue                      = refInp.origen.Data.credit_transfer_transaction_information.Item.amount.instructed_amount;
+		SET refOut.vatValue                              = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.tax.total_tax_amount;
+		SET refOut.ticketId                              = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.payment_identification;
+		SET refOut.entityurl                             = COALESCE(refInp.respconsultaproducto.data.PSEBankListURL, refInp.respconsultaproducto.data.PSEBankKeyListURL); 		
+		
+		SET refOut.userType                              = refInp.origen.Data.payment_information.credit_transfer_transaction_information.creditor.identification.organisation_identification.other.Item.identification;
 		SET refOut.referenceNumber1                      = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.reference_1;
 		SET refOut.referenceNumber2                      = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.reference_2;
 		SET refOut.referenceNumber3                      = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.reference_3;
-		SET refOut.soliciteDate                          = refInp.origen.Data.payment_information.requested_execution_date.dateTime;    --------validar----------
-		SET refOut.paymentDescription                    = '';
+		SET refOut.soliciteDate                          = refInp.origen.Data.payment_information.requested_execution_date.dateTime;
+		SET refOut.paymentDescription                    = refInp.origen.Data.payment_information.credit_transfer_transaction_information.purpose.propietary;
 		SET refOut.identificationType                    = refInp.origen.Data.payment_information.debtor.identification.private_identification.other.scheme_name.code;
 		SET refOut.identificationNumber                  = refInp.origen.Data.payment_information.debtor.identification.private_identification.other.identification;
 		SET refOut.fullName                              = refInp.origen.Data.payment_information.debtor.name;
@@ -52,16 +53,16 @@ CREATE COMPUTE MODULE TransversalesPostValidateRules_Prepare_request
 		SET refOut.beneficiaryIdentificationType    	 = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.creditor.identification.organisation_identification.other.Item.scheme_name.code;
 		SET refOut.beneficiaryIdentification             = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.creditor.identification.organisation_identification.other.Item.identification;
 		SET refOut.indicator4per1000                     = '';
-		SET refOut.entityType                            = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.creditor.identification.organisation_identification.anyBIC;
-		SET refOut.entityCodeTr                          = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.payment_identification.instruction_identification;
-		SET refOut.entityNit                             = refInp.origen.Data.payment_information.debtor.identification.private_identification.other.identification;
+		SET refOut.entityType                            = '';--refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.creditor.identification.organisation_identification.anyBIC;
+		SET refOut.entityCodeTr                          = '';--refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.payment_identification.instruction_identification;
+		SET refOut.entityNit                             = '';--refInp.origen.Data.payment_information.debtor.identification.private_identification.other.identification;
 		SET refOut.entityEANCode                         = '';
-		SET refOut.modalityPayments                      = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.purpose.code;
-		SET refOut.typeVinculation                       = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.purpose.propietary;
-		SET refOut.entityName                            = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.creditor.name;
-		SET refOut.economicActivity                      = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.creditor_ciiu;
-		SET refOut.codeEconomicActivity                  = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.creditor_ciiu;
-		SET refOut.clientRegistry                        = refInp.origen.Data.payment_information.payment_information_identification;
+		SET refOut.modalityPayments                      = '';--refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.purpose.code;
+		SET refOut.typeVinculation                       = '';--refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.purpose.propietary;
+		SET refOut.entityName                            = '';--refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item.creditor.name;
+		SET refOut.economicActivity                      = '';--refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.creditor_ciiu;
+		SET refOut.codeEconomicActivity                  = '';--refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.creditor_ciiu;
+		SET refOut.clientRegistry                        = '';--refInp.origen.Data.payment_information.payment_information_identification;
 		SET refOut.parameterPOST                         = '';
 		SET refOut.entityDirection                       = refInp.origen.Data.payment_information.debtor.postal_address.address_line;
 		SET refOut.entityCountry                         = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.transunion_info.device_rea_ip_co;

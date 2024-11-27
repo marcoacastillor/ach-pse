@@ -23,8 +23,12 @@ CREATE FUNCTION Main() RETURNS BOOLEAN
 		IF refInp.headers.httpStatusCode = '201' THEN
 			
 			DECLARE urlred CHARACTER;
-			IF (UCASE(InputRoot.MQRFH2.usr.msgs.respgetCustData.data.agilPaymentEnable) = 'TRUE') THEN
-				SET urlred = SUBSTRING(InputRoot.MQRFH2.usr.msgs.respProducts.data.PSEBankKeyListURL BEFORE '=') || '/' ||refInp.data.data;
+			IF (UCASE(InputRoot.MQRFH2.usr.prop.agilPaymentEnable) = 'TRUE') THEN
+				IF EXISTS(InputRoot.MQRFH2.usr.msgs.respGetKeyList.data.authInformation.Item[]) THEN
+					SET urlred = SUBSTRING(InputRoot.MQRFH2.usr.msgs.respProducts.data.PSEBankKeyListURL BEFORE '=') || '/' ||refInp.data.data;
+				ELSE
+					SET urlred = SUBSTRING(InputRoot.MQRFH2.usr.msgs.respProducts.data.PSEBankListURL BEFORE '=') || '/' ||refInp.data.data;	
+				END IF;
 			ELSE
 				SET urlred = SUBSTRING(InputRoot.MQRFH2.usr.msgs.respProducts.data.PSEBankListURL BEFORE '=') || '/' ||refInp.data.data;
 			END IF;

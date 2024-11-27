@@ -21,7 +21,8 @@ CREATE FUNCTION Main() RETURNS BOOLEAN
 		IF refInp.headers.httpStatusCode = '200' THEN
 			--copiar contexto
 			SET OutputRoot.MQRFH2 	  = InputRoot.MQRFH2;
-			SET OutputRoot.MQRFH2.usr.msgs.respgetCustData = refInp;				
+			SET OutputRoot.MQRFH2.usr.msgs.respgetCustData = refInp;
+			SET OutputRoot.MQRFH2.usr.prop.agilPaymentEnable = 	refInp.data.agilPaymentEnable;			
 			--copias mensaje
 			SET refOut = InputRoot.MQRFH2.usr.msgs.origen.Data;
 	
