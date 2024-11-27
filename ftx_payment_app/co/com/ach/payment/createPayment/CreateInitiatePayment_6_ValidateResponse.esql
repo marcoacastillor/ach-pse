@@ -24,8 +24,13 @@ CREATE FUNCTION Main() RETURNS BOOLEAN
 			SET OutputRoot.MQRFH2.usr.msgs.respCreateTrx = refInp;				
 			--copias mensaje
 			SET refOut = InputRoot.MQRFH2.usr.msgs.origen.Data;
-	
-			RETURN TRUE;
+			
+			IF (UCASE(InputRoot.MQRFH2.usr.prop.agilPaymentEnable) = 'TRUE') THEN
+				RETURN TRUE;
+			ELSE
+				PROPAGATE TO TERMINAL 'out2' DELETE NONE;				
+			END IF;
+				
 		ELSE
 
 			-- si no es exitoso, responde al servicio

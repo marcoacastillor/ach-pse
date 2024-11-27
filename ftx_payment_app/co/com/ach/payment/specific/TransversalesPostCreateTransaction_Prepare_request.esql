@@ -42,7 +42,7 @@ CREATE COMPUTE MODULE TransversalesPostCreateTransaction_Prepare_request
 		SET refOut.remittanceInformation.merchantCustomerIdentificationType = '';
 		SET refOut.remittanceInformation.merchantCustomerIdentification     = '';
 		SET refOut.remittanceInformation.merchantCustomerName               = '';
-		SET refOut.remittanceInformation.merchantCustomerCategoryCode       = '';
+		SET refOut.remittanceInformation.merchantCustomerCategoryCode       = '';  --- datos del comercio
 		SET refOut.remittanceInformation.serviceCode                        = '';
 		SET refOut.remittanceInformation.reference1                         = '';
 		SET refOut.remittanceInformation.reference2                         = '';
@@ -70,7 +70,7 @@ CREATE COMPUTE MODULE TransversalesPostCreateTransaction_Prepare_request
 		SET refOut.initiation.vinculationType                               = '';
 		SET refOut.initiation.economicActivity                              = '';
 		SET refOut.initiation.codeEconomicActivity                          = '';
-		SET refOut.initiation.channel                                       = '';
+		SET refOut.initiation.channel                                       = '';  --- salvo producid debe provenir del comercio
 		SET refOut.initiation.geolocalization                               = '';
 		SET refOut.initiation.debitKey                                      = '';
 		SET refOut.initiation.clientRegistry                                = '';
@@ -83,10 +83,10 @@ CREATE COMPUTE MODULE TransversalesPostCreateTransaction_Prepare_request
 
 		SET refOut.collection.method                                        = '';
 		SET refOut.collection.account                                       = '';
-		SET refOut.collection.accountState                                  = '';
+		SET refOut.collection.accountState                                  = '';  
 		SET refOut.collection.accountAprobation                             = '';
-		SET refOut.collection.accountNIT                                    = '';
-		SET refOut.collection.accountType                                   = '';
+		SET refOut.collection.accountNIT                                    = '';		
+		SET refOut.collection.accountType                                   = '';	-- validar    (usuario pagador  info de la cuenta)
 		SET refOut.collection.financialInstitucion                          = '';
 		SET refOut.collection.FinancialInstitutionId                        = '';
 		SET refOut.collection.serviceCodeMulticredit                        = '';
@@ -101,7 +101,7 @@ CREATE COMPUTE MODULE TransversalesPostCreateTransaction_Prepare_request
 
 		SET refOut.thirdParty.identificationType                            = '';
 		SET refOut.thirdParty.identificationNumber                          = '';
-		SET refOut.thirdParty.name                                          = '';
+		SET refOut.thirdParty.name                                          = '';   --  pagos a nombre de un tercero  por ejemplo servicios publicos de un tercero
 		SET refOut.thirdParty.phonenumber                                   = '';
 		SET refOut.thirdParty.email                                         = '';		
 		

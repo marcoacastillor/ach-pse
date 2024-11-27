@@ -307,12 +307,12 @@ UserExits:
   #userExitPath: ''              # Specify the path or paths containing the user exits to be loaded. Multiple paths should be separated by colons on Unix and semi-colons on Windows.
 
 BrokerRegistry:
-  #brokerKeystoreType: 'JKS'                          # Key store type, can be 'JKS' or 'PKCS12'. Default is JKS.
+  #brokerKeystoreType: 'JKS'                          # Key store type
   #brokerKeystoreFile: ''                             # Location of the broker key store
   #brokerKeystorePass: 'brokerKeystore::password'     # Resource alias containing the key store password
-  #brokerTruststoreType: 'JKS'                        # Trust store type, can be 'JKS' or 'PKCS12'. Default is JKS.
-  #brokerTruststoreFile: ''                           # Location of the broker trust store
-  #brokerTruststorePass: 'brokerTruststore::password' # Resource alias containing the trust store password
+  brokerTruststoreType: 'JKS'                        # Trust store type
+  brokerTruststoreFile: 'C:\ace\JKS_APIC\test.jks'                           # Location of the broker trust store
+  brokerTruststorePass: 'brokerTruststore::admin123' # Resource alias containing the trust store password
   #brokerCRLFileList: ''
   #brokerEnableCRLDP: ''
   #allowSSLv3: ''
