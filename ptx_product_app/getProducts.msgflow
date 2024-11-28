@@ -12,6 +12,7 @@
     <translation xmi:type="utility:TranslatableString" key="getProducts" bundleName="getProducts" pluginId="ptx_product_app"/>
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ptx_product_app/icons/full/obj16/getProducts.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ptx_product_app/icons/full/obj30/getProducts.gif"/>
+    <longDescription xmi:type="utility:ConstantString" string="https://alb-payment-orders-713699848.us-east-1.elb.amazonaws.com:8443&#xD;&#xA;&#xD;&#xA;"/>
     <composition>
       <nodes xmi:type="ComIbmTryCatch.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="209,20">
         <translation xmi:type="utility:ConstantString" string="Try Catch"/>
@@ -31,7 +32,7 @@
       <nodes xmi:type="ComIbmCallableFlowInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="10,20" callableInputEndpoint="getProducts">
         <translation xmi:type="utility:ConstantString" string="Callable Input"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="419,20" computeExpression="esql://routine/common#prepare_error.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="431,15" computeExpression="esql://routine/common#prepare_error.Main">
         <translation xmi:type="utility:ConstantString" string="Throw error"/>
       </nodes>
       <nodes xmi:type="ComIbmCallableFlowReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="1049,92">

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCallableFlowInput.msgnode="ComIbmCallableFlowInput.msgnode" xmlns:ComIbmCallableFlowReply.msgnode="ComIbmCallableFlowReply.msgnode" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmRESTRequest.msgnode="ComIbmRESTRequest.msgnode" xmlns:ComIbmTryCatch.msgnode="ComIbmTryCatch.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility"
-    nsURI="co/com/ach/payment/executePayment/ExecuteBankPayment.msgflow" nsPrefix="co_com_ach_payment_executePayment_ExecuteBankPayment.msgflow">
+    nsURI="co/com/ach/payment/specific/EntidadBancariaExecuteBankPayment.msgflow" nsPrefix="co_com_ach_payment_specific_EntidadBancariaExecuteBankPayment.msgflow">
   <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="RECTANGLE">
     <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1" defaultValueLiteral="http://11619f45-0766-4f35-a3ba-24cc813fbfb9.mock.pstmn.io">
@@ -9,12 +9,12 @@
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backTimeout" name="backTimeout" lowerBound="1" defaultValueLiteral="3000">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eStructuralFeatures>
-    <translation xmi:type="utility:TranslatableString" key="ExecuteBankPayment" bundleName="co/com/ach/payment/executePayment/ExecuteBankPayment" pluginId="ftx_payment_app"/>
-    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ftx_payment_app/icons/full/obj16/ExecuteBankPayment.gif"/>
-    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ftx_payment_app/icons/full/obj30/ExecuteBankPayment.gif"/>
+    <translation xmi:type="utility:TranslatableString" key="EntidadBancariaExecuteBankPayment" bundleName="co/com/ach/payment/specific/EntidadBancariaExecuteBankPayment" pluginId="ftx_payment_app"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ftx_payment_app/icons/full/obj16/EntidadBancariaExecuteBankPayment.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ftx_payment_app/icons/full/obj30/EntidadBancariaExecuteBankPayment.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmCallableFlowInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="72,104" callableInputEndpoint="Payment_ExecuteBank">
-        <translation xmi:type="utility:ConstantString" string="CallableInput_ExecuteBankPayment"/>
+      <nodes xmi:type="ComIbmCallableFlowInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="72,104" callableInputEndpoint="EntBancaria_InitBankPayment">
+        <translation xmi:type="utility:ConstantString" string="EntBancaria_InitBankPayment"/>
       </nodes>
       <nodes xmi:type="ComIbmTryCatch.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="307,105">
         <translation xmi:type="utility:ConstantString" string="Try Catch"/>
@@ -34,7 +34,7 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="946,177" computeExpression="esql://routine/co.com.ach.payment.executePayment#ExecuteBankPayment_PrepareResponse.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="PrepareResponse"/>
       </nodes>
-      <nodes xmi:type="ComIbmCallableFlowReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="1181,179">
+      <nodes xmi:type="ComIbmCallableFlowReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="1173,179">
         <translation xmi:type="utility:ConstantString" string="Callable Reply"/>
       </nodes>
       <nodes xmi:type="ComIbmCallableFlowReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="734,103">
@@ -51,9 +51,9 @@
     </composition>
     <propertyOrganizer>
       <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.backUrl">
-        <propertyName xmi:type="utility:TranslatableString" key="Property.backUrl" bundleName="co/com/ach/payment/executePayment/ExecuteBankPayment" pluginId="ftx_payment_app"/>
+        <propertyName xmi:type="utility:TranslatableString" key="Property.backUrl" bundleName="co/com/ach/payment/specific/EntidadBancariaExecuteBankPayment" pluginId="ftx_payment_app"/>
         <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.backTimeout">
-          <propertyName xmi:type="utility:TranslatableString" key="Property.backTimeout" bundleName="co/com/ach/payment/executePayment/ExecuteBankPayment" pluginId="ftx_payment_app"/>
+          <propertyName xmi:type="utility:TranslatableString" key="Property.backTimeout" bundleName="co/com/ach/payment/specific/EntidadBancariaExecuteBankPayment" pluginId="ftx_payment_app"/>
         </propertyDescriptor>
       </propertyDescriptor>
     </propertyOrganizer>

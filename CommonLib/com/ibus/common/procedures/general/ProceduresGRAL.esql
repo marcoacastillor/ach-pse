@@ -211,16 +211,9 @@ END;
 CREATE COMPUTE MODULE specificPrepareError
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		-- setar código statusHttpCode
-		SET OutputRoot.Properties = InputRoot.Properties;
-		SET OutputRoot.MQRFH2 = InputRoot.MQRFH2;
-		
-		SET OutputRoot.HTTPReplyHeader."Content-Type" 					= 'application/json';
-		SET OutputRoot.HTTPReplyHeader."X-Original-HTTP-Status-Code" 	= 500;
-		
-		
 		-- copiar información de sesión
 		SET OutputLocalEnvironment = InputLocalEnvironment;
+		SET OutputLocalEnvironment.WrittenDestination = NULL;
 		
 		--Declarar referencia a lista de excepciones.
 		DECLARE refExceptionList REFERENCE TO InputExceptionList;
@@ -260,17 +253,27 @@ END MODULE;
 CREATE COMPUTE MODULE specificPrepareErrorAggregation
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
-		-- declarar referencias a objetos de entrada
-		DECLARE refEchoMessage REFERENCE TO InputRoot.ComIbmAggregateReplyBody.EchoMessage;
-		MOVE refEchoMessage LASTCHILD;
-		MOVE refEchoMessage LASTCHILD;
+		-- declarar referencias a mensajes de entrada
+		DECLARE refGroups REFERENCE TO InputRoot.ComIbmGroupCompleteNode;
+		MOVE refGroups LASTCHILD;
+		MOVE refGroups LASTCHILD;
+		
+		-- referencias a mensaje original y respuesta
+		DECLARE refOriginal REFERENCE TO refGroups.OrigenRq;
+		
+		-- validar si es exitoso, continúa proceso
+		-- mensaje de respuesta
+		MOVE refOriginal LASTCHILD;
+		MOVE refOriginal LASTCHILD;
+		MOVE refOriginal LASTCHILD;
+		MOVE refOriginal LASTCHILD;
+		
+		-- propagar headers
+		SET OutputLocalEnvironment.Destination.CallableFlow.Reply.ReplyIdentifier = CAST(refOriginal.session.Destination.CallableFlow.Reply.ReplyIdentifier AS BLOB); 
 		
 		-- setar código statusHttpCode
 		SET OutputRoot.HTTPReplyHeader."Content-Type" 					= 'application/json';
 		SET OutputRoot.HTTPReplyHeader."X-Original-HTTP-Status-Code" 	= 500;
-		
-		-- copiar información de sesión
-		SET OutputLocalEnvironment = InputLocalEnvironment;
 		
 		--Declarar referencia a lista de excepciones.
 		DECLARE refExceptionList REFERENCE TO InputExceptionList;

@@ -13,7 +13,7 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ptx_transaction_query_app/icons/full/obj16/postGet_trx_info.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ptx_transaction_query_app/icons/full/obj30/postGet_trx_info.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="702,156" definitionFile="Api-Transaction-Query.yaml" definitionType="swagger_20" operationName="postGet-trx-info" hostnameChecking="false" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="737,93" definitionFile="Api-Transaction-Query.yaml" definitionType="swagger_20" operationName="postGet-trx-info" hostnameChecking="false" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="postGTrxInfo"/>
         <parameters name="request-app-id" expression=""/>
         <parameters name="message-uuid" expression=""/>

@@ -1,0 +1,15 @@
+BROKER SCHEMA Initiate
+
+
+CREATE COMPUTE MODULE RequestMessage
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- copiar información para respuesta
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		
+		-- copiar mensaje
+		SET OutputRoot = InputRoot;
+					
+		RETURN TRUE;
+	END;
+END MODULE;

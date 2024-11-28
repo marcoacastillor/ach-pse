@@ -1,0 +1,28 @@
+BROKER SCHEMA co.com.ach.payment.executePayment
+
+
+CREATE COMPUTE MODULE ExecuteBankPayment_1_PrepareRequestScoreByPrdAndCus
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- copiar httpDHeader
+		SET OutputRoot.HTTPRequestHeader = InputRoot.HTTPRequestHeader;
+		
+		-- copiar variables de sesión
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		
+		-- referencia mensaje entrada
+		DECLARE refInp REFERENCE TO InputRoot.JSON;
+		MOVE refInp LASTCHILD;
+		
+		-- create field
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		-- set scope para obtener token
+		-- TODO: Validar mapeo productId
+		SET refOut.productId 	= refInp.payment_information.credit_transfer_transaction_information.Item[1].creditor.identification.organisation_identification.other.Item[2].identification;
+		SET refOut.cus			= refInp.group_header.message_identification;
+		
+		RETURN TRUE;
+	END;
+END MODULE;

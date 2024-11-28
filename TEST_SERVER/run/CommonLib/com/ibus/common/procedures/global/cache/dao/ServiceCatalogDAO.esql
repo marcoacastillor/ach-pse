@@ -1,0 +1,78 @@
+/*
+ *
+ * File name: LogDAO.esql
+ *
+ * Purpose:   ESQL empleado para consultas en el catalogo de servicios
+ *
+ * Authors:   Assist
+ *            
+ *
+ * Version:   1.0
+ *
+ * @copyright Assist  All rights reserved.
+ *
+ */
+
+BROKER SCHEMA com.ibus.common.procedures.global.cache.dao
+
+/*
+* Obtiene la configuración de servicio de integtración en la base de datos
+*
+* Parameters:
+* IN:  CHARACTER keyName - Llave de consulta del servicio
+* OUT: REFERENCE service - Referencia a lista con informacion del servicio
+*
+*/
+CREATE PROCEDURE getServiceInfo(IN keyName CHARACTER, IN service REFERENCE) BEGIN
+	DECLARE sql CHARACTER 'SELECT 
+					SERVICE.ID, SERVICE.DOMAIN, SERVICE.TYPE, SERVICE.KEY_NAME, SERVICE.NAME, SERVICE.OPERATION_NAME, 
+					SERVICE.STATUS,	SERVICE.ATTEMPTS, SERVICE.LOG_TYPE, SERVICE.LOG_TRACE,SERVICE.LOG_QUEUE,
+					SERVICE_LOG_REFERENCE.REFERENCE_1,SERVICE_LOG_REFERENCE.REFERENCE_2,SERVICE_LOG_REFERENCE.REFERENCE_3,
+					SERVICE_CONTACT.RECIPIENT, SERVICE_CONTACT.COPY, SERVICE_NOTIFICATIONS.SUBJECT, 
+					SERVICE_NOTIFICATIONS.VBODY, SERVICE_NOTIFICATIONS.NUM_PER_HOUR
+					FROM SERVICE
+					LEFT JOIN SERVICE_LOG_REFERENCE ON SERVICE.ID = SERVICE_LOG_REFERENCE.SERVICE_ID
+					LEFT JOIN SERVICE_NOTIFICATIONS ON SERVICE.ID = SERVICE_NOTIFICATIONS.SERVICE_ID
+					LEFT JOIN SERVICE_CONTACT ON SERVICE_NOTIFICATIONS.SERVICE_CONTACT_ID = SERVICE_CONTACT.ID
+					WHERE SERVICE.KEY_NAME = ?';
+	SET service.values[] = PASSTHRU(sql,keyName);
+	SET service.values.ATTEMPTS = CAST(service.values.ATTEMPTS AS CHARACTER FORMAT '0');
+	SET service.values.STATUS 	= CAST(service.values.STATUS AS CHARACTER FORMAT '0');
+	SET service.values.LOG_TYPE 	= CAST(service.values.LOG_TYPE AS CHARACTER FORMAT '0');
+	
+END;
+
+
+/*
+ * Obtiene la configuración de proveedores servicio de integracion.
+ *
+ * Parameters:
+ * IN:  CHARACTER serviceId - Identificador del servicio
+ * OUT: REFERENCE service - Referencia a lista con informacion del servicio
+ *
+ */
+CREATE PROCEDURE getServiceProvider(IN serviceId CHARACTER, IN provider REFERENCE) BEGIN 
+	DECLARE sql CHARACTER 'SELECT SERVICE_PROVIDER.PROVIDER_NAME, SERVICE_PROVIDER.TARGET_SERVICE, SERVICE_PROVIDER.QUEUE_NAME,
+						   SERVICE_PROVIDER.PROTOCOL, SERVICE_PROVIDER.URL, SERVICE_PROVIDER.ACTION, SERVICE_PROVIDER.DB_SCHEMA, 
+						   SERVICE_PROVIDER.DB_DATASOURCE, SERVICE_LIST.SERVICE_ORDER 
+						   FROM SERVICE INNER JOIN SERVICE_LIST ON SERVICE.ID = SERVICE_LIST.SERVICE_ID
+						   INNER JOIN SERVICE_PROVIDER ON SERVICE_PROVIDER.ID = SERVICE_LIST.PROVIDER_ID
+						   WHERE SERVICE.ID = ? ORDER BY SERVICE_LIST.SERVICE_ORDER ASC';
+	SET provider.values[] = PASSTHRU(sql, serviceId);	
+END;
+
+
+/*
+ * Obtiene la configuración de campos a enmascarar en logs
+ *
+ * Parameters:
+ * IN:  CHARACTER serviceId - Identificador del servicio
+ * OUT: REFERENCE service - Referencia a lista con informacion del servicio
+ *
+ */
+CREATE PROCEDURE getServiceMaskField(IN serviceId CHARACTER, IN maskList REFERENCE) BEGIN 
+	DECLARE sql CHARACTER 'SELECT MASK_TYPE, FIELD  FROM SERVICE 
+						   INNER JOIN SERVICE_LOG_MASKING ON SERVICE.ID = SERVICE_LOG_MASKING.SERVICE_ID
+						   WHERE SERVICE.ID = ?';
+	SET maskList.values[] = PASSTHRU(sql, serviceId);
+END;			

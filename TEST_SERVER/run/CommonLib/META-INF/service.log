@@ -1,0 +1,82 @@
+
+==============================================
+
+!Thu Nov 28 00:36:43 COT 2024
+
+Successfully added file CommonLib\com\ibus\common\functions\error\ErrorStatus.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\functions\general\FunctionIBS.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\functions\general\FunctionIBS.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\functions\general\FunctionsCommon.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\functions\general\FunctionsGRAL.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\fcd\ModulesFCD_BD.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\fcd\ModulesFCD_BD.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\fcd\ModulesFCD_BD.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\fcd\ModulesFCD_BD.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\fcd\ModulesFCD_FTP.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\fcd\ModulesFCD_FTP.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\fcd\ModulesFCD_FTP.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\fcd\ModulesFCD_FTP.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\fcd\ModulesFCD_REST.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\fcd\ModulesFCD_REST.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\fcd\ModulesFCD_REST.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\fcd\ModulesFCD_REST.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\fcd\ModulesFCD_WS.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\fcd\ModulesFCD_WS.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\fcd\ModulesFCD_WS.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\general\ModulesGRAL.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\general\ModulesGRAL.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\general\ModulesGRAL.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\general\ModulesRestGRAL.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\general\ModulesRestGRAL.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\modules\general\ModulesRestGRAL.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\procedures\general\ProceduresGRAL.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\procedures\general\ProceduresGRAL.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\procedures\global\cache\dao\DPInstanciasDAO.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\procedures\global\cache\dao\ErrorDAO.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\procedures\global\cache\dao\HomologationDAO.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\procedures\global\cache\dao\ServiceCatalogDAO.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\procedures\util\ExceptionUtil.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\procedures\util\Modules.esql to BAR file.
+
+Successfully added file CommonLib\com\ibus\common\procedures\util\TrackFunctions.esql to BAR file.
+
+Successfully added file CommonLib\library.descriptor to BAR file.
+
+Successfully added file CommonLib\library.descriptor to BAR file.
+
+Successfully added file CommonLib\library.descriptor to BAR file.
+
+Successfully added file CommonLib\library.descriptor to BAR file.
