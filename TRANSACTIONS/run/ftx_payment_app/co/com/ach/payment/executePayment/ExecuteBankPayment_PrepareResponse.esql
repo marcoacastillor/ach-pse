@@ -1,0 +1,45 @@
+BROKER SCHEMA co.com.ach.payment.executePayment
+
+
+CREATE COMPUTE MODULE ExecuteBankPayment_PrepareResponse
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- copiar todo el mensaje
+		--SET OutputRoot = InputRoot;
+		
+		--TODO: Solo para pruebas. Cuando haya un backend configurado se debe quitar esta parte
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		SET refOut.group_header.message_identification 	= UUIDASCHAR;
+		SET refOut.group_header.creation_date_time 		= CURRENT_TIMESTAMP;
+		SET refOut.group_header.number_of_transactions 	= 1;
+		SET refOut.group_header.control_sum 			= 24000;
+		
+		SET refOut.(JSON.Array)original_payment_information_and_status.original_payment_information_identification 																				= 'factura-31';
+		SET refOut.(JSON.Array)original_payment_information_and_status.transaction_information_and_status.transaction_status 																	= 'Transacción exitosa';
+		SET refOut.(JSON.Array)original_payment_information_and_status.transaction_information_and_status.status_reason_information.originator.name 											= 'Banco av villas';
+		SET refOut.(JSON.Array)original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.code 												= '200';
+		SET refOut.(JSON.Array)original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.property 											= 'Se realizó el pago 35454545 exitorsamente';
+		SET refOut.(JSON.Array)original_payment_information_and_status.transaction_information_and_status.status_reason_information.additional_information										= '';
+		SET refOut.(JSON.Array)original_payment_information_and_status.original_transaction_reference.amount.instructed_amount 																	= '24000';
+		SET refOut.(JSON.Array)original_payment_information_and_status.original_transaction_reference.supplementary_data.place_and_name															= 'additional_payment_info';
+		SET refOut.(JSON.Array)original_payment_information_and_status.original_transaction_reference.supplementary_data.(JSON.Array)any.additional_payment_info.reference_1					= '190.85.74.123';
+		SET refOut.(JSON.Array)original_payment_information_and_status.original_transaction_reference.supplementary_data.(JSON.Array)any.additional_payment_info.reference_2					= 'NIT';
+		SET refOut.(JSON.Array)original_payment_information_and_status.original_transaction_reference.supplementary_data.(JSON.Array)any.additional_payment_info.reference_3					= '43006';
+		SET refOut.(JSON.Array)original_payment_information_and_status.original_transaction_reference.supplementary_data.(JSON.Array)any.additional_payment_info.service_code					= '30001';
+		SET refOut.(JSON.Array)original_payment_information_and_status.original_transaction_reference.supplementary_data.(JSON.Array)any.additional_payment_info.entity_url						= 'http://elsitio.com';
+		SET refOut.(JSON.Array)original_payment_information_and_status.original_transaction_reference.supplementary_data.(JSON.Array)any.additional_payment_info.creditor_ciiu					= '120023';
+		SET refOut.(JSON.Array)original_payment_information_and_status.original_transaction_reference.supplementary_data.(JSON.Array)any.additional_payment_info.transaction_cycle				= '1';
+		SET refOut.(JSON.Array)original_payment_information_and_status.original_transaction_reference.supplementary_data.(JSON.Array)any.additional_payment_info.device_finger_print			= '';
+		SET refOut.(JSON.Array)original_payment_information_and_status.original_transaction_reference.supplementary_data.(JSON.Array)any.additional_payment_info.fraud_response_code			= 'yes';
+		SET refOut.(JSON.Array)original_payment_information_and_status.original_transaction_reference.supplementary_data.(JSON.Array)any.additional_payment_info.fraud_pre_authorization_score	= '23';
+		SET refOut.(JSON.Array)original_payment_information_and_status.original_transaction_reference.supplementary_data.(JSON.Array)any.additional_payment_info.bank_trazability_code			= 'sdf';
+		SET refOut.(JSON.Array)original_payment_information_and_status.original_transaction_reference.supplementary_data.(JSON.Array)any.additional_payment_info.flow_type						= 'na';
+		SET refOut.(JSON.Array)original_payment_information_and_status.original_transaction_reference.supplementary_data.(JSON.Array)any.additional_payment_info.bank_key						= 'na';
+		SET refOut.(JSON.Array)original_payment_information_and_status.original_transaction_reference.supplementary_data.(JSON.Array)any.additional_payment_info.bank_key_status				= 'na';
+		--Fin TODO.
+		
+		RETURN TRUE;
+	END;
+END MODULE;

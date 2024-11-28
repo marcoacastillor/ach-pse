@@ -1,193 +1,133 @@
-2024-10-02 13:28:12.019544Z: [Thread 4620] (Msg 1/1) BIP1990I: El servidor de integración 'TRANSACTIONS' está empezando la inicialización; versión '12.0.12.2' (64 bits) 
-2024-10-02 13:28:21.408404Z: [Thread 4620] (Msg 1/1) BIP9905I: Inicializando gestores de recursos. 
-2024-10-02 13:28:26.161174Z: [Thread 4620] (Msg 1/1) BIP10112I: The resources from 'mqsicdc.par' have not been loaded because the runtime component 'ChangeDataCapture' has not been enabled. Reason: 'Restricted by Java Runtime selected'. Further detail: 'C:\Program Files\IBM\ACE\12.0.12.2\common\jdk\jre\embedded.java.yaml'. 
-2024-10-02 13:28:27.519232Z: [Thread 4620] (Msg 1/1) BIP10112I: The resources from 'imbopentelemetry.lil' have not been loaded because the runtime component 'OpenTelemetry' has not been enabled. Reason: 'Integration Server Configuration'. Further detail: 'server.conf.yaml'. 
-2024-10-02 13:28:52.783040Z: [Thread 4620] (Msg 1/1) BIP9906I: Leyendo recursos desplegados. 
-2024-10-02 13:28:59.020948Z: [Thread 13016] (Msg 1/1) BIP2866I: La administración de seguridad de IBM App Connect Enterprise es inactive. 
-2024-10-02 13:28:59.041816Z: [Thread 13016] (Msg 1/1) BIP3132I: El escucha HTTP ha empezado a escuchar en el puerto '7600' para conexiones 'RestAdmin http'. 
-2024-10-02 13:28:59.070344Z: [Thread 4620] (Msg 1/1) BIP1991I: El servidor de integración ha terminado la inicialización. 
-2024-10-02 13:29:11.790314Z: [Thread 1852] (Msg 1/1) BIP2152I: Se ha recibido el mensaje de configuración. 
-2024-10-02 13:29:11.976702Z: [Thread 1852] (Msg 1/1) BIP2155I: A punto de 'Initialize' el recurso desplegado 'CommonLib' de tipo 'SharedLibrary'. 
-2024-10-02 13:29:12.469515Z: [Thread 1852] (Msg 1/1) BIP9332I: SharedLibrary 'CommonLib' se ha created correctamente. 
-2024-10-02 13:29:12.470101Z: [Thread 1852] (Msg 1/1) BIP9326I: El origen 'CommonLibproject.generated.bar' se ha desplegado correctamente. 
-2024-10-02 13:29:12.471366Z: [Thread 1852] (Msg 1/1) BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
-2024-10-02 13:29:26.773666Z: [Thread 1852] (Msg 1/1) BIP2152I: Se ha recibido el mensaje de configuración. 
-2024-10-02 13:29:26.875984Z: [Thread 1852] (Msg 1/1) BIP2155I: A punto de 'TearDown' el recurso desplegado 'CommonLib' de tipo 'SharedLibrary'. 
-2024-10-02 13:29:27.072182Z: [Thread 1852] (Msg 1/1) BIP2155I: A punto de 'Initialize' el recurso desplegado 'ptx_transaction_query' de tipo 'RestAPI'. 
-2024-10-02 13:29:27.152232Z: [Thread 1852] (Msg 1/1) BIP2155I: A punto de 'Initialize' el recurso desplegado 'CommonLib' de tipo 'SharedLibrary'. 
-2024-10-02 13:29:28.740692Z: [Thread 1852] (Msg 1/1) BIP2155I: A punto de 'Start' el recurso desplegado 'ptx_transaction_query' de tipo 'RestAPI'. 
-2024-10-02 13:29:28.766454Z: [Thread 1852] (Msg 1/1) BIP3132I: El escucha HTTP ha empezado a escuchar en el puerto '7800' para conexiones 'http'. 
-2024-10-02 13:29:28.766722Z: [Thread 1852] (Msg 1/1) BIP1996I: Escuchando por el URL HTTP '/v1/ptx*'. 
-2024-10-02 13:29:28.767728Z: [Thread 1852] (Msg 1/1) BIP2269I: El recurso desplegado 'gen.ptx_transaction_query' (uuid='gen.ptx_transaction_query',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 13:29:28.768112Z: [Thread 1852] (Msg 1/1) BIP9332I: RestAPI 'ptx_transaction_query' se ha created correctamente. 
-2024-10-02 13:29:28.768580Z: [Thread 1852] (Msg 1/1) BIP9332I: SharedLibrary 'CommonLib' se ha changed correctamente. 
-2024-10-02 13:29:28.769034Z: [Thread 1852] (Msg 1/1) BIP9326I: El origen 'ptx_transaction_queryproject.generated.bar' se ha desplegado correctamente. 
-2024-10-02 13:29:28.770924Z: [Thread 1852] (Msg 1/1) BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
-2024-10-02 13:30:22.525530Z: [Thread 12988] (Msg 1/1) BIP2152I: Se ha recibido el mensaje de configuración. 
-2024-10-02 13:30:22.631210Z: [Thread 12988] (Msg 1/1) BIP2155I: A punto de 'Initialize' el recurso desplegado 'ptx_transaction_query_app' de tipo 'Application'. 
-2024-10-02 13:30:23.279830Z: [Thread 12988] (Msg 1/1) BIP2155I: A punto de 'Start' el recurso desplegado 'ptx_transaction_query_app' de tipo 'Application'. 
-2024-10-02 13:30:23.281194Z: [Thread 12988] (Msg 1/1) BIP2269I: El recurso desplegado 'getCycleById' (uuid='getCycleById',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 13:30:23.281676Z: [Thread 12988] (Msg 1/1) BIP2269I: El recurso desplegado 'getId' (uuid='getId',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 13:30:23.282066Z: [Thread 12988] (Msg 1/1) BIP2269I: El recurso desplegado 'getSchema_search_trx' (uuid='getSchema_search_trx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 13:30:23.282466Z: [Thread 12988] (Msg 1/1) BIP2269I: El recurso desplegado 'getSearch_trx' (uuid='getSearch_trx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 13:30:23.282818Z: [Thread 12988] (Msg 1/1) BIP2269I: El recurso desplegado 'postGet_trx_info' (uuid='postGet_trx_info',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 13:30:23.282996Z: [Thread 12988] (Msg 1/1) BIP9332I: Application 'ptx_transaction_query_app' se ha created correctamente. 
-2024-10-02 13:30:23.283130Z: [Thread 12988] (Msg 1/1) BIP9326I: El origen 'ptx_transaction_query_appproject.generated.bar' se ha desplegado correctamente. 
-2024-10-02 13:30:23.284276Z: [Thread 12988] (Msg 1/1) BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
-2024-10-02 16:11:09.204633Z: [Thread 5652] (Msg 1/4) BIP2232E: Se ha detectado un error mientras se manejaba un error anterior en el nodo 'postGet_trx_info.Throw error'. 
-2024-10-02 16:11:09.205166Z: [Thread 5652] (Msg 2/4) BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'postGet_trx_info.Throw rest error'. 
-2024-10-02 16:11:09.205415Z: [Thread 5652] (Msg 3/4) BIP2488E:  (common.rest_error.Main, 6.4) Se ha detectado un error al ejecutar la sentencia SQL 'THROW EXCEPTION MESSAGE 500 VALUES('restError', 'Error en RestRequest. statusCode: ' || STATUSCODE);'. 
-2024-10-02 16:11:09.205894Z: [Thread 5652] (Msg 4/4) BIP2176S: Could not find message '500' in catalog 'C:\Program Files\IBM\ACE\12.0.12.2\server\messages\BIPmsgs_es.properties', inserts are 'restError' 'Error en RestRequest. statusCode: 415' 'postGet_trx_info.Throw rest error' '{3}' '{4}' '{5}' '{6}'
-2024-10-02 16:11:13.906170Z: [Thread 5652] (Msg 1/4) BIP2628W: Se ha detectado una condición de excepción en el nodo 'postGet_trx_info.Callable Input'. 
-2024-10-02 16:11:13.907189Z: [Thread 5652] (Msg 2/4) BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'postGet_trx_info.Throw error'. 
-2024-10-02 16:11:13.907387Z: [Thread 5652] (Msg 3/4) BIP2488E:  (common.prepare_error.Main, 12.4) Se ha detectado un error al ejecutar la sentencia SQL 'THROW EXCEPTION MESSAGE 500 VALUES('customError', 'Error en subflujo ' || flujo || '. ErrorDesc: ' || exceptionDetails.errorDesc);'. 
-2024-10-02 16:11:13.907607Z: [Thread 5652] (Msg 4/4) BIP2176S: Could not find message '500' in catalog 'C:\Program Files\IBM\ACE\12.0.12.2\server\messages\BIPmsgs_es.properties', inserts are 'customError' 'Error en subflujo getProducts. ErrorDesc: restError : User generated exception:Error en RestRequest. statusCode: 415' 'postGet_trx_info.Throw error' '{3}' '{4}' '{5}' '{6}'
-2024-10-02 16:13:34.204040Z: [Thread 5652] (Msg 1/4) BIP2232E: Se ha detectado un error mientras se manejaba un error anterior en el nodo 'postGet_trx_info.Throw error'. 
-2024-10-02 16:13:34.211876Z: [Thread 5652] (Msg 2/4) BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'postGet_trx_info.Throw rest error'. 
-2024-10-02 16:13:34.212100Z: [Thread 5652] (Msg 3/4) BIP2488E:  (common.rest_error.Main, 6.4) Se ha detectado un error al ejecutar la sentencia SQL 'THROW EXCEPTION MESSAGE 500 VALUES('restError', 'Error en RestRequest. statusCode: ' || STATUSCODE);'. 
-2024-10-02 16:13:34.212200Z: [Thread 5652] (Msg 4/4) BIP2176S: Could not find message '500' in catalog 'C:\Program Files\IBM\ACE\12.0.12.2\server\messages\BIPmsgs_es.properties', inserts are 'restError' 'Error en RestRequest. statusCode: 415' 'postGet_trx_info.Throw rest error' '{3}' '{4}' '{5}' '{6}'
-2024-10-02 16:13:51.109672Z: [Thread 5652] (Msg 1/4) BIP2628W: Se ha detectado una condición de excepción en el nodo 'postGet_trx_info.Callable Input'. 
-2024-10-02 16:13:51.117528Z: [Thread 5652] (Msg 2/4) BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'postGet_trx_info.Throw error'. 
-2024-10-02 16:13:51.117764Z: [Thread 5652] (Msg 3/4) BIP2488E:  (common.prepare_error.Main, 12.4) Se ha detectado un error al ejecutar la sentencia SQL 'THROW EXCEPTION MESSAGE 500 VALUES('customError', 'Error en subflujo ' || flujo || '. ErrorDesc: ' || exceptionDetails.errorDesc);'. 
-2024-10-02 16:13:51.117912Z: [Thread 5652] (Msg 4/4) BIP2176S: Could not find message '500' in catalog 'C:\Program Files\IBM\ACE\12.0.12.2\server\messages\BIPmsgs_es.properties', inserts are 'customError' 'Error en subflujo getProducts. ErrorDesc: restError : User generated exception:Error en RestRequest. statusCode: 415' 'postGet_trx_info.Throw error' '{3}' '{4}' '{5}' '{6}'
-2024-10-02 16:17:59.220316Z: [Thread 5652] (Msg 1/4) BIP2232E: Se ha detectado un error mientras se manejaba un error anterior en el nodo 'postGet_trx_info.Throw error'. 
-2024-10-02 16:17:59.228072Z: [Thread 5652] (Msg 2/4) BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'postGet_trx_info.Throw rest error'. 
-2024-10-02 16:17:59.228292Z: [Thread 5652] (Msg 3/4) BIP2488E:  (common.rest_error.Main, 6.4) Se ha detectado un error al ejecutar la sentencia SQL 'THROW EXCEPTION MESSAGE 500 VALUES('restError', 'Error en RestRequest. statusCode: ' || STATUSCODE);'. 
-2024-10-02 16:17:59.228468Z: [Thread 5652] (Msg 4/4) BIP2176S: Could not find message '500' in catalog 'C:\Program Files\IBM\ACE\12.0.12.2\server\messages\BIPmsgs_es.properties', inserts are 'restError' 'Error en RestRequest. statusCode: 415' 'postGet_trx_info.Throw rest error' '{3}' '{4}' '{5}' '{6}'
-2024-10-02 16:18:00.405188Z: [Thread 5652] (Msg 1/4) BIP2628W: Se ha detectado una condición de excepción en el nodo 'postGet_trx_info.Callable Input'. 
-2024-10-02 16:18:00.405480Z: [Thread 5652] (Msg 2/4) BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'postGet_trx_info.Throw error'. 
-2024-10-02 16:18:00.405622Z: [Thread 5652] (Msg 3/4) BIP2488E:  (common.prepare_error.Main, 12.4) Se ha detectado un error al ejecutar la sentencia SQL 'THROW EXCEPTION MESSAGE 500 VALUES('customError', 'Error en subflujo ' || flujo || '. ErrorDesc: ' || exceptionDetails.errorDesc);'. 
-2024-10-02 16:18:00.405758Z: [Thread 5652] (Msg 4/4) BIP2176S: Could not find message '500' in catalog 'C:\Program Files\IBM\ACE\12.0.12.2\server\messages\BIPmsgs_es.properties', inserts are 'customError' 'Error en subflujo getProducts. ErrorDesc: restError : User generated exception:Error en RestRequest. statusCode: 415' 'postGet_trx_info.Throw error' '{3}' '{4}' '{5}' '{6}'
-2024-10-02 16:18:09.636905Z: [Thread 896] (Msg 1/1) BIP2152I: Se ha recibido el mensaje de configuración. 
-2024-10-02 16:18:09.706241Z: [Thread 896] (Msg 1/1) BIP2155I: A punto de 'Stop' el recurso desplegado 'ptx_transaction_query' de tipo 'RestAPI'. 
-2024-10-02 16:18:11.287926Z: [Thread 896] (Msg 1/1) BIP2271I: El recurso desplegado 'gen.ptx_transaction_query' (uuid='gen.ptx_transaction_query',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:18:11.288227Z: [Thread 896] (Msg 1/1) BIP2155I: A punto de 'TearDown' el recurso desplegado 'ptx_transaction_query' de tipo 'RestAPI'. 
-2024-10-02 16:18:11.305540Z: [Thread 896] (Msg 1/1) BIP3133I: El escucha HTTP ha dejado de escuchar en el puerto '7800' para conexiones 'http'. 
-2024-10-02 16:18:11.392646Z: [Thread 896] (Msg 1/1) BIP2155I: A punto de 'Initialize' el recurso desplegado 'ptx_transaction_query' de tipo 'RestAPI'. 
-2024-10-02 16:18:11.649588Z: [Thread 896] (Msg 1/1) BIP2155I: A punto de 'Start' el recurso desplegado 'ptx_transaction_query' de tipo 'RestAPI'. 
-2024-10-02 16:18:11.662151Z: [Thread 896] (Msg 1/1) BIP3132I: El escucha HTTP ha empezado a escuchar en el puerto '7800' para conexiones 'http'. 
-2024-10-02 16:18:11.662578Z: [Thread 896] (Msg 1/1) BIP1996I: Escuchando por el URL HTTP '/v1/ptx*'. 
-2024-10-02 16:18:11.663264Z: [Thread 896] (Msg 1/1) BIP2269I: El recurso desplegado 'gen.ptx_transaction_query' (uuid='gen.ptx_transaction_query',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:18:11.663688Z: [Thread 896] (Msg 1/1) BIP9332I: RestAPI 'ptx_transaction_query' se ha changed correctamente. 
-2024-10-02 16:18:11.663881Z: [Thread 896] (Msg 1/1) BIP9326I: El origen 'ptx_transaction_queryproject.generated.bar' se ha desplegado correctamente. 
-2024-10-02 16:18:11.665121Z: [Thread 896] (Msg 1/1) BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
-2024-10-02 16:19:00.552413Z: [Thread 5652] (Msg 1/4) BIP2232E: Se ha detectado un error mientras se manejaba un error anterior en el nodo 'postGet_trx_info.Throw error'. 
-2024-10-02 16:19:00.552859Z: [Thread 5652] (Msg 2/4) BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'postGet_trx_info.Throw rest error'. 
-2024-10-02 16:19:00.552958Z: [Thread 5652] (Msg 3/4) BIP2488E:  (common.rest_error.Main, 6.4) Se ha detectado un error al ejecutar la sentencia SQL 'THROW EXCEPTION MESSAGE 500 VALUES('restError', 'Error en RestRequest. statusCode: ' || STATUSCODE);'. 
-2024-10-02 16:19:00.553097Z: [Thread 5652] (Msg 4/4) BIP2176S: Could not find message '500' in catalog 'C:\Program Files\IBM\ACE\12.0.12.2\server\messages\BIPmsgs_es.properties', inserts are 'restError' 'Error en RestRequest. statusCode: 415' 'postGet_trx_info.Throw rest error' '{3}' '{4}' '{5}' '{6}'
-2024-10-02 16:19:04.567829Z: [Thread 5652] (Msg 1/4) BIP2628W: Se ha detectado una condición de excepción en el nodo 'postGet_trx_info.Callable Input'. 
-2024-10-02 16:19:04.570558Z: [Thread 5652] (Msg 2/4) BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'postGet_trx_info.Throw error'. 
-2024-10-02 16:19:04.571157Z: [Thread 5652] (Msg 3/4) BIP2488E:  (common.prepare_error.Main, 12.4) Se ha detectado un error al ejecutar la sentencia SQL 'THROW EXCEPTION MESSAGE 500 VALUES('customError', 'Error en subflujo ' || flujo || '. ErrorDesc: ' || exceptionDetails.errorDesc);'. 
-2024-10-02 16:19:04.571286Z: [Thread 5652] (Msg 4/4) BIP2176S: Could not find message '500' in catalog 'C:\Program Files\IBM\ACE\12.0.12.2\server\messages\BIPmsgs_es.properties', inserts are 'customError' 'Error en subflujo getProducts. ErrorDesc: restError : User generated exception:Error en RestRequest. statusCode: 415' 'postGet_trx_info.Throw error' '{3}' '{4}' '{5}' '{6}'
-2024-10-02 16:19:17.117494Z: [Thread 10600] (Msg 1/1) BIP2152I: Se ha recibido el mensaje de configuración. 
-2024-10-02 16:19:17.174638Z: [Thread 10600] (Msg 1/1) BIP2155I: A punto de 'Stop' el recurso desplegado 'ptx_transaction_query_app' de tipo 'Application'. 
-2024-10-02 16:19:20.032892Z: [Thread 10600] (Msg 1/1) BIP2271I: El recurso desplegado 'getCycleById' (uuid='getCycleById',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:19:20.033674Z: [Thread 10600] (Msg 1/1) BIP2271I: El recurso desplegado 'getId' (uuid='getId',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:19:20.034314Z: [Thread 10600] (Msg 1/1) BIP2271I: El recurso desplegado 'getSchema_search_trx' (uuid='getSchema_search_trx',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:19:20.034790Z: [Thread 10600] (Msg 1/1) BIP2271I: El recurso desplegado 'getSearch_trx' (uuid='getSearch_trx',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:19:20.035728Z: [Thread 10600] (Msg 1/1) BIP2271I: El recurso desplegado 'postGet_trx_info' (uuid='postGet_trx_info',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:19:20.036070Z: [Thread 10600] (Msg 1/1) BIP2155I: A punto de 'TearDown' el recurso desplegado 'ptx_transaction_query_app' de tipo 'Application'. 
-2024-10-02 16:19:20.123210Z: [Thread 10600] (Msg 1/1) BIP2155I: A punto de 'Initialize' el recurso desplegado 'ptx_transaction_query_app' de tipo 'Application'. 
-2024-10-02 16:19:20.355418Z: [Thread 10600] (Msg 1/1) BIP2155I: A punto de 'Start' el recurso desplegado 'ptx_transaction_query_app' de tipo 'Application'. 
-2024-10-02 16:19:20.356238Z: [Thread 10600] (Msg 1/1) BIP2269I: El recurso desplegado 'getCycleById' (uuid='getCycleById',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:19:20.356746Z: [Thread 10600] (Msg 1/1) BIP2269I: El recurso desplegado 'getId' (uuid='getId',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:19:20.357108Z: [Thread 10600] (Msg 1/1) BIP2269I: El recurso desplegado 'getSchema_search_trx' (uuid='getSchema_search_trx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:19:20.357594Z: [Thread 10600] (Msg 1/1) BIP2269I: El recurso desplegado 'getSearch_trx' (uuid='getSearch_trx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:19:20.357940Z: [Thread 10600] (Msg 1/1) BIP2269I: El recurso desplegado 'postGet_trx_info' (uuid='postGet_trx_info',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:19:20.358148Z: [Thread 10600] (Msg 1/1) BIP9332I: Application 'ptx_transaction_query_app' se ha changed correctamente. 
-2024-10-02 16:19:20.358340Z: [Thread 10600] (Msg 1/1) BIP9326I: El origen 'ptx_transaction_query_appproject.generated.bar' se ha desplegado correctamente. 
-2024-10-02 16:19:20.359176Z: [Thread 10600] (Msg 1/1) BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
-2024-10-02 16:20:30.115368Z: [Thread 10376] (Msg 1/4) BIP2232E: Se ha detectado un error mientras se manejaba un error anterior en el nodo 'postGet_trx_info.Throw error'. 
-2024-10-02 16:20:30.123228Z: [Thread 10376] (Msg 2/4) BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'postGet_trx_info.Throw rest error'. 
-2024-10-02 16:20:30.123482Z: [Thread 10376] (Msg 3/4) BIP2488E:  (common.rest_error.Main, 6.4) Se ha detectado un error al ejecutar la sentencia SQL 'THROW EXCEPTION MESSAGE 500 VALUES('restError', 'Error en RestRequest. statusCode: ' || STATUSCODE);'. 
-2024-10-02 16:20:30.123608Z: [Thread 10376] (Msg 4/4) BIP2176S: Could not find message '500' in catalog 'C:\Program Files\IBM\ACE\12.0.12.2\server\messages\BIPmsgs_es.properties', inserts are 'restError' 'Error en RestRequest. statusCode: 500' 'postGet_trx_info.Throw rest error' '{3}' '{4}' '{5}' '{6}'
-2024-10-02 16:20:32.718902Z: [Thread 10376] (Msg 1/4) BIP2628W: Se ha detectado una condición de excepción en el nodo 'postGet_trx_info.Callable Input'. 
-2024-10-02 16:20:32.719284Z: [Thread 10376] (Msg 2/4) BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'postGet_trx_info.Throw error'. 
-2024-10-02 16:20:32.719738Z: [Thread 10376] (Msg 3/4) BIP2488E:  (common.prepare_error.Main, 12.4) Se ha detectado un error al ejecutar la sentencia SQL 'THROW EXCEPTION MESSAGE 500 VALUES('customError', 'Error en subflujo ' || flujo || '. ErrorDesc: ' || exceptionDetails.errorDesc);'. 
-2024-10-02 16:20:32.719952Z: [Thread 10376] (Msg 4/4) BIP2176S: Could not find message '500' in catalog 'C:\Program Files\IBM\ACE\12.0.12.2\server\messages\BIPmsgs_es.properties', inserts are 'customError' 'Error en subflujo getProducts. ErrorDesc: restError : User generated exception:Error en RestRequest. statusCode: 500' 'postGet_trx_info.Throw error' '{3}' '{4}' '{5}' '{6}'
-2024-10-02 16:20:47.671900Z: [Thread 10376] (Msg 1/4) BIP2232E: Se ha detectado un error mientras se manejaba un error anterior en el nodo 'postGet_trx_info.Throw error'. 
-2024-10-02 16:20:47.672168Z: [Thread 10376] (Msg 2/4) BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'postGet_trx_info.Throw rest error'. 
-2024-10-02 16:20:47.672276Z: [Thread 10376] (Msg 3/4) BIP2488E:  (common.rest_error.Main, 6.4) Se ha detectado un error al ejecutar la sentencia SQL 'THROW EXCEPTION MESSAGE 500 VALUES('restError', 'Error en RestRequest. statusCode: ' || STATUSCODE);'. 
-2024-10-02 16:20:47.672376Z: [Thread 10376] (Msg 4/4) BIP2176S: Could not find message '500' in catalog 'C:\Program Files\IBM\ACE\12.0.12.2\server\messages\BIPmsgs_es.properties', inserts are 'restError' 'Error en RestRequest. statusCode: 500' 'postGet_trx_info.Throw rest error' '{3}' '{4}' '{5}' '{6}'
-2024-10-02 16:20:49.188720Z: [Thread 10376] (Msg 1/4) BIP2628W: Se ha detectado una condición de excepción en el nodo 'postGet_trx_info.Callable Input'. 
-2024-10-02 16:20:49.189000Z: [Thread 10376] (Msg 2/4) BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'postGet_trx_info.Throw error'. 
-2024-10-02 16:20:49.189188Z: [Thread 10376] (Msg 3/4) BIP2488E:  (common.prepare_error.Main, 12.4) Se ha detectado un error al ejecutar la sentencia SQL 'THROW EXCEPTION MESSAGE 500 VALUES('customError', 'Error en subflujo ' || flujo || '. ErrorDesc: ' || exceptionDetails.errorDesc);'. 
-2024-10-02 16:20:49.189408Z: [Thread 10376] (Msg 4/4) BIP2176S: Could not find message '500' in catalog 'C:\Program Files\IBM\ACE\12.0.12.2\server\messages\BIPmsgs_es.properties', inserts are 'customError' 'Error en subflujo getProducts. ErrorDesc: restError : User generated exception:Error en RestRequest. statusCode: 500' 'postGet_trx_info.Throw error' '{3}' '{4}' '{5}' '{6}'
-2024-10-02 16:23:38.354060Z: [Thread 8480] (Msg 1/1) BIP2152I: Se ha recibido el mensaje de configuración. 
-2024-10-02 16:23:38.410416Z: [Thread 8480] (Msg 1/1) BIP2155I: A punto de 'Stop' el recurso desplegado 'ptx_transaction_query_app' de tipo 'Application'. 
-2024-10-02 16:23:42.585356Z: [Thread 8480] (Msg 1/1) BIP2271I: El recurso desplegado 'getCycleById' (uuid='getCycleById',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:23:42.585944Z: [Thread 8480] (Msg 1/1) BIP2271I: El recurso desplegado 'getId' (uuid='getId',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:23:42.586412Z: [Thread 8480] (Msg 1/1) BIP2271I: El recurso desplegado 'getSchema_search_trx' (uuid='getSchema_search_trx',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:23:42.586804Z: [Thread 8480] (Msg 1/1) BIP2271I: El recurso desplegado 'getSearch_trx' (uuid='getSearch_trx',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:23:42.587340Z: [Thread 8480] (Msg 1/1) BIP2271I: El recurso desplegado 'postGet_trx_info' (uuid='postGet_trx_info',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:23:42.588316Z: [Thread 8480] (Msg 1/1) BIP2155I: A punto de 'TearDown' el recurso desplegado 'ptx_transaction_query_app' de tipo 'Application'. 
-2024-10-02 16:23:42.675196Z: [Thread 8480] (Msg 1/1) BIP2155I: A punto de 'Initialize' el recurso desplegado 'ptx_transaction_query_app' de tipo 'Application'. 
-2024-10-02 16:23:42.894408Z: [Thread 8480] (Msg 1/1) BIP2155I: A punto de 'Start' el recurso desplegado 'ptx_transaction_query_app' de tipo 'Application'. 
-2024-10-02 16:23:42.895324Z: [Thread 8480] (Msg 1/1) BIP2269I: El recurso desplegado 'getCycleById' (uuid='getCycleById',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:23:42.895772Z: [Thread 8480] (Msg 1/1) BIP2269I: El recurso desplegado 'getId' (uuid='getId',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:23:42.896244Z: [Thread 8480] (Msg 1/1) BIP2269I: El recurso desplegado 'getSchema_search_trx' (uuid='getSchema_search_trx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:23:42.896684Z: [Thread 8480] (Msg 1/1) BIP2269I: El recurso desplegado 'getSearch_trx' (uuid='getSearch_trx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:23:42.897060Z: [Thread 8480] (Msg 1/1) BIP2269I: El recurso desplegado 'postGet_trx_info' (uuid='postGet_trx_info',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:23:42.897240Z: [Thread 8480] (Msg 1/1) BIP9332I: Application 'ptx_transaction_query_app' se ha changed correctamente. 
-2024-10-02 16:23:42.897388Z: [Thread 8480] (Msg 1/1) BIP9326I: El origen 'ptx_transaction_query_appproject.generated.bar' se ha desplegado correctamente. 
-2024-10-02 16:23:42.898376Z: [Thread 8480] (Msg 1/1) BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
-2024-10-02 16:25:41.629864Z: [Thread 1852] (Msg 1/1) BIP2152I: Se ha recibido el mensaje de configuración. 
-2024-10-02 16:25:41.701240Z: [Thread 1852] (Msg 1/1) BIP2155I: A punto de 'Stop' el recurso desplegado 'ptx_transaction_query_app' de tipo 'Application'. 
-2024-10-02 16:25:44.940116Z: [Thread 1852] (Msg 1/1) BIP2271I: El recurso desplegado 'getCycleById' (uuid='getCycleById',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:25:44.948360Z: [Thread 1852] (Msg 1/1) BIP2271I: El recurso desplegado 'getId' (uuid='getId',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:25:44.948992Z: [Thread 1852] (Msg 1/1) BIP2271I: El recurso desplegado 'getSchema_search_trx' (uuid='getSchema_search_trx',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:25:44.949528Z: [Thread 1852] (Msg 1/1) BIP2271I: El recurso desplegado 'getSearch_trx' (uuid='getSearch_trx',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:25:47.025560Z: [Thread 1852] (Msg 1/1) BIP2271I: El recurso desplegado 'postGet_trx_info' (uuid='postGet_trx_info',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:25:47.027036Z: [Thread 1852] (Msg 1/1) BIP2155I: A punto de 'TearDown' el recurso desplegado 'ptx_transaction_query_app' de tipo 'Application'. 
-2024-10-02 16:25:47.165840Z: [Thread 1852] (Msg 1/1) BIP2155I: A punto de 'Initialize' el recurso desplegado 'ptx_transaction_query_app' de tipo 'Application'. 
-2024-10-02 16:25:47.539140Z: [Thread 1852] (Msg 1/1) BIP2155I: A punto de 'Start' el recurso desplegado 'ptx_transaction_query_app' de tipo 'Application'. 
-2024-10-02 16:25:47.540044Z: [Thread 1852] (Msg 1/1) BIP2269I: El recurso desplegado 'getCycleById' (uuid='getCycleById',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:25:47.541276Z: [Thread 1852] (Msg 1/1) BIP2269I: El recurso desplegado 'getId' (uuid='getId',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:25:47.542032Z: [Thread 1852] (Msg 1/1) BIP2269I: El recurso desplegado 'getSchema_search_trx' (uuid='getSchema_search_trx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:25:47.542680Z: [Thread 1852] (Msg 1/1) BIP2269I: El recurso desplegado 'getSearch_trx' (uuid='getSearch_trx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:25:47.543420Z: [Thread 1852] (Msg 1/1) BIP2269I: El recurso desplegado 'postGet_trx_info' (uuid='postGet_trx_info',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:25:47.543772Z: [Thread 1852] (Msg 1/1) BIP9332I: Application 'ptx_transaction_query_app' se ha changed correctamente. 
-2024-10-02 16:25:47.544104Z: [Thread 1852] (Msg 1/1) BIP9326I: El origen 'ptx_transaction_query_appproject.generated.bar' se ha desplegado correctamente. 
-2024-10-02 16:25:47.545664Z: [Thread 1852] (Msg 1/1) BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
-2024-10-02 16:33:49.795528Z: [Thread 1432] (Msg 1/1) BIP2152I: Se ha recibido el mensaje de configuración. 
-2024-10-02 16:33:49.858548Z: [Thread 1432] (Msg 1/1) BIP2155I: A punto de 'Stop' el recurso desplegado 'ptx_transaction_query_app' de tipo 'Application'. 
-2024-10-02 16:33:55.006572Z: [Thread 1432] (Msg 1/1) BIP2271I: El recurso desplegado 'getCycleById' (uuid='getCycleById',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:33:55.015416Z: [Thread 1432] (Msg 1/1) BIP2271I: El recurso desplegado 'getId' (uuid='getId',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:33:55.016024Z: [Thread 1432] (Msg 1/1) BIP2271I: El recurso desplegado 'getSchema_search_trx' (uuid='getSchema_search_trx',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:33:55.016596Z: [Thread 1432] (Msg 1/1) BIP2271I: El recurso desplegado 'getSearch_trx' (uuid='getSearch_trx',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:33:55.017172Z: [Thread 1432] (Msg 1/1) BIP2271I: El recurso desplegado 'postGet_trx_info' (uuid='postGet_trx_info',tipo='MessageFlow') se ha detenido satisfactoriamente. 
-2024-10-02 16:33:55.017404Z: [Thread 1432] (Msg 1/1) BIP2155I: A punto de 'TearDown' el recurso desplegado 'ptx_transaction_query_app' de tipo 'Application'. 
-2024-10-02 16:33:55.092244Z: [Thread 1432] (Msg 1/1) BIP2155I: A punto de 'Initialize' el recurso desplegado 'ptx_transaction_query_app' de tipo 'Application'. 
-2024-10-02 16:33:55.286632Z: [Thread 1432] (Msg 1/1) BIP2155I: A punto de 'Start' el recurso desplegado 'ptx_transaction_query_app' de tipo 'Application'. 
-2024-10-02 16:33:55.287492Z: [Thread 1432] (Msg 1/1) BIP2269I: El recurso desplegado 'getCycleById' (uuid='getCycleById',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:33:55.288020Z: [Thread 1432] (Msg 1/1) BIP2269I: El recurso desplegado 'getId' (uuid='getId',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:33:55.288424Z: [Thread 1432] (Msg 1/1) BIP2269I: El recurso desplegado 'getSchema_search_trx' (uuid='getSchema_search_trx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:33:55.288836Z: [Thread 1432] (Msg 1/1) BIP2269I: El recurso desplegado 'getSearch_trx' (uuid='getSearch_trx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:33:55.289224Z: [Thread 1432] (Msg 1/1) BIP2269I: El recurso desplegado 'postGet_trx_info' (uuid='postGet_trx_info',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
-2024-10-02 16:33:55.289416Z: [Thread 1432] (Msg 1/1) BIP9332I: Application 'ptx_transaction_query_app' se ha changed correctamente. 
-2024-10-02 16:33:55.289596Z: [Thread 1432] (Msg 1/1) BIP9326I: El origen 'ptx_transaction_query_appproject.generated.bar' se ha desplegado correctamente. 
-2024-10-02 16:33:55.290520Z: [Thread 1432] (Msg 1/1) BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
-2024-10-02 17:01:37.115488Z: [Thread 4108] (Msg 1/4) BIP2232E: Se ha detectado un error mientras se manejaba un error anterior en el nodo 'postGet_trx_info.Throw error'. 
-2024-10-02 17:01:37.123400Z: [Thread 4108] (Msg 2/4) BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'postGet_trx_info.Throw rest error'. 
-2024-10-02 17:01:37.123640Z: [Thread 4108] (Msg 3/4) BIP2488E:  (common.rest_error.Main, 6.4) Se ha detectado un error al ejecutar la sentencia SQL 'THROW EXCEPTION MESSAGE 500 VALUES('restError', 'Error en RestRequest. statusCode: ' || STATUSCODE);'. 
-2024-10-02 17:01:37.123772Z: [Thread 4108] (Msg 4/4) BIP2176S: Could not find message '500' in catalog 'C:\Program Files\IBM\ACE\12.0.12.2\server\messages\BIPmsgs_es.properties', inserts are 'restError' 'Error en RestRequest. statusCode: 500' 'postGet_trx_info.Throw rest error' '{3}' '{4}' '{5}' '{6}'
-2024-10-02 17:01:38.899364Z: [Thread 4108] (Msg 1/4) BIP2628W: Se ha detectado una condición de excepción en el nodo 'postGet_trx_info.Callable Input'. 
-2024-10-02 17:01:38.900472Z: [Thread 4108] (Msg 2/4) BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'postGet_trx_info.Throw error'. 
-2024-10-02 17:01:38.900704Z: [Thread 4108] (Msg 3/4) BIP2488E:  (common.prepare_error.Main, 12.4) Se ha detectado un error al ejecutar la sentencia SQL 'THROW EXCEPTION MESSAGE 500 VALUES('customError', 'Error en subflujo ' || flujo || '. ErrorDesc: ' || exceptionDetails.errorDesc);'. 
-2024-10-02 17:01:38.900872Z: [Thread 4108] (Msg 4/4) BIP2176S: Could not find message '500' in catalog 'C:\Program Files\IBM\ACE\12.0.12.2\server\messages\BIPmsgs_es.properties', inserts are 'customError' 'Error en subflujo getTrxInfo. ErrorDesc: restError : User generated exception:Error en RestRequest. statusCode: 500' 'postGet_trx_info.Throw error' '{3}' '{4}' '{5}' '{6}'
-2024-10-02 17:02:53.769764Z: [Thread 4108] (Msg 1/4) BIP2232E: Se ha detectado un error mientras se manejaba un error anterior en el nodo 'postGet_trx_info.Throw error'. 
-2024-10-02 17:02:53.777888Z: [Thread 4108] (Msg 2/4) BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'postGet_trx_info.Throw rest error'. 
-2024-10-02 17:02:53.778108Z: [Thread 4108] (Msg 3/4) BIP2488E:  (common.rest_error.Main, 6.4) Se ha detectado un error al ejecutar la sentencia SQL 'THROW EXCEPTION MESSAGE 500 VALUES('restError', 'Error en RestRequest. statusCode: ' || STATUSCODE);'. 
-2024-10-02 17:02:53.778308Z: [Thread 4108] (Msg 4/4) BIP2176S: Could not find message '500' in catalog 'C:\Program Files\IBM\ACE\12.0.12.2\server\messages\BIPmsgs_es.properties', inserts are 'restError' 'Error en RestRequest. statusCode: 500' 'postGet_trx_info.Throw rest error' '{3}' '{4}' '{5}' '{6}'
-2024-10-02 17:02:56.017012Z: [Thread 4108] (Msg 1/4) BIP2628W: Se ha detectado una condición de excepción en el nodo 'postGet_trx_info.Callable Input'. 
-2024-10-02 17:02:56.017980Z: [Thread 4108] (Msg 2/4) BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'postGet_trx_info.Throw error'. 
-2024-10-02 17:02:56.018136Z: [Thread 4108] (Msg 3/4) BIP2488E:  (common.prepare_error.Main, 12.4) Se ha detectado un error al ejecutar la sentencia SQL 'THROW EXCEPTION MESSAGE 500 VALUES('customError', 'Error en subflujo ' || flujo || '. ErrorDesc: ' || exceptionDetails.errorDesc);'. 
-2024-10-02 17:02:56.018316Z: [Thread 4108] (Msg 4/4) BIP2176S: Could not find message '500' in catalog 'C:\Program Files\IBM\ACE\12.0.12.2\server\messages\BIPmsgs_es.properties', inserts are 'customError' 'Error en subflujo getTrxInfo. ErrorDesc: restError : User generated exception:Error en RestRequest. statusCode: 500' 'postGet_trx_info.Throw error' '{3}' '{4}' '{5}' '{6}'
-2024-10-02 17:03:07.286596Z: [Thread 4108] (Msg 1/4) BIP2232E: Se ha detectado un error mientras se manejaba un error anterior en el nodo 'postGet_trx_info.Throw error'. 
-2024-10-02 17:03:07.294539Z: [Thread 4108] (Msg 2/4) BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'postGet_trx_info.Throw rest error'. 
-2024-10-02 17:03:07.294780Z: [Thread 4108] (Msg 3/4) BIP2488E:  (common.rest_error.Main, 6.4) Se ha detectado un error al ejecutar la sentencia SQL 'THROW EXCEPTION MESSAGE 500 VALUES('restError', 'Error en RestRequest. statusCode: ' || STATUSCODE);'. 
-2024-10-02 17:03:07.294989Z: [Thread 4108] (Msg 4/4) BIP2176S: Could not find message '500' in catalog 'C:\Program Files\IBM\ACE\12.0.12.2\server\messages\BIPmsgs_es.properties', inserts are 'restError' 'Error en RestRequest. statusCode: 500' 'postGet_trx_info.Throw rest error' '{3}' '{4}' '{5}' '{6}'
-2024-10-02 17:03:08.470956Z: [Thread 4108] (Msg 1/4) BIP2628W: Se ha detectado una condición de excepción en el nodo 'postGet_trx_info.Callable Input'. 
-2024-10-02 17:03:08.471453Z: [Thread 4108] (Msg 2/4) BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'postGet_trx_info.Throw error'. 
-2024-10-02 17:03:08.471614Z: [Thread 4108] (Msg 3/4) BIP2488E:  (common.prepare_error.Main, 12.4) Se ha detectado un error al ejecutar la sentencia SQL 'THROW EXCEPTION MESSAGE 500 VALUES('customError', 'Error en subflujo ' || flujo || '. ErrorDesc: ' || exceptionDetails.errorDesc);'. 
-2024-10-02 17:03:08.471753Z: [Thread 4108] (Msg 4/4) BIP2176S: Could not find message '500' in catalog 'C:\Program Files\IBM\ACE\12.0.12.2\server\messages\BIPmsgs_es.properties', inserts are 'customError' 'Error en subflujo getTrxInfo. ErrorDesc: restError : User generated exception:Error en RestRequest. statusCode: 500' 'postGet_trx_info.Throw error' '{3}' '{4}' '{5}' '{6}'
+2024-11-27 03:29:00.815790Z: [Thread 24764] (Msg 1/1) BIP1990I: El servidor de integración 'TRANSACTIONS' está empezando la inicialización; versión '12.0.12.8' (64 bits) 
+2024-11-27 03:29:01.267058Z: [Thread 24764] (Msg 1/1) BIP9905I: Inicializando gestores de recursos. 
+2024-11-27 03:29:05.225652Z: [Thread 24764] (Msg 1/1) BIP10112I: The resources from 'mqsicdc.par' have not been loaded because the runtime component 'ChangeDataCapture' has not been enabled. Reason: 'Restricted by Java Runtime selected'. Further detail: 'C:\Program Files\IBM\ACE\12.0.12.8\common\jdk\jre\embedded.java.yaml'. 
+2024-11-27 03:29:06.418748Z: [Thread 24764] (Msg 1/1) BIP10112I: The resources from 'imbopentelemetry.lil' have not been loaded because the runtime component 'OpenTelemetry' has not been enabled. Reason: 'Integration Server Configuration'. Further detail: 'server.conf.yaml'. 
+2024-11-27 03:29:18.232914Z: [Thread 24764] (Msg 1/1) BIP2698W: El escucha XA no se inicia porque no se puede localizar qm.ini 
+2024-11-27 03:29:18.261990Z: [Thread 24764] (Msg 1/1) BIP9906I: Leyendo recursos desplegados. 
+2024-11-27 03:29:18.367244Z: [Thread 24764] (Msg 1/1) BIP9907I: Inicializando recursos desplegados. 
+2024-11-27 03:29:18.380398Z: [Thread 24764] (Msg 1/1) BIP2155I: A punto de 'Initialize' el recurso desplegado 'CommonLib' de tipo 'SharedLibrary'. 
+2024-11-27 03:29:18.418826Z: [Thread 24764] (Msg 1/1) BIP2155I: A punto de 'Initialize' el recurso desplegado 'Prueba' de tipo 'Application'. 
+2024-11-27 03:29:18.426336Z: [Thread 24764] (Msg 1/1) BIP2155I: A punto de 'Initialize' el recurso desplegado 'ptx_product' de tipo 'RestAPI'. 
+2024-11-27 03:29:18.955634Z: [Thread 24764] (Msg 1/1) BIP2155I: A punto de 'Initialize' el recurso desplegado 'ptx_product_app' de tipo 'Application'. 
+2024-11-27 03:29:25.450860Z: [Thread 24764] (Msg 1/1) BIP9332I: PolicyProject 'CommonPolicies' se ha reloaded correctamente. 
+2024-11-27 03:29:25.451372Z: [Thread 24764] (Msg 1/1) BIP9332I: SharedLibrary 'CommonLib' se ha reloaded correctamente. 
+2024-11-27 03:29:25.451674Z: [Thread 24764] (Msg 1/1) BIP2155I: A punto de 'Start' el recurso desplegado 'Prueba' de tipo 'Application'. 
+2024-11-27 03:29:25.452336Z: [Thread 24764] (Msg 1/1) BIP2269I: El recurso desplegado 'prueba' (uuid='prueba',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:29:25.452492Z: [Thread 24764] (Msg 1/1) BIP9332I: Application 'Prueba' se ha reloaded correctamente. 
+2024-11-27 03:29:25.452832Z: [Thread 24764] (Msg 1/1) BIP2155I: A punto de 'Start' el recurso desplegado 'ptx_product_app' de tipo 'Application'. 
+2024-11-27 03:29:25.460180Z: [Thread 24764] (Msg 1/1) BIP2269I: El recurso desplegado 'getProductid' (uuid='getProductid',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:29:25.460902Z: [Thread 24764] (Msg 1/1) BIP2269I: El recurso desplegado 'getProducts' (uuid='getProducts',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:29:25.461442Z: [Thread 24764] (Msg 1/1) BIP2269I: El recurso desplegado 'getVarid' (uuid='getVarid',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:29:25.462000Z: [Thread 24764] (Msg 1/1) BIP2269I: El recurso desplegado 'getVars' (uuid='getVars',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:29:25.463536Z: [Thread 24764] (Msg 1/1) BIP2269I: El recurso desplegado 'patchProductid' (uuid='patchProductid',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:29:25.464248Z: [Thread 24764] (Msg 1/1) BIP2269I: El recurso desplegado 'patchVarid' (uuid='patchVarid',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:29:25.464990Z: [Thread 24764] (Msg 1/1) BIP2269I: El recurso desplegado 'postProducts' (uuid='postProducts',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:29:25.465976Z: [Thread 24764] (Msg 1/1) BIP2269I: El recurso desplegado 'postVars' (uuid='postVars',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:29:25.466166Z: [Thread 24764] (Msg 1/1) BIP9332I: Application 'ptx_product_app' se ha reloaded correctamente. 
+2024-11-27 03:29:25.466474Z: [Thread 24764] (Msg 1/1) BIP2155I: A punto de 'Start' el recurso desplegado 'ptx_product' de tipo 'RestAPI'. 
+2024-11-27 03:29:25.476058Z: [Thread 1000] (Msg 1/2) BIP2628W: Se ha detectado una condición de excepción en el nodo 'prueba.MQ Input'. 
+2024-11-27 03:29:25.476172Z: [Thread 1000] (Msg 2/2) BIP2678E: No se ha podido realizar una conexión de servidor con el gestor de colas 'PRUEBA': MQCC=2; MQRC=2058. 
+2024-11-27 03:29:25.521402Z: [Thread 24764] (Msg 1/1) BIP3132I: El escucha HTTP ha empezado a escuchar en el puerto '7800' para conexiones 'http'. 
+2024-11-27 03:29:25.524478Z: [Thread 24764] (Msg 1/1) BIP1996I: Escuchando por el URL HTTP '/v1/ptx/product*'. 
+2024-11-27 03:29:25.526858Z: [Thread 24764] (Msg 1/1) BIP2269I: El recurso desplegado 'gen.ptx_product' (uuid='gen.ptx_product',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:29:25.527038Z: [Thread 24764] (Msg 1/1) BIP9332I: RestAPI 'ptx_product' se ha reloaded correctamente. 
+2024-11-27 03:29:27.566184Z: [Thread 5004] (Msg 1/1) BIP2866I: La administración de seguridad de IBM App Connect Enterprise es inactive. 
+2024-11-27 03:29:27.611540Z: [Thread 5004] (Msg 1/1) BIP3132I: El escucha HTTP ha empezado a escuchar en el puerto '7600' para conexiones 'RestAdmin http'. 
+2024-11-27 03:29:27.615008Z: [Thread 24764] (Msg 1/1) BIP1991I: El servidor de integración ha terminado la inicialización. 
+2024-11-27 03:30:25.246752Z: [Thread 1000] (Msg 1/2) BIP2628W: Se ha detectado una condición de excepción en el nodo 'prueba.MQ Input'. 
+2024-11-27 03:30:25.247992Z: [Thread 1000] (Msg 2/2) BIP2678E: No se ha podido realizar una conexión de servidor con el gestor de colas 'PRUEBA': MQCC=2; MQRC=2058. 
+2024-11-27 03:31:03.954682Z: [Thread 22220] (Msg 1/1) BIP2152I: Se ha recibido el mensaje de configuración. 
+2024-11-27 03:31:04.661105Z: [Thread 22220] (Msg 1/1) BIP9336E: La política 'MQEndpoint' en el proyecto de política 'CommonPolicies' no se puede borrar porque está en uso. 
+2024-11-27 03:31:04.661245Z: [Thread 22220] (Msg 1/1) BIP9325E: El origen 'ftx-payment-pse.bar' no se ha podido desplegar porque contiene errores. No se han efectuado cambios al servidor de integración. 
+2024-11-27 03:31:04.722766Z: [Thread 22220] (Msg 1/1) BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
+2024-11-27 03:31:17.907870Z: [Thread 4748] (Msg 1/1) BIP2152I: Se ha recibido el mensaje de configuración. 
+2024-11-27 03:31:17.996792Z: [Thread 4748] (Msg 1/1) BIP9336E: La política 'MQEndpoint' en el proyecto de política 'CommonPolicies' no se puede borrar porque está en uso. 
+2024-11-27 03:31:17.997132Z: [Thread 4748] (Msg 1/1) BIP9325E: El origen 'CommonPoliciesproject.generated.bar' no se ha podido desplegar porque contiene errores. No se han efectuado cambios al servidor de integración. 
+2024-11-27 03:31:17.999584Z: [Thread 4748] (Msg 1/1) BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
+2024-11-27 03:32:02.778067Z: [Thread 7536] (Msg 1/1) BIP2364E: La biblioteca compartida 'CommonLib' no puede borrarse porque hay recursos desplegados que la referencian [ RestAPI/ptx_product, Application/ptx_product_app ]. 
+2024-11-27 03:32:02.779982Z: [Thread 10588] (Msg 1/1) BIP2155I: A punto de 'Stop' el recurso desplegado 'Prueba' de tipo 'Application'. 
+2024-11-27 03:32:04.474605Z: [Thread 10588] (Msg 1/1) BIP2271I: El recurso desplegado 'prueba' (uuid='prueba',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:32:04.475408Z: [Thread 10588] (Msg 1/1) BIP2155I: A punto de 'TearDown' el recurso desplegado 'Prueba' de tipo 'Application'. 
+2024-11-27 03:32:04.571455Z: [Thread 10588] (Msg 1/1) BIP9521I: Application 'Prueba' se ha borrado. 
+2024-11-27 03:32:04.571815Z: [Thread 14200] (Msg 1/1) BIP2155I: A punto de 'Stop' el recurso desplegado 'ptx_product_app' de tipo 'Application'. 
+2024-11-27 03:32:06.758173Z: [Thread 14200] (Msg 1/1) BIP2271I: El recurso desplegado 'getProductid' (uuid='getProductid',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:32:06.758695Z: [Thread 14200] (Msg 1/1) BIP2271I: El recurso desplegado 'getProducts' (uuid='getProducts',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:32:06.759205Z: [Thread 14200] (Msg 1/1) BIP2271I: El recurso desplegado 'getVarid' (uuid='getVarid',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:32:06.759671Z: [Thread 14200] (Msg 1/1) BIP2271I: El recurso desplegado 'getVars' (uuid='getVars',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:32:06.760324Z: [Thread 14200] (Msg 1/1) BIP2271I: El recurso desplegado 'patchProductid' (uuid='patchProductid',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:32:06.760898Z: [Thread 14200] (Msg 1/1) BIP2271I: El recurso desplegado 'patchVarid' (uuid='patchVarid',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:32:06.761354Z: [Thread 14200] (Msg 1/1) BIP2271I: El recurso desplegado 'postProducts' (uuid='postProducts',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:32:06.761925Z: [Thread 14200] (Msg 1/1) BIP2271I: El recurso desplegado 'postVars' (uuid='postVars',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:32:06.762121Z: [Thread 14200] (Msg 1/1) BIP2155I: A punto de 'TearDown' el recurso desplegado 'ptx_product_app' de tipo 'Application'. 
+2024-11-27 03:32:06.837126Z: [Thread 14200] (Msg 1/1) BIP9521I: Application 'ptx_product_app' se ha borrado. 
+2024-11-27 03:32:06.837399Z: [Thread 22220] (Msg 1/1) BIP2155I: A punto de 'Stop' el recurso desplegado 'ptx_product' de tipo 'RestAPI'. 
+2024-11-27 03:32:10.924622Z: [Thread 22220] (Msg 1/1) BIP2271I: El recurso desplegado 'gen.ptx_product' (uuid='gen.ptx_product',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:32:10.924885Z: [Thread 22220] (Msg 1/1) BIP2155I: A punto de 'TearDown' el recurso desplegado 'ptx_product' de tipo 'RestAPI'. 
+2024-11-27 03:32:10.952588Z: [Thread 22220] (Msg 1/1) BIP3133I: El escucha HTTP ha dejado de escuchar en el puerto '7800' para conexiones 'http'. 
+2024-11-27 03:32:11.042556Z: [Thread 22220] (Msg 1/1) BIP9521I: RestAPI 'ptx_product' se ha borrado. 
+2024-11-27 03:32:11.052972Z: [Thread 4748] (Msg 1/1) BIP9521I: PolicyProject 'CommonPolicies' se ha borrado. 
+2024-11-27 03:32:20.812078Z: [Thread 11144] (Msg 1/1) BIP2152I: Se ha recibido el mensaje de configuración. 
+2024-11-27 03:32:20.919314Z: [Thread 11144] (Msg 1/1) BIP9332I: PolicyProject 'CommonPolicies' se ha created correctamente. 
+2024-11-27 03:32:20.919486Z: [Thread 11144] (Msg 1/1) BIP9326I: El origen 'CommonPoliciesproject.generated.bar' se ha desplegado correctamente. 
+2024-11-27 03:32:20.919984Z: [Thread 11144] (Msg 1/1) BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
+2024-11-27 03:32:27.304980Z: [Thread 7536] (Msg 1/1) BIP2152I: Se ha recibido el mensaje de configuración. 
+2024-11-27 03:32:27.859634Z: [Thread 7536] (Msg 1/1) BIP2155I: A punto de 'TearDown' el recurso desplegado 'CommonLib' de tipo 'SharedLibrary'. 
+2024-11-27 03:32:28.025306Z: [Thread 7536] (Msg 1/1) BIP2155I: A punto de 'Initialize' el recurso desplegado 'CommonLib' de tipo 'SharedLibrary'. 
+2024-11-27 03:32:28.166780Z: [Thread 7536] (Msg 1/1) BIP9332I: SharedLibrary 'CommonLib' se ha changed correctamente. 
+2024-11-27 03:32:28.167350Z: [Thread 7536] (Msg 1/1) BIP9326I: El origen 'CommonLibproject.generated.bar' se ha desplegado correctamente. 
+2024-11-27 03:32:28.168316Z: [Thread 7536] (Msg 1/1) BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
+2024-11-27 03:32:35.277780Z: [Thread 31416] (Msg 1/1) BIP2152I: Se ha recibido el mensaje de configuración. 
+2024-11-27 03:32:35.795608Z: [Thread 31416] (Msg 1/1) BIP2155I: A punto de 'Initialize' el recurso desplegado 'ftx_payment_app' de tipo 'Application'. 
+2024-11-27 03:32:36.617956Z: [Thread 31416] (Msg 1/1) BIP2155I: A punto de 'Start' el recurso desplegado 'ftx_payment_app' de tipo 'Application'. 
+2024-11-27 03:32:36.618552Z: [Thread 31416] (Msg 1/1) BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_1' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_1',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:32:36.619052Z: [Thread 31416] (Msg 1/1) BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_2' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_2',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:32:36.619452Z: [Thread 31416] (Msg 1/1) BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_3' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_3',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:32:36.619840Z: [Thread 31416] (Msg 1/1) BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_4' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_4',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:32:36.620512Z: [Thread 31416] (Msg 1/1) BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_5' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_5',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:32:36.620956Z: [Thread 31416] (Msg 1/1) BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_6' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_6',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:32:36.621360Z: [Thread 31416] (Msg 1/1) BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_6_1' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_6_1',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:32:36.624184Z: [Thread 31416] (Msg 1/1) BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_7' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_7',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:32:36.624712Z: [Thread 31416] (Msg 1/1) BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecuteBankPayment' (uuid='co.com.ach.payment.executePayment.ExecuteBankPayment',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:32:36.625128Z: [Thread 31416] (Msg 1/1) BIP2269I: El recurso desplegado 'co.com.ach.payment.specific.TransversalesEncryptCus' (uuid='co.com.ach.payment.specific.TransversalesEncryptCus',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:32:36.625520Z: [Thread 31416] (Msg 1/1) BIP2269I: El recurso desplegado 'co.com.ach.payment.specific.TransversalesGetCus' (uuid='co.com.ach.payment.specific.TransversalesGetCus',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:32:36.625920Z: [Thread 31416] (Msg 1/1) BIP2269I: El recurso desplegado 'co.com.ach.payment.specific.TransversalesGetCustomerData' (uuid='co.com.ach.payment.specific.TransversalesGetCustomerData',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:32:36.626300Z: [Thread 31416] (Msg 1/1) BIP2269I: El recurso desplegado 'co.com.ach.payment.specific.TransversalesGetKeyList' (uuid='co.com.ach.payment.specific.TransversalesGetKeyList',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:32:36.626692Z: [Thread 31416] (Msg 1/1) BIP2269I: El recurso desplegado 'co.com.ach.payment.specific.TransversalesGetProductData' (uuid='co.com.ach.payment.specific.TransversalesGetProductData',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:32:36.627104Z: [Thread 31416] (Msg 1/1) BIP2269I: El recurso desplegado 'co.com.ach.payment.specific.TransversalesPostCreateTransaction' (uuid='co.com.ach.payment.specific.TransversalesPostCreateTransaction',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:32:36.627484Z: [Thread 31416] (Msg 1/1) BIP2269I: El recurso desplegado 'co.com.ach.payment.specific.TransversalesPostValidateRules' (uuid='co.com.ach.payment.specific.TransversalesPostValidateRules',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-11-27 03:32:36.627744Z: [Thread 31416] (Msg 1/1) BIP9332I: Application 'ftx_payment_app' se ha created correctamente. 
+2024-11-27 03:32:36.627844Z: [Thread 31416] (Msg 1/1) BIP9326I: El origen 'ftx_payment_appproject.generated.bar' se ha desplegado correctamente. 
+2024-11-27 03:32:36.634372Z: [Thread 31416] (Msg 1/1) BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
+2024-11-27 03:32:44.688708Z: [Thread 22220] (Msg 1/1) BIP2152I: Se ha recibido el mensaje de configuración. 
+2024-11-27 03:32:45.003984Z: [Thread 22220] (Msg 1/1) BIP2155I: A punto de 'Initialize' el recurso desplegado 'ftx_payment' de tipo 'RestAPI'. 
+2024-11-27 03:32:45.307112Z: [Thread 22220] (Msg 1/1) BIP2155I: A punto de 'Start' el recurso desplegado 'ftx_payment' de tipo 'RestAPI'. 
+2024-11-27 03:32:45.588944Z: [Thread 22220] (Msg 1/1) BIP3135S: Se ha producido una excepción al iniciar HTTPSConnector. El texto de excepción es No keystore configured 
+2024-11-27 03:32:45.592816Z: [Thread 22220] (Msg 1/1) BIP2271I: El recurso desplegado 'gen.ftx_payment' (uuid='gen.ftx_payment',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:32:45.592944Z: [Thread 22220] (Msg 1/2) BIP9320E: El flujo de mensajes 'gen.ftx_payment', 'gen.ftx_payment' ha detectado un error y no ha podido iniciarse. 
+2024-11-27 03:32:45.593032Z: [Thread 22220] (Msg 2/2) BIP3135S: Se ha producido una excepción al iniciar HTTPSConnector. El texto de excepción es No keystore configured 
+2024-11-27 03:32:45.593188Z: [Thread 22220] (Msg 1/1) BIP9333W: RestAPI 'ftx_payment' ha sido created pero contiene errores que han impedido el inicio de algunos recursos. 
+2024-11-27 03:32:45.593316Z: [Thread 22220] (Msg 1/1) BIP1096E: El origen 'ftx_paymentproject.generated.bar' se ha desplegado, pero ha habido uno o más errores que podrían suponer que los recursos desplegados no puedan ejecutar. 
+2024-11-27 03:32:45.593876Z: [Thread 22220] (Msg 1/1) BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
+2024-11-27 03:34:41.868036Z: [Thread 24764] (Msg 1/1) BIP1989I: El servidor de integración está finalizando debido a un suceso de conclusión. 
+2024-11-27 03:34:41.870096Z: [Thread 24764] (Msg 1/1) BIP2155I: A punto de 'Stop' el recurso desplegado 'ftx_payment_app' de tipo 'Application'. 
+2024-11-27 03:34:41.872136Z: [Thread 24764] (Msg 1/1) BIP2155I: A punto de 'Stop' el recurso desplegado 'ftx_payment' de tipo 'RestAPI'. 
+2024-11-27 03:34:43.530764Z: [Thread 24764] (Msg 1/1) BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_1' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_1',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:34:43.531156Z: [Thread 24764] (Msg 1/1) BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_2' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_2',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:34:43.531504Z: [Thread 24764] (Msg 1/1) BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_3' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_3',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:34:43.531908Z: [Thread 24764] (Msg 1/1) BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_4' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_4',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:34:43.532280Z: [Thread 24764] (Msg 1/1) BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_5' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_5',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:34:43.532692Z: [Thread 24764] (Msg 1/1) BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_6' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_6',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:34:43.533168Z: [Thread 24764] (Msg 1/1) BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_6_1' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_6_1',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:34:43.533704Z: [Thread 24764] (Msg 1/1) BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_7' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_7',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:34:43.534100Z: [Thread 24764] (Msg 1/1) BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecuteBankPayment' (uuid='co.com.ach.payment.executePayment.ExecuteBankPayment',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:34:43.534460Z: [Thread 24764] (Msg 1/1) BIP2271I: El recurso desplegado 'co.com.ach.payment.specific.TransversalesEncryptCus' (uuid='co.com.ach.payment.specific.TransversalesEncryptCus',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:34:43.534792Z: [Thread 24764] (Msg 1/1) BIP2271I: El recurso desplegado 'co.com.ach.payment.specific.TransversalesGetCus' (uuid='co.com.ach.payment.specific.TransversalesGetCus',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:34:43.535264Z: [Thread 24764] (Msg 1/1) BIP2271I: El recurso desplegado 'co.com.ach.payment.specific.TransversalesGetCustomerData' (uuid='co.com.ach.payment.specific.TransversalesGetCustomerData',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:34:43.535696Z: [Thread 24764] (Msg 1/1) BIP2271I: El recurso desplegado 'co.com.ach.payment.specific.TransversalesGetKeyList' (uuid='co.com.ach.payment.specific.TransversalesGetKeyList',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:34:43.536092Z: [Thread 24764] (Msg 1/1) BIP2271I: El recurso desplegado 'co.com.ach.payment.specific.TransversalesGetProductData' (uuid='co.com.ach.payment.specific.TransversalesGetProductData',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:34:43.536456Z: [Thread 24764] (Msg 1/1) BIP2271I: El recurso desplegado 'co.com.ach.payment.specific.TransversalesPostCreateTransaction' (uuid='co.com.ach.payment.specific.TransversalesPostCreateTransaction',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:34:43.536832Z: [Thread 24764] (Msg 1/1) BIP2271I: El recurso desplegado 'co.com.ach.payment.specific.TransversalesPostValidateRules' (uuid='co.com.ach.payment.specific.TransversalesPostValidateRules',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-11-27 03:34:44.410440Z: [Thread 24764] (Msg 1/1) BIP2155I: A punto de 'TearDown' el recurso desplegado 'ftx_payment_app' de tipo 'Application'. 
+2024-11-27 03:34:44.464024Z: [Thread 24764] (Msg 1/1) BIP2155I: A punto de 'TearDown' el recurso desplegado 'ftx_payment' de tipo 'RestAPI'. 
+2024-11-27 03:34:44.496296Z: [Thread 24764] (Msg 1/1) BIP2155I: A punto de 'TearDown' el recurso desplegado 'CommonLib' de tipo 'SharedLibrary'. 
+2024-11-27 03:34:46.834460Z: [Thread 24764] (Msg 1/1) BIP1992I: El servidor de integración 'TRANSACTIONS' se ha parado. 

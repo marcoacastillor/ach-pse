@@ -1,0 +1,360 @@
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\specific\TransversalesPostValidateRules.msgflow.
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesPostValidateRules.msgflow to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\specific\TransversalesPostCreateTransaction.msgflow.
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesPostCreateTransaction.msgflow to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetProductData.msgflow.
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetProductData.msgflow to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetKeyList.msgflow.
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetKeyList.msgflow to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetCustomerData.msgflow.
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetCustomerData.msgflow to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetCus.msgflow.
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetCus.msgflow to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\specific\TransversalesEncryptCus.msgflow.
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesEncryptCus.msgflow to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment.msgflow.
+Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment.msgflow to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_7.msgflow.
+Successfully added file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_7.msgflow to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_6_1.msgflow.
+Successfully added file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_6_1.msgflow to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_6.msgflow.
+Successfully added file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_6.msgflow to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_5.msgflow.
+Successfully added file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_5.msgflow to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_4.msgflow.
+Successfully added file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_4.msgflow to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_3.msgflow.
+Successfully added file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_3.msgflow to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_2.msgflow.
+Successfully added file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_2.msgflow to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_1.msgflow.
+Successfully added file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_1.msgflow to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\HU006ContratoListadellaves_V1.0.0.yaml.
+Successfully added file ftx_payment_app\HU006ContratoListadellaves_V1.0.0.yaml to BAR file.
+Elapsed time: 0 second(s).
+
+Successfully added file ftx_payment_app\HU006ContratoListadellaves_V1.0.0.yaml to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\HU01GeneradorIDAWS_V1.2.yaml.
+Successfully added file ftx_payment_app\HU01GeneradorIDAWS_V1.2.yaml to BAR file.
+Elapsed time: 0,001 second(s).
+
+Successfully added file ftx_payment_app\HU01GeneradorIDAWS_V1.2.yaml to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\HU02CrearTansaccion_V0.4.yaml.
+Successfully added file ftx_payment_app\HU02CrearTansaccion_V0.4.yaml to BAR file.
+Elapsed time: 0,002 second(s).
+
+Successfully added file ftx_payment_app\HU02CrearTansaccion_V0.4.yaml to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\HU03ValidatedRulesAWS_V1.1.yaml.
+Successfully added file ftx_payment_app\HU03ValidatedRulesAWS_V1.1.yaml to BAR file.
+Elapsed time: 0,001 second(s).
+
+Successfully added file ftx_payment_app\HU03ValidatedRulesAWS_V1.1.yaml to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\HUTransversalesUserVaultMgmt_V1.0.yaml.
+Successfully added file ftx_payment_app\HUTransversalesUserVaultMgmt_V1.0.yaml to BAR file.
+Elapsed time: 0,001 second(s).
+
+Successfully added file ftx_payment_app\HUTransversalesUserVaultMgmt_V1.0.yaml to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\PSE 3.0-Capa_v2.yaml.
+Successfully added file ftx_payment_app\PSE 3.0-Capa_v2.yaml to BAR file.
+Elapsed time: 0,002 second(s).
+
+Successfully added file ftx_payment_app\PSE 3.0-Capa_v2.yaml to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\PSE3.0Capa_V3.yaml.
+Successfully added file ftx_payment_app\PSE3.0Capa_V3.yaml to BAR file.
+Elapsed time: 0,002 second(s).
+
+Successfully added file ftx_payment_app\PSE3.0Capa_V3.yaml to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:02 COT 2024
+
+Processing file ftx_payment_app\PSE3.0Middleware_V2.4.yaml.
+Successfully added file ftx_payment_app\PSE3.0Middleware_V2.4.yaml to BAR file.
+Elapsed time: 0,001 second(s).
+
+Successfully added file ftx_payment_app\PSE3.0Middleware_V2.4.yaml to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\TRANSACTIONREGISTER_V0.1.yml.
+Successfully added file ftx_payment_app\TRANSACTIONREGISTER_V0.1.yml to BAR file.
+Elapsed time: 0,001 second(s).
+
+Successfully added file ftx_payment_app\TRANSACTIONREGISTER_V0.1.yml to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\application.descriptor.
+Successfully added file ftx_payment_app\application.descriptor to BAR file.
+Elapsed time: 0 second(s).
+
+Successfully added file ftx_payment_app\application.descriptor to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\application.descriptor.
+Successfully added file ftx_payment_app\application.descriptor to BAR file.
+Elapsed time: 0,001 second(s).
+
+Successfully added file ftx_payment_app\application.descriptor to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_3_ValidateResponse.esql.
+Successfully added file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_3_ValidateResponse.esql to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_4_ValidateResponse.esql.
+Successfully added file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_4_ValidateResponse.esql to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_5_ValidateResponse.esql.
+Successfully added file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_5_ValidateResponse.esql to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_6_1_ValidateResponse.esql.
+Successfully added file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_6_1_ValidateResponse.esql to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_6_ValidateResponse.esql.
+Successfully added file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_6_ValidateResponse.esql to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_7_ValidateResponse.esql.
+Successfully added file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_7_ValidateResponse.esql to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_PrepareRequest.esql.
+Successfully added file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_PrepareRequest.esql to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_ValidateResponse.esql.
+Successfully added file ftx_payment_app\co\com\ach\payment\createPayment\CreateInitiatePayment_ValidateResponse.esql to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_PrepareRequest.esql.
+Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_PrepareRequest.esql to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_PrepareResponse.esql.
+Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_PrepareResponse.esql to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\specific\TransversalesEncriptCus_Prepare_request.esql.
+Dependent ESQL file co/com/ach/payment/specific/TransversalesGetProductData_Prepare_request.esql is added to the BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesEncriptCus_Prepare_request.esql to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetCus_Prepare_request.esql.
+Dependent ESQL file co/com/ach/payment/specific/TransversalesGetProductData_Prepare_request.esql is added to the BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetCus_Prepare_request.esql to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetCustomerData_Prepare_request.esql.
+Dependent ESQL file co/com/ach/payment/specific/TransversalesGetProductData_Prepare_request.esql is added to the BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetCustomerData_Prepare_request.esql to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetKeyList_Prepare_request.esql.
+Dependent ESQL file co/com/ach/payment/specific/TransversalesGetProductData_Prepare_request.esql is added to the BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetKeyList_Prepare_request.esql to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetProductData_Prepare_request.esql.
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetProductData_Prepare_request.esql to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\specific\TransversalesPostCreateTransaction_Prepare_request.esql.
+Dependent ESQL file co/com/ach/payment/specific/TransversalesGetProductData_Prepare_request.esql is added to the BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesPostCreateTransaction_Prepare_request.esql to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\specific\TransversalesPostValidateRules_Prepare_request.esql.
+Dependent ESQL file co/com/ach/payment/specific/TransversalesGetProductData_Prepare_request.esql is added to the BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesPostValidateRules_Prepare_request.esql to BAR file.
+
+==============================================
+
+!Tue Nov 26 22:24:03 COT 2024
+
+Processing file ftx_payment_app\co\com\ach\payment\specific\spec_Prepare_response.esql.
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\spec_Prepare_response.esql to BAR file.
