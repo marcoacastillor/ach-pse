@@ -1,0 +1,85 @@
+BROKER SCHEMA co.com.ach.payment.executePayment
+
+
+CREATE COMPUTE MODULE ExecuteBankPayment_3_ValidateResponseStartPay
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- declarar referencias a mensajes de entrada
+		DECLARE refGroups REFERENCE TO InputRoot.ComIbmGroupCompleteNode;
+		MOVE refGroups LASTCHILD;
+		MOVE refGroups LASTCHILD;
+		
+		-- referencias a mensaje original y respuesta
+		DECLARE refOriginal REFERENCE TO refGroups.OrigenRq;
+		DECLARE refCustomer REFERENCE TO refGroups.CustomerByIdsRs;
+		DECLARE refBank REFERENCE TO refGroups.BankByIdRs;
+		DECLARE refCus REFERENCE TO refGroups.DecryptCusRs;
+		
+		-- declarar referencia de salida
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		-- validar si es exitoso, continúa proceso
+		-- mensaje de respuesta
+		MOVE refOriginal LASTCHILD;
+		MOVE refOriginal LASTCHILD;
+		MOVE refOriginal LASTCHILD;
+		MOVE refOriginal LASTCHILD;
+		
+		MOVE refBank LASTCHILD;
+		MOVE refBank LASTCHILD;
+		MOVE refBank LASTCHILD;
+		MOVE refBank LASTCHILD;
+		
+		MOVE refCustomer LASTCHILD;
+		MOVE refCustomer LASTCHILD;
+		MOVE refCustomer LASTCHILD;
+		MOVE refCustomer LASTCHILD;
+		
+		-- mover mensaje original
+		MOVE refCus LASTCHILD;
+		MOVE refCus LASTCHILD;
+		MOVE refCus LASTCHILD;
+		MOVE refCus LASTCHILD;
+		
+		IF CAST(refCustomer.headers.httpStatusCode AS INTEGER) = 200 AND  CAST(refBank.headers.httpStatusCode AS INTEGER) = 200 THEN
+			
+			--copias mensaje
+			SET refOut 						= refOriginal;
+			SET refOut.cus	 				= refCus.data;
+			SET refOut.bank	 				= refBank.data;
+			SET refOut.customer				= refCustomer.data;
+	
+			RETURN TRUE;
+		ELSE
+			SET OutputLocalEnvironment.Destination.CallableFlow.Reply.ReplyIdentifier = CAST(refOriginal.session.Destination.CallableFlow.Reply.ReplyIdentifier AS BLOB);
+			
+			-- construir mensaje ISO 20022 de error.
+			SET refOut.group_header 																												= refOriginal.group_header;
+			SET refOut.original_payment_information_and_status.original_payment_information_identification 											= refOriginal.payment_information.payment_information_identification;
+			
+			IF CAST(refCustomer.headers.httpStatusCode AS INTEGER) <> 200  THEN
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.transaction_status 								= refCustomer.headers.httpStatusCode;
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.originator.name 		= '';
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.code				= refCustomer.messageResponse.responseCode;
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.property			= refCustomer.messageResponse.responseMessage;
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.additional_information	= refCustomer.messageResponse.responseDetail;
+				
+				PROPAGATE TO TERMINAL 'out1' DELETE NONE;	
+			END IF;
+			
+			IF CAST(refBank.headers.httpStatusCode AS INTEGER) <> 200  THEN
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.transaction_status 								= refBank.headers.httpStatusCode;
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.originator.name 		= '';
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.code				= refBank.messageResponse.responseCode;
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.property			= refBank.messageResponse.responseMessage;
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.additional_information	= refBank.messageResponse.responseDetail;
+				
+				PROPAGATE TO TERMINAL 'out1' DELETE NONE;	
+			END IF;
+			
+		END IF;
+		
+		RETURN FALSE;
+	END;
+END MODULE;

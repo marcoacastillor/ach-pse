@@ -1,0 +1,56 @@
+BROKER SCHEMA com.ibus.common.procedures.util
+
+CREATE COMPUTE MODULE Common_ValidateHeaders
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- copiar todo el mensaje
+		SET OutputRoot 				= InputRoot;
+		
+		-- copiar variables de sesión
+		SET OutputLocalEnvironment 	= InputLocalEnvironment;
+		
+		-- declaración y asignación de variables
+		DECLARE messageUuid CHARACTER InputRoot.HTTPInputHeader."Message-Uuid";
+		DECLARE requestAppId CHARACTER InputRoot.HTTPInputHeader."Request-App-Id";
+		
+		-- validación de campos obligatorios
+		IF messageUuid IS NULL THEN
+			THROW EXCEPTION MESSAGE 500 VALUES('requestError' , 'Error en los headers, el header message-uuid es obligatorio'); 
+		END IF;
+		IF requestAppId IS NULL THEN
+			THROW EXCEPTION MESSAGE 500 VALUES('requestError' , 'Error en los headers, el header request-app-id es obligatorio'); 
+		END IF;
+		
+		/***************************************************************************/
+		-- bloque para crear mensaje de auditoría request. 
+		-- Solo para métodos PUT, POST, PATCH
+		/***************************************************************************/
+		IF InputLocalEnvironment.REST.Input.Method <> 'GET' THEN
+			SET Environment.service.needTrackingResp = TRUE;
+			PROPAGATE TO TERMINAL 'out1' DELETE NONE;	
+		END IF;
+
+		RETURN TRUE; 
+	END;
+END MODULE;
+
+
+/*
+* Módulo que guarda información de log para mensajes Response
+*/
+CREATE COMPUTE MODULE Common_CopyEntireMessageWithTrackingResponse
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot= InputRoot;
+		
+		/***************************************************************************/
+		-- bloque para crear mensaje de auditoría request. 
+		-- Solo para métodos PUT, POST, PATCH
+		/***************************************************************************/
+		IF Environment.service.needTrackingResp THEN
+			PROPAGATE TO TERMINAL 'out1' DELETE NONE;	
+		END IF;
+		
+		RETURN TRUE;
+	END;
+END MODULE;		

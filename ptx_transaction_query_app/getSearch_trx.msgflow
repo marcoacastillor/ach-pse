@@ -31,7 +31,7 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="839,92" computeExpression="esql://routine/getSearch_trx#prepare_response.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="Prepare response"/>
       </nodes>
-      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="592,156" definitionFile="Api-Transaction-Query.yaml" definitionType="swagger_20" operationName="getSearch-trx" hostnameChecking="false" acceptCompressedResponses="true">
+      <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="620,93" definitionFile="Api-Transaction-Query.yaml" definitionType="swagger_20" operationName="getSearch-trx" hostnameChecking="false" acceptCompressedResponses="true">
         <translation xmi:type="utility:ConstantString" string="getSearch-trx"/>
         <parameters name="pageNumber" expression=""/>
         <parameters name="request-app-id" expression=""/>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Broker deployBarfile="Z:\20.Assist\1.ACH\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-11-27 16:11:51">
+  <CompiledApplication>
+    <ConfigurableProperty uri="startMode">
+    </ConfigurableProperty>
+  </CompiledApplication>
+  <CompiledMessageFlow name="ExecutePayment" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-11-27 16:11:51">
+    <ConfigurableProperty uri="ExecutePayment#CFAsyncRq_ExecuteBankPayment.AddRequestToGroup">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#CFAsyncRq_ExecuteBankPayment.GroupRequestFolderName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#CFAsyncRq_ExecuteBankPayment.GroupRequestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#CFAsyncRq_ExecuteBankPayment.asyncResponseCorrelator" override="CFAsync_ExecuteBankPayment">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#CFAsyncRq_ExecuteBankPayment.requestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#CFAsyncRq_ExecuteBankPayment.targetApplication" override="ftx_payment_app">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#CFAsyncRq_ExecuteBankPayment.targetEndpointName" override="Payment_ExecuteBank">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#CFAsync_ExecuteBankPayment.asyncResponseCorrelator" override="CFAsync_ExecuteBankPayment">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#GetRESTInfoError.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#GetRESTInfoError.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#GetRESTInfoError.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#RequestMessage.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#RequestMessage.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#RequestMessage.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#SetTrackingRequest.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#SetTrackingRequest.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#SetTrackingRequest.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#SetTrackingRequest1.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#SetTrackingRequest1.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#SetTrackingRequest1.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#Trace.filePath">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#Validate headers.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#Validate headers.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="ExecutePayment#Validate headers.validateMaster">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="gen.ftx_payment" deployBarfile="Z:\20.Assist\1.ACH\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-11-27 16:11:51">
+    <ConfigurableProperty uri="gen.ftx_payment#HTTP Input.URLSpecifier" override="/v1/pse-transaction/pse/payment*">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#HTTP Input.decompressInputMessage">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#HTTP Input.faultFormat" override="JSON">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#HTTP Input.securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#HTTP Input.timeoutForClient">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#HTTP Input.useHTTPS">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#HTTP Input.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#HTTP Reply.compressionType">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#HTTP Reply.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#additionalInstances" override="3">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#commitCount">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#commitInterval">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#consumerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#consumerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#coordinatedTransaction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#maximumRateMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#monitoringProfile">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#notificationThresholdMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#processingTimeoutAction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#processingTimeoutSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#providerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#providerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#startInstancesWhenFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#startMode">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="gen.ftx_payment#wlmPolicy">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="NotifyPayment" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-11-27 16:11:51">
+    <ConfigurableProperty uri="NotifyPayment#CF Async Invoke.AddRequestToGroup">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="NotifyPayment#CF Async Invoke.GroupRequestFolderName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="NotifyPayment#CF Async Invoke.GroupRequestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="NotifyPayment#CF Async Invoke.asyncResponseCorrelator" override="CFAsync_NotifyPayment">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="NotifyPayment#CF Async Invoke.requestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="NotifyPayment#CF Async Invoke.targetApplication" override="ptx_product_pse_app">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="NotifyPayment#CF Async Invoke.targetEndpointName" override="Create_NotifyPayment">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="NotifyPayment#CF Async Response.asyncResponseCorrelator" override="notify">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="NotifyPayment#GetRESTInfoError.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="NotifyPayment#GetRESTInfoError.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="NotifyPayment#GetRESTInfoError.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="NotifyPayment#RequestMessage.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="NotifyPayment#RequestMessage.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="NotifyPayment#RequestMessage.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="NotifyPayment#Trace.filePath">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="NotifyPayment#Validate headers.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="NotifyPayment#Validate headers.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="NotifyPayment#Validate headers.validateMaster">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="InitiatePayment" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-11-27 16:11:51">
+    <ConfigurableProperty uri="InitiatePayment#CFAsyncRq_CreateInitiatePayment.AddRequestToGroup">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#CFAsyncRq_CreateInitiatePayment.GroupRequestFolderName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#CFAsyncRq_CreateInitiatePayment.GroupRequestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#CFAsyncRq_CreateInitiatePayment.asyncResponseCorrelator" override="CFAsync_CreateInitiatePayment">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#CFAsyncRq_CreateInitiatePayment.requestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#CFAsyncRq_CreateInitiatePayment.targetApplication" override="ftx_payment_app">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#CFAsyncRq_CreateInitiatePayment.targetEndpointName" override="Create_InitiatePayment">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#CFAsync_CreateInitiatePayment.asyncResponseCorrelator" override="CFAsync_CreateInitiatePayment">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#GetRESTInfoError.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#GetRESTInfoError.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#GetRESTInfoError.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#RequestMessage.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#RequestMessage.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#RequestMessage.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#SetTrackingRequest.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#SetTrackingRequest.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#SetTrackingRequest.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#SetTrackingRequest1.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#SetTrackingRequest1.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#SetTrackingRequest1.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.AddRequestToGroup">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.GroupRequestFolderName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.GroupRequestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.SSLCertificateLabel">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.SSLCipherSpec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.SSLPeerName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.channelName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.connection">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.destinationQueueManagerName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.listenerPortNumber">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.policyUrl" override="{CommonPolicies}:MQPTXEndpoint">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.queueManagerHostname">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.queueManagerName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.queueName" override="TRACKING.REQ">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.replyToQ">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.replyToQMgr">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.securityIdentity">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.useSSL">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.AddRequestToGroup">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.GroupRequestFolderName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.GroupRequestTimeout">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.SSLCertificateLabel">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.SSLCipherSpec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.SSLPeerName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.channelName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.connection">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.destinationQueueManagerName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.listenerPortNumber">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.policyUrl" override="{CommonPolicies}:MQPTXEndpoint">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.queueManagerHostname">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.queueManagerName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.queueName" override="TRACKING.REQ">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.replyToQ">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.replyToQMgr">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.securityIdentity">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.useSSL">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#TRACKING.REQ1.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#Trace.filePath">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#Validate headers.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#Validate headers.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="InitiatePayment#Validate headers.validateMaster">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+</Broker>

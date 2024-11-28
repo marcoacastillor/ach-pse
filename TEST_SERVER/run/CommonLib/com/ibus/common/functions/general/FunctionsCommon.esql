@@ -1,0 +1,50 @@
+BROKER SCHEMA com.ibus.common.functions.general
+
+CREATE FUNCTION pad(IN source CHARACTER, IN length1 INTEGER, IN value CHARACTER, IN side CHARACTER) RETURNS CHARACTER
+BEGIN
+      DECLARE str CHARACTER REPLICATE(value, length1);
+      SET source = COALESCE (source , '');
+      
+      IF side = 'LEFT' THEN
+            SET str = RIGHT(str || source, length1);
+      ELSEIF side = 'RIGHT' THEN
+            SET str = LEFT(source||str, length1);
+      END IF;
+
+      RETURN str;
+END;
+
+CREATE FUNCTION getId() RETURNS INTEGER
+BEGIN
+	DECLARE consecutive CHARACTER CAST(CURRENT_GMTTIMESTAMP AS CHARACTER FORMAT 'yyyyMMddHHmmssSSSSSS');
+	SET consecutive = RIGHT(REPLICATE('0',20)||consecutive,20);
+	RETURN ABS(CAST(consecutive AS INTEGER));
+END;
+
+	/************************************************************************
+	 *  			   														*
+	 *  		Función que ofuscar datos sensibles.						*
+	 * 								           								*
+	 ***********************************************************************/
+	CREATE FUNCTION ObfuscateSensitiveData(IN pdato CHAR) RETURNS CHAR
+	BEGIN
+		DECLARE charResult CHARACTER;
+		DECLARE uuidCh 		CHARACTER UUIDASCHAR;
+		DECLARE uuidBlbs64 	CHARACTER BASE64ENCODE(UUIDASBLOB);
+		SET charResult = REPLACE(SUBSTRING(uuidBlbs64 FROM 1 FOR 2)|| '**' || SUBSTRING(uuidBlbs64 FROM 3 FOR 1) || BASE64ENCODE(pdato)|| SUBSTRING(BASE64ENCODE(uuidCh) FROM 1 FOR 2),'=','**');
+		RETURN charResult;	
+	END;
+	
+	 /************************************************************************
+	 *  			   														*
+	 *  		Función que Desofuscar datos sensibles.						*
+	 * 								           								*
+	 ***********************************************************************/
+	CREATE FUNCTION DeObfuscateSensitiveData(IN pdato CHAR) RETURNS CHAR
+	BEGIN
+		DECLARE charResult CHARACTER;
+		DECLARE intLongitud INTEGER;
+		SET intLongitud = LENGTH(pdato);
+		SET charResult = CAST(BASE64DECODE(REPLACE(SUBSTRING(pdato FROM 6 FOR intLongitud - 7),'**','=')) AS CHARACTER CCSID 1208);
+		RETURN charResult;	
+	END;

@@ -1,0 +1,32 @@
+/*
+ *
+ * File name: HomologationDAO.esql
+ *
+ * Purpose:   ESQL empleado para consultas en la tabla de homologaciones
+ *
+ * Authors:   Assist
+ *            
+ *
+ * Version:   1.0
+ *
+ * @copyright Assist  All rights reserved.
+ *
+ */
+
+BROKER SCHEMA com.ibus.common.procedures.global.cache.dao
+
+/*
+* Obtiene el valor de una homologacion de la base de datos
+*
+* Parameters:
+* IN:  CHARACTER srcApp - Nombre aplicacion origen
+* IN:  CHARACTER destApp - Nombre aplicacion destino
+* IN:  CHARACTER homologationName - Nombre homologacion
+* OUT: REFERENCE destValue - Referencia a lista con informacion del servicio
+*
+*/
+CREATE PROCEDURE getHomologation(IN srcApp CHARACTER, IN destApp CHARACTER, IN homologationName CHARACTER, IN srcValue CHARACTER, IN homologation REFERENCE) BEGIN
+	DECLARE sql CHARACTER 'SELECT DEST_VALUE FROM HOMOLOGATION WHERE SRC_APP = ? AND DEST_APP = ? AND NAME =? AND SRC_VALUE = ?';
+	SET homologation.values[] = PASSTHRU(sql, srcApp, destApp, homologationName, srcValue );
+END;
+			

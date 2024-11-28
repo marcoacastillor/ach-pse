@@ -1,0 +1,32 @@
+/*
+ *
+ * File name: ErrorDAO.esql
+ *
+ * Purpose:   ESQL empleado para consultas en la tabla de homologacion de errores
+ *
+ * Authors:   Assist
+ *            
+ *
+ * Version:   1.0
+ *
+ * @copyright Assist  All rights reserved.
+ *
+ */
+
+BROKER SCHEMA com.ibus.common.procedures.global.cache.dao
+
+/*
+* Obtiene el valor de una homologacion de la base de datos
+*
+* Parameters:
+* IN:  CHARACTER srcApp 	- Nombre aplicacion origen
+* IN:  CHARACTER destApp 	- Nombre aplicacion destino
+* IN:  CHARACTER errorCode 	- Nombre homologacion
+* OUT: REFERENCE errors 	- Referencia a lista los datos de los errores
+*
+*/
+CREATE PROCEDURE getErrorHomologation(IN srcApp CHARACTER, IN destApp CHARACTER, IN errorCode CHARACTER, IN errors REFERENCE) BEGIN
+	DECLARE sql CHARACTER 'SELECT DEST_ERROR, DESCRIPTION FROM ERROR_HOMOLOGATION WHERE SRC_APP = ? AND DEST_APP = ? AND SRC_ERROR =?';
+	SET errors.values[] = PASSTHRU(sql, srcApp, destApp, errorCode );
+END;
+			
