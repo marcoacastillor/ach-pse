@@ -16,7 +16,12 @@ CREATE COMPUTE MODULE CreateInitiatePayment_PrepareRequestGetToken
 		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
 		
 		-- set scope para obtener token
-		SET refOut.scope = 'transaction-query';
+		SET refOut.scope 			= 'security-mgmt';
+		SET refOut.username 		= '33a75eedb2c4412651ad5d1b1279eb29';
+		SET refOut.password 		= 'LJYqWtyfOEGbiI3ETuvUndzAosG1Uki5';
+		SET refOut.client_id		= '6d5d2daa8581e9a24d67d3b9633e17a4';
+		SET refOut.client_secret	= '23bc9cf2cab68a394ccffbe1f94476e0';
+		SET refOut.grant_type		= 'client_credentials';
 		
 		RETURN TRUE;
 	END;

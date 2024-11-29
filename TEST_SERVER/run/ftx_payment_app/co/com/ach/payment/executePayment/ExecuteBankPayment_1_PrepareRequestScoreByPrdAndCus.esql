@@ -21,7 +21,7 @@ CREATE COMPUTE MODULE ExecuteBankPayment_1_PrepareRequestScoreByPrdAndCus
 		-- set scope para obtener token
 		-- TODO: Validar mapeo productId
 		SET refOut.productId 	= refInp.payment_information.credit_transfer_transaction_information.Item[1].creditor.identification.organisation_identification.other.Item[2].identification;
-		SET refOut.cus			= refInp.group_header.message_identification;
+		SET refOut.cus			= refInp.cus;
 		
 		RETURN TRUE;
 	END;

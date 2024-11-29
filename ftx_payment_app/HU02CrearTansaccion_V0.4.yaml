@@ -1,1188 +1,1056 @@
-openapi: 3.0.3
+swagger: "2.0"
 info:
-  title: PSE 3.0
-  description: |-
-    PSE 3.0 project service interface.
-
-    _Implementation of resources to make an online payment through PSE payment platform_
-    
-    Some useful links:
-  termsOfService: http://swagger.io/terms/
-  contact:
-    name: https://www.achcolombia.com.co/contactenos
-    url: https://www.achcolombia.com.co/contactenos
-    email: admin@ach.com.co
-  version: 1.0.0
-  
-servers:
-  - url: http://localhost:/v1/pse-transaction/pse/payment
-
-tags:
-  - name: x-initiate
-    description: CreateTransactionPayment
-  - name: x-execute-bank
-    description: InitBankPayment
-  - name: x-notify
-    description: ConfirmTransactionPayment
-
+  description: "API para creacion de transacciones"
+  version: "1.5.0"
+  title: "Transaction API"
+host: $(host.name)
 paths:
-  /x-initiate:
+  /po/generator-trx-mgmt/transactions:
     post:
-      tags:
-        - x-initiate
-      summary: Internal processing and validation of the transaction (e.g., validation of payment information, risk checks).
-      description: Create a unique record in the payment gateway
-      operationId: InitiatePayment
+      summary: "Create new transaction"
+      description: "Creates a new transaction with the provided details"
       parameters:
-        - $ref: '#/components/parameters/message-uuid'
-        - $ref: '#/components/parameters/request-app-id'          
-      requestBody:
-        $ref: '#/components/requestBodies/CreateTransactionPaymentRequest'
+        - name: message-uuid
+          in: header
+          required: true
+          type: string
+          format: uuid
+          description: "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+        - name: request-app-id
+          in: header
+          required: true
+          type: string
+          format: uuid
+          description: "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+        - in: "body"
+          name: "body"
+          description: "Transaction object that needs to be added"
+          required: true
+          schema:
+            $ref: "#/definitions/TranRq"
       responses:
-        '200':
-          $ref: '#/components/responses/CustomerCreditTransferInitiationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-      
-      security:
-        - clientId: []
-          clientSecret: []
-          oauth2-ptx:
-            - generate-tx-create
-      x-codegen-request-body-name: body
-      
-  /x-execute-bank:
-    post:
+        201:
+          description: "Transaction created"
+          schema:
+            $ref: "#/definitions/TransactionResponse"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: Bad request or mal formatted data
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: Method Not Allowed.
+        "409":
+          schema:
+            $ref: "#/definitions/generalError409"
+          description: Conflict
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: Unsupported Media Type.
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: Internal Server Error
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: Bad Gateway
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: Service Unavailable
+        default:
+          description: Error inesperado.
       tags:
-        - x-execute-bank
-      summary: Execute payment in the financial entity
-      description: Execute a well-bounded financial transaction/task, typically involving largely automate/structured fulfillment processing. Execute a payment transaction.
-      operationId: ExecutePayment
-      parameters:
-        - $ref: '#/components/parameters/message-uuid'
-        - $ref: '#/components/parameters/request-app-id'          
-      requestBody:
-        $ref: '#/components/requestBodies/InitBankPaymentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitBankPaymentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-      
-      security:
-        - clientId: []
-          clientSecret: []
-          oauth2-ptx:
-            - generate-tx-create
-      x-codegen-request-body-name: body
-      
-      
-  /x-notity:
-    post:
-      tags:
-        - x-notify
-      summary: Execute payment in the financial entity
-      description: Execute a well-bounded financial transaction/task, typically involving largely automate/structured fulfillment processing. Execute a payment transaction.
-      operationId: NotifyPayment
-      parameters:
-        - $ref: '#/components/parameters/message-uuid'
-        - $ref: '#/components/parameters/request-app-id'          
-      requestBody:
-        $ref: '#/components/requestBodies/NotifyPaymentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/NotifyPaymentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-      
-      security:
-        - clientId: []
-          clientSecret: []
-          oauth2-ptx:
-            - generate-tx-create
-      x-codegen-request-body-name: body
-      
-    
-          
-components:
-  schemas:
-    CreateTransactionPaymentRequest:
-      required:
-        - group_header
-        - paymentInformation
-      type: object
-      properties:
-        group_header:
-          $ref: '#/components/schemas/GroupHeader'
-        payment_information:
-          $ref: '#/components/schemas/PaymentInformation'
-          
-    InitBankPaymentRequest:
-      required:
-        - group_header
-        - paymentInformation
-      type: object
-      properties:
-        group_header:
-          $ref: '#/components/schemas/GroupHeader'
-        payment_information:
-          $ref: '#/components/schemas/PaymentInformationV2'
-          
-    NotifyPaymentRequest:
-      required:
-        - group_header
-        - paymentInformation
-      type: object
-      properties:
-        group_header:
-          $ref: '#/components/schemas/GroupHeader'
-        payment_information:
-          $ref: '#/components/schemas/PaymentInformationV3'
-          
-    
-    CustomerCreditTransferInitiationResponse:
-      required:
-        - group_header
-        - original_payment_information_and_status
-      type: object
-      properties:
-        group_header:
-          ##Conjunto de características compartidas por una transacción individual incluida en el mensaje
-          $ref: '#/components/schemas/GroupHeader'
-        original_payment_information_and_status:
-          type: array
-          items:
-            #Objeto que representa el resultado de la transacción
-            $ref: '#/components/schemas/OriginalPaymentInformationAndStatus'
-            
-    InitBankPaymentResponse:
-      required:
-        - group_header
-        - original_payment_information_and_status
-      type: object
-      properties:
-        group_header:
-          ##Conjunto de características compartidas por una transacción individual incluida en el mensaje
-          $ref: '#/components/schemas/GroupHeader'
-        original_payment_information_and_status:
-          type: array
-          items:
-            #Objeto que representa el resultado de la transacción
-            $ref: '#/components/schemas/OriginalPaymentInformationAndStatusV2'
-            
-    NotifyPaymentResponse:
-      required:
-        - group_header
-        - original_payment_information_and_status
-      type: object
-      properties:
-        group_header:
-          ##Conjunto de características compartidas por una transacción individual incluida en el mensaje
-          $ref: '#/components/schemas/GroupHeader'
-        original_payment_information_and_status:
-          type: array
-          items:
-            #Objeto que representa el resultado de la transacción
-            $ref: '#/components/schemas/OriginalPaymentInformationAndStatus'
-    
-    GroupHeader:
-      required:
-        - message_identification
-        - creation_date_time 
-      type: object
-      properties:
-        message_identification:
-          description: Point to point reference, as assigned by the instructing party, and sent to the next party in the chain to unambiguously identify the message.
-          type: string
-          minLength: 1
-          maxLength: 36
-          example: rn-00234
-          
-        creation_date_time:
-          description: Date and time at which the message was created.
-          type: string
-          minLength: 1
-          maxLength: 36
-          format: date-time
-          
-        number_of_transactions:
-          description: Number of individual transactions contained in the message.
-          type: number 
-          minLength: 1
-          maxLength: 5
-          example: 1
-          
-        control_sum:
-          description: Total of all individual amounts included in the message, irrespective of currencies.
-          type: string 
-          minLength: 1
-          maxLength: 18
-          example: 240000.00
-          
-    PaymentInformation:
-      required:
-        - payment_information_identification
-        - requested_execution_date
-        - debtor
-        - credit_transfer_transaction_information
-      type: object
-      properties:
-        payment_information_identification:
-          description: Unique identification, as assigned by a sending party, to unambiguously identify the payment information group within the message.
-          type: string 
-          minLength: 1
-          maxLength: 35
-          example: "000031"
-        requested_execution_date:
-          $ref: '#/components/schemas/RequestedExecutionDate'
-        debtor:
-          $ref: '#/components/schemas/Debtor'
-        credit_transfer_transaction_information:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreditTransferTransactionInformation'
-        supplementary_data:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupplementaryData'
-            
-    PaymentInformationV2:
-      required:
-        - payment_information_identification
-        - requested_execution_date
-        - debtor
-        - credit_transfer_transaction_information
-      type: object
-      properties:
-        payment_information_identification:
-          description: Unique identification, as assigned by a sending party, to unambiguously identify the payment information group within the message.
-          type: string 
-          minLength: 1
-          maxLength: 35
-          example: "000031"
-        batch_booking:
-          description: Identifies whether a single entry per individual transaction or a batch entry for the sum of the amounts of all transactions within the group of a message is requested.
-          type: string
-          example: 
-        
-        requested_execution_date:
-          $ref: '#/components/schemas/RequestedExecutionDate'
-        debtor:
-          $ref: '#/components/schemas/Debtor'
-        credit_transfer_transaction_information:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreditTransferTransactionInformation'
-        supplementary_data:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupplementaryDataV2'
-            
-    PaymentInformationV3:
-      required:
-        - payment_information_identification
-        - requested_execution_date
-        - debtor
-        - credit_transfer_transaction_information
-      type: object
-      properties:
-        payment_information_identification:
-          description: Unique identification, as assigned by a sending party, to unambiguously identify the payment information group within the message.
-          type: string 
-          minLength: 1
-          maxLength: 35
-          example: "000031"
-        requested_execution_date:
-          $ref: '#/components/schemas/RequestedExecutionDate'
-        debtor:
-          $ref: '#/components/schemas/DebtorV2'
-        credit_transfer_transaction_information:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreditTransferTransactionInformation'
-        transaction_information_and_status:
-          $ref: '#/components/schemas/TransactionInformationAndStatusV2'
-        supplementary_data:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupplementaryDataV3'
-    
-    SupplementaryData:
-      type: object
-      properties:
-        place_and_name: 
-          description: Unambiguous reference to the location where the supplementary data must be inserted in the message instance.
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: additional_payment_info
-        any:
-          type: array
-          items:
-            $ref: '#/components/schemas/Any'
-            
-    SupplementaryDataV2:
-      type: object
-      properties:
-        place_and_name: 
-          description: Unambiguous reference to the location where the supplementary data must be inserted in the message instance.
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: additional_payment_info
-        any:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnyV2'
-            
-    SupplementaryDataV3:
-      type: object
-      properties:
-        place_and_name: 
-          description: Unambiguous reference to the location where the supplementary data must be inserted in the message instance.
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: additional_payment_info
-        any:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnyV3'
-            
-    Any:
-      type: object
-      properties:
-        additional_payment_info:
-          #Objeto que define los campos adicionales
-          $ref: '#/components/schemas/AdditionalPaymentInfo'
-          
-    AnyV2:
-      type: object
-      properties:
-        additional_payment_info:
-          #Objeto que define los campos adicionales
-          $ref: '#/components/schemas/AdditionalPaymentInfo'
-        transunion_info:
-          #Objeto que define los campos adicionales
-          $ref: '#/components/schemas/Array1'
-        masivian_info:
-          #Objeto que define los campos adicionales
-          $ref: '#/components/schemas/Array2'
-        array3:
-          #Objeto que define los campos adicionales
-          $ref: '#/components/schemas/ArrayTmp'
-        array4:
-          #Objeto que define los campos adicionales
-          $ref: '#/components/schemas/ArrayTmp'
-        array5:
-          #Objeto que define los campos adicionales
-          $ref: '#/components/schemas/ArrayTmp'
-          
-    AnyV3:
-      type: object
-      properties:
-        additional_payment_info:
-          #Objeto que define los campos adicionales
-          $ref: '#/components/schemas/AdditionalPaymentInfoV2'
-    
-          
-    ArrayTmp:
-      type: object
-      properties:
-        name:
-          description: PENDING IMPLEMENT
-          type: string
-          example: 'no defined'
-          
-    Array1:
-      type: object
-      properties:
-        email_basic_check_status:
-          description: Validation status. Taken from TransUnion service.
-          type: string
-          minLength: 1
-          maxLength: 35
-          enum:
-            - Valid
-            - Invalid
-            - Risky
-            - Unverifiable
-            - Unknown
-            - Corrected
-          example: ''
-        device_stated_ip: 
-          description: The IP address reported by the end user. Taken from Transunion's device verification service.
-          type: string
-          minLength: 1
-          maxLength: 20
-          example: '129.123.123.123.001'
-        device_dev_al:
-          description: This is the 18-digit numeric identifier given by Iovation for the device. Taken from Transunion's device verification service.
-          type: string
-          minLength: 1
-          maxLength: 18
-          example: ''
-        device_dev_br_ty:
-          description: Browser name. Taken from Transunion's device verification service.
-          type: string
-          minLength: 1
-          maxLength: 35
-          example: ''
-        device_dev_br_ve:
-          description: Browser version. Taken from Transunion device verification service.
-          type: string
-          minLength: 1
-          maxLength: 4
-          example: '1.4'
-        device_dev_os:
-          description: Device operating system. Taken from Transunion device verification service.
-          type: string
-          minLength: 1
-          maxLength: 35
-          example: 'Red Hat Enterprise'
-        device_dev_ty:
-          description: Device hardware
-          type: string
-          enum:
-          - MAC
-          - PC
-          - iOS
-          - ANDROID
-          - BLACKBERRY
-          - CHROMEOS
-          - HANDHELD_OTHER
-          - IPHONE
-          - IPOD
-          - IPAD
-          - LINUX
-          - MAC
-          - NINTENDO
-          - PLAYSTATION
-          - UNIX
-          - UNKNOWN
-          - WINDOWS
-          - WINDOWS_MOBILE
-          - XBOX
-          - N/A.
-          minLength: 1
-          maxLength: 256
-          example: 'XBOX'
-        device_rea_ad:
-          description: Real IP Address. Taken from Transunion's device verification service.
-          type: string
-          minLength: 1
-          maxLength: 20
-          example: '124.23.23.1'
-        device_rea_is:
-          description: Internet service provider of the provided IP address. Taken from Transunion's device verification service.
-          type: string
-          minLength: 1
-          maxLength: 20
-          example: '124.23.23.1'
-        device_rea_ip_ci:
-          description: City associated with the IP address. Taken from Transunion's device verification service.
-          type: string
-          minLength: 1
-          maxLength: 40
-          example: 'Bucaramanga'
-        device_rea_ip_co:
-          description:  Country associated with the IP address. Taken from Transunion's device verification service.
-          type: string
-          minLength: 1
-          maxLength: 40
-          example: 'Colombia'
-        device_mac_ml_va:
-          description: A score ranging from -10000 to 10000. -10000 indicates iovation's prediction that the transaction will be fraudulent while 10000 indicates iovation's prediction that the transaction will be trustworthy. Taken from Transunion's device verification service.
-          type: string
-          minLength: 1
-          maxLength: 8
-          example: '10000'
-        device_rea_bo_in:
-          description: Botnet risk score for the transaction. This is a range between 1 and 10, where 1 represents no botnet risk, and 10 represents high botnet risk.
-          type: string
-          minLength: 1
-          maxLength: 2
-          example: '1'
-          
-    Array2:
-      type: object
-      properties:
-        simcard_resume_advice: 
-          description: Security tip suggesting the likelihood that a number is potentially fraudulent
-          type: string
-          enum:
-            - SAFE
-            - UNKNOW
-            - SUSPICIOUS
-          minLength: 1
-          maxLength: 20
-          example: '12'
-        simcard_change_in_range:
-          description: Indicates whether the SimCard was changed within the established time range.
-          type: boolean
-          example: 'True'
-        simcard_last_change_date:
-          description: Date of last Sim Card change
-          type: string
-          format: date-time
-          example: ''
-        simcard_machine_learning_common_behavior_anomaly:
-          description: Quantification response of the associated anomaly of a telephone number at the time of the query. It indicates whether that cell phone line has presented a significant change in transactional behavior at the time of the query, where 0.0 is a low risk of anomaly or abnormal activities for the line, and 1.0 is a high anomaly.
-          type: string
-          minLength: 1
-          maxLength: 4
-          example: '1.00'
-        security_detail_machine_learning_common_behavior_distrust:
-          description: Distrust associated with a phone number at the time of the query. It indicates whether that cell phone line is new or has a transaction history at the time of the query, where 0.0 is a Zero distrust because it is a line with a history, and 1.0 is a High distrust, because it is a new line.
-          type: string
-          minLength: 1
-          maxLength: 4
-          example: '0.75'
-          
-    AdditionalPaymentInfo:
-      type: object
-      properties:
-        reference_1: 
-          description: additional field associated with the payment 
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: 190.85.74.123
-          
-        reference_2:
-          description: additional field associated with the payment 
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: NIT
-          
-        reference_3: 
-          description: additional field associated with the payment 
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: 43006
-          
-        service_code: 
-          description: additional field associated with the payment 
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: 30001
-          
-        entity_url:
-          description: additional field associated with the payment 
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: http://elsitio.com
-          
-        creditor_ciiu:
-          description: additional field associated with the payment 
-          type: string
-          minLength: 1
-          maxLength: 8
-          example: 120023
-          
-        transaction_cycle:
-          description: Transaction creation cycle number
-          type: string
-          minLength: 1
-          maxLength: 2
-          example: 01
-        
-        device_finger_print:
-          description: Fingerprint with the information captured by the list of banks or the agile payment dialing list through a dynamic Javascript that was integrated into the new PSE site to which end users are directed. This javascript is a coded string that includes information from the device of the user who performs the transaction.
-          type: string
-          example: ''
-        
-        fraud_response_code:
-          description: Anti-Fraud system response,
-          type: string
-          enum:
-          - YES
-          - NO
-          minLength: 1
-          maxLength: 3
-          example: "YES"
-        
-        fraud_pre_authorization_score:
-          description: Anti-Fraud System Score This score fluctuates between zero and 100 points, where 100 is the limit for starting to pre-authorize or deny transactions. Zero is a low or no risk of fraud and 100 or higher is a high risk of fraud. 
-          type: string
-          minLength: 1
-          maxLength: 3
-          example: 75
-          
-        bank_trazability_code:
-          description:  Transaction tracking identifier or unique code (CUS) plus the bank's retry counter
-          type: string
-          minLength: 1
-          maxLength: 35
-          example: ""
-          
-        flow_type:
-          description: Defines the type of flow True - fast payment; False - Registration
-          type: boolean
-          example: True
-          
-        bank_key:
-          description: Agile payment marking Registered in PSE 
-          type: string
-          example: ''
-          
-        bank_key_status:
-          description: Agile payment marking status
-          type: string
-          enum:
-          - OK
-          - UPDATED
-          - DELETED
-          minLength: 1
-          maxLength: 8
-          example: 'OK'
-          
-    AdditionalPaymentInfoV2:
-      type: object
-      properties:
-        payment_origin:
-          description: Origin of payment, 3 for debit and 4 for credit 
-          type: string
-          minLength: 1
-          maxLength: 1
-          example: '3'
-          
-        payment_mode:
-          description: Payment method 
-          type: string
-          minLength: 1
-          maxLength: 2
-          enum:
-          - '15'
-          - '50'
-          - '51'
-          - '52'
-          - '53'
-          - '54'
-          - '55'
-          - '56'
-          example: '15'
-        
-    Purpose:
-      type: object
-      properties:
-        code:
-          description: Underlying reason for the payment transaction, as published in an external purpose code list.
-          type: string
-          minLength: 1
-          maxLength: 4
-          example: 0001
-          
-        propietary:
-          description: Purpose, in a proprietary form.
-          type: string
-          minLength: 1
-          maxLength: 35
-          example: Pago factura
-          
-    Tax:
-    #modela información sobre información tributaria
-      type: object
-      properties:
-        total_taxable_base_amount:
-          description: Total amount of money on which the tax is based.
-          type: string
-          minLength: 1
-          maxLength: 18
-          example: 200000
-          
-        total_tax_amount:
-          description: Total amount of money as result of the calculation of the tax.
-          type: string
-          minLength: 1
-          maxLength: 18
-          example: 20000
-          
-        record:
-          $ref: '#/components/schemas/Record'   
-          
-    Record:
-      type: object
-      properties: 
-        type:
-          description: High level code to identify the type of tax details.
-          type: string
-          minLength: 1
-          maxLength: 35
-          example: IVA
-    
-    RequestedExecutionDate:
-      type: object
-      properties:
-        dateTime:
-          description: Date at which the initiating party requests the clearing agent to process the payment.Specified date and time.
-          type: string
-          format: date-time
-    
-    Debtor:
-      required:
-        - name
-        - identification
-      type: object
-      properties:
-        name:
-          description: Name by which a party is known and which is usually used to identify that party.
-          type: string 
-          minLength: 1
-          maxLength: 140
-          example: "Claudio Clavijo"
-        postal_address:
-          $ref: '#/components/schemas/PostalAddress'
-        identification:
-          $ref: '#/components/schemas/Identification'
-          
-    DebtorV2:
-      required:
-        - name
-        - identification
-      type: object
-      properties:
-        name:
-          description: Name by which a party is known and which is usually used to identify that party.
-          type: string 
-          minLength: 1
-          maxLength: 140
-          example: "Claudio Clavijo"
-        postal_address:
-          $ref: '#/components/schemas/PostalAddress'
-        identification:
-          $ref: '#/components/schemas/Identification'
-        debtor_account:
-          $ref: '#/components/schemas/DebtorAccount'
-          
-    DebtorAccount:
-      type: object
-      properties:
-        identification:
-          $ref: '#/components/schemas/IdentificationV3'
-          
-          
-    CreditTransferTransactionInformation:
-      type: object
-      properties:
-        payment_identification:
-          $ref: '#/components/schemas/PaymentIdentification'
-        amount:
-          $ref: '#/components/schemas/Amount'
-        creditor:
-          $ref: '#/components/schemas/Creditor'
-        purpose:
-          $ref: '#/components/schemas/Purpose'
-        tax:
-          $ref: '#/components/schemas/Tax'
-        
-    
-    PaymentIdentification:
-      #Conjunto de elementos usados para referenciar una instrucción de pago.
-      type: object
-      properties:
-        instruction_identification:
-          description: Unique identification as assigned by an instructing party for an instructed party to unambiguously identify the instruction.
-          type: string
-          minLength: 1
-          maxLength: 18
-          example: 30001
-    
-    Amount:
-      #Cantidad de dinero a mover entre deudor y acreedor
-      type: object
-      properties:
-        instructed_amount:
-          description: Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the currency as ordered by the initiating party.
-          type: string
-          minLength: 1
-          maxLength: 18
-          example: 23455600
-          
-          
-    Creditor:
-      #Modela información de un acreedor
-      type: object
-      properties:
-        name:
-          description: Name by which a party is known and which is usually used to identify that party.
-          type: string
-          minLength: 1
-          maxLength: 140
-          example: El sitio
-          
-        identification:
-          $ref: '#/components/schemas/Identification2'
-          
-    PostalAddress:
-      type: object
-      properties:
-        address_line:
-          description: Information that locates and identifies a specific address, as defined by postal services, presented in free format text.
-          type: string
-          minLength: 1
-          maxLength: 70
-          example: "Cll 32 # 45 -34"
-          
-          
-    Identification:
-      type: object
-      properties:
-        private_identification:
-          $ref: '#/components/schemas/PrivateIdentification'
-        contact_details:
-          $ref: '#/components/schemas/ContactDetails'
-    
-    Identification2:
-      type: object
-      properties:
-        organisation_identification:
-          $ref: '#/components/schemas/OrganisationIdentification'
-          
-    IdentificationV3:
-      type: object
-      properties:
-        other:
-          $ref: '#/components/schemas/Other'
-        
-    OrganisationIdentification:
-      type: object
-      properties:
-        anyBIC:
-          description: Business identification code of the organisation.
-          type: string
-          minLength: 1
-          maxLength: 12
-          example: 8349032221
-        other:
-          type: array
-          items:
-            $ref: '#/components/schemas/Other'
-            
-    
-    PrivateIdentification:
-      type: object
-      properties:
-        other:
-          $ref: '#/components/schemas/Other'
-          
-    Other:
-      type: object
-      properties:
-        identification:
-          description: Business identification code of the organisation.
-          type: string
-          minLength: 1
-          maxLength: 256
-          example: 79733157
-          
-        scheme_name:
-          $ref: '#/components/schemas/SchemeName'
-          
-    SchemeName:
-      type: object
-      properties:
-        code:
-          description: Name of the identification scheme, in a coded form as published in an external list.
-          type: string
-          minLength: 1
-          maxLength: 4
-          example: "NIT"
-        propieraty:
-          description: Name of the identification scheme, in a free text form.
-          type: string
-          minLength: 1
-          maxLength: 40
-          enum:
-            - RegistroCivilDeNacimiento
-            - TarjetaDeIdentidad
-            - CedulaDeCiudadania
-            - TarjetaDeExtranjeria
-            - CedulaDeExtranjeria
-            - Pasaporte
-            - DocumentoDeIdentificacionExtranjero
-            - NIT
-          example: "NIT"
-          
-          
-    ContactDetails: 
-      type: object
-      properties: 
-        mobile_number:
-          description: Collection of information that identifies a mobile phone number, as defined by telecom services.
-          type: string
-          minLength: 1
-          maxLength: 18
-          example: 322-4343432
-        email_address:
-          description: Address for electronic mail (e-mail).
-          type: string
-          minLength: 1
-          maxLength: 256
-          example: prueba.email@gmail.com
-            
-    OriginalPaymentInformationAndStatus:
-      required:
-        - original_payment_information_identification
-        - transaction_information_and_status
-      type: object
-      properties:
-        original_payment_information_identification:
-          description: Unique identification, as assigned by the original sending party, to unambiguously identify the original payment information group.
-          type: string
-          minLength: 1
-          maxLength: 35
-          example: ""
-          
-        transaction_information_and_status:
-          $ref: '#/components/schemas/TransactionInformationAndStatus'
-          
-    OriginalPaymentInformationAndStatusV2:
-      required:
-        - original_payment_information_identification
-        - transaction_information_and_status
-      type: object
-      properties:
-        original_payment_information_identification:
-          description: Unique identification, as assigned by the original sending party, to unambiguously identify the original payment information group.
-          type: string
-          minLength: 1
-          maxLength: 35
-          example: ""
-        transaction_information_and_status:
-          $ref: '#/components/schemas/TransactionInformationAndStatus'
-        original_transaction_reference:
-          $ref: '#/components/schemas/OriginalTransactionReference'
-        supplementary_data:
-          $ref: '#/components/schemas/SupplementaryData'
-          
-    TransactionInformationAndStatus:
-      type: object
-      properties:
-        transaction_status:
-          description: Global transaction status
-          type: string
-          minLength: 1
-          maxLength: 4
-          example: 200
+        - Transaction
 
-        status_reason_information:
-          $ref: '#/components/schemas/StatusReasonInformation'
-          
-    TransactionInformationAndStatusV2:
-      type: object
-      properties:
-        transaction_status:
-          description: Global transaction status
+  /po/generator-trx-mgmt/update-trx-status:
+    patch:
+      summary: "Update transaction state"
+      description: "Update transaction with the provided details"
+      parameters:
+        - name: message-uuid
+          in: header
+          required: true
           type: string
-          minLength: 1
-          maxLength: 4
-          example: 200
-        status_identification:
-          description: Authorization or rejection code for the transaction. For approved transactions, it is an internal identifier of the bank; for rejected transactions, it must correspond to a rejection code registered in PSE.
+          format: uuid
+          description: "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+        - name: request-app-id
+          in: header
+          required: true
           type: string
-          minLength: 1
-          maxLength: 6
-          example: 20001
+          format: uuid
+          description: "App identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value. Example: c4e6bd04-5149-11e7-b114-12654765af2f."
+        - in: "body"
+          name: "body"
+          description: "Transaction object that needs to be added"
+          required: true
+          schema:
+            $ref: "#/definitions/UpdateTranRq"
+      responses:
+        202:
+          description: "Transaction updated"
+          schema:
+            $ref: "#/definitions/UpdateTransactionResponse"
+        "400":
+          schema:
+            $ref: "#/definitions/generalError400"
+          description: Bad request or mal formatted data
+        "404":
+          schema:
+            $ref: "#/definitions/generalError404"
+          description: Not Found          
+        "405":
+          schema:
+            $ref: "#/definitions/generalError405"
+          description: Method Not Allowed.
+        "415":
+          schema:
+            $ref: "#/definitions/generalError415"
+          description: Unsupported Media Type.
+        "500":
+          schema:
+            $ref: "#/definitions/generalError500"
+          description: Internal Server Error
+        "502":
+          schema:
+            $ref: "#/definitions/generalError502"
+          description: Bad Gateway
+        "503":
+          schema:
+            $ref: "#/definitions/generalError503"
+          description: Service Unavailable
+        default:
+          description: Error inesperado.
+      tags:
+        - Transaction
         
-          
-    OriginalTransactionReference:
-      type: object
-      properties:
-        amount:
-          $ref: '#/components/schemas/Amount'
         
-        
-    StatusReasonInformation:
-      type: object
-      properties:
-        originator:
-          $ref: '#/components/schemas/Originator'
-        reason:
-          $ref: '#/components/schemas/Reason'
-        additional_information:
-          description: Short description of the specific error
-          type: string
-          minLength: 1
-          maxLength: 256
-          example: Ocurrió un error en el módulo de pagos de la entidad Bancaria.
-          
     
-          
-    Originator:
-      type: object
-      properties:
-        name: 
-          description: Name by which a party is known and which is usually used to identify that party.
-          type: string
-          minLength: 1
-          maxLength: 140
-          example: 343435343
-        
-    Reason:
-      type: object
-      properties:
-        code:
-          description: Specific technical error code. Only for escenarios with error.
-          type: string
-          minLength: 1
-          maxLength: 8
-          example: "PSE.0010 | PSE.0000"
-          
-        property:
-          description: Technical description of the specific error
-          type: string
-          minLength: 1
-          maxLength: 140
-          example: Error en la transacción
-            
-    #pattern: "[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z-9]{2,2}([A-Z0-9]{3,3]){0,1}"
-    
-  #parameters of resources
-  parameters:
-    message-uuid:
-      #unique id of transaction
-      name: message-uuid
-      description:
-        Message identifier is used for traceability. This identifier allows
-        you to identify the logs of the calls to the APIs in the log
-        repositories, it is recommended to send a UUID for this value.
-      in: header
-      required: true
-      style: simple
-      schema:
+  /po/transactions/actuator/:
+    get:
+      responses:
+        "200":
+          description: 200 OK
+      tags:
+        - Transaction
+
+definitions:
+
+  initiation:
+    type: object
+    required:
+      - productId
+      - trazabilityCode
+      - initiationType
+      - instructionIdentification
+      - endtoendIdentification
+      - creationDatetime
+      - status
+      - authorizationCode
+      - validationPayeer
+      - geolocalization
+      - channel
+      - mandateId
+      - cicle
+    properties:
+      productId:
+        type: integer
+      trazabilityCode:
+        type: integer
+      initiationType:
         type: string
-        format: uuid
-        
-    request-app-id:
-      #unique id of application
-      name: request-app-id
-      description:
-        Message identifier is used for traceability. This identifier allows
-        you to identify the logs of the calls to the APIs in the log
-        repositories, it is recommended to send a UUID for this value.
-      in: header
-      required: true
-      style: simple
-      schema:
+        maxLength: 10
+      instructionIdentification:
         type: string
-        format: uuid
+        maxLength: 50
+        example: 0120240620############
+      endtoendIdentification:
+        type: string
+        maxLength: 100
+      creationDatetime:
+        type: string
+        format: date-time
+        example: 2024-06-26T13:45:00
+      status:
+        type: string
+        enum: 
+          - FAILED
+          - REJECTED
+          - APPROVED
+          - PENDING
+          - ACEPTED
+      authorizationCode:
+        type: string
+        maxLength: 20
+      validationPayeer:
+        type: string
+        maxLength: 1
+      geolocalization:
+        type: string
+        maxLength: 255
+      channel:
+        type: string
+        maxLength: 255
+      mandateId:
+        type: string
+        maxLength: 255
+      cicle:
+        type: string
+        maxLength: 10
+
+  instructedAmount:
+    type: object
+    required:
+      - amount
+      - currency
+      - chargesAmount
+      - gmftaxIndicator
+    properties:
+      amount:
+        type: number
+        format: double
+      currency:
+        type: string
+        maxLength: 10
+      chargesAmount:
+        type: number
+        format: double
+      gmftaxIndicator:
+        type: string
+        maxLength: 100
+
+  remittanceInformation:
+    type: object
+    required:
+      - identificationType
+      - identificationNumber
+      - merchantCustomerName
+      - merchantCustomerCategoryCode
+      - serviceCode
+      - reference2
+      - reference3
+      - unstructured
+      - reference1
+      - method
+    properties:
+      identificationType:
+        type: string
+        enum:
+        - CC 
+        - CE 
+        - NUIP 
+        - PPT 
+        - NIT
+        - PEP 
+        - PA
+        - OTRO
+      identificationNumber:
+        type: string
+        maxLength: 15
+      merchantCustomerName:
+        type: string
+        maxLength: 255
+      merchantCustomerCategoryCode:
+        type: string
+        maxLength: 200
+      serviceCode:
+        type: string
+        maxLength: 10
+      reference2:
+        type: string
+        maxLength: 200
+      reference3:
+        type: string
+        maxLength: 200
+      unstructured:
+        type: string
+        maxLength: 100
+      reference1:
+        type: string
+        maxLength: 200
+      method:
+        type: string
+        maxLength: 100
+
+  beneficiaryAgent:
+    type: object
+    required:
+      - financial_institution
+      - account
+      - accountType
+    properties:
+      financial_institution:
+        type: string
+        maxLength: 255
+      account:
+        type: string
+        maxLength: 50
+      accountType:
+        type: string
+        maxLength: 20
+
+  debtorAgent:
+    type: object
+    required:
+      - financialInstitution
+      - account
+      - accountType
+    properties:
+      financialInstitution:
+        type: string
+        maxLength: 255
+      account:
+        type: string
+        maxLength: 50
+      accountType:
+        type: string
+        maxLength: 20
+
+  initiatingParty:
+    type: object
+    required:
+      - identificationType
+      - identificationNumber
+      - name
+      - ciiu
+      - serviceCode
+      - instructionIdentification
+    properties:
+      identificationType:
+        type: string
+        maxLength: 4
+      identificationNumber:
+        type: string
+        maxLength: 15
+      name:
+        type: string
+        maxLength: 255
+      ciiu:
+        type: string
+        maxLength: 15
+      serviceCode:
+        type: string
+        maxLength: 15
+      instructionIdentification:
+        type: string
+        maxLength: 50
+
+  debtor:
+    type: object
+    required:
+      - userType
+      - identificationType
+      - identificationNumber
+      - name
+      - phoneNumber
+      - email
+      - address
+    properties:
+      userType:
+        type: string
+        enum:
+          - PJ
+          - PN
+      identificationType:
+        type: string
+        enum:
+        - CC 
+        - CE 
+        - NUIP 
+        - PPT 
+        - NIT
+        - PEP 
+        - PA
+        - OTRO
+      identificationNumber:
+        type: string
+        maxLength: 15
+      name:
+        type: string
+        maxLength: 255
+      phoneNumber:
+        type: string
+        maxLength: 15
+      email:
+        type: string
+        maxLength: 200
+      address:
+        type: string
+        maxLength: 255
+
+  thirdParty:
+    type: object
+    required:
+      - userType
+      - identificationType
+      - identificationNumber
+      - name
+      - phoneNumber
+      - email
+    properties:
+      userType:
+        type: string
+        enum:
+          - PJ
+          - PN
+      identificationType:
+        type: string
+        enum:
+        - CC 
+        - CE 
+        - NUIP 
+        - PPT 
+        - NIT
+        - PEP 
+        - PA
+        - OTRO        
+      identificationNumber:
+        type: string
+      name:
+        type: string
+      phoneNumber:
+        type: string
+      email:
+        type: string
+
+  TranRq:
+    type: object
+    properties:
+      initiation:
+        $ref: "#/definitions/initiation"
+      instructedAmount:
+        $ref: "#/definitions/instructedAmount"
+      remittanceInformation:   # Aqu� est�n las propiedades de remittanceInformation
+        $ref: "#/definitions/remittanceInformation"
+      beneficiaryAgent:       # Aqu� est�n las propiedades de beneficiaryAgent
+        $ref: "#/definitions/beneficiaryAgent"
+      debtorAgent:            # Aqu� est�n las propiedades de debtorAgent
+        $ref: "#/definitions/debtorAgent"
+      initiatingParty:        # Aqu� est�n las propiedades de initiatingParty
+        $ref: "#/definitions/initiatingParty"
+      debtor:                 # Aqu� est�n las propiedades de debtor
+        $ref: "#/definitions/debtor"
+      thirdParty:             # Aqu� est�n las propiedades de thirdParty
+        $ref: "#/definitions/thirdParty"
+
+  UpdateTranRq:
+    type: object
+    required:
+      - productId
+      - instructionIdentification
+      - status
+    properties: 
+      productId:
+        type: integer
+      instructionIdentification:
+        type: string
+        maxLength: 50
+        example: 0120240620############
+      status:
+        type: string
+        enum: 
+          - FAILED
+          - REJECTED
+          - APPROVED
+          - PENDING
+          - ACEPTED
+      fraudScore:
+        type: number
+        example: 75.34
+      beneficiaryFinancialInstitution:
+        type: number      
+      debtorFinancialInstitution:        
+        type: number
+
+  TranRs:
+    type: object
+    properties:
+      initiation:
+        $ref: "#/definitions/initiation"
+      instructedAmount:
+        $ref: "#/definitions/instructedAmount"
+      remittanceInformation:   # Aqu� est�n las propiedades de remittanceInformation
+        $ref: "#/definitions/remittanceInformation"
+      beneficiaryAgent:       # Aqu� est�n las propiedades de beneficiaryAgent
+        $ref: "#/definitions/beneficiaryAgent"
+      debtorAgent:            # Aqu� est�n las propiedades de debtorAgent
+        $ref: "#/definitions/debtorAgent"
+      initiatingParty:        # Aqu� est�n las propiedades de initiatingParty
+        $ref: "#/definitions/initiatingParty"
+      debtor:                 # Aqu� est�n las propiedades de debtor
+        $ref: "#/definitions/debtor"
+      thirdParty:             # Aqu� est�n las propiedades de thirdParty
+        $ref: "#/definitions/thirdParty"
         
-  requestBodies:
-    CreateTransactionPaymentRequest:
-      description: The request message
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreateTransactionPaymentRequest'
-      required: true
-      
-    InitBankPaymentRequest:
-      description: The request message
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitBankPaymentRequest'
-      required: true
-      
-    NotifyPaymentRequest:
-      description: The request message
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/NotifyPaymentRequest'
-      required: true
+  SearchResult:
+    type: object
+    properties: 
+      account:
+        type: string
+        maxLength: 50
+      creationDatetime:
+        type: string
+        format: date-time
+        example: 2024-06-26T13:45:00
+      instructionIdentification:
+        type: string
+        maxLength: 50
+        example: 0120240620############
+      productId:
+        type: integer
+      status:
+        type: string
+        enum: 
+          - ACTIVE
+          - INACTIVE
+          - LOCK
+          - SUSPEND
+      ETC..:
+        type: string
+        example: "DATOS DE COMERCIO ??????????????"
+        
+  TransactionResponse:
+    type: object
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders201"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        $ref: "#/definitions/TranRs"
+        
+  UpdateTransactionResponse:
+    type: object
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders202"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        $ref: "#/definitions/initiation"
 
-  responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CustomerCreditTransferInitiationResponse'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CustomerCreditTransferInitiationResponse'
-    
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CustomerCreditTransferInitiationResponse'
-            
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CustomerCreditTransferInitiationResponse'
-            
-            
-    CustomerCreditTransferInitiationResponse:
-      description: The request succeded
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CustomerCreditTransferInitiationResponse'
-            
-    InitBankPaymentResponse:
-      description: The request succeded
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitBankPaymentResponse'
-            
-    NotifyPaymentResponse:
-      description: The request succeded
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/NotifyPaymentResponse'
-
-  securitySchemes:
-    clientId:
-      type: apiKey
-      description: ''
-      in: header
-      name: Client-Id
-      x-key-type: client_id
-    clientSecret:
-      type: apiKey
-      description: ''
-      in: header
-      name: Client-Secret
-      x-key-type: client_secret
-    oauth2-ptx:
-      type: oauth2
-      x-ibm-oauth-provider: ptx-token
-      flows:
-        clientCredentials:
-          tokenUrl: https://$(catalog.url)/ptx-token/oauth2/token
-          scopes:
-            generate-tx-create: Scope para creacion de transacciones
+  SearchTransactionResponse:
+    type: object
+    properties:
+      headers:
+        $ref: "#/definitions/generalResponseHeaders200"
+      messageResponse:
+        $ref: "#/definitions/messageResponse"
+      data:
+        $ref: "#/definitions/SearchResult"
+          
+  generalResponseHeaders200:
+    description: Traceability data and technical information from message.
+    type: object
+    required:
+      - httpStatusCode
+      - httpStatusDesc
+      - messageUuid
+      - requestDatetime
+      - requestAppId
+    properties:
+      httpStatusCode:
+        type: number
+        example: 200
+      httpStatusDesc:
+        type: string
+        example: OK
+      messageUuid:
+        type: string
+        example: c4e6bd04-5149-11e7-b114-a2f933d5fe66
+      requestDatetime:
+        type: string
+        format: date-time
+        example: '2017-01-24T05:00:00'
+      requestAppId:
+        type: string
+        example: acxff62e-6f12-42de-9012-1e7304418abd          
+  generalResponseHeaders201:
+    description: Traceability data and technical information from message.
+    type: object
+    required:
+      - httpStatusCode
+      - httpStatusDesc
+      - messageUuid
+      - requestDatetime
+      - requestAppId
+    properties:
+      httpStatusCode:
+        type: number
+        example: 201
+      httpStatusDesc:
+        type: string
+        example: CREATED
+      messageUuid:
+        type: string
+        example: c4e6bd04-5149-11e7-b114-a2f933d5fe66
+      requestDatetime:
+        type: string
+        format: date-time
+        example: "2017-01-24T05:00:00"
+      requestAppId:
+        type: string
+        example: acxff62e-6f12-42de-9012-1e7304418abd
+  generalResponseHeaders202:
+    description: Traceability data and technical information from message.
+    type: object
+    required:
+      - httpStatusCode
+      - httpStatusDesc
+      - messageUuid
+      - requestDatetime
+      - requestAppId
+    properties:
+      httpStatusCode:
+        type: number
+        example: 202
+      httpStatusDesc:
+        type: string
+        example: ACCEPTED
+      messageUuid:
+        type: string
+        example: c4e6bd04-5149-11e7-b114-a2f933d5fe66
+      requestDatetime:
+        type: string
+        format: date-time
+        example: "2017-01-24T05:00:00"
+      requestAppId:
+        type: string
+        example: acxff62e-6f12-42de-9012-1e7304418abd
+  messageResponse:
+    type: object
+    properties:
+      responseCode:
+        type: string
+        example: "0000"
+      responseMessage:
+        type: string
+        example: "Success Transaction."
+      responseDetails:
+        type: string
+        example: "System process information."
+  generalError400:
+    type: object
+    properties:
+      headers:
+        $ref: "#/definitions/headersError400"
+      messageResponse:
+        $ref: "#/definitions/messageResponseError400"
+      errors:
+        $ref: "#/definitions/exampleErrors400"
+  generalError401:
+    type: object
+    properties:
+      headers:
+        $ref: "#/definitions/headersError401"
+      messageResponse:
+        $ref: "#/definitions/messageResponseError401"
+      errors:
+        $ref: "#/definitions/exampleErrors401"
+  generalError404:
+    type: object
+    properties:
+      headers:
+        $ref: "#/definitions/headersError404"
+      messageResponse:
+        $ref: "#/definitions/messageResponseError404"
+      errors:
+        $ref: "#/definitions/exampleErrors404"
+  generalError405:
+    type: object
+    properties:
+      headers:
+        $ref: "#/definitions/headersError405"
+      messageResponse:
+        $ref: "#/definitions/messageResponseError405"
+      errors:
+        $ref: "#/definitions/exampleErrors405"
+  generalError409:
+    type: object
+    properties:
+      headers:
+        $ref: "#/definitions/headersError409"
+      messageResponse:
+        $ref: "#/definitions/messageResponseError409"
+      errors:
+        $ref: "#/definitions/exampleErrors409"
+  generalError415:
+    type: object
+    properties:
+      headers:
+        $ref: "#/definitions/headersError415"
+      messageResponse:
+        $ref: "#/definitions/messageResponseError415"
+      errors:
+        $ref: "#/definitions/exampleErrors415"
+  generalError500:
+    type: object
+    properties:
+      headers:
+        $ref: "#/definitions/headersError500"
+      messageResponse:
+        $ref: "#/definitions/messageResponseError500"
+      errors:
+        $ref: "#/definitions/exampleErrors500"
+  generalError502:
+    type: object
+    properties:
+      headers:
+        $ref: "#/definitions/headersError502"
+      messageResponse:
+        $ref: "#/definitions/messageResponseError502"
+      errors:
+        $ref: "#/definitions/exampleErrors502"
+  generalError503:
+    type: object
+    properties:
+      headers:
+        $ref: "#/definitions/headersError503"
+      messageResponse:
+        $ref: "#/definitions/messageResponseError503"
+      errors:
+        $ref: "#/definitions/exampleErrors503"
+  headersError400:
+    type: object
+    properties:
+      httpStatusCode:
+        type: integer
+        example: 400
+      htttpStatusDesc:
+        type: string
+        example: "BAD_REQUEST"
+      requestDateTime:
+        type: string
+        example: "2023-01-05T19:13:56"
+      messageUuid:
+        type: string
+        example: c4e6bd04-5149-11e7-b114-a2f933d5fe66
+      requestAppId:
+        type: string
+        example: acxff62e-6f12-42de-9012-1e7304418abd
+  headersError401:
+    type: object
+    properties:
+      httpStatusCode:
+        type: integer
+        example: 401
+      htttpStatusDesc:
+        type: string
+        example: "UNAUTHORIZED"
+      requestDateTime:
+        type: string
+        example: "2023-01-05T19:13:56"
+      messageUuid:
+        type: string
+        example: c4e6bd04-5149-11e7-b114-a2f933d5fe66
+      requestAppId:
+        type: string
+        example: acxff62e-6f12-42de-9012-1e7304418abd
+  headersError404:
+    type: object
+    properties:
+      httpStatusCode:
+        type: integer
+        example: 404
+      htttpStatusDesc:
+        type: string
+        example: "NOT_FOUND"
+      requestDateTime:
+        type: string
+        example: "2023-01-05T19:13:56"
+      messageUuid:
+        type: string
+        example: c4e6bd04-5149-11e7-b114-a2f933d5fe66
+      requestAppId:
+        type: string
+        example: acxff62e-6f12-42de-9012-1e7304418abd
+  headersError405:
+    type: object
+    properties:
+      httpStatusCode:
+        type: integer
+        example: 405
+      htttpStatusDesc:
+        type: string
+        example: "METHOD_NOT_ALLOWED"
+      requestDateTime:
+        type: string
+        example: "2023-01-05T19:13:56"
+      messageUuid:
+        type: string
+        example: c4e6bd04-5149-11e7-b114-a2f933d5fe66
+      requestAppId:
+        type: string
+        example: acxff62e-6f12-42de-9012-1e7304418abd
+  headersError409:
+    type: object
+    properties:
+      httpStatusCode:
+        type: integer
+        example: 409
+      htttpStatusDesc:
+        type: string
+        example: "CONFLICT"
+      requestDateTime:
+        type: string
+        example: "2023-01-05T19:13:56"
+      messageUuid:
+        type: string
+        example: c4e6bd04-5149-11e7-b114-a2f933d5fe66
+      requestAppId:
+        type: string
+        example: acxff62e-6f12-42de-9012-1e7304418abd
+  headersError415:
+    type: object
+    properties:
+      httpStatusCode:
+        type: integer
+        example: 415
+      htttpStatusDesc:
+        type: string
+        example: "UNSOPORTED MEDIA TYPE"
+      requestDateTime:
+        type: string
+        example: "2023-01-05T19:13:56"
+      messageUuid:
+        type: string
+        example: c4e6bd04-5149-11e7-b114-a2f933d5fe66
+      requestAppId:
+        type: string
+        example: acxff62e-6f12-42de-9012-1e7304418abd
+  headersError500:
+    type: object
+    properties:
+      httpStatusCode:
+        type: integer
+        example: 500
+      htttpStatusDesc:
+        type: string
+        example: "INTERNAL_SERVER_ERROR"
+      requestDateTime:
+        type: string
+        example: "2023-01-05T19:13:56"
+      messageUuid:
+        type: string
+        example: c4e6bd04-5149-11e7-b114-a2f933d5fe66
+      requestAppId:
+        type: string
+        example: acxff62e-6f12-42de-9012-1e7304418abd
+  headersError502:
+    type: object
+    properties:
+      httpStatusCode:
+        type: integer
+        example: 502
+      htttpStatusDesc:
+        type: string
+        example: "BAD_GATEWAY"
+      requestDateTime:
+        type: string
+        example: "2023-01-05T19:13:56"
+      messageUuid:
+        type: string
+        example: c4e6bd04-5149-11e7-b114-a2f933d5fe66
+      requestAppId:
+        type: string
+        example: acxff62e-6f12-42de-9012-1e7304418abd
+  headersError503:
+    type: object
+    properties:
+      httpStatusCode:
+        type: integer
+        example: 503
+      htttpStatusDesc:
+        type: string
+        example: "SERVICE_UNAVAILABLE"
+      requestDateTime:
+        type: string
+        example: "2023-01-05T19:13:56"
+      messageUuid:
+        type: string
+        example: c4e6bd04-5149-11e7-b114-a2f933d5fe66
+      requestAppId:
+        type: string
+        example: acxff62e-6f12-42de-9012-1e7304418abd
+  messageResponseError400:
+    type: object
+    properties:
+      responseCode:
+        type: string
+        example: "XXXX"
+      responseMessage:
+        type: string
+        example: "Bad Request Message"
+      responseDetail:
+        type: string
+        example: "Aditional Information [Optional Value]"
+  messageResponseError401:
+    type: object
+    properties:
+      responseCode:
+        type: string
+        example: "XXXX"
+      responseMessage:
+        type: string
+        example: "Bad Credentials"
+      responseDetail:
+        type: string
+        example: "Aditional Information [Optional Value]"
+  messageResponseError404:
+    type: object
+    properties:
+      responseCode:
+        type: string
+        example: "XXXX"
+      responseMessage:
+        type: string
+        example: "NO PERSISTAN DATA"
+      responseDetail:
+        type: string
+        example: "Aditional Information [Optional Value]"
+  messageResponseError405:
+    type: object
+    properties:
+      responseCode:
+        type: string
+        example: "XXXX"
+      responseMessage:
+        type: string
+        example: "Method Not Allowed"
+      responseDetail:
+        type: string
+        example: "Aditional Information [Optional Value]"
+  messageResponseError409:
+    type: object
+    properties:
+      responseCode:
+        type: string
+        example: "XXXX"
+      responseMessage:
+        type: string
+        example: "Conflict"
+      responseDetail:
+        type: string
+        example: "Aditional Information [Optional Value]"
+  messageResponseError415:
+    type: object
+    properties:
+      responseCode:
+        type: string
+        example: "XXXX"
+      responseMessage:
+        type: string
+        example: "Unsupported Media Type"
+      responseDetail:
+        type: string
+        example: "Aditional Information [Optional Value]"
+  messageResponseError500:
+    type: object
+    properties:
+      responseCode:
+        type: string
+        example: "XXXX"
+      responseMessage:
+        type: string
+        example: "Error Message"
+      responseDetail:
+        type: string
+        example: "Aditional Information [Optional Value]"
+  messageResponseError502:
+    type: object
+    properties:
+      responseCode:
+        type: string
+        example: "XXXX"
+      responseMessage:
+        type: string
+        example: "Error Message"
+      responseDetail:
+        type: string
+        example: "Aditional Information [Optional Value]"
+  messageResponseError503:
+    type: object
+    properties:
+      responseCode:
+        type: string
+        example: "XXXX"
+      responseMessage:
+        type: string
+        example: "Error Message"
+      responseDetail:
+        type: string
+        example: "Aditional Information [Optional Value]"
+  exampleErrors400:
+    type: array
+    description: Array for 400 errors.
+    uniqueItems: true
+    items:
+      $ref: "#/definitions/generalError"
+  exampleErrors401:
+    type: array
+    description: Array for 401 errors.
+    uniqueItems: true
+    items:
+      $ref: "#/definitions/generalError"
+  exampleErrors404:
+    type: array
+    description: Array for 404 errors.
+    uniqueItems: true
+    items:
+      $ref: "#/definitions/generalError"
+  exampleErrors405:
+    type: array
+    description: Array for 405 errors.
+    uniqueItems: true
+    items:
+      $ref: "#/definitions/generalError"
+  exampleErrors409:
+    type: array
+    description: Array for 409 errors.
+    uniqueItems: true
+    items:
+      $ref: "#/definitions/generalError"
+  exampleErrors415:
+    type: array
+    description: Array for 415 errors.
+    uniqueItems: true
+    items:
+      $ref: "#/definitions/generalError"
+  exampleErrors500:
+    type: array
+    description: Array for 500 errors.
+    uniqueItems: true
+    items:
+      $ref: "#/definitions/generalError"
+  exampleErrors502:
+    type: array
+    description: Array for 500 errors.
+    uniqueItems: true
+    items:
+      $ref: "#/definitions/generalError"
+  exampleErrors503:
+    type: array
+    description: Array for 500 errors.
+    uniqueItems: true
+    items:
+      $ref: "#/definitions/generalError"
+  generalError:
+    type: object
+    properties:
+      errorCode:
+        type: string
+        example: "XXXX"
+      errorDetail:
+        type: string
+        example: "Some Error Detail"
+schemes:
+  - https
+produces:
+  - application/json
+consumes:
+  - application/json
+tags:
+  - name: Transaction

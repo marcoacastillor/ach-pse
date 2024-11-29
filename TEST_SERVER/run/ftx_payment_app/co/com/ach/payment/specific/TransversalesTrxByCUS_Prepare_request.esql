@@ -23,8 +23,8 @@ CREATE COMPUTE MODULE TransversalesTrxByCUS_Prepare_request
 		SET OutputLocalEnvironment.Destination.REST.Request.BaseURL 				= backUrl;
 		
 		-- copiar datos en header
-		--SET OutputLocalEnvironment.Destination.REST.Request.Parameters."message-uuid" 			= InputLocalEnvironment.REST.Input.Parameters;
-		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."application-id" 		= 'user-vault-mgmt';
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters.productTag 		= InputLocalEnvironment.REST.Input.Parameters."product-tag";
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."application-id" = InputLocalEnvironment.REST.Input.Parameters."request-app-id";
 		
 		-- crear mensaje de salida
 		CREATE FIELD OutputRoot.JSON.Data;

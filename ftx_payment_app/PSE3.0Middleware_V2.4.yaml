@@ -9,7 +9,7 @@ info:
     name: ACH
     url: https://www.achcolombia.com.co/contactenos
     email: admin@ach.com.co
-  version: "1.0"
+  version: "2.5"
 
 servers:
   - url: https://localhost:/ACH/middleware/v1.0
@@ -46,6 +46,7 @@ paths:
       operationId: GetBanks
       parameters:
         - $ref: '#/components/parameters/message-uuid'
+        - $ref: '#/components/parameters/request-app-id'
         - $ref: '#/components/parameters/application-id'
       responses:
         '200':
@@ -58,6 +59,8 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      security:
+        - api_key: []
 
   /banks/{bankId}:
     get:
@@ -68,6 +71,7 @@ paths:
       operationId: GetBankById
       parameters:
         - $ref: '#/components/parameters/message-uuid'
+        - $ref: '#/components/parameters/request-app-id'
         - $ref: '#/components/parameters/application-id'
         - $ref: '#/components/parameters/bankId'
       responses:
@@ -81,6 +85,8 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      security:
+        - api_key: []
 
   /customers/{customerId}:
     get:
@@ -105,6 +111,8 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      security:
+        - api_key: []
 
   /customers/{documentType}/{documentNumber}:
     get:
@@ -115,6 +123,7 @@ paths:
       operationId: GetCustomerBydocumentTypeAndDocumentNumber
       parameters:
         - $ref: '#/components/parameters/message-uuid'
+        - $ref: '#/components/parameters/request-app-id'
         - $ref: '#/components/parameters/application-id'
         - $ref: '#/components/parameters/documentType'
         - $ref: '#/components/parameters/documentNumber'
@@ -130,6 +139,8 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      security:
+        - api_key: []
 
   /products/{productTag}:
     get:
@@ -140,6 +151,7 @@ paths:
       operationId: GetProductById
       parameters:
         - $ref: '#/components/parameters/message-uuid'
+        - $ref: '#/components/parameters/request-app-id'
         - $ref: '#/components/parameters/application-id'
         - $ref: '#/components/parameters/productId'
       responses:
@@ -153,6 +165,8 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      security:
+        - api_key: []
 
 components:
   schemas:
@@ -293,15 +307,12 @@ components:
         order:
           type: integer
           description: Display order
-        urlGetKeyBank:
+        urlRedirect:
           type: string
-          description: http://AppFrontSampleBanki/get-transaction-key
-        urlRedirectFinancialInstitution:
+          description: Redirect URL
+        urlKeyRegistry:
           type: string
-          example: http://AppFrontSampleBanki
-        
-        
-
+          description: URL for key registry
 
     Product:
       type: object
@@ -337,12 +348,6 @@ components:
         docVersionTreatment:
           type: string
           example: 1.0.0
-        PSEBankListURL:
-          type: string
-          example: http://pse.ach.com/init-payment/init-bank?transactionId={{encrypted-cus}
-        PSEBankKeyListURL:
-          type: string
-          example: http://pse.ach.com/init-payment/init-agil?transactionId={{encrypted-cus}
 
     Customer:
       type: object
@@ -501,6 +506,13 @@ components:
       schema:
         type: string
       description: Unique transaction ID
+    request-app-id:
+      name: request-app-id
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Unique transaction ID
     application-id:
       name: application-id
       in: header
@@ -606,3 +618,8 @@ components:
           schema:
             $ref: '#/components/schemas/RetrieveProductResponse'
 
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header

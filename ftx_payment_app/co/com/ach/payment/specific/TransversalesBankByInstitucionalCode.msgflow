@@ -3,7 +3,7 @@
     nsURI="co/com/ach/payment/specific/TransversalesBankByInstitucionalCode.msgflow" nsPrefix="co_com_ach_payment_specific_TransversalesBankByInstitucionalCode.msgflow">
   <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="RECTANGLE">
     <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1" defaultValueLiteral="http://13b6c92a-a8c9-4284-a84a-b8b98f1aa24a.mock.pstmn.io">
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1" defaultValueLiteral="https://149.130.173.17.nip.io/v1/ft/consult-middleware-mgmt">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backTimeout" name="backTimeout" lowerBound="1" defaultValueLiteral="3000">
@@ -12,7 +12,7 @@
     <translation xmi:type="utility:TranslatableString" key="TransversalesBankByInstitucionalCode" bundleName="co/com/ach/payment/specific/TransversalesBankByInstitucionalCode" pluginId="ftx_payment_app"/>
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ftx_payment_app/icons/full/obj16/TransversalesBankByInstitucionalCode.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ftx_payment_app/icons/full/obj30/TransversalesBankByInstitucionalCode.gif"/>
-    <longDescription xmi:type="utility:ConstantString" string="http://localhost:7800/v1/pse-transaction/pse/payment/x-initiate"/>
+    <longDescription xmi:type="utility:ConstantString" string="http://13b6c92a-a8c9-4284-a84a-b8b98f1aa24a.mock.pstmn.io"/>
     <composition>
       <nodes xmi:type="ComIbmTryCatch.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="280,72">
         <translation xmi:type="utility:ConstantString" string="Try Catch"/>

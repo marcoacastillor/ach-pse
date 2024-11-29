@@ -19,9 +19,7 @@ CREATE COMPUTE MODULE ExecuteBankPayment_1_PrepareRequestDecryptCUS1
 		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
 		
 		-- set scope para obtener token
-		SET refOut.productId 		= 'productId'; --TODO: pendiente mapeo
-		SET refOut.trazabilityCode 	= refInp.originMsg.cus;
-		SET refOut.entityCode 		= refInp.payment_information.credit_transfer_transaction_information.creditor.identification.organisation_identification.anyBIC;
+		SET refOut.data 			= refInp.cus;
 		SET refOut.accessToken 		= refInp.access_token;
 		
 		RETURN TRUE;

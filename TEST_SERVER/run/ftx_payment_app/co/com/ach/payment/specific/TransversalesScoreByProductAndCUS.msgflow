@@ -5,7 +5,7 @@ xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="co/com/ach/paym
 nsPrefix="co_com_ach_payment_specific_TransversalesScoreByProductAndCUS.msgflow">
 <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="RECTANGLE">
 <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
-<eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1"  defaultValueLiteral="http://e234f7e9-5667-40f2-ac22-eaf5939cd6ff.mock.pstmn.io">
+<eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1"  defaultValueLiteral="https://149.130.173.17.nip.io/v1/po/consult-trx-mgmt/get-trx-score">
   <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
 </eStructuralFeatures>
 <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backTimeout" name="backTimeout" lowerBound="1"  defaultValueLiteral="3000">
@@ -14,7 +14,7 @@ nsPrefix="co_com_ach_payment_specific_TransversalesScoreByProductAndCUS.msgflow"
 <translation xmi:type="utility:TranslatableString" key="TransversalesScoreByProductAndCUS" bundleName="co/com/ach/payment/specific/TransversalesScoreByProductAndCUS" pluginId="flowAPIgenerated"/>
 <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/flowAPIgenerated/icons/full/obj16/TransversalesScoreByProductAndCUS.gif"/>
 <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/flowAPIgenerated/icons/full/obj30/TransversalesScoreByProductAndCUS.gif"/>
-<longDescription xmi:type="utility:ConstantString" string="http://localhost:7800/v1/pse-transaction/pse/payment/x-initiate"/>
+<longDescription xmi:type="utility:ConstantString" string="http://e234f7e9-5667-40f2-ac22-eaf5939cd6ff.mock.pstmn.io"/>
 <composition>
 <nodes xmi:type="ComIbmTryCatch.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="280,72">
 <translation xmi:type="utility:ConstantString" string="Try Catch"/>

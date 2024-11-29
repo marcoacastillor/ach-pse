@@ -20,7 +20,7 @@ CREATE COMPUTE MODULE ExecuteBankPayment_1_PrepareRequestBankById
 		
 		-- set scope para obtener token
 		-- TODO: Validar mapeo bankId
-		SET refOut.bankId 			= refInp.payment_information.credit_transfer_transaction_information.Item[1].creditor.identification.organisation_identification.other.Item[2].identification;
+		SET refOut.bankId 			= refInp.payment_information.supplementary_data.Item.any.Item.additional_payment_info.financial_institution_code;
 		SET refOut.accessToken 		= refInp.access_token;
 		
 		RETURN TRUE;

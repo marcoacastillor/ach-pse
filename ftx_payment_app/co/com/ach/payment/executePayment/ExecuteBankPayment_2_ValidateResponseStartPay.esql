@@ -31,6 +31,9 @@ CREATE COMPUTE MODULE ExecuteBankPayment_2_ValidateResponseStartPay
 		MOVE refResponse LASTCHILD;
 		
 		IF EXISTS(refResponse.access_token[]) THEN
+			-- copiar informacion de sesion
+			SET OutputLocalEnvironment = refOriginal.session;
+			
 			--copias mensaje
 			SET refOut 						= refOriginal;
 			SET refOut.access_token	 		= refResponse.access_token;
@@ -50,6 +53,7 @@ CREATE COMPUTE MODULE ExecuteBankPayment_2_ValidateResponseStartPay
 			
 			
 			PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+			RETURN FALSE;
 		END IF;
 		
 		RETURN FALSE;

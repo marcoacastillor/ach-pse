@@ -9,6 +9,7 @@
         <ns2:operation name="ExecutePayment" implementation="ExecutePayment.subflow"/>
         <ns2:operation name="InitiatePayment" implementation="InitiatePayment.subflow"/>
         <ns2:operation name="NotifyPayment" implementation="NotifyPayment.subflow"/>
+        <ns2:operation name="StartPayment" implementation="StartPayment.subflow"/>
     </ns2:operations>
     <ns2:errorHandlers/>
 </ns2:restapiDescriptor>

@@ -1,0 +1,66 @@
+BROKER SCHEMA co.com.ach.payment.executePayment
+
+
+CREATE COMPUTE MODULE ExecuteBankPayment_5_ValidateResponseStartPay
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- declarar referencias a mensajes de entrada
+		DECLARE refGroups REFERENCE TO InputRoot.ComIbmGroupCompleteNode;
+		MOVE refGroups LASTCHILD;
+		MOVE refGroups LASTCHILD;
+		
+		-- referencias a mensaje original y respuesta
+		DECLARE refOriginal REFERENCE TO refGroups.OrigenRq;
+		DECLARE refTrax REFERENCE TO refGroups.UpdateTrxRs;
+		
+		
+		-- declarar referencia de salida
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		-- validar si es exitoso, continúa proceso
+		-- mensaje de respuesta
+		MOVE refOriginal LASTCHILD;
+		MOVE refOriginal LASTCHILD;
+		MOVE refOriginal LASTCHILD;
+		MOVE refOriginal LASTCHILD;
+		
+		MOVE refTrax LASTCHILD;
+		MOVE refTrax LASTCHILD;
+		MOVE refTrax LASTCHILD;
+		MOVE refTrax LASTCHILD;
+		
+		IF CAST(refTrax.headers.httpStatusCode AS INTEGER) = 202 THEN
+			
+			-- copiar informacion de sesion
+			SET OutputLocalEnvironment = refOriginal.session;
+			
+			--copias mensaje
+			SET refOut.originMsg 	= refOriginal;
+			SET refOut.cus	 		= refTrax.data;
+			
+	
+			RETURN TRUE;
+		ELSE
+			SET OutputLocalEnvironment.Destination.CallableFlow.Reply.ReplyIdentifier = CAST(refOriginal.session.Destination.CallableFlow.Reply.ReplyIdentifier AS BLOB);
+			
+			-- construir mensaje ISO 20022 de error.
+			SET refOut.group_header 																												= refOriginal.group_header;
+			SET refOut.original_payment_information_and_status.original_payment_information_identification 											= refOriginal.payment_information.payment_information_identification;
+			
+			IF CAST(refTrax.headers.httpStatusCode AS INTEGER) <> 200  THEN
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.transaction_status 								= refTrax.headers.httpStatusCode;
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.originator.name 		= '';
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.code				= refTrax.messageResponse.responseCode;
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.property			= refTrax.messageResponse.responseMessage;
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.additional_information	= COALESCE(refTrax.errors.*.errorDetail, refTrax.messageResponse.responseDetail);
+				
+				PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+				RETURN FALSE;	
+			END IF;
+			
+		END IF;
+		
+		RETURN FALSE;
+	END;
+END MODULE;

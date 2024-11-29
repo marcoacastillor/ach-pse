@@ -5,7 +5,7 @@ xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="co/com/ach/paym
 nsPrefix="co_com_ach_payment_specific_TransversalesGetToken.msgflow">
 <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="RECTANGLE">
 <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
-<eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1"  defaultValueLiteral="https://ftx-userpaymentmgmt-https-cp4i-ace.apps.devach.achopenshift.itac.com.co/ftx-request-access-token">
+<eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1"  defaultValueLiteral="https://cp4i-gw-gateway-cp4i-apic.apps.devach.achopenshift.itac.com.co/int/tx/ptx-token/oauth2/token">
   <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
 </eStructuralFeatures>
 <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backTimeout" name="backTimeout" lowerBound="1"  defaultValueLiteral="3000">
@@ -47,7 +47,7 @@ nsPrefix="co_com_ach_payment_specific_TransversalesGetToken.msgflow">
 <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
 <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.in"/>
 <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-<connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+<connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
 </composition>
 <propertyOrganizer>
 <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.backUrl">

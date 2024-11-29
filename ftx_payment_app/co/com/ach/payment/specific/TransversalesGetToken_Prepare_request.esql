@@ -4,11 +4,26 @@ BROKER SCHEMA co.com.ach.payment.specific
 CREATE COMPUTE MODULE TransversalesGetToken_Prepare_request
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
+		DECLARE refInp REFERENCE TO InputRoot.JSON;
+		MOVE refInp LASTCHILD;
+		
+		
 		-- nombre de componente
 		SET Environment.flujo = 'TransversalesGetToken';
 		
 		-- copiar parámetros
-		SET OutputLocalEnvironment.Destination.REST.Request.Parameters=  InputLocalEnvironment.REST.Input.Parameters;
+		SET OutputLocalEnvironment.Destination.HTTP.Request.Parameters=  InputLocalEnvironment.REST.Input.Parameters;
+		
+		
+		-- Enviar datos de autenticación
+		SET OutputRoot.HTTPRequestHeader."Authorization" 	= 'Basic '||BASE64ENCODE(CAST(refInp.username||':'||refInp.password as BLOB CCSID 1208));
+		SET OutputRoot.HTTPRequestHeader."Content-type"		= 'application/x-www-form-urlencoded';
+		
+		SET OutputLocalEnvironment.Destination.HTTP.QueryString.grant_type 		= refInp.grant_type;
+		SET OutputLocalEnvironment.Destination.HTTP.QueryString.client_id 		= refInp.client_id;
+		SET OutputLocalEnvironment.Destination.HTTP.QueryString.client_secret 	= refInp.client_secret;
+		SET OutputLocalEnvironment.Destination.HTTP.QueryString.scope 			= refInp.scope;
+		
 		
 		--Configuraciones
 		SET OutputLocalEnvironment.Destination.REST.Request.Accept 	= 'application/json';

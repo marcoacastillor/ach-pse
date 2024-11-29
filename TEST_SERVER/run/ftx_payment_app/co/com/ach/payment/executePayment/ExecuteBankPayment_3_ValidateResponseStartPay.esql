@@ -11,7 +11,7 @@ CREATE COMPUTE MODULE ExecuteBankPayment_3_ValidateResponseStartPay
 		
 		-- referencias a mensaje original y respuesta
 		DECLARE refOriginal REFERENCE TO refGroups.OrigenRq;
-		DECLARE refCustomer REFERENCE TO refGroups.CustomerByIdsRs;
+		DECLARE refProduct REFERENCE TO refGroups.ProductByTagRs;
 		DECLARE refBank REFERENCE TO refGroups.BankByIdRs;
 		DECLARE refCus REFERENCE TO refGroups.DecryptCusRs;
 		
@@ -26,18 +26,15 @@ CREATE COMPUTE MODULE ExecuteBankPayment_3_ValidateResponseStartPay
 		MOVE refOriginal LASTCHILD;
 		MOVE refOriginal LASTCHILD;
 		
-		-- propagar headers
-		--SET OutputLocalEnvironment 		= refOriginal.session; 
-		
 		MOVE refBank LASTCHILD;
 		MOVE refBank LASTCHILD;
 		MOVE refBank LASTCHILD;
 		MOVE refBank LASTCHILD;
 		
-		MOVE refCustomer LASTCHILD;
-		MOVE refCustomer LASTCHILD;
-		MOVE refCustomer LASTCHILD;
-		MOVE refCustomer LASTCHILD;
+		MOVE refProduct LASTCHILD;
+		MOVE refProduct LASTCHILD;
+		MOVE refProduct LASTCHILD;
+		MOVE refProduct LASTCHILD;
 		
 		-- mover mensaje original
 		MOVE refCus LASTCHILD;
@@ -45,15 +42,17 @@ CREATE COMPUTE MODULE ExecuteBankPayment_3_ValidateResponseStartPay
 		MOVE refCus LASTCHILD;
 		MOVE refCus LASTCHILD;
 		
-		IF CAST(refCustomer.headers.httpStatusCode AS INTEGER) = 200 AND  CAST(refBank.headers.httpStatusCode AS INTEGER) = 200 THEN
+		IF CAST(refProduct.headers.httpStatusCode AS INTEGER) = 200 AND  CAST(refBank.headers.httpStatusCode AS INTEGER) = 200 THEN
+			-- copiar informacion de sesion
+			SET OutputLocalEnvironment = refOriginal.session;
 			
 			--copias mensaje
 			SET refOut 						= refOriginal;
 			SET refOut.cus	 				= refCus.data;
 			SET refOut.bank	 				= refBank.data;
-			SET refOut.customer				= refCustomer.data;
+			SET refOut.customer				= refProduct.data;
 	
-			RETURN FALSE;
+			RETURN TRUE;
 		ELSE
 			SET OutputLocalEnvironment.Destination.CallableFlow.Reply.ReplyIdentifier = CAST(refOriginal.session.Destination.CallableFlow.Reply.ReplyIdentifier AS BLOB);
 			
@@ -61,14 +60,15 @@ CREATE COMPUTE MODULE ExecuteBankPayment_3_ValidateResponseStartPay
 			SET refOut.group_header 																												= refOriginal.group_header;
 			SET refOut.original_payment_information_and_status.original_payment_information_identification 											= refOriginal.payment_information.payment_information_identification;
 			
-			IF CAST(refCustomer.headers.httpStatusCode AS INTEGER) <> 200  THEN
-				SET refOut.original_payment_information_and_status.transaction_information_and_status.transaction_status 								= refCustomer.headers.httpStatusCode;
-				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.originator.name 		= '';
-				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.code				= refCustomer.messageResponse.responseCode;
-				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.property			= refCustomer.messageResponse.responseMessage;
-				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.additional_information	= refCustomer.messageResponse.responseDetail;
+			IF CAST(refProduct.headers.httpStatusCode AS INTEGER) <> 200  THEN
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.transaction_status 								= refProduct.headers.httpStatusCode;
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.originator.name 		= 'ProductByTag';
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.code				= refProduct.messageResponse.responseCode;
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.property			= refProduct.messageResponse.responseMessage;
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.additional_information	= COALESCE(refProduct.errors.*.errorDetail, refProduct.messageResponse.responseDetail);
 				
-				PROPAGATE TO TERMINAL 'out1' DELETE NONE;	
+				PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+				RETURN FALSE;	
 			END IF;
 			
 			IF CAST(refBank.headers.httpStatusCode AS INTEGER) <> 200  THEN
@@ -76,9 +76,10 @@ CREATE COMPUTE MODULE ExecuteBankPayment_3_ValidateResponseStartPay
 				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.originator.name 		= '';
 				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.code				= refBank.messageResponse.responseCode;
 				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.property			= refBank.messageResponse.responseMessage;
-				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.additional_information	= refBank.messageResponse.responseDetail;
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.additional_information	= COALESCE(refBank.errors.*.errorDetail, refBank.messageResponse.responseDetail);
 				
-				PROPAGATE TO TERMINAL 'out1' DELETE NONE;	
+				PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+				RETURN FALSE;	
 			END IF;
 			
 		END IF;

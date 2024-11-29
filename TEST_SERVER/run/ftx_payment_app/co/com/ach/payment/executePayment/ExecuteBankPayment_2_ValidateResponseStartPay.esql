@@ -24,9 +24,6 @@ CREATE COMPUTE MODULE ExecuteBankPayment_2_ValidateResponseStartPay
 		MOVE refOriginal LASTCHILD;
 		MOVE refOriginal LASTCHILD;
 		
-		-- propagar headers
-		SET OutputLocalEnvironment 		= refOriginal.session; 
-		
 		-- mensaje de respuesta
 		MOVE refResponse LASTCHILD;
 		MOVE refResponse LASTCHILD;
@@ -34,12 +31,16 @@ CREATE COMPUTE MODULE ExecuteBankPayment_2_ValidateResponseStartPay
 		MOVE refResponse LASTCHILD;
 		
 		IF EXISTS(refResponse.access_token[]) THEN
+			-- copiar informacion de sesion
+			SET OutputLocalEnvironment = refOriginal.session;
+			
 			--copias mensaje
 			SET refOut 						= refOriginal;
 			SET refOut.access_token	 		= refResponse.access_token;
 	
 			RETURN TRUE;
 		ELSE
+			SET OutputLocalEnvironment.Destination.CallableFlow.Reply.ReplyIdentifier = CAST(refOriginal.session.Destination.CallableFlow.Reply.ReplyIdentifier AS BLOB);
 			
 			-- construir mensaje ISO 20022 de error.
 			SET refOut.group_header 																												= refOriginal.group_header;
@@ -52,6 +53,7 @@ CREATE COMPUTE MODULE ExecuteBankPayment_2_ValidateResponseStartPay
 			
 			
 			PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+			RETURN FALSE;
 		END IF;
 		
 		RETURN FALSE;

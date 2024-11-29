@@ -24,7 +24,7 @@ nsPrefix="co_com_ach_payment_specific_EntidadBancariaExecuteBankPayment.msgflow"
 <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="517,177" computeExpression="esql://routine/co.com.ach.payment.executePayment#ExecuteBankPayment_PrepareRequest.Main" computeMode="destinationAndMessage">
 <translation xmi:type="utility:ConstantString" string="PrepareRequest"/>
 </nodes>
-<nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="727,177" definitionFile="PSE 3.0-Capa_v2.yaml" definitionType="openapi_3" operationName="ExecutePayment" protocol="TLSv1.3" hostnameChecking="false" contentType="application/json" accept="application/json" acceptCompressedResponses="true">
+<nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="727,177" definitionFile="PSE3.0Capa_V3.yaml" definitionType="openapi_3" operationName="ExecutePayment" protocol="TLSv1.3" hostnameChecking="false" contentType="application/json" accept="application/json" acceptCompressedResponses="true">
 <translation xmi:type="utility:ConstantString" string="Request REST API"/>
 <parameters name="request-app-id"/>
 <parameters name="session-storage"/>

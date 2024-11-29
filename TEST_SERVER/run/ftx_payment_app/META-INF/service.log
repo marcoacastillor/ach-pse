@@ -1,7 +1,9 @@
 
 ==============================================
 
-!Thu Nov 28 00:51:47 COT 2024
+!Thu Nov 28 17:10:39 COT 2024
+
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesUpdateTrx.msgflow to BAR file.
 
 Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesTrxByCUS.msgflow to BAR file.
 
@@ -14,6 +16,8 @@ Successfully added file ftx_payment_app\co\com\ach\payment\specific\Transversale
 Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetToken.msgflow to BAR file.
 
 Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetProductData.msgflow to BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetProdByTag.msgflow to BAR file.
 
 Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetKeyList.msgflow to BAR file.
 
@@ -32,6 +36,10 @@ Successfully added file ftx_payment_app\co\com\ach\payment\specific\Transversale
 Successfully added file ftx_payment_app\co\com\ach\payment\specific\EntidadBancariaExecuteBankPayment.msgflow to BAR file.
 
 Successfully added file ftx_payment_app\co\com\ach\payment\specific\Commons_EchoMessage.msgflow to BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_6.msgflow to BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_5.msgflow to BAR file.
 
 Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_4.msgflow to BAR file.
 
@@ -80,10 +88,6 @@ Successfully added file ftx_payment_app\HU04ConsultarTX_AWS_V6.yml to BAR file.
 Successfully added file ftx_payment_app\HUTransversalesUserVaultMgmt_V1.0.yaml to BAR file.
 
 Successfully added file ftx_payment_app\HUTransversalesUserVaultMgmt_V1.0.yaml to BAR file.
-
-Successfully added file ftx_payment_app\PSE 3.0-Capa_v2.yaml to BAR file.
-
-Successfully added file ftx_payment_app\PSE 3.0-Capa_v2.yaml to BAR file.
 
 Successfully added file ftx_payment_app\PSE3.0Capa_V3.yaml to BAR file.
 
@@ -135,11 +139,21 @@ Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\Execut
 
 Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_1_PrepareRequestScoreByPrdAndCus.esql to BAR file.
 
+Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_2_PrepareRequestProductByTag.esql to BAR file.
+
 Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_2_ValidateResponseStartPay.esql to BAR file.
 
 Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_3_ValidateResponseStartPay.esql to BAR file.
 
+Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_4_PrepareRequestUpdateTrx.esql to BAR file.
+
 Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_4_ValidateResponseStartPay.esql to BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_5_PrepareRequestUpdateTrx.esql to BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_5_ValidateResponseStartPay.esql to BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_6_ValidateResponseStartPay.esql to BAR file.
 
 Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_PrepareRequest.esql to BAR file.
 
@@ -208,5 +222,11 @@ Successfully added file ftx_payment_app\co\com\ach\payment\specific\Transversale
 Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesTrxByCUS_Prepare_request.esql to BAR file.
 
 Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesTrxByCUS_Prepare_response.esql to BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesUpdateTrx_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesUpdateTrx_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesUpdateTrx_Prepare_response.esql to BAR file.
 
 Successfully added file ftx_payment_app\co\com\ach\payment\specific\spec_Prepare_response.esql to BAR file.

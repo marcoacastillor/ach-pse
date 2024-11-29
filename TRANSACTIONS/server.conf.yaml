@@ -310,9 +310,9 @@ BrokerRegistry:
   #brokerKeystoreType: 'JKS'                          # Key store type
   #brokerKeystoreFile: ''                             # Location of the broker key store
   #brokerKeystorePass: 'brokerKeystore::password'     # Resource alias containing the key store password
-  brokerTruststoreType: 'JKS'                        # Trust store type
-  brokerTruststoreFile: 'C:\ace\JKS_APIC\test.jks'                           # Location of the broker trust store
-  brokerTruststorePass: 'brokerTruststore::admin123' # Resource alias containing the trust store password
+  brokerTruststoreType: 'JKS'                        # Trust store type, can be 'JKS' or 'PKCS12'. Default is JKS.
+  brokerTruststoreFile: 'C:\jks\ptx.jks'                           # Location of the broker trust store
+  brokerTruststorePass: 'brokerTruststore::12345678' # Resource alias containing the trust store password
   #brokerCRLFileList: ''
   #brokerEnableCRLDP: ''
   #allowSSLv3: ''
