@@ -3,7 +3,7 @@
     nsURI="co/com/ach/payment/specific/TransversalesUpdateTrx.msgflow" nsPrefix="co_com_ach_payment_specific_TransversalesUpdateTrx.msgflow">
   <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="RECTANGLE">
     <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1" defaultValueLiteral="https://149.130.173.17.nip.io/v1/po/generator-trx-mgmt/update-trx-status">
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1" defaultValueLiteral="https://149.130.173.17.nip.io/v1">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backTimeout" name="backTimeout" lowerBound="1" defaultValueLiteral="3000">
@@ -36,7 +36,7 @@
         <translation xmi:type="utility:ConstantString" string="Callable Reply1"/>
       </nodes>
       <nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="698,146" definitionFile="HU02CrearTansaccion_V0.4.yaml" definitionType="swagger_20" operationName="patchUpdate-trx-status" enableKeepAlive="false" protocol="TLSv1.3" hostnameChecking="false" acceptCompressedResponses="true">
-        <translation xmi:type="utility:ConstantString" string="Get-Transactin-ByCus1"/>
+        <translation xmi:type="utility:ConstantString" string="Patch-UpdateTrx"/>
         <parameters name="request-app-id" expression=""/>
         <parameters name="message-uuid" expression=""/>
       </nodes>

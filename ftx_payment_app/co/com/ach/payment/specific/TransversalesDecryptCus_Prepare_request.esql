@@ -21,10 +21,6 @@ CREATE COMPUTE MODULE TransversalesDecryptCus_Prepare_request
 		SET OutputLocalEnvironment.Destination.REST.Request.Timeout 				= backTimeout;
 		SET OutputLocalEnvironment.Destination.REST.Request.BaseURL 				= backUrl;
 		
-		-- copiar datos en header
-		--SET OutputLocalEnvironment.Destination.REST.Request.Parameters."message-uuid" 			= InputLocalEnvironment.REST.Input.Parameters;
-		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."application-id" 		= 'user-vault-mgmt';
-		
 		-- crear mensaje de salida
 		CREATE FIELD OutputRoot.JSON.Data;
 		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;

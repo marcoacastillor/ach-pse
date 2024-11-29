@@ -19,8 +19,8 @@ CREATE COMPUTE MODULE ExecuteBankPayment_1_PrepareRequestScoreByPrdAndCus
 		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
 		
 		-- set scope para obtener token
-		-- TODO: Validar mapeo productId
-		SET refOut.productId 	= refInp.payment_information.credit_transfer_transaction_information.Item[1].creditor.identification.organisation_identification.other.Item[2].identification;
+		-- Depende de la consulta de productTag
+		SET refOut.productId 	= refInp.product.productId;
 		SET refOut.cus			= refInp.cus;
 		
 		RETURN TRUE;

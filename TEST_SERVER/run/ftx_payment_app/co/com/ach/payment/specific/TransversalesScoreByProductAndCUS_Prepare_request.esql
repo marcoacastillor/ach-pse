@@ -5,7 +5,7 @@ CREATE COMPUTE MODULE TransversalesScoreByProductAndCUS_Prepare_request
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		-- nombre de componente
-		SET Environment.flujo = 'GetBankByIds';
+		SET Environment.flujo = 'GetScoreByCus';
 		
 		-- referencia
 		DECLARE refInp REFERENCE TO InputRoot.JSON;

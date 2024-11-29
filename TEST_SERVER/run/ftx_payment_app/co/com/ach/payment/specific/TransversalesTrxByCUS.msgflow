@@ -5,7 +5,7 @@ xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="co/com/ach/paym
 nsPrefix="co_com_ach_payment_specific_TransversalesTrxByCUS.msgflow">
 <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="RECTANGLE">
 <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
-<eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1"  defaultValueLiteral="https://149.130.173.17.nip.io/v1/po/consult-trx-mgmt/search-trx-find-by">
+<eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1"  defaultValueLiteral="https://149.130.173.17.nip.io/">
   <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
 </eStructuralFeatures>
 <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backTimeout" name="backTimeout" lowerBound="1"  defaultValueLiteral="3000">
@@ -37,10 +37,21 @@ nsPrefix="co_com_ach_payment_specific_TransversalesTrxByCUS.msgflow">
 <nodes xmi:type="ComIbmCallableFlowReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="739,70">
 <translation xmi:type="utility:ConstantString" string="Callable Reply1"/>
 </nodes>
-<nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="698,146" definitionFile="HU04ConsultarTX_AWS_V6.yml" definitionType="swagger_20" operationName="postGet-trx-info" enableKeepAlive="false" protocol="TLSv1.3" hostnameChecking="false" acceptCompressedResponses="true">
+<nodes xmi:type="ComIbmRESTRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="698,146" definitionFile="HU04ConsultarTX_AWS_V6.yml" definitionType="swagger_20" operationName="getSearch-trx" enableKeepAlive="false" protocol="TLSv1.3" hostnameChecking="false" acceptCompressedResponses="true">
 <translation xmi:type="utility:ConstantString" string="Get-Transactin-ByCus1"/>
 <parameters name="request-app-id"/>
 <parameters name="message-uuid"/>
+<parameters name="pageNumber"/>
+<parameters name="productId"/>
+<parameters name="pageSize"/>
+<parameters name="creationDatetime"/>
+<parameters name="creationDatetimeFrom"/>
+<parameters name="cicle"/>
+<parameters name="creationDatetimeTo"/>
+<parameters name="instructionIdentification"/>
+<parameters name="financialInstitution"/>
+<parameters name="merchantCustomerName"/>
+<parameters name="status"/>
 </nodes>
 <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.try" targetTerminalName="InTerminal.in"/>
 <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>

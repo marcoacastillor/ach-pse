@@ -20,8 +20,9 @@ CREATE COMPUTE MODULE ExecuteBankPayment_1_PrepareRequestCustomerByIds
 		
 		-- set scope para obtener token
 		-- TODO: Validar mapeo
-		SET refOut.documentNumber 	= refInp.payment_information.credit_transfer_transaction_information.Item[1].creditor.identification.organisation_identification.other.Item[2].identification;
-		SET refOut.documentType		= refInp.payment_information.credit_transfer_transaction_information.Item[1].creditor.identification.organisation_identification.other.Item[2].scheme_name.code;
+		-- sacarlo de la consulta de productTag
+		SET refOut.documentNumber 	= refInp.transaction.remittanceInformation.identificationNumber;
+		SET refOut.documentType		= refInp.transaction.remittanceInformation.identificationType;
 		SET refOut.accessToken 		= refInp.access_token;
 		
 		RETURN TRUE;

@@ -44,7 +44,7 @@ CREATE COMPUTE MODULE ExecuteBankPayment_4_ValidateResponseStartPay
 			--copias mensaje
 			SET refOut 				= refOriginal;
 			SET refOut.score 		= refScore.data;
-			SET refOut.transaction	= refTransaction.data;
+			SET refOut.transaction	= refTransaction.data.transactions.Item;
 	
 			RETURN TRUE;
 		ELSE

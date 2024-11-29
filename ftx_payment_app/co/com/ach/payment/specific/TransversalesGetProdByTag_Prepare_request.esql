@@ -1,11 +1,11 @@
 BROKER SCHEMA co.com.ach.payment.specific
 
 
-CREATE COMPUTE MODULE TransversalesTrxByCUS_Prepare_request
+CREATE COMPUTE MODULE TransversalesGetProdByTag_Prepare_request
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		-- nombre de componente
-		SET Environment.flujo = 'POSTGetTrxBuCUS';
+		SET Environment.flujo = 'POSTGetProductByTag';
 		
 		-- referencia
 		DECLARE refInp REFERENCE TO InputRoot.JSON;
@@ -23,10 +23,8 @@ CREATE COMPUTE MODULE TransversalesTrxByCUS_Prepare_request
 		SET OutputLocalEnvironment.Destination.REST.Request.BaseURL 				= backUrl;
 		
 		-- copiar datos en header
-		SET OutputLocalEnvironment.Destination.REST.Request.Parameters.productId 					= refInp.productId;
-		SET OutputLocalEnvironment.Destination.REST.Request.Parameters.pageSize 					= 1;
-		SET OutputLocalEnvironment.Destination.REST.Request.Parameters.pageNumber 					= 1;
-		SET OutputLocalEnvironment.Destination.REST.Request.Parameters.instructionIdentification 	= refInp.cus;
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters.productTag 					= InputLocalEnvironment.REST.Input.Parameters."product-tag";
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."application-id" 			= InputLocalEnvironment.REST.Input.Parameters."request-app-id";
 		
 		
 		-- crear mensaje de salida

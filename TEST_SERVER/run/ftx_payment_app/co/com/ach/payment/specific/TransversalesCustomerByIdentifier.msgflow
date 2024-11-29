@@ -5,7 +5,7 @@ xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="co/com/ach/paym
 nsPrefix="co_com_ach_payment_specific_TransversalesCustomerByIdentifier.msgflow">
 <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="RECTANGLE">
 <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
-<eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1"  defaultValueLiteral="https://149.130.173.17.nip.io/v1/ft/consult-middleware-mgmt/customers">
+<eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backUrl" name="backUrl" lowerBound="1"  defaultValueLiteral="https://149.130.173.17.nip.io/v1/ft">
   <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
 </eStructuralFeatures>
 <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.backTimeout" name="backTimeout" lowerBound="1"  defaultValueLiteral="3000">
@@ -43,6 +43,7 @@ nsPrefix="co_com_ach_payment_specific_TransversalesCustomerByIdentifier.msgflow"
 <parameters name="documentNumber"/>
 <parameters name="message-uuid"/>
 <parameters name="application-id"/>
+<parameters name="request-app-id"/>
 </nodes>
 <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.try" targetTerminalName="InTerminal.in"/>
 <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>

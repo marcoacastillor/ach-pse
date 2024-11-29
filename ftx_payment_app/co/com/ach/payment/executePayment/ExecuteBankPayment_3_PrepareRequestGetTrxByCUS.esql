@@ -1,7 +1,7 @@
 BROKER SCHEMA co.com.ach.payment.executePayment
 
 
-CREATE COMPUTE MODULE ExecuteBankPayment_1_PrepareRequestScoreByPrdAndCus
+CREATE COMPUTE MODULE ExecuteBankPayment_3_PrepareRequestGetTrxByCUS
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		-- copiar httpDHeader

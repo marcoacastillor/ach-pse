@@ -19,13 +19,13 @@ nsPrefix="co_com_ach_payment_specific_TransversalesGetProdByTag.msgflow">
 <nodes xmi:type="ComIbmTryCatch.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="280,72">
 <translation xmi:type="utility:ConstantString" string="Try Catch"/>
 </nodes>
-<nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="490,144" computeExpression="esql://routine/co.com.ach.payment.specific#TransversalesTrxByCUS_Prepare_request.Main" computeMode="destinationAndMessage">
+<nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="490,144" computeExpression="esql://routine/co.com.ach.payment.specific#TransversalesGetProdByTag_Prepare_request.Main" computeMode="destinationAndMessage">
 <translation xmi:type="utility:ConstantString" string="Prepare request"/>
 </nodes>
 <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="503,68" computeExpression="esql://routine/com.ibus.common.procedures.general#specificPrepareError.Main">
 <translation xmi:type="utility:ConstantString" string="Throw error"/>
 </nodes>
-<nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="914,143" computeExpression="esql://routine/co.com.ach.payment.specific#TransversalesTrxByCUS_Prepare_response.Main" computeMode="destinationAndMessage">
+<nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="914,143" computeExpression="esql://routine/co.com.ach.payment.specific#TransversalesGetProdByTag_Prepare_response.Main" computeMode="destinationAndMessage">
 <translation xmi:type="utility:ConstantString" string="Prepare response"/>
 </nodes>
 <nodes xmi:type="ComIbmCallableFlowReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="1120,144">

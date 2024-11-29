@@ -48,9 +48,9 @@ CREATE COMPUTE MODULE ExecuteBankPayment_3_ValidateResponseStartPay
 			
 			--copias mensaje
 			SET refOut 						= refOriginal;
-			SET refOut.cus	 				= refCus.data;
+			SET refOut.cus	 				= refCus.data.plainText;
 			SET refOut.bank	 				= refBank.data;
-			SET refOut.customer				= refProduct.data;
+			SET refOut.product				= refProduct.data;
 	
 			RETURN TRUE;
 		ELSE

@@ -18,12 +18,12 @@ CREATE COMPUTE MODULE TransversalesGetCus_Prepare_request
 		
 		-- copiar datos en header
 		--TODO: Validar desde mapeo.
-		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."message-uuid" 			= refInp.prop.messageUUID;
-		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."request-app-id" 		= refInp.prop.requestAppId;
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."message-uuid" 			= Environment.Variables.MQRFH2.usr.prop.messageUUID;
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."request-app-id" 		= Environment.Variables.MQRFH2.usr.prop.requestAppId;
 		
 		SET OutputRoot.JSON.Data.productId				= refInp.msgs.respProducts.data.productId;
 
-		SET Environment.Variables.MQRFH2 = InputRoot.MQRFH2;
+		--SET Environment.Variables.MQRFH2 = InputRoot.MQRFH2;
 
 			
 		RETURN TRUE;

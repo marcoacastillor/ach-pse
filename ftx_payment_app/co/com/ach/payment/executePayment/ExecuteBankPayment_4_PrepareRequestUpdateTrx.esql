@@ -19,10 +19,11 @@ CREATE COMPUTE MODULE ExecuteBankPayment_4_PrepareRequestUpdateTrx
 		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
 		
 		-- set scope para obtener token
-		SET refOut.productId 		= 'productId'; --TODO: pendiente mapeo
-		SET refOut.trazabilityCode 	= refInp.cus;
-		SET refOut.entityCode 		= refInp.payment_information.credit_transfer_transaction_information.creditor.identification.organisation_identification.anyBIC;
-		SET refOut.accessToken 		= refInp.access_token;
+		SET refOut.productId 						= refInp.product.productId;
+		SET refOut.instructionIdentification 		= refInp.cus;
+		SET refOut.status 							= 'PENDING';
+		SET refOut.beneficiaryFinancialInstitution 	= refInp.bank.financialInstitutionCode;
+		SET refOut.debtorFinancialInstitution 		= refInp.transaction.debtorAgent.financialInstitution;
 		
 		RETURN TRUE;
 	END;
