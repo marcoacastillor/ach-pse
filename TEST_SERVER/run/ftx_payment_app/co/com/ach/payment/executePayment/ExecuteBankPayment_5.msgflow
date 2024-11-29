@@ -42,8 +42,8 @@ nsPrefix="co_com_ach_payment_executePayment_ExecuteBankPayment_5.msgflow">
 <nodes xmi:type="ComIbmCallableFlowAsyncResponse.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_13" location="1450,224" asyncResponseCorrelator="Commons_EchoMessage_005">
 <translation xmi:type="utility:ConstantString" string="Commons_EchoMessage05Rs"/>
 </nodes>
-<nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_14" location="1047,310" computeExpression="esql://routine/co.com.ach.payment.executePayment#ExecuteBankPayment_5_PrepareRequestUpdateTrx.Main" computeMode="destinationAndMessage">
-<translation xmi:type="utility:ConstantString" string="PrepareRequestUpdateTrx"/>
+<nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_14" location="1047,310" computeExpression="esql://routine/co.com.ach.payment.executePayment#ExecuteBankPayment_5_PrepareRequestInitBank.Main" computeMode="destinationAndMessage">
+<translation xmi:type="utility:ConstantString" string="PrepareRequestInitBank"/>
 </nodes>
 <nodes xmi:type="ComIbmCallableFlowAsyncInvoke.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_15" location="1260,312" asyncResponseCorrelator="EntidadBancaria_InitBankPayment_001" targetApplication="ftx_payment_app" targetEndpointName="EntBancaria_InitBankPayment" requestTimeout="20" AddRequestToGroup="true" GroupRequestFolderName="InitBankPaymentRs" GroupRequestTimeout="10.0">
 <translation xmi:type="utility:ConstantString" string="EntidadBancaria_InitBankPaymentRq"/>

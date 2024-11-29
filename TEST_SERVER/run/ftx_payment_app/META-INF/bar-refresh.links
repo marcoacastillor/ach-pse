@@ -14,7 +14,7 @@
       <barEntry name="HU02CrearTansaccion_V0.4.yaml"/>
     </deployable>
     <deployable deployed="true" barResourceTimeStamp="1732249163135" workspaceResource="/ftx_payment_app/HU03ValidatedRulesAWS_V1.1.yaml">
-      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_app\HU03ValidatedRulesAWS_V1.1.yaml.&#xA;Successfully added file ftx_payment_app\HU03ValidatedRulesAWS_V1.1.yaml to BAR file.&#xA;Elapsed time: 0 second(s).&#xA;&#xA;Successfully added file ftx_payment_app\HU03ValidatedRulesAWS_V1.1.yaml to BAR file.&#xA;" severity="0"/>
+      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_app\HU03ValidatedRulesAWS_V1.1.yaml.&#xA;Successfully added file ftx_payment_app\HU03ValidatedRulesAWS_V1.1.yaml to BAR file.&#xA;Elapsed time: 0,016 second(s).&#xA;&#xA;Successfully added file ftx_payment_app\HU03ValidatedRulesAWS_V1.1.yaml to BAR file.&#xA;" severity="0"/>
       <barEntry name="HU03ValidatedRulesAWS_V1.1.yaml"/>
     </deployable>
     <deployable deployed="true" barResourceTimeStamp="1732750423320" workspaceResource="/ftx_payment_app/HU04ConsultarTX_AWS_V6.yml">
@@ -22,10 +22,10 @@
       <barEntry name="HU04ConsultarTX_AWS_V6.yml"/>
     </deployable>
     <deployable deployed="true" barResourceTimeStamp="1732249163135" workspaceResource="/ftx_payment_app/HUTransversalesUserVaultMgmt_V1.0.yaml">
-      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_app\HUTransversalesUserVaultMgmt_V1.0.yaml.&#xA;Successfully added file ftx_payment_app\HUTransversalesUserVaultMgmt_V1.0.yaml to BAR file.&#xA;Elapsed time: 0,017 second(s).&#xA;&#xA;Successfully added file ftx_payment_app\HUTransversalesUserVaultMgmt_V1.0.yaml to BAR file.&#xA;" severity="0"/>
+      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_app\HUTransversalesUserVaultMgmt_V1.0.yaml.&#xA;Successfully added file ftx_payment_app\HUTransversalesUserVaultMgmt_V1.0.yaml to BAR file.&#xA;Elapsed time: 0 second(s).&#xA;&#xA;Successfully added file ftx_payment_app\HUTransversalesUserVaultMgmt_V1.0.yaml to BAR file.&#xA;" severity="0"/>
       <barEntry name="HUTransversalesUserVaultMgmt_V1.0.yaml"/>
     </deployable>
-    <deployable deployed="true" barResourceTimeStamp="1732828361979" workspaceResource="/ftx_payment_app/PSE3.0Capa_V3.yaml">
+    <deployable deployed="true" barResourceTimeStamp="1732895024465" workspaceResource="/ftx_payment_app/PSE3.0Capa_V3.yaml">
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_app\PSE3.0Capa_V3.yaml.&#xA;Successfully added file ftx_payment_app\PSE3.0Capa_V3.yaml to BAR file.&#xA;Elapsed time: 0 second(s).&#xA;&#xA;Successfully added file ftx_payment_app\PSE3.0Capa_V3.yaml to BAR file.&#xA;" severity="0"/>
       <barEntry name="PSE3.0Capa_V3.yaml"/>
     </deployable>
@@ -161,11 +161,11 @@
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_3_ValidateResponseStartPay.esql.&#xA;Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_3_ValidateResponseStartPay.esql to BAR file.&#xA;" severity="0"/>
       <barEntry name="co\com\ach\payment\executePayment\ExecuteBankPayment_3_ValidateResponseStartPay.esql"/>
     </deployable>
-    <deployable deployed="true" barResourceTimeStamp="1732842418051" workspaceResource="/ftx_payment_app/co/com/ach/payment/executePayment/ExecuteBankPayment_4.msgflow">
+    <deployable deployed="true" barResourceTimeStamp="1732895463833" workspaceResource="/ftx_payment_app/co/com/ach/payment/executePayment/ExecuteBankPayment_4.msgflow">
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_4.msgflow.&#xA;Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_4.msgflow to BAR file.&#xA;" severity="0"/>
       <barEntry name="co\com\ach\payment\executePayment\ExecuteBankPayment_4.msgflow"/>
     </deployable>
-    <deployable deployed="true" barResourceTimeStamp="1732844467656" workspaceResource="/ftx_payment_app/co/com/ach/payment/executePayment/ExecuteBankPayment_4_PrepareRequestUpdateTrx.esql">
+    <deployable deployed="true" barResourceTimeStamp="1732898073243" workspaceResource="/ftx_payment_app/co/com/ach/payment/executePayment/ExecuteBankPayment_4_PrepareRequestUpdateTrx.esql">
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_4_PrepareRequestUpdateTrx.esql.&#xA;Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_4_PrepareRequestUpdateTrx.esql to BAR file.&#xA;" severity="0"/>
       <barEntry name="co\com\ach\payment\executePayment\ExecuteBankPayment_4_PrepareRequestUpdateTrx.esql"/>
     </deployable>
@@ -173,15 +173,19 @@
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_4_ValidateResponseStartPay.esql.&#xA;Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_4_ValidateResponseStartPay.esql to BAR file.&#xA;" severity="0"/>
       <barEntry name="co\com\ach\payment\executePayment\ExecuteBankPayment_4_ValidateResponseStartPay.esql"/>
     </deployable>
-    <deployable deployed="true" barResourceTimeStamp="1732812176813" workspaceResource="/ftx_payment_app/co/com/ach/payment/executePayment/ExecuteBankPayment_5.msgflow">
+    <deployable deployed="true" barResourceTimeStamp="1732897828173" workspaceResource="/ftx_payment_app/co/com/ach/payment/executePayment/ExecuteBankPayment_5.msgflow">
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_5.msgflow.&#xA;Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_5.msgflow to BAR file.&#xA;" severity="0"/>
       <barEntry name="co\com\ach\payment\executePayment\ExecuteBankPayment_5.msgflow"/>
+    </deployable>
+    <deployable deployed="true" barResourceTimeStamp="1732897990729" workspaceResource="/ftx_payment_app/co/com/ach/payment/executePayment/ExecuteBankPayment_5_PrepareRequestInitBank.esql">
+      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_5_PrepareRequestInitBank.esql.&#xA;Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_5_PrepareRequestInitBank.esql to BAR file.&#xA;" severity="0"/>
+      <barEntry name="co\com\ach\payment\executePayment\ExecuteBankPayment_5_PrepareRequestInitBank.esql"/>
     </deployable>
     <deployable deployed="true" barResourceTimeStamp="1732812170708" workspaceResource="/ftx_payment_app/co/com/ach/payment/executePayment/ExecuteBankPayment_5_PrepareRequestUpdateTrx.esql">
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_5_PrepareRequestUpdateTrx.esql.&#xA;Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_5_PrepareRequestUpdateTrx.esql to BAR file.&#xA;" severity="0"/>
       <barEntry name="co\com\ach\payment\executePayment\ExecuteBankPayment_5_PrepareRequestUpdateTrx.esql"/>
     </deployable>
-    <deployable deployed="true" barResourceTimeStamp="1732822268100" workspaceResource="/ftx_payment_app/co/com/ach/payment/executePayment/ExecuteBankPayment_5_ValidateResponseStartPay.esql">
+    <deployable deployed="true" barResourceTimeStamp="1732897854271" workspaceResource="/ftx_payment_app/co/com/ach/payment/executePayment/ExecuteBankPayment_5_ValidateResponseStartPay.esql">
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_5_ValidateResponseStartPay.esql.&#xA;Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_5_ValidateResponseStartPay.esql to BAR file.&#xA;" severity="0"/>
       <barEntry name="co\com\ach\payment\executePayment\ExecuteBankPayment_5_ValidateResponseStartPay.esql"/>
     </deployable>
@@ -225,7 +229,7 @@
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_app\co\com\ach\payment\specific\TransversalesBankByInstitucionalCode_Prepare_response.esql.&#xA;Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesBankByInstitucionalCode_Prepare_response.esql to BAR file.&#xA;" severity="0"/>
       <barEntry name="co\com\ach\payment\specific\TransversalesBankByInstitucionalCode_Prepare_response.esql"/>
     </deployable>
-    <deployable deployed="true" barResourceTimeStamp="1732844767842" workspaceResource="/ftx_payment_app/co/com/ach/payment/specific/TransversalesCustomerByIdentifier.msgflow">
+    <deployable deployed="true" barResourceTimeStamp="1732895713785" workspaceResource="/ftx_payment_app/co/com/ach/payment/specific/TransversalesCustomerByIdentifier.msgflow">
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_app\co\com\ach\payment\specific\TransversalesCustomerByIdentifier.msgflow.&#xA;Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesCustomerByIdentifier.msgflow to BAR file.&#xA;" severity="0"/>
       <barEntry name="co\com\ach\payment\specific\TransversalesCustomerByIdentifier.msgflow"/>
     </deployable>
@@ -357,7 +361,7 @@
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_app\co\com\ach\payment\specific\TransversalesUpdateTrx.msgflow.&#xA;Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesUpdateTrx.msgflow to BAR file.&#xA;" severity="0"/>
       <barEntry name="co\com\ach\payment\specific\TransversalesUpdateTrx.msgflow"/>
     </deployable>
-    <deployable deployed="true" barResourceTimeStamp="1732801409767" workspaceResource="/ftx_payment_app/co/com/ach/payment/specific/TransversalesUpdateTrx_Prepare_request.esql">
+    <deployable deployed="true" barResourceTimeStamp="1732895835147" workspaceResource="/ftx_payment_app/co/com/ach/payment/specific/TransversalesUpdateTrx_Prepare_request.esql">
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_app\co\com\ach\payment\specific\TransversalesUpdateTrx_Prepare_request.esql.&#xA;Dependent ESQL file co/com/ach/payment/specific/TransversalesGetProductData_Prepare_request.esql is added to the BAR file.&#xA;&#xA;Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesUpdateTrx_Prepare_request.esql to BAR file.&#xA;" severity="0"/>
       <barEntry name="co\com\ach\payment\specific\TransversalesUpdateTrx_Prepare_request.esql"/>
     </deployable>

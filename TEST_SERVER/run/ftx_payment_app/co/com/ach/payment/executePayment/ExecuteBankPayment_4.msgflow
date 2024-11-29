@@ -27,7 +27,7 @@ nsPrefix="co_com_ach_payment_executePayment_ExecuteBankPayment_4.msgflow">
 <nodes xmi:type="ComIbmGroupComplete.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_24" location="128,128" GroupName="BUSINESS_DATA_2">
 <translation xmi:type="utility:ConstantString" string="GroupComplete_GetBusinessData2"/>
 </nodes>
-<nodes xmi:type="ComIbmGroupGather.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="1727,242" GroupName="BUSINESS_DATA_3">
+<nodes xmi:type="ComIbmGroupGather.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="1725,274" GroupName="BUSINESS_DATA_3">
 <translation xmi:type="utility:ConstantString" string="GroupGather_BusinessData3Rs"/>
 </nodes>
 <nodes xmi:type="ComIbmGroupScatter.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="827,237" GroupName="BUSINESS_DATA_3">

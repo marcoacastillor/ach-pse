@@ -246,7 +246,7 @@ components:
           type: string
           minLength: 1
           maxLength: 36
-          example: rn-00234
+          example: CUS
           
         creation_date_time:
           description: Date and time at which the message was created.
@@ -866,10 +866,19 @@ components:
           maxLength: 8
           example: 'OK'
         
-          
     AdditionalPaymentInfoV2:
       type: object
       properties:
+        flow_type:
+          description: Defines the type of flow True - fast payment; False - Registration
+          type: boolean
+          example: True
+          
+        financial_institution_code:
+          description: Id of Bank 
+          type: string
+          example: ''
+          
         payment_origin:
           description: Origin of payment, 3 for debit and 4 for credit 
           type: string

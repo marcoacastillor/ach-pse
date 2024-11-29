@@ -22,8 +22,9 @@ CREATE COMPUTE MODULE ExecuteBankPayment_4_PrepareRequestUpdateTrx
 		SET refOut.productId 						= refInp.product.productId;
 		SET refOut.instructionIdentification 		= refInp.cus;
 		SET refOut.status 							= 'PENDING';
-		SET refOut.beneficiaryFinancialInstitution 	= refInp.bank.financialInstitutionCode;
-		SET refOut.debtorFinancialInstitution 		= refInp.transaction.debtorAgent.financialInstitution;
+		SET refOut.fraudScore						= refInp.score.fraudScore;
+		--SET refOut.beneficiaryFinancialInstitution 	= '';--refInp.bank.financialInstitutionCode;
+		SET refOut.debtorFinancialInstitution 		= refInp.payment_information.supplementary_data.Item.any.Item.additional_payment_info.financial_institution_code;
 		
 		RETURN TRUE;
 	END;

@@ -23,7 +23,6 @@ CREATE COMPUTE MODULE TransversalesUpdateTrx_Prepare_request
 		SET OutputLocalEnvironment.Destination.REST.Request.BaseURL 				= backUrl;
 		
 		-- copiar datos en header
-		--SET OutputLocalEnvironment.Destination.REST.Request.Parameters."message-uuid" 			= InputLocalEnvironment.REST.Input.Parameters;
 		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."application-id" 		= 'user-vault-mgmt';
 		
 		-- enviar cus para descifrar

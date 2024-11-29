@@ -1,7 +1,7 @@
 BROKER SCHEMA co.com.ach.payment.executePayment
 
 
-CREATE COMPUTE MODULE ExecuteBankPayment_4_PrepareRequestUpdateTrx
+CREATE COMPUTE MODULE ExecuteBankPayment_5_PrepareRequestInitBank
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
 		-- referencia mensaje entrada
@@ -19,12 +19,12 @@ CREATE COMPUTE MODULE ExecuteBankPayment_4_PrepareRequestUpdateTrx
 		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
 		
 		-- set scope para obtener token
-		SET refOut.productId 						= refInp.product.productId;
-		SET refOut.instructionIdentification 		= refInp.cus;
-		SET refOut.status 							= 'PENDING';
-		SET refOut.fraudScore						= refInp.score.fraudScore;
-		--SET refOut.beneficiaryFinancialInstitution 	= '';--refInp.bank.financialInstitutionCode;
-		SET refOut.debtorFinancialInstitution 		= refInp.payment_information.supplementary_data.Item.any.Item.additional_payment_info.financial_institution_code;
+		SET refOut.group_header 	= refInp.group_header;
+		SET refOut.payment_information.payment_information_identification = refInp.transaction.instructionIdentification;
+		
+		
+		
+		SET refOut.accessToken 		= refInp.access_token;
 		
 		RETURN TRUE;
 	END;
