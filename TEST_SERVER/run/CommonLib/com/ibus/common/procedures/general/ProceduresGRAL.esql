@@ -269,7 +269,7 @@ CREATE COMPUTE MODULE specificPrepareErrorAggregation
 		MOVE refOriginal LASTCHILD;
 		
 		-- propagar headers
-		SET OutputLocalEnvironment 		= refOriginal.session; 
+		SET OutputLocalEnvironment.Destination.CallableFlow.Reply.ReplyIdentifier = CAST(refOriginal.session.Destination.CallableFlow.Reply.ReplyIdentifier AS BLOB); 
 		
 		-- setar código statusHttpCode
 		SET OutputRoot.HTTPReplyHeader."Content-Type" 					= 'application/json';

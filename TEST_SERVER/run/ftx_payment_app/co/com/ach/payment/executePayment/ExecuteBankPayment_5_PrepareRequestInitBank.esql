@@ -20,9 +20,43 @@ CREATE COMPUTE MODULE ExecuteBankPayment_5_PrepareRequestInitBank
 		
 		-- set scope para obtener token
 		SET refOut.group_header 	= refInp.group_header;
-		SET refOut.payment_information.payment_information_identification = '';
-		
-		
+		SET refOut.payment_information.payment_information_identification 																										= refInp.transaction.instructionIdentification;
+		SET refOut.payment_information.requested_execution_date.dateTime  																										= CURRENT_TIMESTAMP;
+		SET refOut.payment_information.debtor.name 																																= refInp.debtor.name;
+		SET refOut.payment_information.debtor.postal_address.address_line 																										= refInp.debtor.address;
+		SET refOut.payment_information.debtor.identification.private_identification.other.identification																		= refInp.debtor.identificationNumber;
+		SET refOut.payment_information.debtor.identification.private_identification.other.scheme_name.code																		= refInp.debtor.identificationType;
+		SET refOut.payment_information.debtor.identification.private_identification.other.scheme_name.propieraty																= refInp.debtor.identificationType;
+		SET refOut.payment_information.debtor.identification.contact_details.mobile_number																						= refInp.debtor.phoneNumber;
+		SET refOut.payment_information.debtor.identification.contact_details.email_address																						= refInp.debtor.email;
+		SET refOut.payment_information.(JSON.Array)credit_transfer_transaction_information.d[1].payment_identification.instruction_identification 								= refInp.transaction.instructionIdentification;
+		SET refOut.payment_information.(JSON.Array)credit_transfer_transaction_information.d[1].amount.instructed_amount 														= refInp.transaction.instructedAmount.amount;
+		SET refOut.payment_information.(JSON.Array)credit_transfer_transaction_information.d[1].creditor.name 																	= refInp.customer.businessName;
+		SET refOut.payment_information.(JSON.Array)credit_transfer_transaction_information.d[1].creditor.identification.organisation_identification.anyBIC 						= refInp.transaction.remittanceInformation.serviceCode;
+		SET refOut.payment_information.(JSON.Array)credit_transfer_transaction_information.d[1].creditor.identification.organisation_identification.other.identification 		= refInp.customer.documentNumber;
+		SET refOut.payment_information.(JSON.Array)credit_transfer_transaction_information.d[1].creditor.identification.organisation_identification.other.scheme_name.code 		= refInp.customer.documentType;
+		SET refOut.payment_information.(JSON.Array)credit_transfer_transaction_information.d[1].creditor.identification.organisation_identification.other.scheme_name.propieraty = refInp.customer.documentType;
+		SET refOut.payment_information.(JSON.Array)credit_transfer_transaction_information.d[1].purpose.code 																	= ''; --TODO: pendiente
+		SET refOut.payment_information.(JSON.Array)credit_transfer_transaction_information.d[1].purpose.propietary 																= ''; --TODO: pendiente
+		SET refOut.payment_information.(JSON.Array)credit_transfer_transaction_information.d[1].tax.total_taxable_base_amount													= refInp.transaction.instructedAmount.amount;
+		SET refOut.payment_information.(JSON.Array)credit_transfer_transaction_information.d[1].tax.total_tax_amount															= (refInp.transaction.instructedAmount.amount * 19 ) / 100; --TODO: pendiente
+		SET refOut.payment_information.(JSON.Array)credit_transfer_transaction_information.d[1].tax.record.type																	= 'Iva'; -- TODO: pendiente
+		SET refOut.payment_information.supplementary_data.place_and_name.(JSON.Array)any.d[1].additional_payment_info.reference_1												= refInp.transaction.reference1;
+		SET refOut.payment_information.supplementary_data.place_and_name.(JSON.Array)any.d[1].additional_payment_info.reference_2												= refInp.transaction.reference2;
+		SET refOut.payment_information.supplementary_data.place_and_name.(JSON.Array)any.d[1].additional_payment_info.reference_3												= refInp.transaction.reference3;
+		SET refOut.payment_information.supplementary_data.place_and_name.(JSON.Array)any.d[1].additional_payment_info.financial_institution_code								= refInp.bank.financialInstitutionCode;
+		SET refOut.payment_information.supplementary_data.place_and_name.(JSON.Array)any.d[1].additional_payment_info.service_code												= refInp.transaction.remittanceInformation.serviceCode;
+		SET refOut.payment_information.supplementary_data.place_and_name.(JSON.Array)any.d[1].additional_payment_info.entity_url												= refInp.customer.urlCommerceRedirect;
+		SET refOut.payment_information.supplementary_data.place_and_name.(JSON.Array)any.d[1].additional_payment_info.transaction_cycle											= refInp.transaction.cicle;
+		SET refOut.payment_information.supplementary_data.place_and_name.(JSON.Array)any.d[1].additional_payment_info.device_finger_print										= '';--TODO: pendiente
+		SET refOut.payment_information.supplementary_data.place_and_name.(JSON.Array)any.d[1].additional_payment_info.fraud_response_code										= refInp.product.fraudscore;
+		SET refOut.payment_information.supplementary_data.place_and_name.(JSON.Array)any.d[1].additional_payment_info.fraud_pre_authorization_score								= '';--TODO: pendiente
+		SET refOut.payment_information.supplementary_data.place_and_name.(JSON.Array)any.d[1].additional_payment_info.creditor_ciiu												= '';--TODO: pendiente
+		SET refOut.payment_information.supplementary_data.place_and_name.(JSON.Array)any.d[1].additional_payment_info.indicator_exempt_account									= '';--TODO: pendiente
+		SET refOut.payment_information.supplementary_data.place_and_name.(JSON.Array)any.d[1].additional_payment_info.flow_type													= '';--TODO: pendiente
+		SET refOut.payment_information.supplementary_data.place_and_name.(JSON.Array)any.d[1].additional_payment_info.bank_key													= '';--TODO: pendiente
+		SET refOut.payment_information.supplementary_data.place_and_name.(JSON.Array)any.d[1].additional_payment_info.bank_trazability_code										= '';--TODO: pendiente
+		--SET refOut.payment_information.supplementary_data.place_and_name.(JSON.Array)any.d[1].additional_payment_info.bank_key_status											= '';
 		
 		SET refOut.accessToken 		= refInp.access_token;
 		

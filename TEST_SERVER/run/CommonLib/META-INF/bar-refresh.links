@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<deploy:Deploy xmlns:deploy="http://www.ibm.com/xmlns/prod/wmb/deploy/6.0.0" overrideConfigurableProperties="false" includeESQL="false">
+<deploy:Deploy xmlns:deploy="http://www.ibm.com/xmlns/prod/wmb/deploy/6.0.0" overrideConfigurableProperties="true" includeESQL="false">
   <deployables>
     <deployable deployed="true" barResourceTimeStamp="1722276338000" workspaceResource="/CommonLib/com/ibus/common/functions/error/ErrorStatus.esql">
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file CommonLib\com\ibus\common\functions\error\ErrorStatus.esql.&#xA;Successfully added file CommonLib\com\ibus\common\functions\error\ErrorStatus.esql to BAR file.&#xA;" severity="0"/>
@@ -41,7 +41,7 @@
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file CommonLib\com\ibus\common\modules\general\ModulesRestGRAL.esql.&#xA;Dependent ESQL file com/ibus/common/procedures/util/ExceptionUtil.esql is added to the BAR file.&#xA;&#xA;Dependent ESQL file com/ibus/common/procedures/general/ProceduresGRAL.esql is added to the BAR file.&#xA;&#xA;Successfully added file CommonLib\com\ibus\common\modules\general\ModulesRestGRAL.esql to BAR file.&#xA;" severity="0"/>
       <barEntry name="com\ibus\common\modules\general\ModulesRestGRAL.esql"/>
     </deployable>
-    <deployable deployed="true" barResourceTimeStamp="1732772199255" workspaceResource="/CommonLib/com/ibus/common/procedures/general/ProceduresGRAL.esql">
+    <deployable deployed="true" barResourceTimeStamp="1732773240165" workspaceResource="/CommonLib/com/ibus/common/procedures/general/ProceduresGRAL.esql">
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file CommonLib\com\ibus\common\procedures\general\ProceduresGRAL.esql.&#xA;Dependent ESQL file com/ibus/common/procedures/util/ExceptionUtil.esql is added to the BAR file.&#xA;&#xA;Successfully added file CommonLib\com\ibus\common\procedures\general\ProceduresGRAL.esql to BAR file.&#xA;" severity="0"/>
       <barEntry name="com\ibus\common\procedures\general\ProceduresGRAL.esql"/>
     </deployable>

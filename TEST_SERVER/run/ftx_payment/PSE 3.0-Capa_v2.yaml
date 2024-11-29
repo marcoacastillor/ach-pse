@@ -184,12 +184,10 @@ components:
       type: object
       properties:
         group_header:
-          ##Conjunto de caracter韘ticas compartidas por una transacci贸n individual incluida en el mensaje
           $ref: '#/components/schemas/GroupHeader'
         original_payment_information_and_status:
           type: array
           items:
-            #Objeto que representa el resultado de la transacci贸n
             $ref: '#/components/schemas/OriginalPaymentInformationAndStatus'
         supplementary_data:
           $ref: '#/components/schemas/SupplementaryData'
@@ -227,12 +225,10 @@ components:
       type: object
       properties:
         group_header:
-          ##Conjunto de caracter韘ticas compartidas por una transacci贸n individual incluida en el mensaje
           $ref: '#/components/schemas/GroupHeader'
         original_payment_information_and_status:
           type: array
           items:
-            #Objeto que representa el resultado de la transacci贸n
             $ref: '#/components/schemas/OriginalPaymentInformationAndStatus'
     
     GroupHeader:
@@ -246,7 +242,7 @@ components:
           type: string
           minLength: 1
           maxLength: 36
-          example: rn-00234
+          example: CUS
           
         creation_date_time:
           description: Date and time at which the message was created.
@@ -866,10 +862,19 @@ components:
           maxLength: 8
           example: 'OK'
         
-          
     AdditionalPaymentInfoV2:
       type: object
       properties:
+        flow_type:
+          description: Defines the type of flow True - fast payment; False - Registration
+          type: boolean
+          example: True
+          
+        financial_institution_code:
+          description: Id of Bank 
+          type: string
+          example: ''
+          
         payment_origin:
           description: Origin of payment, 3 for debit and 4 for credit 
           type: string
@@ -930,7 +935,6 @@ components:
           example: Pago factura
           
     Tax:
-    #modela informaci贸n sobre informaci贸n tributaria
       type: object
       properties:
         total_taxable_base_amount:
@@ -1027,7 +1031,6 @@ components:
         
     
     PaymentIdentification:
-      #Conjunto de elementos usados para referenciar una instrucci贸n de pago.
       type: object
       properties:
         instruction_identification:
@@ -1038,7 +1041,6 @@ components:
           example: 30001
     
     Amount:
-      #Cantidad de dinero a mover entre deudor y acreedor
       type: object
       properties:
         instructed_amount:
@@ -1050,7 +1052,6 @@ components:
           
           
     Creditor:
-      #Modela informaci贸n de un acreedor
       type: object
       properties:
         name:

@@ -13,6 +13,7 @@ CREATE COMPUTE MODULE ExecuteBankPayment_4_ValidateResponseStartPay
 		DECLARE refOriginal REFERENCE TO refGroups.OrigenRq;
 		DECLARE refScore REFERENCE TO refGroups.ScoreByPrdAndCusRs;
 		DECLARE refTransaction REFERENCE TO refGroups.TransactionByCusRs;
+		DECLARE refDebtor REFERENCE TO refGroups.DebtorRs;
 		
 		
 		-- declarar referencia de salida
@@ -26,6 +27,11 @@ CREATE COMPUTE MODULE ExecuteBankPayment_4_ValidateResponseStartPay
 		MOVE refOriginal LASTCHILD;
 		MOVE refOriginal LASTCHILD;
 		
+		MOVE refDebtor LASTCHILD;
+		MOVE refDebtor LASTCHILD;
+		MOVE refDebtor LASTCHILD;
+		MOVE refDebtor LASTCHILD;
+		
 		MOVE refScore LASTCHILD;
 		MOVE refScore LASTCHILD;
 		MOVE refScore LASTCHILD;
@@ -36,7 +42,7 @@ CREATE COMPUTE MODULE ExecuteBankPayment_4_ValidateResponseStartPay
 		MOVE refTransaction LASTCHILD;
 		MOVE refTransaction LASTCHILD;
 		
-		IF CAST(refScore.headers.httpStatusCode AS INTEGER) = 200 AND  CAST(refTransaction.headers.httpStatusCode AS INTEGER) = 200 THEN
+		IF CAST(refScore.headers.httpStatusCode AS INTEGER) = 200 AND  CAST(refTransaction.headers.httpStatusCode AS INTEGER) = 200 AND CAST(refDebtor.headers.httpStatusCode AS INTEGER) = 200 THEN
 			
 			-- copiar informacion de sesion
 			SET OutputLocalEnvironment = refOriginal.session;
@@ -44,6 +50,7 @@ CREATE COMPUTE MODULE ExecuteBankPayment_4_ValidateResponseStartPay
 			--copias mensaje
 			SET refOut 				= refOriginal;
 			SET refOut.score 		= refScore.data;
+			SET refOut.debtor 		= refDebtor.data.debtor;
 			SET refOut.transaction	= refTransaction.data.transactions.Item;
 	
 			RETURN TRUE;
@@ -71,6 +78,18 @@ CREATE COMPUTE MODULE ExecuteBankPayment_4_ValidateResponseStartPay
 				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.code				= refTransaction.messageResponse.responseCode;
 				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.property			= refTransaction.messageResponse.responseMessage;
 				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.additional_information	= COALESCE(refTransaction.errors.*.errorDetail, refTransaction.messageResponse.responseDetail);
+				
+				
+				PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+				RETURN FALSE;	
+			END IF;
+			
+			IF CAST(refDebtor.headers.httpStatusCode AS INTEGER) <> 200  THEN
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.transaction_status 								= refDebtor.headers.httpStatusCode;
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.originator.name 		= '';
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.code				= refDebtor.messageResponse.responseCode;
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.reason.property			= refDebtor.messageResponse.responseMessage;
+				SET refOut.original_payment_information_and_status.transaction_information_and_status.status_reason_information.additional_information	= COALESCE(refDebtor.errors.*.errorDetail, refDebtor.messageResponse.responseDetail);
 				
 				
 				PROPAGATE TO TERMINAL 'out1' DELETE NONE;

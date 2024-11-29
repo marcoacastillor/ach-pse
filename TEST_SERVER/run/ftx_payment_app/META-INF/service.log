@@ -1,7 +1,7 @@
 
 ==============================================
 
-!Fri Nov 29 11:34:45 COT 2024
+!Fri Nov 29 16:18:48 COT 2024
 
 Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesUpdateTrx.msgflow to BAR file.
 
@@ -20,6 +20,8 @@ Successfully added file ftx_payment_app\co\com\ach\payment\specific\Transversale
 Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetProdByTag.msgflow to BAR file.
 
 Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetKeyList.msgflow to BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetDebtorByCUS.msgflow to BAR file.
 
 Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetCustomerData.msgflow to BAR file.
 
@@ -145,6 +147,8 @@ Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\Execut
 
 Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_3_PrepareRequestGetTrxByCUS.esql to BAR file.
 
+Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_3_PrepareRequestScoreByPrdAndCus1.esql to BAR file.
+
 Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_3_ValidateResponseStartPay.esql to BAR file.
 
 Successfully added file ftx_payment_app\co\com\ach\payment\executePayment\ExecuteBankPayment_4_PrepareRequestUpdateTrx.esql to BAR file.
@@ -194,6 +198,12 @@ Successfully added file ftx_payment_app\co\com\ach\payment\specific\Transversale
 Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetCustomerData_Prepare_request.esql to BAR file.
 
 Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetCustomerData_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetDebtorByCUS_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetDebtorByCUS_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetDebtorByCUS_Prepare_response.esql to BAR file.
 
 Successfully added file ftx_payment_app\co\com\ach\payment\specific\TransversalesGetKeyList_Prepare_request.esql to BAR file.
 

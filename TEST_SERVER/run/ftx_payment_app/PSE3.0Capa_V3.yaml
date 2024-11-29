@@ -184,12 +184,10 @@ components:
       type: object
       properties:
         group_header:
-          ##Conjunto de caracter韘ticas compartidas por una transacci贸n individual incluida en el mensaje
           $ref: '#/components/schemas/GroupHeader'
         original_payment_information_and_status:
           type: array
           items:
-            #Objeto que representa el resultado de la transacci贸n
             $ref: '#/components/schemas/OriginalPaymentInformationAndStatus'
         supplementary_data:
           $ref: '#/components/schemas/SupplementaryData'
@@ -227,12 +225,10 @@ components:
       type: object
       properties:
         group_header:
-          ##Conjunto de caracter韘ticas compartidas por una transacci贸n individual incluida en el mensaje
           $ref: '#/components/schemas/GroupHeader'
         original_payment_information_and_status:
           type: array
           items:
-            #Objeto que representa el resultado de la transacci贸n
             $ref: '#/components/schemas/OriginalPaymentInformationAndStatus'
     
     GroupHeader:
@@ -939,7 +935,6 @@ components:
           example: Pago factura
           
     Tax:
-    #modela informaci贸n sobre informaci贸n tributaria
       type: object
       properties:
         total_taxable_base_amount:
@@ -1036,7 +1031,6 @@ components:
         
     
     PaymentIdentification:
-      #Conjunto de elementos usados para referenciar una instrucci贸n de pago.
       type: object
       properties:
         instruction_identification:
@@ -1047,7 +1041,6 @@ components:
           example: 30001
     
     Amount:
-      #Cantidad de dinero a mover entre deudor y acreedor
       type: object
       properties:
         instructed_amount:
@@ -1059,7 +1052,6 @@ components:
           
           
     Creditor:
-      #Modela informaci贸n de un acreedor
       type: object
       properties:
         name:

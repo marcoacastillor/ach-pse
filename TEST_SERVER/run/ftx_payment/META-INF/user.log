@@ -1,63 +1,63 @@
 
 ==============================================
 
-!Thu Nov 28 16:36:49 COT 2024
+!Fri Nov 29 16:17:13 COT 2024
 
 Processing file ftx_payment\gen\ftx_payment.msgflow.
 Successfully added file ftx_payment\gen\ftx_payment.msgflow to BAR file.
 
 ==============================================
 
-!Thu Nov 28 16:36:49 COT 2024
+!Fri Nov 29 16:17:13 COT 2024
 
 Processing file ftx_payment\ExecutePayment.subflow.
 Successfully added file ftx_payment\ExecutePayment.subflow to BAR file.
 
 ==============================================
 
-!Thu Nov 28 16:36:49 COT 2024
+!Fri Nov 29 16:17:13 COT 2024
 
 Processing file ftx_payment\Initiate\RequestMessage.esql.
 Successfully added file ftx_payment\Initiate\RequestMessage.esql to BAR file.
 
 ==============================================
 
-!Thu Nov 28 16:36:49 COT 2024
+!Fri Nov 29 16:17:13 COT 2024
 
 Processing file ftx_payment\Initiate\ValidateHeaders.esql.
 Successfully added file ftx_payment\Initiate\ValidateHeaders.esql to BAR file.
 
 ==============================================
 
-!Thu Nov 28 16:36:49 COT 2024
+!Fri Nov 29 16:17:13 COT 2024
 
 Processing file ftx_payment\InitiatePayment.subflow.
 Successfully added file ftx_payment\InitiatePayment.subflow to BAR file.
 
 ==============================================
 
-!Thu Nov 28 16:36:49 COT 2024
+!Fri Nov 29 16:17:13 COT 2024
 
 Processing file ftx_payment\Notify\RequestMessage.esql.
 Successfully added file ftx_payment\Notify\RequestMessage.esql to BAR file.
 
 ==============================================
 
-!Thu Nov 28 16:36:49 COT 2024
+!Fri Nov 29 16:17:13 COT 2024
 
 Processing file ftx_payment\Notify\ValidateHeaders.esql.
 Successfully added file ftx_payment\Notify\ValidateHeaders.esql to BAR file.
 
 ==============================================
 
-!Thu Nov 28 16:36:49 COT 2024
+!Fri Nov 29 16:17:13 COT 2024
 
 Processing file ftx_payment\NotifyPayment.subflow.
 Successfully added file ftx_payment\NotifyPayment.subflow to BAR file.
 
 ==============================================
 
-!Thu Nov 28 16:36:49 COT 2024
+!Fri Nov 29 16:17:13 COT 2024
 
 Processing file ftx_payment\PSE 3.0-Capa_v2.yaml.
 Successfully added file ftx_payment\PSE 3.0-Capa_v2.yaml to BAR file.
@@ -67,14 +67,14 @@ Successfully added file ftx_payment\PSE 3.0-Capa_v2.yaml to BAR file.
 
 ==============================================
 
-!Thu Nov 28 16:36:49 COT 2024
+!Fri Nov 29 16:17:14 COT 2024
 
 Processing file ftx_payment\StartPayment.subflow.
 Successfully added file ftx_payment\StartPayment.subflow to BAR file.
 
 ==============================================
 
-!Thu Nov 28 16:36:49 COT 2024
+!Fri Nov 29 16:17:14 COT 2024
 
 Processing file ftx_payment\restapi.descriptor.
 Successfully added file ftx_payment\restapi.descriptor to BAR file.
@@ -84,10 +84,10 @@ Successfully added file ftx_payment\restapi.descriptor to BAR file.
 
 ==============================================
 
-!Thu Nov 28 16:36:49 COT 2024
+!Fri Nov 29 16:17:14 COT 2024
 
 Processing file ftx_payment\restapi.descriptor.
 Successfully added file ftx_payment\restapi.descriptor to BAR file.
-Elapsed time: 0,016 second(s).
+Elapsed time: 0 second(s).
 
 Successfully added file ftx_payment\restapi.descriptor to BAR file.
