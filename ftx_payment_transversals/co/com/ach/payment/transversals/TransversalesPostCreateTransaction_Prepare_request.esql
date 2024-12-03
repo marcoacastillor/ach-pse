@@ -1,0 +1,93 @@
+BROKER SCHEMA co.com.ach.payment.transversals
+
+
+CREATE COMPUTE MODULE TransversalesPostCreateTransaction_Prepare_request
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- configurar url y parámetros de invocación
+		--SET Environment.flujo = 'GetProductData'; --TODO: Se debe esperar si en auditoría se requiere o no.
+		
+		DECLARE refInp REFERENCE TO InputRoot.MQRFH2.usr;
+		
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		--Configuraciones 
+		SET OutputLocalEnvironment.Destination.REST.Request.Accept 					= 'application/json';
+		SET OutputLocalEnvironment.Destination.REST.Request.Timeout 				= backTimeout;
+		SET OutputLocalEnvironment.Destination.REST.Request.BaseURL 				= backUrl;
+		
+		-- copiar datos en header
+		--TODO: Validar desde mapeo.
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."message-uuid" 			= refInp.prop.messageUUID;
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."request-app-id" 		= refInp.prop.requestAppId;
+
+		MOVE refInp TO refInp.msgs;
+		
+		SET refOut.initiation.productId                            = refInp.respProducts.data.productId;
+		SET refOut.initiation.initiationType                       = 'PU';
+		SET refOut.initiation.instructionIdentification            = refInp.respgetCUS.data.cus; --'000000000000100';
+		SET refOut.initiation.endtoendIdentification               = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item[1].payment_identification.instruction_identification; --'E2E1234567890';
+		SET refOut.initiation.creationDatetime                     = refInp.origen.Data.payment_information.requested_execution_date.dateTime;   --'2024-10-10T13:45:00';
+		SET refOut.initiation.status                               = 'PENDING';   -- constante
+		SET refOut.initiation.authorizationCode                    = 'OK';  --TODO  revisar ;
+		SET refOut.initiation.validationPayeer                     = COALESCE(refInp.respgetCustData.data.userValidationRequiered, 'N');  --'Y';
+		--SET refOut.initiation.geolocalization                      = '';
+		--SET refOut.initiation.channel                              = ''; 
+		--SET refOut.initiation.mandateId                            = 'MANDATE123';
+		--SET refOut.initiation.cicle                                = 'DAILY'
+
+		SET refOut.instructedAmount.amount                             = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item[1].amount.instructed_amount;
+		SET refOut.instructedAmount.currency                           = 'COP';    --TODO  velidar
+		SET refOut.instructedAmount.chargesAmount                      = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item[1].tax.total_tax_amount;  --5.00;
+		SET refOut.instructedAmount.gmftaxIndicator                    = '1';   --TODO  validar no se recibe aun   indicator4per1000
+
+		SET refOut.remittanceInformation.identificationType            = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item[1].creditor.identification.organisation_identification.other.Item[2].scheme_name.code;  -- constante nit 
+		SET refOut.remittanceInformation.identificationNumber          = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item[1].creditor.identification.organisation_identification.other.Item[2].identification;  -- numero de nit  '1234567890';
+		SET refOut.remittanceInformation.merchantCustomerName          = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item[1].creditor.name; ---'John Doe';
+		SET refOut.remittanceInformation.merchantCustomerCategoryCode  = refInp.origen.Data.payment_information.supplementary_data.Item[1].any.Item[1].additional_payment_info.creditor_ciiu; 
+		SET refOut.remittanceInformation.serviceCode                   = refInp.origen.Data.payment_information.supplementary_data.Item[1].any.Item[1].additional_payment_info.service_code;
+		SET refOut.remittanceInformation.reference2                    = refInp.origen.Data.payment_information.supplementary_data.Item[1].any.Item[1].additional_payment_info.reference_2;
+		SET refOut.remittanceInformation.reference3                    = refInp.origen.Data.payment_information.supplementary_data.Item[1].any.Item[1].additional_payment_info.reference_3;
+		SET refOut.remittanceInformation.unstructured                  = refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item[1].purpose.propietary;
+		SET refOut.remittanceInformation.reference1                    = refInp.origen.Data.payment_information.supplementary_data.Item[1].any.Item[1].additional_payment_info.reference_1;
+		--SET refOut.remittanceInformation.method                        = ''
+
+		SET refOut.beneficiaryAgent.financialInstitution               = refInp.respgetCustData.data.financialInstitutionCode;
+		SET refOut.beneficiaryAgent.account                            = '010009883';     --TODO validar, no debe ser nulo pero no esat en la respeusta de customer
+		--SET refOut.beneficiaryAgent.accountType                        = '';
+
+		SET refOut.initiatingParty.identificationType            = 'CC';
+		SET refOut.initiatingParty.identificationNumber          = '000';
+		SET refOut.initiatingParty.name                          = '000';
+		SET refOut.initiatingParty.ciiu                          = '00';						--
+		SET refOut.initiatingParty.serviceCode                   = '000';
+		SET refOut.initiatingParty.instructionIdentification     = '000000';
+
+
+		SET refOut.debtorAgent.financialInstitution   = '';
+		SET refOut.debtorAgent.account  = '';
+		SET refOut.debtorAgent.accountType   = '';
+
+		SET refOut.debtor.userType                               = 'PN';  -- TODO validar  --UPPER(refInp.origen.Data.payment_information.credit_transfer_transaction_information.Item[1].creditor.identification.organisation_identification.other.Item[1].scheme_name.code);
+		SET refOut.debtor.identificationType                     = refInp.origen.Data.payment_information.debtor.identification.private_identification.other.scheme_name.code; --'CC';
+		SET refOut.debtor.identificationNumber                   = refInp.origen.Data.payment_information.debtor.identification.private_identification.other.identification; --'5566778899';
+		SET refOut.debtor.name                                   = refInp.origen.Data.payment_information.debtor.name;  --'Doe Corp';
+		SET refOut.debtor.phoneNumber                            = refInp.origen.Data.payment_information.debtor.identification.contact_details.mobile_number; --'555-1234';
+		SET refOut.debtor.email                                  = refInp.origen.Data.payment_information.debtor.identification.contact_details.email_address; --'doe@corp.com';
+		SET refOut.debtor.address                                = refInp.origen.Data.payment_information.debtor.postal_address.address_line; --'123 Main St'
+
+		SET refOut.thirdParty.userType                           = 'PJ';					-- TODO validar de donde llega
+		SET refOut.thirdParty.identificationType                 = 'CE';						-- TODO validar de donde llega
+		SET refOut.thirdParty.identificationNumber               = '000000000';				-- TODO validar de donde llega
+		SET refOut.thirdParty.name                               = 'nnnnn nnnn';        	-- TODO validar de donde llega
+		SET refOut.thirdParty.phoneNumber                        = '55555555';					-- TODO validar de donde llega
+		SET refOut.thirdParty.email                              = 'nnnnnnn@party.com';			-- TODO validar de donde llega
+		
+		
+		SET Environment.Variables.MQRFH2 = InputRoot.MQRFH2;
+		-- enviar mensaje, en método get va nulo
+		
+		RETURN TRUE;
+	END;
+END MODULE;

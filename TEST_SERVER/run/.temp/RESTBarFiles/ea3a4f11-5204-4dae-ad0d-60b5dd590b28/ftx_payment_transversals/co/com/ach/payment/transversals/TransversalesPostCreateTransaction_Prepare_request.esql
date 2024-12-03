@@ -1,0 +1,114 @@
+BROKER SCHEMA co.com.ach.payment.transversals
+
+
+CREATE COMPUTE MODULE TransversalesPostCreateTransaction_Prepare_request
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- configurar url y parámetros de invocación
+		--SET Environment.flujo = 'GetProductData'; --TODO: Se debe esperar si en auditoría se requiere o no.
+		
+		DECLARE refInp REFERENCE TO InputRoot.MQRFH2.usr;
+		
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		--Configuraciones 
+		SET OutputLocalEnvironment.Destination.REST.Request.Accept 					= 'application/json';
+		SET OutputLocalEnvironment.Destination.REST.Request.Timeout 				= backTimeout;
+		SET OutputLocalEnvironment.Destination.REST.Request.BaseURL 				= backUrl;
+		
+		-- copiar datos en header
+		--TODO: Validar desde mapeo.
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."message-uuid" 			= refInp.prop.messageUUID;
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."request-app-id" 		= refInp.prop.requestAppId;
+
+		MOVE refInp TO refInp.msgs;
+		
+		SET refOut.cus                                                      = refInp.respgetCUS.data.cus;
+		SET refOut.financialInstitutionId                                   = refInp.respgetCustData.data.financialInstitutionCode;
+		SET refOut.financialInstitutionName                                 = '';
+		SET refOut.instructionIdentification                                = '';
+		SET refOut.initiatingParty.name                                     = '';
+		SET refOut.initiatingParty.url                                      = '';
+		SET refOut.initiatingParty.email                                    = '';
+		SET refOut.initiatingParty.identification                           = '';
+		SET refOut.initiatingParty.id                                       = '';
+		SET refOut.initiatingParty.CIIU                                     = '';
+		SET refOut.initiatingParty.termsAcceptanceDateTime  = '';
+		SET refOut.initiatingParty.privacyPolicyDateTime    = '';
+		SET refOut.initiatingParty.serviceCode                              = '';
+
+		SET refOut.remittanceInformation.unstructured                       = '';
+		SET refOut.remittanceInformation.merchantCustomerIdentificationType = '';
+		SET refOut.remittanceInformation.merchantCustomerIdentification     = '';
+		SET refOut.remittanceInformation.merchantCustomerName               = '';
+		SET refOut.remittanceInformation.merchantCustomerCategoryCode       = '';  --- datos del comercio
+		SET refOut.remittanceInformation.serviceCode                        = '';
+		SET refOut.remittanceInformation.reference1                         = '';
+		SET refOut.remittanceInformation.reference2                         = '';
+		SET refOut.remittanceInformation.reference3                         = '';
+		SET refOut.remittanceInformation.collectionType                     = '';
+
+		SET refOut.debtor.identificationType                                = refInp.origen.Data.payment_information.debtor.identification.private_identification.other.scheme_name.code;
+		SET refOut.debtor.identificationNumber                              = refInp.origen.Data.payment_information.debtor.identification.private_identification.other.identification;
+		SET refOut.debtor.name                                              = refInp.origen.Data.payment_information.debtor.name;
+		SET refOut.debtor.phoneNumber                                       = refInp.origen.Data.payment_information.debtor.identification.contact_details.mobile_number;
+		SET refOut.debtor.email                                             = refInp.origen.Data.payment_information.debtor.identification.contact_details.email_address;
+		SET refOut.debtor.userType                                          = refInp.respgetCustData.data.customerType;
+		SET refOut.debtor.address                                           = refInp.origen.Data.payment_information.debtor.postal_address.address_line;
+
+		SET refOut.initiation.productId                                     = refInp.prop.producttag;
+		SET refOut.initiation.creationDateTime                              = refInp.origen.Data.payment_information.requested_execution_date.dateTime;
+		SET refOut.initiation.endToEndIdentification                        = '';
+		SET refOut.initiation.initiationType                                = '';
+		SET refOut.initiation.status                                        = '';
+		SET refOut.initiation.authorizationCode                             = '';
+		SET refOut.initiation.authorizationDescription                      = '';
+		SET refOut.initiation.acceptanceDateTime                            = '';
+		SET refOut.initiation.paymentId                                     = '';
+		SET refOut.initiation.validationPayeer                              = '';
+		SET refOut.initiation.vinculationType                               = '';
+		SET refOut.initiation.economicActivity                              = '';
+		SET refOut.initiation.codeEconomicActivity                          = '';
+		SET refOut.initiation.channel                                       = '';  --- salvo producid debe provenir del comercio
+		SET refOut.initiation.geolocalization                               = '';
+		SET refOut.initiation.debitKey                                      = '';
+		SET refOut.initiation.clientRegistry                                = '';
+		SET refOut.initiation.transactionCalendar                           = '';
+		SET refOut.initiation.transactionRestrictionCalendar                = '';
+		SET refOut.initiation.amount                                        = '';
+		SET refOut.initiation.currency                                      = '';
+		SET refOut.initiation.chargesAmount                                 = '';
+		SET refOut.initiation.gmfTaxIndicator                               = '';
+
+		SET refOut.collection.method                                        = '';
+		SET refOut.collection.account                                       = '';
+		SET refOut.collection.accountState                                  = '';  
+		SET refOut.collection.accountAprobation                             = '';
+		SET refOut.collection.accountNIT                                    = '';		
+		SET refOut.collection.accountType                                   = '';	-- validar    (usuario pagador  info de la cuenta)
+		SET refOut.collection.financialInstitucion                          = '';
+		SET refOut.collection.FinancialInstitutionId                        = '';
+		SET refOut.collection.serviceCodeMulticredit                        = '';
+		SET refOut.collection.serviceNameMulticredit                        = '';
+		SET refOut.collection.serviceDescriptionMulticredit                 = '';
+		SET refOut.collection.serviceAprobationMulticredit                  = '';
+		SET refOut.collection.serviceStateMulticredit                       = '';
+		SET refOut.collection.serviceMulticredit                            = '';
+
+		SET refOut.payment.serviceCode                                      = refInp.origen.Data.payment_information.supplementary_data.Item.any.Item.additional_payment_info.service_code;
+		SET refOut.payment.method                                           = '';
+
+		SET refOut.thirdParty.identificationType                            = '';
+		SET refOut.thirdParty.identificationNumber                          = '';
+		SET refOut.thirdParty.name                                          = '';   --  pagos a nombre de un tercero  por ejemplo servicios publicos de un tercero
+		SET refOut.thirdParty.phonenumber                                   = '';
+		SET refOut.thirdParty.email                                         = '';		
+		
+		
+		SET Environment.Variables.MQRFH2 = InputRoot.MQRFH2;
+		-- enviar mensaje, en método get va nulo
+		
+		RETURN TRUE;
+	END;
+END MODULE;

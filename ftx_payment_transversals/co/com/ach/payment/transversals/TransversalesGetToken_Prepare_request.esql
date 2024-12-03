@@ -1,0 +1,22 @@
+BROKER SCHEMA co.com.ach.payment.transversals
+
+
+CREATE COMPUTE MODULE TransversalesGetToken_Prepare_request
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- nombre de componente
+		SET Environment.flujo = 'TransversalesGetToken';
+		
+		-- copiar parámetros
+		SET OutputLocalEnvironment.Destination.REST.Request.Parameters=  InputLocalEnvironment.REST.Input.Parameters;
+		
+		--Configuraciones
+		SET OutputLocalEnvironment.Destination.REST.Request.Accept 	= 'application/json';
+		SET OutputLocalEnvironment.Destination.HTTP.RequestURL 		= backUrl;
+		SET OutputLocalEnvironment.Destination.HTTP.TimeoutMillis 	= backTimeout;
+		
+		-- copiar cuerpo del mensaje
+		SET OutputRoot.JSON.Data = InputRoot.JSON.Data;		
+		RETURN TRUE;
+	END;
+END MODULE;

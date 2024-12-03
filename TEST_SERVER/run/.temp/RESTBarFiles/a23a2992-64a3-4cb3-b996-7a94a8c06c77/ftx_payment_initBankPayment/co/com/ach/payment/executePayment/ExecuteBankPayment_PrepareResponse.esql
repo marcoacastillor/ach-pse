@@ -1,0 +1,15 @@
+BROKER SCHEMA co.com.ach.payment.executePayment
+
+
+CREATE COMPUTE MODULE ExecuteBankPayment_PrepareResponse
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- copiar cabeceras
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		
+		-- copiar todo el mensaje
+		SET OutputRoot = InputRoot;
+		
+		RETURN TRUE;
+	END;
+END MODULE;

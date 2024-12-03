@@ -1,0 +1,16 @@
+
+BROKER SCHEMA com.ibus.common.procedures.global.cache.dao
+
+/*
+* Obtiene la las instancias de la base de datos
+*
+* Parameters:
+* IN:  CHARACTER IIBName - Llave de consulta 
+* OUT: REFERENCE instancias - Referencia a lista con informacion
+*
+*/
+CREATE PROCEDURE getDPInstancias(IN IIBName CHARACTER, IN cacheDB REFERENCE) BEGIN
+	DECLARE sql CHARACTER 'SELECT * FROM TBL_BRK_INSTANCIAS_DP WHERE ESTADO = 1 AND BROKER = ?';
+	SET cacheDB.Instancias[] = PASSTHRU(sql,IIBName);
+	
+END;

@@ -184,10 +184,12 @@ components:
       type: object
       properties:
         group_header:
+          ##Conjunto de caracter韘ticas compartidas por una transacci贸n individual incluida en el mensaje
           $ref: '#/components/schemas/GroupHeader'
         original_payment_information_and_status:
           type: array
           items:
+            #Objeto que representa el resultado de la transacci贸n
             $ref: '#/components/schemas/OriginalPaymentInformationAndStatus'
         supplementary_data:
           $ref: '#/components/schemas/SupplementaryData'
@@ -225,10 +227,12 @@ components:
       type: object
       properties:
         group_header:
+          ##Conjunto de caracter韘ticas compartidas por una transacci贸n individual incluida en el mensaje
           $ref: '#/components/schemas/GroupHeader'
         original_payment_information_and_status:
           type: array
           items:
+            #Objeto que representa el resultado de la transacci贸n
             $ref: '#/components/schemas/OriginalPaymentInformationAndStatus'
     
     GroupHeader:
@@ -241,7 +245,7 @@ components:
           description: Point to point reference, as assigned by the instructing party, and sent to the next party in the chain to unambiguously identify the message.
           type: string
           minLength: 1
-          maxLength: 36
+          maxLength: 100
           example: CUS
           
         creation_date_time:
@@ -349,10 +353,6 @@ components:
             $ref: '#/components/schemas/SupplementaryDataV3'
             
     PaymentInformationV4:
-      required:
-        - payment_information_identification
-        - requested_execution_date
-        - credit_transfer_transaction_information
       type: object
       properties:
         supplementary_data:
@@ -935,6 +935,7 @@ components:
           example: Pago factura
           
     Tax:
+    #modela informaci贸n sobre informaci贸n tributaria
       type: object
       properties:
         total_taxable_base_amount:
@@ -1052,6 +1053,7 @@ components:
           
           
     Creditor:
+      #Modela informaci贸n de un acreedor
       type: object
       properties:
         name:

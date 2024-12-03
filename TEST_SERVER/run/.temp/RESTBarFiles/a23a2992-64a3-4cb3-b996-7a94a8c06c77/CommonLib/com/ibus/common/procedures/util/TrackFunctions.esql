@@ -1,0 +1,122 @@
+BROKER SCHEMA com.ibus.common.procedures.util
+
+--DECLARE PRODUCT_NAME CONSTANT CHARACTER 'Procesador Transaccional';
+
+DECLARE UDP_MODULE EXTERNAL CHARACTER '';
+DECLARE UDP_SUBMODULE EXTERNAL CHARACTER '';
+
+/*
+* Función que devuelve una representación BLOB del mensaje entrante en refInp
+*/
+CREATE FUNCTION getStringFromBody(IN refInp REFERENCE)RETURNS CHARACTER
+BEGIN
+    DECLARE message CHARACTER;
+    DECLARE messageTreeBlob BLOB;
+
+     SET messageTreeBlob = ASBITSTREAM(refInp, 273, 1208,'','','',FolderBitStream);
+     SET message = CAST(messageTreeBlob AS CHARACTER CCSID 1208);
+   
+    RETURN message;           
+END;
+
+
+/*
+* Módulo que guarda información de log para mensajes Request
+*/
+CREATE COMPUTE MODULE SetTrackingRequest
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- crear cabecera MQ
+		CREATE FIELD OutputRoot.MQMD;
+		
+		DECLARE refInp REFERENCE TO InputRoot;
+		MOVE refInp LASTCHILD;
+		
+		-- crear mensaje de salida
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		-- crear objeto para auditoría
+		SET refOut.productTag			= 'procesador-transaccional';
+		SET refOut.messageUUID		= InputRoot.HTTPInputHeader."Message-Uuid";
+		SET refOut.messageType		= 'Request';
+		SET refOut.datetime   		= REPLACE( CAST(CURRENT_TIMESTAMP AS CHARACTER FORMAT 'yyyy-MM-dd HH:mm:ss.SSS'), ' ', 'T');
+		SET refOut.dateTime   		= REPLACE( CAST(CURRENT_TIMESTAMP AS CHARACTER FORMAT 'yyyy-MM-dd HH:mm:ss.SSS'), ' ', 'T');
+		SET refOut.user  			= '';
+		SET refOut.userName   		= '';
+		SET refOut.email 			= '';
+		SET refOut.documentType    	= '';
+		SET refOut.documentNumber  	= '';
+		SET refOut.ip    			= InputRoot.HTTPInputHeader."X-Remote-Addr";
+		SET refOut.userNote   		= '';
+		SET refOut.clientType 		= '';
+		SET refOut.clientId   		= InputRoot.HTTPInputHeader."Client-Id";
+		SET refOut.client     		= '';
+		SET refOut.module     		= Environment.user.params.module;
+		SET refOut.submodule  		= Environment.user.params.submodule;
+		SET refOut.action     		= Environment.user.params.action;
+		SET refOut.dataBeforeUpdate  = '';
+		SET refOut.request     		= com.ibus.common.procedures.util.getStringFromBody(refInp);
+		
+		RETURN TRUE;
+	END;
+END MODULE;
+
+
+/*
+* Módulo que guarda información de log para mensajes Response
+*/
+CREATE COMPUTE MODULE SetTrackingResponse
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- crear cabecera MQ
+		CREATE FIELD OutputRoot.MQMD;
+		SET OutputRoot.Properties 	= NULL;
+		
+		DECLARE refInp REFERENCE TO InputRoot;
+		MOVE refInp LASTCHILD;
+		
+		-- crear mensaje de salida
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		SET refOut.productTag			= 'procesador-transaccional';
+		SET refOut.messageUUID		= refInp.Data.headers.messageUuid;
+		SET refOut.messageType		= 'Response';
+		SET refOut.datetime   		= REPLACE( CAST(CURRENT_TIMESTAMP AS CHARACTER FORMAT 'yyyy-MM-dd HH:mm:ss.SSS'), ' ', 'T');
+		SET refOut.dateTime   		= REPLACE( CAST(CURRENT_TIMESTAMP AS CHARACTER FORMAT 'yyyy-MM-dd HH:mm:ss.SSS'), ' ', 'T');
+		SET refOut.user  			= '';--llega desde cliente
+		SET refOut.userName   		= '';--llega desde cliente
+		SET refOut.email 			= '';--llega desde cliente
+		SET refOut.documentType    	= '';--llega desde cliente
+		SET refOut.documentNumber  	= '';--llega desde cliente
+		SET refOut.ip    			= InputRoot.HTTPInputHeader."X-Remote-Addr";
+		SET refOut.userNote   		= '';--Pendiente
+		SET refOut.clientType 		= '';--Pendiente
+		SET refOut.clientId   		= InputRoot.HTTPInputHeader."Client-Id";
+		SET refOut.client     		= '';--Pendiente
+		SET refOut.module     		= Environment.user.params.module;
+		SET refOut.submodule  		= Environment.user.params.submodule;
+		SET refOut.action     		= Environment.user.params.action;
+		SET refOut.dataBeforeUpdate  = '';--solo para PUT
+		SET refOut.response     		= com.ibus.common.procedures.util.getStringFromBody(refInp);
+		
+		RETURN TRUE;
+	END;
+END MODULE;
+
+CREATE PROCEDURE validateParams(IN refHeader REFERENCE)
+BEGIN
+	-- declaración y asignación de variables
+	DECLARE messageUuid CHARACTER refHeader."Message-Uuid";
+	DECLARE requestAppId CHARACTER refHeader."Request-App-Id";
+	
+	-- validación de campos obligatorios
+	IF messageUuid IS NULL THEN
+		THROW EXCEPTION MESSAGE 500 VALUES('requestError' , 'Error en los headers, el header message-uuid es obligatorio'); 
+	END IF;
+	
+	IF requestAppId IS NULL THEN
+		THROW EXCEPTION MESSAGE 500 VALUES('requestError' , 'Error en los headers, el header request-app-id es obligatorio'); 
+	END IF;
+END;

@@ -1,0 +1,34 @@
+
+==============================================
+
+!Sun Dec 01 10:36:42 COT 2024
+
+Successfully added file ftx_payment\gen\ftx_payment.msgflow to BAR file.
+
+Successfully added file ftx_payment\ExecutePayment.subflow to BAR file.
+
+Successfully added file ftx_payment\Initiate\RequestMessage.esql to BAR file.
+
+Successfully added file ftx_payment\Initiate\ValidateHeaders.esql to BAR file.
+
+Successfully added file ftx_payment\InitiatePayment.subflow to BAR file.
+
+Successfully added file ftx_payment\Notify\RequestMessage.esql to BAR file.
+
+Successfully added file ftx_payment\Notify\ValidateHeaders.esql to BAR file.
+
+Successfully added file ftx_payment\NotifyPayment.subflow to BAR file.
+
+Successfully added file ftx_payment\PSE 3.0-Capa_v2.yaml to BAR file.
+
+Successfully added file ftx_payment\PSE 3.0-Capa_v2.yaml to BAR file.
+
+Successfully added file ftx_payment\StartPayment.subflow to BAR file.
+
+Successfully added file ftx_payment\restapi.descriptor to BAR file.
+
+Successfully added file ftx_payment\restapi.descriptor to BAR file.
+
+Successfully added file ftx_payment\restapi.descriptor to BAR file.
+
+Successfully added file ftx_payment\restapi.descriptor to BAR file.

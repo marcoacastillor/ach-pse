@@ -1,0 +1,11 @@
+BROKER SCHEMA co.com.ach.payment.transversals
+
+
+
+CREATE COMPUTE MODULE Commons_EchoMessage_EchoMessage
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;
+		RETURN TRUE;
+	END;
+END MODULE;

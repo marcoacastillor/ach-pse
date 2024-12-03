@@ -1,0 +1,38 @@
+BROKER SCHEMA co.com.ach.payment.executePayment
+
+
+CREATE COMPUTE MODULE ExecBankPay_9_UpdTrx_PrepareRequestUpdTrx
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		CREATE FIELD OutputRoot.MQRFH2;
+		DECLARE refMQRFH2 REFERENCE TO OutputRoot.MQRFH2; 
+
+		-- guardar mensajes
+		SET refMQRFH2.user.OrigenRq = InputRoot.JSON.Data;
+		SET refMQRFH2.user.Session 	= InputLocalEnvironment;
+		
+		-- referencia mensaje entrada
+		DECLARE refInp REFERENCE TO InputRoot.JSON;
+		MOVE refInp LASTCHILD;
+		
+		-- copiar httpDHeader
+		SET OutputRoot.HTTPRequestHeader = InputRoot.HTTPRequestHeader;
+		
+		-- copiar variables de sesión
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		
+		-- create field
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		-- set scope para obtener token
+		SET refOut.productId 						= refInp.product.productId;
+		SET refOut.instructionIdentification 		= refInp.cus;
+		SET refOut.status 							= 'PENDING';
+		SET refOut.fraudScore						= refInp.score.fraudScore;
+		--SET refOut.beneficiaryFinancialInstitution 	= '';--refInp.bank.financialInstitutionCode;
+		SET refOut.debtorFinancialInstitution 		= refInp.payment_information.supplementary_data.Item.any.Item.additional_payment_info.financial_institution_code;
+		
+		RETURN TRUE;
+	END;
+END MODULE;

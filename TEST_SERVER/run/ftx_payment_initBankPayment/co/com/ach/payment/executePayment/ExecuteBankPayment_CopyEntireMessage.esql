@@ -1,0 +1,19 @@
+BROKER SCHEMA co.com.ach.payment.executePayment
+
+
+CREATE COMPUTE MODULE ExecuteBankPayment_1_CopyEntireMessage
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- copiar variables de sesión
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		
+		-- crear referencia de salida
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		SET refOut 			= InputRoot.JSON.Data;
+		SET refOut.session 	= InputLocalEnvironment;
+		
+		RETURN TRUE;
+	END;
+END MODULE;

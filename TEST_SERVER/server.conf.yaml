@@ -19,7 +19,7 @@ serverConfVersion: 1
                              # [esql, xsl, xslt, xsd, map], to scan for keywords.
 
 # The remoteDefaultQueueManager and defaultQueueManager properties are mutually exclusive. Only uncomment one of these two options.
-#defaultQueueManager: ''        # Set non-empty string to specify a default queue manager
+#defaultQueueManager: 'PRUEBA'        # Set non-empty string to specify a default queue manager
 #mqTrustedQueueManager: 'no'    # Set to yes to enable MQ communication as a trusted (fastpath) application (does not apply to remote QM)
 
 #remoteDefaultQueueManager: ''  # Specify an MQEndpoint policy in the format {policy project}:policy
