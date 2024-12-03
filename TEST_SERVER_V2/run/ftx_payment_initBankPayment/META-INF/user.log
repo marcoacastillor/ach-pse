@@ -1,307 +1,307 @@
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:30 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_9_UpdTrx.msgflow.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_9_UpdTrx.msgflow to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:30 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_92_RsInitBankPay.msgflow.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_92_RsInitBankPay.msgflow to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:30 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_91_InitBankPay.msgflow.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_91_InitBankPay.msgflow to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:30 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_8_GetCustomer.msgflow.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_8_GetCustomer.msgflow to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_7_GetDebtor.msgflow.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_7_GetDebtor.msgflow to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_6_GetScore.msgflow.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_6_GetScore.msgflow to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_5_GetTrx.msgflow.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_5_GetTrx.msgflow to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_4_GetBank.msgflow.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_4_GetBank.msgflow to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_3_GetProduct.msgflow.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_3_GetProduct.msgflow to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_2_DecryptCUS.msgflow.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_2_DecryptCUS.msgflow to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_1_GetToken.msgflow.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_1_GetToken.msgflow to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\application.descriptor.
 Successfully added file ftx_payment_initBankPayment\application.descriptor to BAR file.
-Elapsed time: 0,002 second(s).
+Elapsed time: 0 second(s).
 
 Successfully added file ftx_payment_initBankPayment\application.descriptor to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\application.descriptor.
 Successfully added file ftx_payment_initBankPayment\application.descriptor to BAR file.
-Elapsed time: 0,001 second(s).
+Elapsed time: 0 second(s).
 
 Successfully added file ftx_payment_initBankPayment\application.descriptor to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_8_GetCustomer_PrepareRequestGetCustomer.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_8_GetCustomer_PrepareRequestGetCustomer.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_91_InitBankPay_PrepareRequestInitBankPayment.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_91_InitBankPay_PrepareRequestInitBankPayment.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_91_InitBankPay_ValidateResponseStartPay.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_91_InitBankPay_ValidateResponseStartPay.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_92_RsInitBankPay_ValidateResponseStartPay.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_92_RsInitBankPay_ValidateResponseStartPay.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_9_UpdTrx_PrepareRequestUpdTrx.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_9_UpdTrx_PrepareRequestUpdTrx.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_9_UpdTrx_ValidateResponseStartPay.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecBankPay_9_UpdTrx_ValidateResponseStartPay.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_1_PrepareRequest.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_1_PrepareRequest.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_1_PrepareRequestBankById.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_1_PrepareRequestBankById.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_1_PrepareRequestCustomerByIds.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_1_PrepareRequestCustomerByIds.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_1_PrepareRequestDecryptCUS.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_1_PrepareRequestDecryptCUS.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_1_PrepareRequestDecryptCUS1.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_1_PrepareRequestDecryptCUS1.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_1_PrepareRequestScoreByPrdAndCus.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_1_PrepareRequestScoreByPrdAndCus.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_2_PrepareRequestProductByTag.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_2_PrepareRequestProductByTag.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_2_ValidateResponseStartPay.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_2_ValidateResponseStartPay.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_3_PrepareRequestGetTrxByCUS.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_3_PrepareRequestGetTrxByCUS.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_3_PrepareRequestScoreByPrdAndCus1.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_3_PrepareRequestScoreByPrdAndCus1.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_3_ValidateResponseStartPay.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_3_ValidateResponseStartPay.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_4_PrepareRequestUpdateTrx.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_4_PrepareRequestUpdateTrx.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_4_ValidateResponseStartPay.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_4_ValidateResponseStartPay.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_5_PrepareRequestInitBank.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_5_PrepareRequestInitBank.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_5_PrepareRequestUpdateTrx.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_5_PrepareRequestUpdateTrx.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_5_ValidateResponseStartPay.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_5_ValidateResponseStartPay.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_6_PrepareRequestBankById.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_6_PrepareRequestBankById.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_6_ValidateResponseStartPay.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_6_ValidateResponseStartPay.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_7_PrepareRequestBankById.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_7_PrepareRequestBankById.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_7_ValidateResponseStartPay.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_7_ValidateResponseStartPay.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_8_ValidateResponseStartPay.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_8_ValidateResponseStartPay.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_CopyEntireMessage.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_CopyEntireMessage.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_PrepareRequest.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_PrepareRequest.esql to BAR file.
 
 ==============================================
 
-!Mon Dec 02 23:36:17 COT 2024
+!Tue Dec 03 09:54:31 COT 2024
 
 Processing file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_PrepareResponse.esql.
 Successfully added file ftx_payment_initBankPayment\co\com\ach\payment\executePayment\ExecuteBankPayment_PrepareResponse.esql to BAR file.

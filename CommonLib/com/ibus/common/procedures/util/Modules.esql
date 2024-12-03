@@ -53,4 +53,27 @@ CREATE COMPUTE MODULE Common_CopyEntireMessageWithTrackingResponse
 		
 		RETURN TRUE;
 	END;
-END MODULE;		
+END MODULE;
+
+
+/*
+* Módulo que guarda información de log para mensajes Response
+*/
+CREATE COMPUTE MODULE Common_ValidateResponse
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- declarar variables
+		DECLARE refInp REFERENCE TO InputRoot.JSON;
+		MOVE refInp LASTCHILD;
+		
+		SET OutputRoot.HTTPReplyHeader."X-Original-HTTP-Status-Code" = refInp.original_payment_information_and_status.transaction_information_and_status.transaction_status;
+		
+		-- copiar cabeceras
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		
+		-- copiar mensaje
+		SET OutputRoot.JSON = InputRoot.JSON;
+		
+		RETURN TRUE;
+	END;
+END MODULE;				
