@@ -37,7 +37,6 @@
         <parameters name="request-app-id" expression=""/>
         <parameters name="productTag" expression=""/>
         <parameters name="message-uuid" expression=""/>
-        <parameters name="application-id" expression=""/>
       </nodes>
       <nodes xmi:type="ComIbmCallableFlowReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="739,70">
         <translation xmi:type="utility:ConstantString" string="Callable Reply1"/>

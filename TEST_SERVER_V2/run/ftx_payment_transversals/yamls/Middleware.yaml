@@ -9,7 +9,7 @@ info:
     name: ACH
     url: https://www.achcolombia.com.co/contactenos
     email: admin@ach.com.co
-  version: "2.5"
+  version: "1.0"
 
 servers:
   - url: https://localhost:/ACH/middleware/v1.0
@@ -47,7 +47,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/message-uuid'
         - $ref: '#/components/parameters/request-app-id'
-        - $ref: '#/components/parameters/application-id'
       responses:
         '200':
           $ref: '#/components/responses/RetrieveBanksResponse'
@@ -72,7 +71,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/message-uuid'
         - $ref: '#/components/parameters/request-app-id'
-        - $ref: '#/components/parameters/application-id'
         - $ref: '#/components/parameters/bankId'
       responses:
         '200':
@@ -97,7 +95,7 @@ paths:
       operationId: GetCustomerById
       parameters:
         - $ref: '#/components/parameters/message-uuid'
-        - $ref: '#/components/parameters/application-id'
+        - $ref: '#/components/parameters/request-app-id'
         - $ref: '#/components/parameters/customerId'
 
       responses:
@@ -124,7 +122,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/message-uuid'
         - $ref: '#/components/parameters/request-app-id'
-        - $ref: '#/components/parameters/application-id'
         - $ref: '#/components/parameters/documentType'
         - $ref: '#/components/parameters/documentNumber'
 
@@ -152,7 +149,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/message-uuid'
         - $ref: '#/components/parameters/request-app-id'
-        - $ref: '#/components/parameters/application-id'
         - $ref: '#/components/parameters/productId'
       responses:
         '200':
@@ -307,12 +303,15 @@ components:
         order:
           type: integer
           description: Display order
-        urlRedirect:
+        urlGetKeyBank:
           type: string
-          description: Redirect URL
-        urlKeyRegistry:
+          description: http://AppFrontSampleBanki/get-transaction-key
+        urlRedirectFinancialInstitution:
           type: string
-          description: URL for key registry
+          example: http://AppFrontSampleBanki
+        
+        
+
 
     Product:
       type: object
@@ -348,6 +347,17 @@ components:
         docVersionTreatment:
           type: string
           example: 1.0.0
+        pseBankListURL:
+          type: string
+          example: http://pse.ach.com/init-payment/init-bank?transactionId={{encrypted-cus}
+        pseBankKeyListURL:
+          type: string
+          example: http://pse.ach.com/init-payment/init-agil?transactionId={{encrypted-cus}
+        fraudscore:
+          type: number
+          format: float
+          example: 80.00
+          multipleOf: 0.01
 
     Customer:
       type: object
@@ -508,13 +518,6 @@ components:
       description: Unique transaction ID
     request-app-id:
       name: request-app-id
-      in: header
-      required: true
-      schema:
-        type: string
-      description: Unique transaction ID
-    application-id:
-      name: application-id
       in: header
       required: true
       schema:

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Broker deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+<Broker deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
   <CompiledApplication>
     <ConfigurableProperty uri="startMode">
     </ConfigurableProperty>
   </CompiledApplication>
-  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesEncryptCus" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesEncryptCus" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesEncryptCus#Encrypt-Cus.acceptCompressedResponses" override="true">
     </ConfigurableProperty>
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesEncryptCus#Encrypt-Cus.allowedCiphers">
@@ -92,7 +92,7 @@
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesEncryptCus#wlmPolicy">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesPostValidateRules" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesPostValidateRules" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesPostValidateRules#Prepare request.connectDatasourceBeforeFlowStarts">
     </ConfigurableProperty>
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesPostValidateRules#Prepare request.dataSource">
@@ -180,7 +180,7 @@
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesPostValidateRules#wlmPolicy">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode#Get-BankByIds.acceptCompressedResponses" override="true">
     </ConfigurableProperty>
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode#Get-BankByIds.allowedCiphers">
@@ -268,7 +268,7 @@
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode#wlmPolicy">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesTrxByCUS" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesTrxByCUS" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesTrxByCUS#Get-Transactin-ByCus1.acceptCompressedResponses" override="true">
     </ConfigurableProperty>
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesTrxByCUS#Get-Transactin-ByCus1.allowedCiphers">
@@ -356,7 +356,7 @@
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesTrxByCUS#wlmPolicy">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesGetProductData" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesGetProductData" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetProductData#GetProductById.acceptCompressedResponses" override="true">
     </ConfigurableProperty>
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetProductData#GetProductById.allowedCiphers">
@@ -444,7 +444,7 @@
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetProductData#wlmPolicy">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesPostCreateTransaction" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesPostCreateTransaction" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesPostCreateTransaction#PostTransaction.acceptCompressedResponses" override="true">
     </ConfigurableProperty>
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesPostCreateTransaction#PostTransaction.allowedCiphers">
@@ -532,7 +532,7 @@
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesPostCreateTransaction#wlmPolicy">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesCustomerByIdentifier" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesCustomerByIdentifier" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesCustomerByIdentifier#Get-CustomerByIds.acceptCompressedResponses" override="true">
     </ConfigurableProperty>
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesCustomerByIdentifier#Get-CustomerByIds.allowedCiphers">
@@ -620,7 +620,7 @@
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesCustomerByIdentifier#wlmPolicy">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesGetToken" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesGetToken" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetToken#HTTP Request.URLSpecifier" override="http://locahost:0000/context">
     </ConfigurableProperty>
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetToken#HTTP Request.acceptCompressedResponses">
@@ -710,7 +710,7 @@
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetToken#wlmPolicy">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesGetProdByTag" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesGetProdByTag" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetProdByTag#Get-ProductByTag.acceptCompressedResponses" override="true">
     </ConfigurableProperty>
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetProdByTag#Get-ProductByTag.allowedCiphers">
@@ -798,7 +798,7 @@
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetProdByTag#wlmPolicy">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesGetKeyList" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesGetKeyList" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetKeyList#GetKeyList.acceptCompressedResponses" override="true">
     </ConfigurableProperty>
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetKeyList#GetKeyList.allowedCiphers">
@@ -886,7 +886,7 @@
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetKeyList#wlmPolicy">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS#Get-ScoreByProductAndCus.acceptCompressedResponses" override="true">
     </ConfigurableProperty>
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS#Get-ScoreByProductAndCus.allowedCiphers">
@@ -974,7 +974,7 @@
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS#wlmPolicy">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesGetDebtorByCUS" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesGetDebtorByCUS" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetDebtorByCUS#Get-Debtor-ByCus.acceptCompressedResponses" override="true">
     </ConfigurableProperty>
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetDebtorByCUS#Get-Debtor-ByCus.allowedCiphers">
@@ -1062,7 +1062,7 @@
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetDebtorByCUS#wlmPolicy">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment#EntBancaria_InitBankPayment.callableInputEndpoint" override="EntBancaria_InitBankPayment">
     </ConfigurableProperty>
     <ConfigurableProperty uri="co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment#PrepareRequest.connectDatasourceBeforeFlowStarts">
@@ -1150,7 +1150,7 @@
     <ConfigurableProperty uri="co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment#wlmPolicy">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesUpdateTrx" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesUpdateTrx" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesUpdateTrx#Patch-UpdateTrx.acceptCompressedResponses" override="true">
     </ConfigurableProperty>
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesUpdateTrx#Patch-UpdateTrx.allowedCiphers">
@@ -1238,7 +1238,7 @@
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesUpdateTrx#wlmPolicy">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesDecryptCus" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesDecryptCus" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesDecryptCus#Decrypt-Cus.acceptCompressedResponses" override="true">
     </ConfigurableProperty>
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesDecryptCus#Decrypt-Cus.allowedCiphers">
@@ -1326,7 +1326,7 @@
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesDecryptCus#wlmPolicy">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesGetCustomerData" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesGetCustomerData" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetCustomerData#PostCustomers.acceptCompressedResponses" override="true">
     </ConfigurableProperty>
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetCustomerData#PostCustomers.allowedCiphers">
@@ -1414,7 +1414,7 @@
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetCustomerData#wlmPolicy">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesGetCus" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="co.com.ach.payment.transversals.TransversalesGetCus" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetCus#HTTP Request.URLSpecifier" override="https://ftx-userpaymentmgmt-https-cp4i-ace.apps.devach.achopenshift.itac.com.co/ftx-request-access-token">
     </ConfigurableProperty>
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetCus#HTTP Request.acceptCompressedResponses">
@@ -1540,7 +1540,7 @@
     <ConfigurableProperty uri="co.com.ach.payment.transversals.TransversalesGetCus#wlmPolicy">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="co.com.ach.payment.transversals.Commons_EchoMessage" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="co.com.ach.payment.transversals.Commons_EchoMessage" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="co.com.ach.payment.transversals.Commons_EchoMessage#Common_EchoMessage.callableInputEndpoint" override="Common_EchoMessage">
     </ConfigurableProperty>
     <ConfigurableProperty uri="co.com.ach.payment.transversals.Commons_EchoMessage#EchoMessage.connectDatasourceBeforeFlowStarts">

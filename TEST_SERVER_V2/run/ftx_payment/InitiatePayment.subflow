@@ -30,17 +30,11 @@ nsPrefix="InitiatePayment.subflow">
 <nodes xmi:type="eflow:FCMSink" xmi:id="Output" location="1446,127">
 <translation xmi:type="utility:TranslatableString" key="Output" bundleName="InitiatePayment" pluginId="flowAPIgenerated"/>
 </nodes>
-<nodes xmi:type="ComIbmCallableFlowAsyncInvoke.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="810,269" asyncResponseCorrelator="CFAsync_CreateInitiatePayment" targetApplication="ftx_payment_app" targetEndpointName="Create_InitiatePayment">
+<nodes xmi:type="ComIbmCallableFlowAsyncInvoke.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="810,269" asyncResponseCorrelator="CFAsync_CreateInitiatePayment" targetApplication="ftx_payment_createPayment" targetEndpointName="Create_InitiatePayment">
 <translation xmi:type="utility:ConstantString" string="CFAsyncRq_CreateInitiatePayment"/>
 </nodes>
 <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="578,126">
 <translation xmi:type="utility:ConstantString" string="Trace"/>
-</nodes>
-<nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="1503,266" computeExpression="esql://routine/com.ibus.common.procedures.util#SetTrackingResponse.Main" computeMode="destinationAndMessage">
-<translation xmi:type="utility:ConstantString" string="SetTrackingRequest1"/>
-</nodes>
-<nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="753,350" computeExpression="esql://routine/com.ibus.common.procedures.util#SetTrackingRequest.Main" computeMode="destinationAndMessage">
-<translation xmi:type="utility:ConstantString" string="SetTrackingRequest"/>
 </nodes>
 <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_4" sourceNode="Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
 <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.catch" targetTerminalName="InTerminal.in"/>
@@ -50,8 +44,6 @@ nsPrefix="InitiatePayment.subflow">
 <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
 <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="Output" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
 <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="Output" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-<connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_9" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
-<connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_10" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
 </composition>
 <propertyOrganizer>
 </propertyOrganizer>

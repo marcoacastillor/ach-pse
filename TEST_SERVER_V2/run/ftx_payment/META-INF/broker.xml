@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Broker deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+<Broker deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
   <CompiledApplication>
     <ConfigurableProperty uri="startMode">
     </ConfigurableProperty>
   </CompiledApplication>
-  <CompiledMessageFlow name="StartPayment" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="StartPayment" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="StartPayment#CFAsync_StartBankPaymentRq.AddRequestToGroup">
     </ConfigurableProperty>
     <ConfigurableProperty uri="StartPayment#CFAsync_StartBankPaymentRq.GroupRequestFolderName">
@@ -33,18 +33,6 @@
     </ConfigurableProperty>
     <ConfigurableProperty uri="StartPayment#RequestMessage.validateMaster">
     </ConfigurableProperty>
-    <ConfigurableProperty uri="StartPayment#SetTrackingRequest.connectDatasourceBeforeFlowStarts">
-    </ConfigurableProperty>
-    <ConfigurableProperty uri="StartPayment#SetTrackingRequest.dataSource">
-    </ConfigurableProperty>
-    <ConfigurableProperty uri="StartPayment#SetTrackingRequest.validateMaster">
-    </ConfigurableProperty>
-    <ConfigurableProperty uri="StartPayment#SetTrackingRequest1.connectDatasourceBeforeFlowStarts">
-    </ConfigurableProperty>
-    <ConfigurableProperty uri="StartPayment#SetTrackingRequest1.dataSource">
-    </ConfigurableProperty>
-    <ConfigurableProperty uri="StartPayment#SetTrackingRequest1.validateMaster">
-    </ConfigurableProperty>
     <ConfigurableProperty uri="StartPayment#Trace.filePath">
     </ConfigurableProperty>
     <ConfigurableProperty uri="StartPayment#Validate headers.connectDatasourceBeforeFlowStarts">
@@ -54,7 +42,7 @@
     <ConfigurableProperty uri="StartPayment#Validate headers.validateMaster">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="ExecutePayment" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="ExecutePayment" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="ExecutePayment#CFAsyncRq_ExecuteBankPayment.AddRequestToGroup">
     </ConfigurableProperty>
     <ConfigurableProperty uri="ExecutePayment#CFAsyncRq_ExecuteBankPayment.GroupRequestFolderName">
@@ -104,7 +92,7 @@
     <ConfigurableProperty uri="ExecutePayment#Validate headers.validateMaster">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="gen.ftx_payment" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="gen.ftx_payment" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="gen.ftx_payment#HTTP Input.URLSpecifier" override="/v1/pse-transaction/pse/payment*">
     </ConfigurableProperty>
     <ConfigurableProperty uri="gen.ftx_payment#HTTP Input.decompressInputMessage">
@@ -158,7 +146,7 @@
     <ConfigurableProperty uri="gen.ftx_payment#wlmPolicy">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="NotifyPayment" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="NotifyPayment" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="NotifyPayment#CF Async Invoke.AddRequestToGroup">
     </ConfigurableProperty>
     <ConfigurableProperty uri="NotifyPayment#CF Async Invoke.GroupRequestFolderName">
@@ -196,7 +184,7 @@
     <ConfigurableProperty uri="NotifyPayment#Validate headers.validateMaster">
     </ConfigurableProperty>
   </CompiledMessageFlow>
-  <CompiledMessageFlow name="InitiatePayment" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledMessageFlow name="InitiatePayment" type="subflow" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 04:32:48">
     <ConfigurableProperty uri="InitiatePayment#CFAsyncRq_CreateInitiatePayment.AddRequestToGroup">
     </ConfigurableProperty>
     <ConfigurableProperty uri="InitiatePayment#CFAsyncRq_CreateInitiatePayment.GroupRequestFolderName">
@@ -207,7 +195,7 @@
     </ConfigurableProperty>
     <ConfigurableProperty uri="InitiatePayment#CFAsyncRq_CreateInitiatePayment.requestTimeout">
     </ConfigurableProperty>
-    <ConfigurableProperty uri="InitiatePayment#CFAsyncRq_CreateInitiatePayment.targetApplication" override="ftx_payment_app">
+    <ConfigurableProperty uri="InitiatePayment#CFAsyncRq_CreateInitiatePayment.targetApplication" override="ftx_payment_createPayment">
     </ConfigurableProperty>
     <ConfigurableProperty uri="InitiatePayment#CFAsyncRq_CreateInitiatePayment.targetEndpointName" override="Create_InitiatePayment">
     </ConfigurableProperty>
@@ -224,18 +212,6 @@
     <ConfigurableProperty uri="InitiatePayment#RequestMessage.dataSource">
     </ConfigurableProperty>
     <ConfigurableProperty uri="InitiatePayment#RequestMessage.validateMaster">
-    </ConfigurableProperty>
-    <ConfigurableProperty uri="InitiatePayment#SetTrackingRequest.connectDatasourceBeforeFlowStarts">
-    </ConfigurableProperty>
-    <ConfigurableProperty uri="InitiatePayment#SetTrackingRequest.dataSource">
-    </ConfigurableProperty>
-    <ConfigurableProperty uri="InitiatePayment#SetTrackingRequest.validateMaster">
-    </ConfigurableProperty>
-    <ConfigurableProperty uri="InitiatePayment#SetTrackingRequest1.connectDatasourceBeforeFlowStarts">
-    </ConfigurableProperty>
-    <ConfigurableProperty uri="InitiatePayment#SetTrackingRequest1.dataSource">
-    </ConfigurableProperty>
-    <ConfigurableProperty uri="InitiatePayment#SetTrackingRequest1.validateMaster">
     </ConfigurableProperty>
     <ConfigurableProperty uri="InitiatePayment#Trace.filePath">
     </ConfigurableProperty>

@@ -2,7 +2,7 @@
 <deploy:Deploy xmlns:deploy="http://www.ibm.com/xmlns/prod/wmb/deploy/6.0.0" overrideConfigurableProperties="true" includeESQL="false">
   <deployables>
     <deployable deployed="true" barResourceTimeStamp="1732933249131" workspaceResource="/ftx_payment_transversals/application.descriptor">
-      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\application.descriptor.&#xA;Successfully added file ftx_payment_transversals\application.descriptor to BAR file.&#xA;Elapsed time: 0 second(s).&#xA;&#xA;Successfully added file ftx_payment_transversals\application.descriptor to BAR file.&#xA;" severity="0"/>
+      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\application.descriptor.&#xA;Successfully added file ftx_payment_transversals\application.descriptor to BAR file.&#xA;Elapsed time: 0,001 second(s).&#xA;&#xA;Successfully added file ftx_payment_transversals\application.descriptor to BAR file.&#xA;" severity="0"/>
       <barEntry name="application.descriptor"/>
     </deployable>
     <deployable deployed="true" barResourceTimeStamp="1732933472875" workspaceResource="/ftx_payment_transversals/co/com/ach/payment/transversals/Commons_EchoMessage.msgflow">
@@ -105,11 +105,11 @@
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetKeyList_Prepare_request.esql.&#xA;Dependent ESQL file co/com/ach/payment/transversals/TransversalesGetProductData_Prepare_request.esql is added to the BAR file.&#xA;&#xA;Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetKeyList_Prepare_request.esql to BAR file.&#xA;" severity="0"/>
       <barEntry name="co\com\ach\payment\transversals\TransversalesGetKeyList_Prepare_request.esql"/>
     </deployable>
-    <deployable deployed="true" barResourceTimeStamp="1733067389492" workspaceResource="/ftx_payment_transversals/co/com/ach/payment/transversals/TransversalesGetProdByTag.msgflow">
+    <deployable deployed="true" barResourceTimeStamp="1733200325420" workspaceResource="/ftx_payment_transversals/co/com/ach/payment/transversals/TransversalesGetProdByTag.msgflow">
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetProdByTag.msgflow.&#xA;Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetProdByTag.msgflow to BAR file.&#xA;" severity="0"/>
       <barEntry name="co\com\ach\payment\transversals\TransversalesGetProdByTag.msgflow"/>
     </deployable>
-    <deployable deployed="true" barResourceTimeStamp="1732979042432" workspaceResource="/ftx_payment_transversals/co/com/ach/payment/transversals/TransversalesGetProdByTag_Prepare_request.esql">
+    <deployable deployed="true" barResourceTimeStamp="1733200345923" workspaceResource="/ftx_payment_transversals/co/com/ach/payment/transversals/TransversalesGetProdByTag_Prepare_request.esql">
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetProdByTag_Prepare_request.esql.&#xA;Dependent ESQL file co/com/ach/payment/transversals/TransversalesGetProductData_Prepare_request.esql is added to the BAR file.&#xA;&#xA;Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetProdByTag_Prepare_request.esql to BAR file.&#xA;" severity="0"/>
       <barEntry name="co\com\ach\payment\transversals\TransversalesGetProdByTag_Prepare_request.esql"/>
     </deployable>
@@ -117,7 +117,7 @@
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetProdByTag_Prepare_response.esql.&#xA;Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetProdByTag_Prepare_response.esql to BAR file.&#xA;" severity="0"/>
       <barEntry name="co\com\ach\payment\transversals\TransversalesGetProdByTag_Prepare_response.esql"/>
     </deployable>
-    <deployable deployed="true" barResourceTimeStamp="1733191104280" workspaceResource="/ftx_payment_transversals/co/com/ach/payment/transversals/TransversalesGetProductData.msgflow">
+    <deployable deployed="true" barResourceTimeStamp="1733200120064" workspaceResource="/ftx_payment_transversals/co/com/ach/payment/transversals/TransversalesGetProductData.msgflow">
       <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetProductData.msgflow.&#xA;Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetProductData.msgflow to BAR file.&#xA;" severity="0"/>
       <barEntry name="co\com\ach\payment\transversals\TransversalesGetProductData.msgflow"/>
     </deployable>
@@ -194,35 +194,35 @@
       <barEntry name="co\com\ach\payment\transversals\spec_Prepare_response.esql"/>
     </deployable>
     <deployable deployed="true" barResourceTimeStamp="1732750423320" workspaceResource="/ftx_payment_transversals/yamls/ConsultarTX_AWS.yaml">
-      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\yamls\ConsultarTX_AWS.yaml.&#xA;Successfully added file ftx_payment_transversals\yamls\ConsultarTX_AWS.yaml to BAR file.&#xA;Elapsed time: 0 second(s).&#xA;&#xA;Successfully added file ftx_payment_transversals\yamls\ConsultarTX_AWS.yaml to BAR file.&#xA;" severity="0"/>
+      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\yamls\ConsultarTX_AWS.yaml.&#xA;Successfully added file ftx_payment_transversals\yamls\ConsultarTX_AWS.yaml to BAR file.&#xA;Elapsed time: 0,002 second(s).&#xA;&#xA;Successfully added file ftx_payment_transversals\yamls\ConsultarTX_AWS.yaml to BAR file.&#xA;" severity="0"/>
       <barEntry name="yamls\ConsultarTX_AWS.yaml"/>
     </deployable>
     <deployable deployed="true" barResourceTimeStamp="1733190572000" workspaceResource="/ftx_payment_transversals/yamls/ContratoListadellaves.yaml">
-      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\yamls\ContratoListadellaves.yaml.&#xA;Successfully added file ftx_payment_transversals\yamls\ContratoListadellaves.yaml to BAR file.&#xA;Elapsed time: 0 second(s).&#xA;&#xA;Successfully added file ftx_payment_transversals\yamls\ContratoListadellaves.yaml to BAR file.&#xA;" severity="0"/>
+      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\yamls\ContratoListadellaves.yaml.&#xA;Successfully added file ftx_payment_transversals\yamls\ContratoListadellaves.yaml to BAR file.&#xA;Elapsed time: 0,001 second(s).&#xA;&#xA;Successfully added file ftx_payment_transversals\yamls\ContratoListadellaves.yaml to BAR file.&#xA;" severity="0"/>
       <barEntry name="yamls\ContratoListadellaves.yaml"/>
     </deployable>
     <deployable deployed="true" barResourceTimeStamp="1732800635648" workspaceResource="/ftx_payment_transversals/yamls/CrearTansaccion.yaml">
-      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\yamls\CrearTansaccion.yaml.&#xA;Successfully added file ftx_payment_transversals\yamls\CrearTansaccion.yaml to BAR file.&#xA;Elapsed time: 0 second(s).&#xA;&#xA;Successfully added file ftx_payment_transversals\yamls\CrearTansaccion.yaml to BAR file.&#xA;" severity="0"/>
+      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\yamls\CrearTansaccion.yaml.&#xA;Successfully added file ftx_payment_transversals\yamls\CrearTansaccion.yaml to BAR file.&#xA;Elapsed time: 0,002 second(s).&#xA;&#xA;Successfully added file ftx_payment_transversals\yamls\CrearTansaccion.yaml to BAR file.&#xA;" severity="0"/>
       <barEntry name="yamls\CrearTansaccion.yaml"/>
     </deployable>
     <deployable deployed="true" barResourceTimeStamp="1733190572000" workspaceResource="/ftx_payment_transversals/yamls/GeneradorIDAWS.yaml">
-      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\yamls\GeneradorIDAWS.yaml.&#xA;Successfully added file ftx_payment_transversals\yamls\GeneradorIDAWS.yaml to BAR file.&#xA;Elapsed time: 0 second(s).&#xA;&#xA;Successfully added file ftx_payment_transversals\yamls\GeneradorIDAWS.yaml to BAR file.&#xA;" severity="0"/>
+      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\yamls\GeneradorIDAWS.yaml.&#xA;Successfully added file ftx_payment_transversals\yamls\GeneradorIDAWS.yaml to BAR file.&#xA;Elapsed time: 0,002 second(s).&#xA;&#xA;Successfully added file ftx_payment_transversals\yamls\GeneradorIDAWS.yaml to BAR file.&#xA;" severity="0"/>
       <barEntry name="yamls\GeneradorIDAWS.yaml"/>
     </deployable>
-    <deployable deployed="true" barResourceTimeStamp="1732831662188" workspaceResource="/ftx_payment_transversals/yamls/Middleware.yaml">
-      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\yamls\Middleware.yaml.&#xA;Successfully added file ftx_payment_transversals\yamls\Middleware.yaml to BAR file.&#xA;Elapsed time: 0 second(s).&#xA;&#xA;Successfully added file ftx_payment_transversals\yamls\Middleware.yaml to BAR file.&#xA;" severity="0"/>
+    <deployable deployed="true" barResourceTimeStamp="1733200090793" workspaceResource="/ftx_payment_transversals/yamls/Middleware.yaml">
+      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\yamls\Middleware.yaml.&#xA;Successfully added file ftx_payment_transversals\yamls\Middleware.yaml to BAR file.&#xA;Elapsed time: 0,002 second(s).&#xA;&#xA;Successfully added file ftx_payment_transversals\yamls\Middleware.yaml to BAR file.&#xA;" severity="0"/>
       <barEntry name="yamls\Middleware.yaml"/>
     </deployable>
     <deployable deployed="true" barResourceTimeStamp="1732913713136" workspaceResource="/ftx_payment_transversals/yamls/PSE3.0Capa.yaml">
-      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\yamls\PSE3.0Capa.yaml.&#xA;Successfully added file ftx_payment_transversals\yamls\PSE3.0Capa.yaml to BAR file.&#xA;Elapsed time: 0 second(s).&#xA;&#xA;Successfully added file ftx_payment_transversals\yamls\PSE3.0Capa.yaml to BAR file.&#xA;" severity="0"/>
+      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\yamls\PSE3.0Capa.yaml.&#xA;Successfully added file ftx_payment_transversals\yamls\PSE3.0Capa.yaml to BAR file.&#xA;Elapsed time: 0,002 second(s).&#xA;&#xA;Successfully added file ftx_payment_transversals\yamls\PSE3.0Capa.yaml to BAR file.&#xA;" severity="0"/>
       <barEntry name="yamls\PSE3.0Capa.yaml"/>
     </deployable>
     <deployable deployed="true" barResourceTimeStamp="1732249163135" workspaceResource="/ftx_payment_transversals/yamls/TransversalesUserVaultMgmt.yaml">
-      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\yamls\TransversalesUserVaultMgmt.yaml.&#xA;Successfully added file ftx_payment_transversals\yamls\TransversalesUserVaultMgmt.yaml to BAR file.&#xA;Elapsed time: 0 second(s).&#xA;&#xA;Successfully added file ftx_payment_transversals\yamls\TransversalesUserVaultMgmt.yaml to BAR file.&#xA;" severity="0"/>
+      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\yamls\TransversalesUserVaultMgmt.yaml.&#xA;Successfully added file ftx_payment_transversals\yamls\TransversalesUserVaultMgmt.yaml to BAR file.&#xA;Elapsed time: 0,002 second(s).&#xA;&#xA;Successfully added file ftx_payment_transversals\yamls\TransversalesUserVaultMgmt.yaml to BAR file.&#xA;" severity="0"/>
       <barEntry name="yamls\TransversalesUserVaultMgmt.yaml"/>
     </deployable>
     <deployable deployed="true" barResourceTimeStamp="1733190572000" workspaceResource="/ftx_payment_transversals/yamls/ValidatedRulesAWS.yaml">
-      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\yamls\ValidatedRulesAWS.yaml.&#xA;Successfully added file ftx_payment_transversals\yamls\ValidatedRulesAWS.yaml to BAR file.&#xA;Elapsed time: 0 second(s).&#xA;&#xA;Successfully added file ftx_payment_transversals\yamls\ValidatedRulesAWS.yaml to BAR file.&#xA;" severity="0"/>
+      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_transversals\yamls\ValidatedRulesAWS.yaml.&#xA;Successfully added file ftx_payment_transversals\yamls\ValidatedRulesAWS.yaml to BAR file.&#xA;Elapsed time: 0,002 second(s).&#xA;&#xA;Successfully added file ftx_payment_transversals\yamls\ValidatedRulesAWS.yaml to BAR file.&#xA;" severity="0"/>
       <barEntry name="yamls\ValidatedRulesAWS.yaml"/>
     </deployable>
   </deployables>
