@@ -2,7 +2,7 @@
 <deploy:Deploy xmlns:deploy="http://www.ibm.com/xmlns/prod/wmb/deploy/6.0.0" overrideConfigurableProperties="true" includeESQL="false">
   <deployables>
     <deployable deployed="true" barResourceTimeStamp="1731947712000" workspaceResource="/ftx_payment_initBankPayment/application.descriptor">
-      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_initBankPayment\application.descriptor.&#xA;Successfully added file ftx_payment_initBankPayment\application.descriptor to BAR file.&#xA;Elapsed time: 0,002 second(s).&#xA;&#xA;Successfully added file ftx_payment_initBankPayment\application.descriptor to BAR file.&#xA;" severity="0"/>
+      <deployableStatus code="0" key="DEPLOYABLE_LAST_COMPILE_STATUS" message="&#xA;Processing file ftx_payment_initBankPayment\application.descriptor.&#xA;Successfully added file ftx_payment_initBankPayment\application.descriptor to BAR file.&#xA;Elapsed time: 0,001 second(s).&#xA;&#xA;Successfully added file ftx_payment_initBankPayment\application.descriptor to BAR file.&#xA;" severity="0"/>
       <barEntry name="application.descriptor"/>
     </deployable>
     <deployable deployed="true" barResourceTimeStamp="1733012340631" workspaceResource="/ftx_payment_initBankPayment/co/com/ach/payment/executePayment/ExecBankPay_1_GetToken.msgflow">

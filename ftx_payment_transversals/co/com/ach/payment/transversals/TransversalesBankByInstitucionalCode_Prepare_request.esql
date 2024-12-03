@@ -28,7 +28,6 @@ CREATE COMPUTE MODULE TransversalesBankByInstitucionalCode_Prepare_request
 		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
 		
 		-- enviar cus para descifrar
-		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."application-id"	= InputLocalEnvironment.REST.Input.Parameters."request-app-id";
 		SET OutputLocalEnvironment.Destination.REST.Request.Parameters.bankId			= refInp.bankId;
 				
 		RETURN TRUE;

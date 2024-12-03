@@ -30,7 +30,6 @@ CREATE COMPUTE MODULE TransversalesCustomerByIdentifier_Prepare_request
 		
 		
 		-- enviar cus para descifrar
-		SET OutputLocalEnvironment.Destination.REST.Request.Parameters."application-id"	= InputLocalEnvironment.REST.Input.Parameters."request-app-id";
 		SET OutputLocalEnvironment.Destination.REST.Request.Parameters.documentType		= refInp.documentType;
 		SET OutputLocalEnvironment.Destination.REST.Request.Parameters.documentNumber	= refInp.documentNumber;
 				

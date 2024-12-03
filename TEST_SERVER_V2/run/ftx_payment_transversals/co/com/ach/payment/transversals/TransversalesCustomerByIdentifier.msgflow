@@ -43,7 +43,6 @@ nsPrefix="co_com_ach_payment_transversals_TransversalesCustomerByIdentifier.msgf
 <parameters name="documentType"/>
 <parameters name="documentNumber"/>
 <parameters name="message-uuid"/>
-<parameters name="application-id"/>
 </nodes>
 <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.try" targetTerminalName="InTerminal.in"/>
 <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>

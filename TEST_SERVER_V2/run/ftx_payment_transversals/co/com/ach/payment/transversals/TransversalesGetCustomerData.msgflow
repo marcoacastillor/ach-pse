@@ -39,7 +39,6 @@ nsPrefix="co_com_ach_payment_transversals_TransversalesGetCustomerData.msgflow">
 <parameters name="documentType"/>
 <parameters name="documentNumber"/>
 <parameters name="message-uuid"/>
-<parameters name="application-id"/>
 </nodes>
 <nodes xmi:type="ComIbmCallableFlowReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="739,70">
 <translation xmi:type="utility:ConstantString" string="Callable Reply1"/>
