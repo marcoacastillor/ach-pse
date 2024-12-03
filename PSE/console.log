@@ -1,0 +1,12 @@
+2024-12-02 21:34:12.076226: BIP1990I: El servidor de integración 'PSE' está empezando la inicialización; versión '12.0.12.2' (64 bits) 
+2024-12-02 21:34:21.355414: BIP9905I: Inicializando gestores de recursos. 
+Listening for transport dt_socket at address: 9999
+2024-12-02 21:34:23.850576: BIP10112I: The resources from 'mqsicdc.par' have not been loaded because the runtime component 'ChangeDataCapture' has not been enabled. Reason: 'Restricted by Java Runtime selected'. Further detail: 'C:\Program Files\IBM\ACE\12.0.12.2\common\jdk\jre\embedded.java.yaml'. 
+2024-12-02 21:34:24.314696: BIP10112I: The resources from 'imbopentelemetry.lil' have not been loaded because the runtime component 'OpenTelemetry' has not been enabled. Reason: 'Integration Server Configuration'. Further detail: 'server.conf.yaml'. 
+2024-12-02 21:34:28.835016: BIP9906I: Leyendo recursos desplegados. 
+2024-12-02 21:34:29.505196: BIP2866I: La administración de seguridad de IBM App Connect Enterprise es inactive. 
+2024-12-02 21:34:29.538866: BIP3144S: Se ha producido un error durante el inicio del escucha HTTP: el puerto TCPIP especificado (7601) ya está utilizándose. 
+2024-12-02 21:34:31.811072: BIP1991I: El servidor de integración ha terminado la inicialización. 
+2024-12-02 21:37:08.236054: BIP2152I: Se ha recibido el mensaje de configuración. 
+2024-12-02 21:37:08.236276: BIP2153I: A punto de 'deleteAll' un servidor de integración. 
+2024-12-02 21:37:08.253540: BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 

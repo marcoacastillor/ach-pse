@@ -16,9 +16,6 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="705,18" computeExpression="esql://routine/com.ibus.common.modules.fcd#GetRESTInfoError.Main">
         <translation xmi:type="utility:ConstantString" string="GetRESTInfoError"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="598,264" computeExpression="esql://routine/com.ibus.common.procedures.util#SetTrackingRequest.Main" computeMode="destinationAndMessage">
-        <translation xmi:type="utility:ConstantString" string="SetTrackingRequest"/>
-      </nodes>
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="1102,168" computeExpression="esql://routine/Initiate#RequestMessage.Main" computeMode="destinationAndMessage">
         <translation xmi:type="utility:ConstantString" string="RequestMessage"/>
       </nodes>
@@ -33,9 +30,6 @@
       </nodes>
       <nodes xmi:type="ComIbmTrace.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="470,19">
         <translation xmi:type="utility:ConstantString" string="Trace"/>
-      </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="1364,157" computeExpression="esql://routine/com.ibus.common.procedures.util#SetTrackingResponse.Main" computeMode="destinationAndMessage">
-        <translation xmi:type="utility:ConstantString" string="SetTrackingRequest1"/>
       </nodes>
       <nodes xmi:type="ComIbmTryCatch.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="253,24">
         <translation xmi:type="utility:ConstantString" string="Try Catch"/>

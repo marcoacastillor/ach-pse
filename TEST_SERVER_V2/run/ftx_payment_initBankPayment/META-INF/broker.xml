@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Broker deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+  <CompiledApplication>
+    <ConfigurableProperty uri="startMode">
+    </ConfigurableProperty>
+  </CompiledApplication>
+  <CompiledMessageFlow name="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#PrepareRequestBankById.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#PrepareRequestBankById.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#PrepareRequestBankById.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#Throw error.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#Throw error.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#Throw error.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#Transversales_getDebtorByCUSRq.AddRequestToGroup">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#Transversales_getDebtorByCUSRq.GroupRequestFolderName" override="BankByIdRs">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#Transversales_getDebtorByCUSRq.GroupRequestTimeout" override="10.0">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#Transversales_getDebtorByCUSRq.asyncResponseCorrelator" override="Transversales_getDebtorByCUS_001">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#Transversales_getDebtorByCUSRq.requestTimeout" override="20">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#Transversales_getDebtorByCUSRq.targetApplication" override="ftx_payment_transversals">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#Transversales_getDebtorByCUSRq.targetEndpointName" override="Transversales_getDebtorByCUS">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#Transversales_getScoreByProductAndCusRs.asyncResponseCorrelator" override="Transversales_getScoreByProductAndCus_001">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#ValidateResponseStartPay.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#ValidateResponseStartPay.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#ValidateResponseStartPay.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#additionalInstances">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#commitCount">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#commitInterval">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#consumerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#consumerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#coordinatedTransaction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#maximumRateMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#monitoringProfile">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#notificationThresholdMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#processingTimeoutAction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#processingTimeoutSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#providerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#providerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#startInstancesWhenFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#startMode">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor#wlmPolicy">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#CallableInput_Payment_StartExecuteBank.callableInputEndpoint" override="Payment_StartExecuteBank">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#PrepareRequest.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#PrepareRequest.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#PrepareRequest.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#Throw error.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#Throw error.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#Throw error.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#Transversales_getTokenRq.AddRequestToGroup">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#Transversales_getTokenRq.GroupRequestFolderName" override="TokenRs">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#Transversales_getTokenRq.GroupRequestTimeout" override="10.0">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#Transversales_getTokenRq.asyncResponseCorrelator" override="Transversales_getToken_001">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#Transversales_getTokenRq.requestTimeout" override="20">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#Transversales_getTokenRq.targetApplication" override="ftx_payment_transversals">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#Transversales_getTokenRq.targetEndpointName" override="Transversales_getToken">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#additionalInstances">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#commitCount">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#commitInterval">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#consumerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#consumerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#coordinatedTransaction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#maximumRateMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#monitoringProfile">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#notificationThresholdMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#processingTimeoutAction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#processingTimeoutSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#providerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#providerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#startInstancesWhenFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#startMode">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_1_GetToken#wlmPolicy">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#PrepareRequestBankById.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#PrepareRequestBankById.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#PrepareRequestBankById.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#Throw error.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#Throw error.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#Throw error.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#Transversales_getScoreByProductAndCusRq.AddRequestToGroup">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#Transversales_getScoreByProductAndCusRq.GroupRequestFolderName" override="BankByIdRs">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#Transversales_getScoreByProductAndCusRq.GroupRequestTimeout" override="10.0">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#Transversales_getScoreByProductAndCusRq.asyncResponseCorrelator" override="Transversales_getScoreByProductAndCus_001">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#Transversales_getScoreByProductAndCusRq.requestTimeout" override="20">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#Transversales_getScoreByProductAndCusRq.targetApplication" override="ftx_payment_transversals">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#Transversales_getScoreByProductAndCusRq.targetEndpointName" override="Transversales_getScoreByProductAndCus">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#Transversales_getTrxCUSRs.asyncResponseCorrelator" override="Transversales_getTrxCUS_001">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#ValidateResponseStartPay.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#ValidateResponseStartPay.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#ValidateResponseStartPay.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#additionalInstances">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#commitCount">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#commitInterval">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#consumerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#consumerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#coordinatedTransaction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#maximumRateMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#monitoringProfile">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#notificationThresholdMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#processingTimeoutAction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#processingTimeoutSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#providerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#providerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#startInstancesWhenFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#startMode">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_6_GetScore#wlmPolicy">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#PrepareRequestGetCustomer.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#PrepareRequestGetCustomer.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#PrepareRequestGetCustomer.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#Throw error.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#Throw error.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#Throw error.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#Transversales_getCustomerByIdentifierRq.AddRequestToGroup">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#Transversales_getCustomerByIdentifierRq.GroupRequestFolderName" override="BankByIdRs">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#Transversales_getCustomerByIdentifierRq.GroupRequestTimeout" override="10.0">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#Transversales_getCustomerByIdentifierRq.asyncResponseCorrelator" override="Transversales_getCustomerByIdentifier_001">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#Transversales_getCustomerByIdentifierRq.requestTimeout" override="20">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#Transversales_getCustomerByIdentifierRq.targetApplication" override="ftx_payment_transversals">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#Transversales_getCustomerByIdentifierRq.targetEndpointName" override="Transversales_getCustomerByIdentifier">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#Transversales_getDebtorByCUSRs.asyncResponseCorrelator" override="Transversales_getDebtorByCUS_001">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#ValidateResponseStartPay.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#ValidateResponseStartPay.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#ValidateResponseStartPay.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#additionalInstances">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#commitCount">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#commitInterval">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#consumerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#consumerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#coordinatedTransaction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#maximumRateMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#monitoringProfile">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#notificationThresholdMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#processingTimeoutAction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#processingTimeoutSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#providerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#providerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#startInstancesWhenFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#startMode">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer#wlmPolicy">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#PrepareRequestProductByTag.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#PrepareRequestProductByTag.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#PrepareRequestProductByTag.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#Throw error.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#Throw error.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#Throw error.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#TransversalesDecryptCus_Rs.asyncResponseCorrelator" override="TransversalesDecryptCus_001">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#TransversalesGetProductByTagRq.AddRequestToGroup">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#TransversalesGetProductByTagRq.GroupRequestFolderName" override="ProductByTagRs">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#TransversalesGetProductByTagRq.GroupRequestTimeout" override="10.0">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#TransversalesGetProductByTagRq.asyncResponseCorrelator" override="TransversalesGetProductByTag_001">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#TransversalesGetProductByTagRq.requestTimeout" override="20">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#TransversalesGetProductByTagRq.targetApplication" override="ftx_payment_transversals">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#TransversalesGetProductByTagRq.targetEndpointName" override="Transversales_getProductByTag">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#ValidateResponseStartPay.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#ValidateResponseStartPay.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#ValidateResponseStartPay.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#additionalInstances">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#commitCount">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#commitInterval">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#consumerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#consumerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#coordinatedTransaction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#maximumRateMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#monitoringProfile">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#notificationThresholdMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#processingTimeoutAction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#processingTimeoutSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#providerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#providerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#startInstancesWhenFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#startMode">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct#wlmPolicy">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#PrepareRequestUpdTrx.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#PrepareRequestUpdTrx.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#PrepareRequestUpdTrx.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#Throw error.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#Throw error.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#Throw error.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#Transversales_getCustomerByIdentifierRs.asyncResponseCorrelator" override="Transversales_getCustomerByIdentifier_001">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#Transversales_updateTrxRq.AddRequestToGroup">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#Transversales_updateTrxRq.GroupRequestFolderName" override="BankByIdRs">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#Transversales_updateTrxRq.GroupRequestTimeout" override="10.0">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#Transversales_updateTrxRq.asyncResponseCorrelator" override="Transversales_updateTrx_001">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#Transversales_updateTrxRq.requestTimeout" override="20">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#Transversales_updateTrxRq.targetApplication" override="ftx_payment_transversals">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#Transversales_updateTrxRq.targetEndpointName" override="Transversales_updateTrx">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#ValidateResponseStartPay.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#ValidateResponseStartPay.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#ValidateResponseStartPay.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#additionalInstances">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#commitCount">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#commitInterval">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#consumerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#consumerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#coordinatedTransaction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#maximumRateMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#monitoringProfile">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#notificationThresholdMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#processingTimeoutAction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#processingTimeoutSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#providerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#providerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#startInstancesWhenFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#startMode">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx#wlmPolicy">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#PrepareRequestBankById.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#PrepareRequestBankById.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#PrepareRequestBankById.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#Throw error.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#Throw error.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#Throw error.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#TransversalesGetBankById2Rs.asyncResponseCorrelator" override="TransversalesGetBankById_002">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#Transversales_getTrxCUS_001Rq.AddRequestToGroup">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#Transversales_getTrxCUS_001Rq.GroupRequestFolderName" override="BankByIdRs">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#Transversales_getTrxCUS_001Rq.GroupRequestTimeout" override="10.0">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#Transversales_getTrxCUS_001Rq.asyncResponseCorrelator" override="Transversales_getTrxCUS_001">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#Transversales_getTrxCUS_001Rq.requestTimeout" override="20">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#Transversales_getTrxCUS_001Rq.targetApplication" override="ftx_payment_transversals">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#Transversales_getTrxCUS_001Rq.targetEndpointName" override="Transversales_getTrxCUS">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#ValidateResponseStartPay.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#ValidateResponseStartPay.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#ValidateResponseStartPay.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#additionalInstances">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#commitCount">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#commitInterval">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#consumerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#consumerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#coordinatedTransaction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#maximumRateMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#monitoringProfile">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#notificationThresholdMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#processingTimeoutAction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#processingTimeoutSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#providerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#providerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#startInstancesWhenFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#startMode">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx#wlmPolicy">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#PrepareRequestDecryptCUS.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#PrepareRequestDecryptCUS.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#PrepareRequestDecryptCUS.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#Throw error.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#Throw error.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#Throw error.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#Transversales_DecryptCusRq.AddRequestToGroup">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#Transversales_DecryptCusRq.GroupRequestFolderName" override="DecryptCusRs">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#Transversales_DecryptCusRq.GroupRequestTimeout" override="10.0">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#Transversales_DecryptCusRq.asyncResponseCorrelator" override="TransversalesDecryptCus_001">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#Transversales_DecryptCusRq.requestTimeout" override="20">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#Transversales_DecryptCusRq.targetApplication" override="ftx_payment_transversals">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#Transversales_DecryptCusRq.targetEndpointName" override="Transversales_postDecryptCUS">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#Transversales_getTokenRs.asyncResponseCorrelator" override="Transversales_getToken_001">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#ValidateResponseStartPay.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#ValidateResponseStartPay.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#ValidateResponseStartPay.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#additionalInstances">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#commitCount">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#commitInterval">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#consumerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#consumerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#coordinatedTransaction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#maximumRateMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#monitoringProfile">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#notificationThresholdMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#processingTimeoutAction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#processingTimeoutSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#providerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#providerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#startInstancesWhenFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#startMode">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS#wlmPolicy">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#EntBancaria_InitBankPaymentRq.AddRequestToGroup">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#EntBancaria_InitBankPaymentRq.GroupRequestFolderName" override="BankByIdRs">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#EntBancaria_InitBankPaymentRq.GroupRequestTimeout" override="10.0">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#EntBancaria_InitBankPaymentRq.asyncResponseCorrelator" override="EntBancaria_InitBankPayment_001">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#EntBancaria_InitBankPaymentRq.requestTimeout" override="20">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#EntBancaria_InitBankPaymentRq.targetApplication" override="ftx_payment_transversals">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#EntBancaria_InitBankPaymentRq.targetEndpointName" override="EntBancaria_InitBankPayment">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#PrepareRequestInitBankPayment.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#PrepareRequestInitBankPayment.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#PrepareRequestInitBankPayment.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#Throw error.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#Throw error.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#Throw error.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#Transversales_updateTrxRs.asyncResponseCorrelator" override="Transversales_updateTrx_001">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#ValidateResponseStartPay.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#ValidateResponseStartPay.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#ValidateResponseStartPay.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#additionalInstances">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#commitCount">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#commitInterval">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#consumerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#consumerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#coordinatedTransaction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#maximumRateMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#monitoringProfile">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#notificationThresholdMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#processingTimeoutAction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#processingTimeoutSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#providerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#providerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#startInstancesWhenFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#startMode">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay#wlmPolicy">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#EntBancaria_InitBankPaymentRs.asyncResponseCorrelator" override="EntBancaria_InitBankPayment_001">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#Throw error.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#Throw error.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#Throw error.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#ValidateResponseStartPay.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#ValidateResponseStartPay.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#ValidateResponseStartPay.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#additionalInstances">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#commitCount">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#commitInterval">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#consumerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#consumerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#coordinatedTransaction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#maximumRateMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#monitoringProfile">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#notificationThresholdMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#processingTimeoutAction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#processingTimeoutSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#providerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#providerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#startInstancesWhenFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#startMode">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay#wlmPolicy">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+  <CompiledMessageFlow name="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank" deployBarfile="Z:\20.Assist\1.ACH\FlujoTransaccionalPSE\GitProjects\ach-pse\BARfiles\ftx-payment-pse.bar" deployTimestamp="2024-12-03 02:42:46">
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#PrepareRequestBankById.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#PrepareRequestBankById.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#PrepareRequestBankById.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#Throw error.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#Throw error.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#Throw error.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#TransversalesGetBankById2Rq.AddRequestToGroup">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#TransversalesGetBankById2Rq.GroupRequestFolderName" override="BankByIdRs">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#TransversalesGetBankById2Rq.GroupRequestTimeout" override="10.0">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#TransversalesGetBankById2Rq.asyncResponseCorrelator" override="TransversalesGetBankById_002">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#TransversalesGetBankById2Rq.requestTimeout" override="20">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#TransversalesGetBankById2Rq.targetApplication" override="ftx_payment_transversals">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#TransversalesGetBankById2Rq.targetEndpointName" override="Transversales_getBankByInstCodeV2">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#TransversalesGetProductByTagRs.asyncResponseCorrelator" override="TransversalesGetProductByTag_001">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#ValidateResponseStartPay.connectDatasourceBeforeFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#ValidateResponseStartPay.dataSource">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#ValidateResponseStartPay.validateMaster">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#additionalInstances">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#commitCount">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#commitInterval">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#consumerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#consumerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#coordinatedTransaction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#maximumRateMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#monitoringProfile">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#notificationThresholdMsgsPerSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#processingTimeoutAction">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#processingTimeoutSec">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#providerPolicySet">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#providerPolicySetBindings">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#securityProfileName">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#startInstancesWhenFlowStarts">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#startMode">
+    </ConfigurableProperty>
+    <ConfigurableProperty uri="co.com.ach.payment.executePayment.ExecBankPay_4_GetBank#wlmPolicy">
+    </ConfigurableProperty>
+  </CompiledMessageFlow>
+</Broker>

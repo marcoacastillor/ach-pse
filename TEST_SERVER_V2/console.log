@@ -1,0 +1,749 @@
+2024-12-02 21:33:53.956416: BIP1990I: El servidor de integración 'TEST_SERVER_V2' está empezando la inicialización; versión '12.0.12.2' (64 bits) 
+2024-12-02 21:34:03.563261: BIP9905I: Inicializando gestores de recursos. 
+Listening for transport dt_socket at address: 9998
+2024-12-02 21:34:05.681940: BIP10112I: The resources from 'mqsicdc.par' have not been loaded because the runtime component 'ChangeDataCapture' has not been enabled. Reason: 'Restricted by Java Runtime selected'. Further detail: 'C:\Program Files\IBM\ACE\12.0.12.2\common\jdk\jre\embedded.java.yaml'. 
+2024-12-02 21:34:06.087153: BIP10112I: The resources from 'imbopentelemetry.lil' have not been loaded because the runtime component 'OpenTelemetry' has not been enabled. Reason: 'Integration Server Configuration'. Further detail: 'server.conf.yaml'. 
+2024-12-02 21:34:10.266443: BIP9906I: Leyendo recursos desplegados. 
+Debugger failed to attach: handshake failed - connection prematurally closed
+2024-12-02 21:34:11.112328: BIP2866I: La administración de seguridad de IBM App Connect Enterprise es inactive. 
+2024-12-02 21:34:11.175137: BIP3132I: El escucha HTTP ha empezado a escuchar en el puerto '7601' para conexiones 'RestAdmin http'. 
+2024-12-02 21:34:12.568023: BIP1991I: El servidor de integración ha terminado la inicialización. 
+2024-12-02 21:34:29.837544: BIP2152I: Se ha recibido el mensaje de configuración. 
+2024-12-02 21:34:31.604868: BIP1361E: El nodo de flujo de mensajes 'TRACKING.REQ1', 'InitiatePayment#FCMComposite_1_9' en el flujo de mensajes 'InitiatePayment.instance', 'InitiatePayment.subflow' requiere la política '{CommonPolicies}:MQPTXEndpoint' de tipo 'MQEndpoint', que no está desplegada. 
+2024-12-02 21:34:31.607864: BIP1361E: El nodo de flujo de mensajes 'TRACKING.REQ', 'InitiatePayment#FCMComposite_1_11' en el flujo de mensajes 'InitiatePayment.instance', 'InitiatePayment.subflow' requiere la política '{CommonPolicies}:MQPTXEndpoint' de tipo 'MQEndpoint', que no está desplegada. 
+2024-12-02 21:34:31.610866: BIP2155I: A punto de 'Initialize' el recurso desplegado 'ftx_payment_initBankPayment' de tipo 'Application'. 
+2024-12-02 21:34:31.678350: BIP2155I: A punto de 'Initialize' el recurso desplegado 'ftx_payment_createPayment' de tipo 'Application'. 
+2024-12-02 21:34:31.711120: BIP2155I: A punto de 'Initialize' el recurso desplegado 'ftx_payment' de tipo 'RestAPI'. 
+2024-12-02 21:34:31.711568: BIP9324W: La petición a 'Initialize' recurso desplegado 'ftx_payment' de tipo 'RestAPI' ha fallado. 
+2024-12-02 21:34:31.712860: BIP2155I: A punto de 'Initialize' el recurso desplegado 'CommonLib' de tipo 'SharedLibrary'. 
+2024-12-02 21:34:31.782014: BIP2155I: A punto de 'Initialize' el recurso desplegado 'ftx_payment_transversals' de tipo 'Application'. 
+2024-12-02 21:34:33.821     41 [Thread-23] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:34:33.837     41 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:34:33.837     41 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:34:33.837     41 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:34:33.837     41 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:34:33.837     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:34:33.837     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:34:33.837     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:34:33.837     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:34:33.837     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:34:33.837     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:34:33.837     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:34:35.243     41 [Thread-23] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:34:35.243     41 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:34:35.243     41 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:34:35.243     41 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:34:35.243     41 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:34:35.243     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:34:35.243     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:34:35.243     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:34:35.243     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:34:35.243     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:34:35.243     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:34:35.259     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:34:35.462     41 [Thread-23] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:34:35.462     41 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:34:35.462     41 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:34:35.462     41 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:34:35.477     41 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:34:35.477     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:34:35.477     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:34:35.477     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:34:35.477     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:34:35.477     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:34:35.477     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:34:35.477     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:34:35.915     41 [Thread-23] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:34:35.915     41 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:34:35.915     41 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:34:35.915     41 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:34:35.915     41 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:34:35.915     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:34:35.915     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:34:35.931     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:34:35.931     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:34:35.931     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:34:35.931     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:34:35.931     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:34:36.095728: BIP8511W: El nodo de solicitud REST 'co.com.ach.payment.transversals.TransversalesGetCus.PostIdgenerator' está configurado con el URL no válido '/v1', que hay que sustituir mediante 'baseURL'. 
+2024-12-02 21:34:36.103     41 [Thread-23] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:34:36.103     41 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:34:36.103     41 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:34:36.103     41 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:34:36.103     41 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:34:36.103     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:34:36.103     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:34:36.103     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:34:36.103     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:34:36.103     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:34:36.103     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:34:36.103     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:34:36.400     41 [Thread-23] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:34:36.400     41 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:34:36.400     41 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:34:36.400     41 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:34:36.400     41 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:34:36.400     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:34:36.400     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:34:36.400     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:34:36.400     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:34:36.415     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:34:36.415     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:34:36.415     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:34:36.493     41 [Thread-23] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:34:36.493     41 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:34:36.493     41 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:34:36.493     41 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:34:36.493     41 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:34:36.493     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:34:36.493     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:34:36.493     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:34:36.493     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:34:36.493     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:34:36.493     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:34:36.493     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:34:37.007628: BIP2155I: A punto de 'Start' el recurso desplegado 'ftx_payment_initBankPayment' de tipo 'Application'. 
+2024-12-02 21:34:37.008880: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_1_GetToken' (uuid='co.com.ach.payment.executePayment.ExecBankPay_1_GetToken',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.010664: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS' (uuid='co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.012044: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct' (uuid='co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.013024: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_4_GetBank' (uuid='co.com.ach.payment.executePayment.ExecBankPay_4_GetBank',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.015048: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx' (uuid='co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.015808: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_6_GetScore' (uuid='co.com.ach.payment.executePayment.ExecBankPay_6_GetScore',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.016412: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor' (uuid='co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.017012: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer' (uuid='co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.017648: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay' (uuid='co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.018152: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay' (uuid='co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.018600: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx' (uuid='co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.018796: BIP9332I: Application 'ftx_payment_initBankPayment' se ha created correctamente. 
+2024-12-02 21:34:37.019012: BIP2155I: A punto de 'Start' el recurso desplegado 'ftx_payment_createPayment' de tipo 'Application'. 
+2024-12-02 21:34:37.019516: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_1' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_1',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.020044: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_2' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_2',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.020492: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_3' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_3',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.021376: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_4' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_4',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.021908: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_5' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_5',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.022400: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_6' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_6',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.022960: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_6_1' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_6_1',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.023472: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_7' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_7',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.023688: BIP9332I: Application 'ftx_payment_createPayment' se ha created correctamente. 
+2024-12-02 21:34:37.024020: BIP9332I: SharedLibrary 'CommonLib' se ha created correctamente. 
+2024-12-02 21:34:37.024268: BIP2155I: A punto de 'Start' el recurso desplegado 'ftx_payment_transversals' de tipo 'Application'. 
+2024-12-02 21:34:37.024796: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.Commons_EchoMessage' (uuid='co.com.ach.payment.transversals.Commons_EchoMessage',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.026616: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment' (uuid='co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.027332: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode' (uuid='co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.027784: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesCustomerByIdentifier' (uuid='co.com.ach.payment.transversals.TransversalesCustomerByIdentifier',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.028220: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesDecryptCus' (uuid='co.com.ach.payment.transversals.TransversalesDecryptCus',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.028648: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesEncryptCus' (uuid='co.com.ach.payment.transversals.TransversalesEncryptCus',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.030084: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetCus' (uuid='co.com.ach.payment.transversals.TransversalesGetCus',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.030740: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetCustomerData' (uuid='co.com.ach.payment.transversals.TransversalesGetCustomerData',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.031340: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetDebtorByCUS' (uuid='co.com.ach.payment.transversals.TransversalesGetDebtorByCUS',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.031924: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetKeyList' (uuid='co.com.ach.payment.transversals.TransversalesGetKeyList',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.032356: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetProdByTag' (uuid='co.com.ach.payment.transversals.TransversalesGetProdByTag',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.033312: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetProductData' (uuid='co.com.ach.payment.transversals.TransversalesGetProductData',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.033812: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetToken' (uuid='co.com.ach.payment.transversals.TransversalesGetToken',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.034220: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesPostCreateTransaction' (uuid='co.com.ach.payment.transversals.TransversalesPostCreateTransaction',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.034708: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesPostValidateRules' (uuid='co.com.ach.payment.transversals.TransversalesPostValidateRules',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.035196: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS' (uuid='co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.035628: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesTrxByCUS' (uuid='co.com.ach.payment.transversals.TransversalesTrxByCUS',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.036124: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesUpdateTrx' (uuid='co.com.ach.payment.transversals.TransversalesUpdateTrx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:34:37.036316: BIP9332I: Application 'ftx_payment_transversals' se ha created correctamente. 
+2024-12-02 21:34:37.044348: BIP1096E: El origen 'ftx-payment-pse.bar' se ha desplegado, pero ha habido uno o más errores que podrían suponer que los recursos desplegados no puedan ejecutar. 
+2024-12-02 21:34:37.046428: BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
+2024-12-02 21:35:35.899892: BIP2152I: Se ha recibido el mensaje de configuración. 
+2024-12-02 21:35:36.563400: BIP2155I: A punto de 'Stop' el recurso desplegado 'ftx_payment_initBankPayment' de tipo 'Application'. 
+2024-12-02 21:35:36.564752: BIP2155I: A punto de 'Stop' el recurso desplegado 'ftx_payment_createPayment' de tipo 'Application'. 
+2024-12-02 21:35:36.565716: BIP2155I: A punto de 'Stop' el recurso desplegado 'ftx_payment_transversals' de tipo 'Application'. 
+2024-12-02 21:35:38.411472: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_1_GetToken' (uuid='co.com.ach.payment.executePayment.ExecBankPay_1_GetToken',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.412124: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS' (uuid='co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.412632: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct' (uuid='co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.413036: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_4_GetBank' (uuid='co.com.ach.payment.executePayment.ExecBankPay_4_GetBank',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.413500: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx' (uuid='co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.414020: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_6_GetScore' (uuid='co.com.ach.payment.executePayment.ExecBankPay_6_GetScore',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.414428: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor' (uuid='co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.414792: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer' (uuid='co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.415276: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay' (uuid='co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.415748: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay' (uuid='co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.416160: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx' (uuid='co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.416608: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_1' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_1',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.416992: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_2' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_2',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.417388: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_3' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_3',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.417772: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_4' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_4',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.418164: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_5' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_5',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.418496: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_6' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_6',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.418984: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_6_1' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_6_1',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.419496: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_7' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_7',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.420136: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.Commons_EchoMessage' (uuid='co.com.ach.payment.transversals.Commons_EchoMessage',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.420592: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment' (uuid='co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.420972: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode' (uuid='co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.421368: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesCustomerByIdentifier' (uuid='co.com.ach.payment.transversals.TransversalesCustomerByIdentifier',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.421712: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesDecryptCus' (uuid='co.com.ach.payment.transversals.TransversalesDecryptCus',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.422148: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesEncryptCus' (uuid='co.com.ach.payment.transversals.TransversalesEncryptCus',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.422536: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetCus' (uuid='co.com.ach.payment.transversals.TransversalesGetCus',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.422924: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetCustomerData' (uuid='co.com.ach.payment.transversals.TransversalesGetCustomerData',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.423300: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetDebtorByCUS' (uuid='co.com.ach.payment.transversals.TransversalesGetDebtorByCUS',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.423696: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetKeyList' (uuid='co.com.ach.payment.transversals.TransversalesGetKeyList',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.424100: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetProdByTag' (uuid='co.com.ach.payment.transversals.TransversalesGetProdByTag',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.424524: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetProductData' (uuid='co.com.ach.payment.transversals.TransversalesGetProductData',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.424920: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetToken' (uuid='co.com.ach.payment.transversals.TransversalesGetToken',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.425300: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesPostCreateTransaction' (uuid='co.com.ach.payment.transversals.TransversalesPostCreateTransaction',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.425684: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesPostValidateRules' (uuid='co.com.ach.payment.transversals.TransversalesPostValidateRules',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.426052: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS' (uuid='co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.426436: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesTrxByCUS' (uuid='co.com.ach.payment.transversals.TransversalesTrxByCUS',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.426856: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesUpdateTrx' (uuid='co.com.ach.payment.transversals.TransversalesUpdateTrx',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:35:38.427076: BIP2155I: A punto de 'TearDown' el recurso desplegado 'ftx_payment_initBankPayment' de tipo 'Application'. 
+2024-12-02 21:35:38.473972: BIP2155I: A punto de 'TearDown' el recurso desplegado 'ftx_payment_createPayment' de tipo 'Application'. 
+2024-12-02 21:35:38.502232: BIP2155I: A punto de 'TearDown' el recurso desplegado 'ftx_payment_transversals' de tipo 'Application'. 
+2024-12-02 21:35:38.532592: BIP2155I: A punto de 'TearDown' el recurso desplegado 'CommonLib' de tipo 'SharedLibrary'. 
+2024-12-02 21:35:39.190428: BIP1361E: El nodo de flujo de mensajes 'TRACKING.REQ1', 'InitiatePayment#FCMComposite_1_9' en el flujo de mensajes 'InitiatePayment.instance', 'InitiatePayment.subflow' requiere la política '{CommonPolicies}:MQPTXEndpoint' de tipo 'MQEndpoint', que no está desplegada. 
+2024-12-02 21:35:39.190792: BIP1361E: El nodo de flujo de mensajes 'TRACKING.REQ', 'InitiatePayment#FCMComposite_1_11' en el flujo de mensajes 'InitiatePayment.instance', 'InitiatePayment.subflow' requiere la política '{CommonPolicies}:MQPTXEndpoint' de tipo 'MQEndpoint', que no está desplegada. 
+2024-12-02 21:35:39.192096: BIP2155I: A punto de 'Initialize' el recurso desplegado 'ftx_payment_initBankPayment' de tipo 'Application'. 
+2024-12-02 21:35:39.247648: BIP2155I: A punto de 'Initialize' el recurso desplegado 'ftx_payment_createPayment' de tipo 'Application'. 
+2024-12-02 21:35:39.271236: BIP2155I: A punto de 'Initialize' el recurso desplegado 'ftx_payment' de tipo 'RestAPI'. 
+2024-12-02 21:35:39.271588: BIP9324W: La petición a 'Initialize' recurso desplegado 'ftx_payment' de tipo 'RestAPI' ha fallado. 
+2024-12-02 21:35:39.272736: BIP2155I: A punto de 'Initialize' el recurso desplegado 'CommonLib' de tipo 'SharedLibrary'. 
+2024-12-02 21:35:39.315420: BIP2155I: A punto de 'Initialize' el recurso desplegado 'ftx_payment_transversals' de tipo 'Application'. 
+2024-12-02 21:35:40.008     41 [Thread-23] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:35:40.008     41 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:35:40.024     41 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:35:40.024     41 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:35:40.024     41 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:35:40.024     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:35:40.024     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:35:40.024     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:35:40.024     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:35:40.024     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:35:40.024     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:35:40.024     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:35:40.134     41 [Thread-23] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:35:40.134     41 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:35:40.134     41 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:35:40.134     41 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:35:40.134     41 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:35:40.134     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:35:40.134     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:35:40.134     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:35:40.134     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:35:40.134     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:35:40.134     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:35:40.134     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:35:40.211     41 [Thread-23] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:35:40.211     41 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:35:40.211     41 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:35:40.211     41 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:35:40.211     41 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:35:40.211     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:35:40.211     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:35:40.211     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:35:40.211     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:35:40.211     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:35:40.211     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:35:40.211     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:35:40.399     41 [Thread-23] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:35:40.399     41 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:35:40.399     41 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:35:40.399     41 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:35:40.399     41 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:35:40.399     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:35:40.399     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:35:40.399     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:35:40.415     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:35:40.415     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:35:40.415     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:35:40.415     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:35:40.473264: BIP8511W: El nodo de solicitud REST 'co.com.ach.payment.transversals.TransversalesGetCus.PostIdgenerator' está configurado con el URL no válido '/v1', que hay que sustituir mediante 'baseURL'. 
+2024-12-02 21:35:40.477     41 [Thread-23] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:35:40.477     41 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:35:40.477     41 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:35:40.477     41 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:35:40.477     41 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:35:40.493     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:35:40.493     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:35:40.493     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:35:40.493     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:35:40.493     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:35:40.493     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:35:40.493     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:35:40.697     41 [Thread-23] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:35:40.697     41 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:35:40.697     41 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:35:40.697     41 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:35:40.697     41 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:35:40.697     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:35:40.697     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:35:40.697     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:35:40.697     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:35:40.697     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:35:40.697     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:35:40.712     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:35:40.758     41 [Thread-23] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:35:40.758     41 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:35:40.758     41 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:35:40.758     41 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:35:40.758     41 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:35:40.758     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:35:40.758     41 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:35:40.758     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:35:40.775     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:35:40.775     41 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:35:40.775     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:35:40.775     41 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:35:41.348784: BIP2155I: A punto de 'Start' el recurso desplegado 'ftx_payment_initBankPayment' de tipo 'Application'. 
+2024-12-02 21:35:41.349688: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_1_GetToken' (uuid='co.com.ach.payment.executePayment.ExecBankPay_1_GetToken',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.350252: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS' (uuid='co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.350736: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct' (uuid='co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.351300: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_4_GetBank' (uuid='co.com.ach.payment.executePayment.ExecBankPay_4_GetBank',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.352156: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx' (uuid='co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.352644: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_6_GetScore' (uuid='co.com.ach.payment.executePayment.ExecBankPay_6_GetScore',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.353124: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor' (uuid='co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.353576: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer' (uuid='co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.354148: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay' (uuid='co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.354704: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay' (uuid='co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.355224: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx' (uuid='co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.355464: BIP9332I: Application 'ftx_payment_initBankPayment' se ha changed correctamente. 
+2024-12-02 21:35:41.355768: BIP2155I: A punto de 'Start' el recurso desplegado 'ftx_payment_createPayment' de tipo 'Application'. 
+2024-12-02 21:35:41.356412: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_1' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_1',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.356940: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_2' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_2',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.357524: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_3' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_3',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.358108: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_4' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_4',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.358652: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_5' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_5',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.359156: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_6' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_6',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.359652: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_6_1' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_6_1',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.360464: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_7' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_7',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.361028: BIP9332I: Application 'ftx_payment_createPayment' se ha changed correctamente. 
+2024-12-02 21:35:41.361448: BIP9332I: SharedLibrary 'CommonLib' se ha changed correctamente. 
+2024-12-02 21:35:41.361716: BIP2155I: A punto de 'Start' el recurso desplegado 'ftx_payment_transversals' de tipo 'Application'. 
+2024-12-02 21:35:41.362268: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.Commons_EchoMessage' (uuid='co.com.ach.payment.transversals.Commons_EchoMessage',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.362936: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment' (uuid='co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.363532: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode' (uuid='co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.364064: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesCustomerByIdentifier' (uuid='co.com.ach.payment.transversals.TransversalesCustomerByIdentifier',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.364580: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesDecryptCus' (uuid='co.com.ach.payment.transversals.TransversalesDecryptCus',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.365112: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesEncryptCus' (uuid='co.com.ach.payment.transversals.TransversalesEncryptCus',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.365660: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetCus' (uuid='co.com.ach.payment.transversals.TransversalesGetCus',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.366360: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetCustomerData' (uuid='co.com.ach.payment.transversals.TransversalesGetCustomerData',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.367008: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetDebtorByCUS' (uuid='co.com.ach.payment.transversals.TransversalesGetDebtorByCUS',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.369300: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetKeyList' (uuid='co.com.ach.payment.transversals.TransversalesGetKeyList',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.369928: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetProdByTag' (uuid='co.com.ach.payment.transversals.TransversalesGetProdByTag',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.370616: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetProductData' (uuid='co.com.ach.payment.transversals.TransversalesGetProductData',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.371172: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetToken' (uuid='co.com.ach.payment.transversals.TransversalesGetToken',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.371880: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesPostCreateTransaction' (uuid='co.com.ach.payment.transversals.TransversalesPostCreateTransaction',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.372640: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesPostValidateRules' (uuid='co.com.ach.payment.transversals.TransversalesPostValidateRules',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.373352: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS' (uuid='co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.374016: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesTrxByCUS' (uuid='co.com.ach.payment.transversals.TransversalesTrxByCUS',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.376124: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesUpdateTrx' (uuid='co.com.ach.payment.transversals.TransversalesUpdateTrx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:35:41.376364: BIP9332I: Application 'ftx_payment_transversals' se ha changed correctamente. 
+2024-12-02 21:35:41.376532: BIP1096E: El origen 'ftx-payment-pse.bar' se ha desplegado, pero ha habido uno o más errores que podrían suponer que los recursos desplegados no puedan ejecutar. 
+2024-12-02 21:35:41.378008: BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
+2024-12-02 21:37:16.103043: BIP2152I: Se ha recibido el mensaje de configuración. 
+2024-12-02 21:37:16.662130: BIP2155I: A punto de 'Stop' el recurso desplegado 'ftx_payment_initBankPayment' de tipo 'Application'. 
+2024-12-02 21:37:16.663267: BIP2155I: A punto de 'Stop' el recurso desplegado 'ftx_payment_createPayment' de tipo 'Application'. 
+2024-12-02 21:37:16.664045: BIP2155I: A punto de 'Stop' el recurso desplegado 'ftx_payment_transversals' de tipo 'Application'. 
+2024-12-02 21:37:22.571406: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_1_GetToken' (uuid='co.com.ach.payment.executePayment.ExecBankPay_1_GetToken',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.571844: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS' (uuid='co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.572146: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct' (uuid='co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.572396: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_4_GetBank' (uuid='co.com.ach.payment.executePayment.ExecBankPay_4_GetBank',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.572650: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx' (uuid='co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.572876: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_6_GetScore' (uuid='co.com.ach.payment.executePayment.ExecBankPay_6_GetScore',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.573156: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor' (uuid='co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.573458: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer' (uuid='co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.573768: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay' (uuid='co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.574020: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay' (uuid='co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.574306: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx' (uuid='co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.574602: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_1' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_1',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.574910: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_2' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_2',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.575172: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_3' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_3',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.575460: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_4' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_4',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.575732: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_5' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_5',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.575972: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_6' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_6',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.576220: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_6_1' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_6_1',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.576556: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_7' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_7',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.576928: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.Commons_EchoMessage' (uuid='co.com.ach.payment.transversals.Commons_EchoMessage',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.577228: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment' (uuid='co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.577506: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode' (uuid='co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.577796: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesCustomerByIdentifier' (uuid='co.com.ach.payment.transversals.TransversalesCustomerByIdentifier',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.578064: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesDecryptCus' (uuid='co.com.ach.payment.transversals.TransversalesDecryptCus',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.578350: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesEncryptCus' (uuid='co.com.ach.payment.transversals.TransversalesEncryptCus',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.578620: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetCus' (uuid='co.com.ach.payment.transversals.TransversalesGetCus',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.579092: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetCustomerData' (uuid='co.com.ach.payment.transversals.TransversalesGetCustomerData',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.579400: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetDebtorByCUS' (uuid='co.com.ach.payment.transversals.TransversalesGetDebtorByCUS',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.579760: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetKeyList' (uuid='co.com.ach.payment.transversals.TransversalesGetKeyList',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.580086: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetProdByTag' (uuid='co.com.ach.payment.transversals.TransversalesGetProdByTag',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.580360: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetProductData' (uuid='co.com.ach.payment.transversals.TransversalesGetProductData',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.580690: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetToken' (uuid='co.com.ach.payment.transversals.TransversalesGetToken',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.580966: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesPostCreateTransaction' (uuid='co.com.ach.payment.transversals.TransversalesPostCreateTransaction',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.581268: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesPostValidateRules' (uuid='co.com.ach.payment.transversals.TransversalesPostValidateRules',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.581624: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS' (uuid='co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.581918: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesTrxByCUS' (uuid='co.com.ach.payment.transversals.TransversalesTrxByCUS',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.582266: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesUpdateTrx' (uuid='co.com.ach.payment.transversals.TransversalesUpdateTrx',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:37:22.582454: BIP2155I: A punto de 'TearDown' el recurso desplegado 'ftx_payment_initBankPayment' de tipo 'Application'. 
+2024-12-02 21:37:22.605382: BIP2155I: A punto de 'TearDown' el recurso desplegado 'ftx_payment_createPayment' de tipo 'Application'. 
+2024-12-02 21:37:22.632140: BIP2155I: A punto de 'TearDown' el recurso desplegado 'ftx_payment_transversals' de tipo 'Application'. 
+2024-12-02 21:37:22.658436: BIP2155I: A punto de 'TearDown' el recurso desplegado 'CommonLib' de tipo 'SharedLibrary'. 
+2024-12-02 21:37:23.361028: BIP2155I: A punto de 'Initialize' el recurso desplegado 'ftx_payment_initBankPayment' de tipo 'Application'. 
+2024-12-02 21:37:23.409752: BIP2155I: A punto de 'Initialize' el recurso desplegado 'ftx_payment_createPayment' de tipo 'Application'. 
+2024-12-02 21:37:23.436368: BIP2155I: A punto de 'Initialize' el recurso desplegado 'ftx_payment' de tipo 'RestAPI'. 
+2024-12-02 21:37:23.479518: BIP2155I: A punto de 'Initialize' el recurso desplegado 'CommonLib' de tipo 'SharedLibrary'. 
+2024-12-02 21:37:23.527942: BIP2155I: A punto de 'Initialize' el recurso desplegado 'ftx_payment_transversals' de tipo 'Application'. 
+2024-12-02 21:37:24.167     48 [Thread-27] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:37:24.167     48 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:37:24.167     48 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:37:24.167     48 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:37:24.167     48 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:37:24.167     48 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:37:24.167     48 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:37:24.167     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:37:24.167     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:37:24.167     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:37:24.167     48 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:37:24.167     48 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:37:24.354     48 [Thread-27] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:37:24.354     48 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:37:24.354     48 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:37:24.354     48 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:37:24.354     48 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:37:24.354     48 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:37:24.354     48 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:37:24.354     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:37:24.354     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:37:24.354     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:37:24.354     48 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:37:24.354     48 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:37:24.417     48 [Thread-27] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:37:24.417     48 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:37:24.417     48 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:37:24.417     48 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:37:24.417     48 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:37:24.417     48 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:37:24.417     48 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:37:24.417     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:37:24.433     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:37:24.433     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:37:24.433     48 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:37:24.433     48 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:37:24.464     48 [Thread-27] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:37:24.464     48 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:37:24.464     48 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:37:24.464     48 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:37:24.464     48 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:37:24.464     48 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:37:24.480     48 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:37:24.480     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:37:24.480     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:37:24.480     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:37:24.480     48 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:37:24.480     48 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:37:24.729     48 [Thread-27] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:37:24.729     48 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:37:24.729     48 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:37:24.729     48 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:37:24.729     48 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:37:24.729     48 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:37:24.729     48 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:37:24.729     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:37:24.729     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:37:24.729     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:37:24.729     48 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:37:24.729     48 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:37:24.785504: BIP8511W: El nodo de solicitud REST 'co.com.ach.payment.transversals.TransversalesGetCus.PostIdgenerator' está configurado con el URL no válido '/v1', que hay que sustituir mediante 'baseURL'. 
+2024-12-02 21:37:24.870     48 [Thread-27] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:37:24.870     48 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:37:24.870     48 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:37:24.870     48 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:37:24.870     48 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:37:24.870     48 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:37:24.870     48 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:37:24.870     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:37:24.870     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:37:24.870     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:37:24.870     48 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:37:24.870     48 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:37:25.011     48 [Thread-27] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:37:25.011     48 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:37:25.011     48 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:37:25.011     48 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:37:25.011     48 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:37:25.011     48 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:37:25.011     48 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:37:25.011     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:37:25.011     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:37:25.011     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:37:25.011     48 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:37:25.011     48 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:37:25.058     48 [Thread-27] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:37:25.058     48 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:37:25.058     48 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:37:25.058     48 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:37:25.058     48 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:37:25.058     48 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:37:25.058     48 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:37:25.058     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:37:25.058     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:37:25.058     48 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:37:25.058     48 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:37:25.058     48 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:37:25.287068: BIP2155I: A punto de 'Start' el recurso desplegado 'ftx_payment_initBankPayment' de tipo 'Application'. 
+2024-12-02 21:37:25.287996: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_1_GetToken' (uuid='co.com.ach.payment.executePayment.ExecBankPay_1_GetToken',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.288572: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS' (uuid='co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.289092: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct' (uuid='co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.289626: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_4_GetBank' (uuid='co.com.ach.payment.executePayment.ExecBankPay_4_GetBank',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.290168: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx' (uuid='co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.290674: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_6_GetScore' (uuid='co.com.ach.payment.executePayment.ExecBankPay_6_GetScore',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.291202: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor' (uuid='co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.291736: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer' (uuid='co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.292256: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay' (uuid='co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.293578: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay' (uuid='co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.294800: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx' (uuid='co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.298698: BIP9332I: Application 'ftx_payment_initBankPayment' se ha changed correctamente. 
+2024-12-02 21:37:25.299054: BIP2155I: A punto de 'Start' el recurso desplegado 'ftx_payment_createPayment' de tipo 'Application'. 
+2024-12-02 21:37:25.299768: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_1' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_1',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.300736: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_2' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_2',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.302104: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_3' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_3',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.303452: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_4' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_4',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.304342: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_5' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_5',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.304974: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_6' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_6',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.305976: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_6_1' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_6_1',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.306796: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_7' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_7',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.307074: BIP9332I: Application 'ftx_payment_createPayment' se ha changed correctamente. 
+2024-12-02 21:37:25.307398: BIP2155I: A punto de 'Start' el recurso desplegado 'ftx_payment' de tipo 'RestAPI'. 
+2024-12-02 21:37:25.355910: BIP3132I: El escucha HTTP ha empezado a escuchar en el puerto '7801' para conexiones 'http'. 
+2024-12-02 21:37:25.356184: BIP1996I: Escuchando por el URL HTTP '/v1/pse-transaction/pse/payment*'. 
+Started native listener for HTTP input node on port 7801 for URL /v1/pse-transaction/pse/payment*
+2024-12-02 21:37:25.357608: BIP2269I: El recurso desplegado 'gen.ftx_payment' (uuid='gen.ftx_payment',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.357910: BIP9332I: RestAPI 'ftx_payment' se ha changed correctamente. 
+2024-12-02 21:37:25.358238: BIP9332I: SharedLibrary 'CommonLib' se ha changed correctamente. 
+2024-12-02 21:37:25.358506: BIP2155I: A punto de 'Start' el recurso desplegado 'ftx_payment_transversals' de tipo 'Application'. 
+2024-12-02 21:37:25.359124: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.Commons_EchoMessage' (uuid='co.com.ach.payment.transversals.Commons_EchoMessage',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.359896: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment' (uuid='co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.360696: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode' (uuid='co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.361324: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesCustomerByIdentifier' (uuid='co.com.ach.payment.transversals.TransversalesCustomerByIdentifier',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.361930: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesDecryptCus' (uuid='co.com.ach.payment.transversals.TransversalesDecryptCus',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.362572: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesEncryptCus' (uuid='co.com.ach.payment.transversals.TransversalesEncryptCus',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.363218: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetCus' (uuid='co.com.ach.payment.transversals.TransversalesGetCus',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.363838: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetCustomerData' (uuid='co.com.ach.payment.transversals.TransversalesGetCustomerData',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.364448: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetDebtorByCUS' (uuid='co.com.ach.payment.transversals.TransversalesGetDebtorByCUS',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.365072: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetKeyList' (uuid='co.com.ach.payment.transversals.TransversalesGetKeyList',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.365716: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetProdByTag' (uuid='co.com.ach.payment.transversals.TransversalesGetProdByTag',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.366358: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetProductData' (uuid='co.com.ach.payment.transversals.TransversalesGetProductData',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.367018: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetToken' (uuid='co.com.ach.payment.transversals.TransversalesGetToken',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.367670: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesPostCreateTransaction' (uuid='co.com.ach.payment.transversals.TransversalesPostCreateTransaction',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.368356: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesPostValidateRules' (uuid='co.com.ach.payment.transversals.TransversalesPostValidateRules',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.369044: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS' (uuid='co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.369724: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesTrxByCUS' (uuid='co.com.ach.payment.transversals.TransversalesTrxByCUS',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.370384: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesUpdateTrx' (uuid='co.com.ach.payment.transversals.TransversalesUpdateTrx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:37:25.370700: BIP9332I: Application 'ftx_payment_transversals' se ha changed correctamente. 
+2024-12-02 21:37:25.370964: BIP9326I: El origen 'ftx-payment-pse.bar' se ha desplegado correctamente. 
+2024-12-02 21:37:25.374040: BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
+Listening for transport dt_socket at address: 9998
+2024-12-02 21:41:02.710238: BIP2232E: Se ha detectado un error mientras se manejaba un error anterior en el nodo 'co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct.Callable Reply1'. 
+2024-12-02 21:41:02.718691: BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct.ValidateResponseStartPay'. 
+2024-12-02 21:41:02.719905: BIP2488E:  (co.com.ach.payment.executePayment.ExecuteBankPayment_3_ValidateResponseStartPay.Main, 39.4) Se ha detectado un error al ejecutar la sentencia SQL 'PROPAGATE TO TERMINAL 'out1' FINALIZE DEFAULT DELETE NONE;'. 
+2024-12-02 21:41:02.720095: BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct.Callable Reply'. 
+2024-12-02 21:41:02.721180: BIP6418S: El mensaje no contiene información de contexto de flujo invocable válida 
+2024-12-02 21:41:03.505785: BIP2628W: Se ha detectado una condición de excepción en el nodo 'co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct.TransversalesDecryptCus_Rs'. 
+2024-12-02 21:41:03.506167: BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct.Callable Reply1'. 
+2024-12-02 21:41:03.506366: BIP6418S: El mensaje no contiene información de contexto de flujo invocable válida 
+2024-12-02 21:42:30.283994: BIP2628W: Se ha detectado una condición de excepción en el nodo 'gen.ftx_payment.StartPayment (Implementation).CFAsync_StartBankPaymentRs'. 
+2024-12-02 21:42:30.284226: BIP2230E: Se ha detectado un error mientras se procesaba un mensaje en el nodo 'gen.ftx_payment.StartPayment (Implementation).CFAsync_StartBankPaymentRs'. 
+2024-12-02 21:42:30.285438: BIP6408S: El flujo invocable de la aplicación 'ftx_payment_initBankPayment' con el nombre de punto final 'Payment_StartExecuteBank' no ha respondido dentro del tiempo de espera de '120' segundos especificado en el nodo CallableFlowInvoke. 
+2024-12-02 21:42:46.561460: BIP2152I: Se ha recibido el mensaje de configuración. 
+2024-12-02 21:42:47.136456: BIP2155I: A punto de 'Stop' el recurso desplegado 'ftx_payment_initBankPayment' de tipo 'Application'. 
+2024-12-02 21:42:47.137764: BIP2155I: A punto de 'Stop' el recurso desplegado 'ftx_payment_createPayment' de tipo 'Application'. 
+2024-12-02 21:42:47.139436: BIP2155I: A punto de 'Stop' el recurso desplegado 'ftx_payment' de tipo 'RestAPI'. 
+2024-12-02 21:42:47.140144: BIP2155I: A punto de 'Stop' el recurso desplegado 'ftx_payment_transversals' de tipo 'Application'. 
+2024-12-02 21:42:50.067284: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_1_GetToken' (uuid='co.com.ach.payment.executePayment.ExecBankPay_1_GetToken',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.697188: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS' (uuid='co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.698548: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct' (uuid='co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.699076: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_4_GetBank' (uuid='co.com.ach.payment.executePayment.ExecBankPay_4_GetBank',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.699488: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx' (uuid='co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.699892: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_6_GetScore' (uuid='co.com.ach.payment.executePayment.ExecBankPay_6_GetScore',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.700316: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor' (uuid='co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.700652: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer' (uuid='co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.701128: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay' (uuid='co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.701528: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay' (uuid='co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.701896: BIP2271I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx' (uuid='co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.702396: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_1' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_1',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.702856: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_2' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_2',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.703272: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_3' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_3',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.703672: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_4' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_4',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.704068: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_5' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_5',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.704496: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_6' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_6',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.704896: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_6_1' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_6_1',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.705428: BIP2271I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_7' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_7',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.708692: BIP2271I: El recurso desplegado 'gen.ftx_payment' (uuid='gen.ftx_payment',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.709356: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.Commons_EchoMessage' (uuid='co.com.ach.payment.transversals.Commons_EchoMessage',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.709812: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment' (uuid='co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.710212: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode' (uuid='co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.710556: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesCustomerByIdentifier' (uuid='co.com.ach.payment.transversals.TransversalesCustomerByIdentifier',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.711500: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesDecryptCus' (uuid='co.com.ach.payment.transversals.TransversalesDecryptCus',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.712416: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesEncryptCus' (uuid='co.com.ach.payment.transversals.TransversalesEncryptCus',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.712880: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetCus' (uuid='co.com.ach.payment.transversals.TransversalesGetCus',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.713348: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetCustomerData' (uuid='co.com.ach.payment.transversals.TransversalesGetCustomerData',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.713780: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetDebtorByCUS' (uuid='co.com.ach.payment.transversals.TransversalesGetDebtorByCUS',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.714276: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetKeyList' (uuid='co.com.ach.payment.transversals.TransversalesGetKeyList',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.714624: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetProdByTag' (uuid='co.com.ach.payment.transversals.TransversalesGetProdByTag',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.715052: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetProductData' (uuid='co.com.ach.payment.transversals.TransversalesGetProductData',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.715420: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetToken' (uuid='co.com.ach.payment.transversals.TransversalesGetToken',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.715896: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesPostCreateTransaction' (uuid='co.com.ach.payment.transversals.TransversalesPostCreateTransaction',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.716336: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesPostValidateRules' (uuid='co.com.ach.payment.transversals.TransversalesPostValidateRules',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.716800: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS' (uuid='co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.717276: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesTrxByCUS' (uuid='co.com.ach.payment.transversals.TransversalesTrxByCUS',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.717948: BIP2271I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesUpdateTrx' (uuid='co.com.ach.payment.transversals.TransversalesUpdateTrx',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2024-12-02 21:42:52.718276: BIP2155I: A punto de 'TearDown' el recurso desplegado 'ftx_payment_initBankPayment' de tipo 'Application'. 
+2024-12-02 21:42:52.742984: BIP2155I: A punto de 'TearDown' el recurso desplegado 'ftx_payment_createPayment' de tipo 'Application'. 
+2024-12-02 21:42:52.768508: BIP2155I: A punto de 'TearDown' el recurso desplegado 'ftx_payment' de tipo 'RestAPI'. 
+2024-12-02 21:42:52.775088: BIP3133I: El escucha HTTP ha dejado de escuchar en el puerto '7801' para conexiones 'http'. 
+2024-12-02 21:42:52.805792: BIP2155I: A punto de 'TearDown' el recurso desplegado 'ftx_payment_transversals' de tipo 'Application'. 
+2024-12-02 21:42:52.838980: BIP2155I: A punto de 'TearDown' el recurso desplegado 'CommonLib' de tipo 'SharedLibrary'. 
+2024-12-02 21:42:53.733372: BIP2155I: A punto de 'Initialize' el recurso desplegado 'ftx_payment_initBankPayment' de tipo 'Application'. 
+2024-12-02 21:42:53.787696: BIP2155I: A punto de 'Initialize' el recurso desplegado 'ftx_payment_createPayment' de tipo 'Application'. 
+2024-12-02 21:42:53.816172: BIP2155I: A punto de 'Initialize' el recurso desplegado 'ftx_payment' de tipo 'RestAPI'. 
+2024-12-02 21:42:53.853300: BIP2155I: A punto de 'Initialize' el recurso desplegado 'CommonLib' de tipo 'SharedLibrary'. 
+2024-12-02 21:42:53.994240: BIP2155I: A punto de 'Initialize' el recurso desplegado 'ftx_payment_transversals' de tipo 'Application'. 
+2024-12-02 21:42:54.723     40 [Thread-22] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:42:54.739     40 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:42:54.739     40 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:42:54.739     40 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:42:54.739     40 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:42:54.739     40 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:42:54.739     40 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:42:54.739     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:42:54.739     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:42:54.739     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:42:54.739     40 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:42:54.739     40 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:42:54.958     40 [Thread-22] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:42:54.958     40 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:42:54.958     40 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:42:54.958     40 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:42:54.958     40 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:42:54.958     40 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:42:54.958     40 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:42:54.958     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:42:54.958     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:42:54.958     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:42:54.958     40 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:42:54.958     40 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:42:55.036     40 [Thread-22] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:42:55.036     40 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:42:55.036     40 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:42:55.036     40 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:42:55.036     40 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:42:55.036     40 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:42:55.036     40 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:42:55.036     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:42:55.036     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:42:55.036     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:42:55.036     40 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:42:55.036     40 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:42:55.067     40 [Thread-22] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:42:55.067     40 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:42:55.067     40 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:42:55.067     40 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:42:55.067     40 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:42:55.067     40 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:42:55.067     40 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:42:55.067     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:42:55.067     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:42:55.067     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:42:55.067     40 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:42:55.067     40 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:42:55.161     40 [Thread-22] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:42:55.161     40 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:42:55.161     40 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:42:55.161     40 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:42:55.161     40 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:42:55.161     40 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:42:55.161     40 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:42:55.161     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:42:55.161     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:42:55.176     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:42:55.176     40 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:42:55.176     40 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:42:55.196920: BIP8511W: El nodo de solicitud REST 'co.com.ach.payment.transversals.TransversalesGetCus.PostIdgenerator' está configurado con el URL no válido '/v1', que hay que sustituir mediante 'baseURL'. 
+2024-12-02 21:42:55.192     40 [Thread-22] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:42:55.207     40 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:42:55.208     40 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:42:55.208     40 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:42:55.208     40 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:42:55.208     40 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:42:55.208     40 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:42:55.208     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:42:55.208     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:42:55.208     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:42:55.208     40 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:42:55.208     40 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:42:55.489     40 [Thread-22] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:42:55.489     40 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:42:55.489     40 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:42:55.489     40 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:42:55.489     40 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:42:55.489     40 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:42:55.489     40 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:42:55.489     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:42:55.489     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:42:55.489     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:42:55.489     40 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:42:55.489     40 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:42:55.536     40 [Thread-22] WARN io.swagger.v3.parser.util.DeserializationUtils - Error snake-parsing yaml content
+2024-12-02 21:42:55.536     40 java.lang.NoSuchMethodError: org/yaml/snakeyaml/constructor/SafeConstructor.<init>()V (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/jackson/lib/snakeyaml-2.2.jar by com.ibm.broker.classloading.BrokerClassLoader@a1f4f962) called from class io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor (loaded from file:/C:/Program%20Files/IBM/ACE/12.0.12.2/common/swagger/lib/swagger-parser-v3-2.0.33.jar by com.ibm.broker.classloading.RtObjGenClassLoader@9090647d).
+2024-12-02 21:42:55.536     40 	at io.swagger.v3.parser.util.DeserializationUtils$CustomSnakeYamlConstructor.<init>(DeserializationUtils.java:372)
+2024-12-02 21:42:55.536     40 	at io.swagger.v3.parser.util.DeserializationUtils.readYamlTree(DeserializationUtils.java:190)
+2024-12-02 21:42:55.536     40 	at io.swagger.v3.parser.util.DeserializationUtils.deserializeIntoTree(DeserializationUtils.java:140)
+2024-12-02 21:42:55.536     40 	at io.swagger.v3.parser.OpenAPIV3Parser.readContents(OpenAPIV3Parser.java:162)
+2024-12-02 21:42:55.550     40 	at io.swagger.v3.parser.OpenAPIV3Parser.readLocation(OpenAPIV3Parser.java:91)
+2024-12-02 21:42:55.550     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.loadAndValidateOpenAPI(ApiImpl.java:214)
+2024-12-02 21:42:55.551     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:141)
+2024-12-02 21:42:55.551     40 	at com.ibm.broker.rest.openapi_3.ApiImpl.<init>(ApiImpl.java:127)
+2024-12-02 21:42:55.551     40 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:99)
+2024-12-02 21:42:55.551     40 	at com.ibm.broker.rest.openapi_3.ApiProviderImpl.load(ApiProviderImpl.java:87)
+2024-12-02 21:42:55.758120: BIP2155I: A punto de 'Start' el recurso desplegado 'ftx_payment_initBankPayment' de tipo 'Application'. 
+2024-12-02 21:42:55.758972: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_1_GetToken' (uuid='co.com.ach.payment.executePayment.ExecBankPay_1_GetToken',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.759516: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS' (uuid='co.com.ach.payment.executePayment.ExecBankPay_2_DecryptCUS',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.759996: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct' (uuid='co.com.ach.payment.executePayment.ExecBankPay_3_GetProduct',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.760416: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_4_GetBank' (uuid='co.com.ach.payment.executePayment.ExecBankPay_4_GetBank',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.760816: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx' (uuid='co.com.ach.payment.executePayment.ExecBankPay_5_GetTrx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.761232: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_6_GetScore' (uuid='co.com.ach.payment.executePayment.ExecBankPay_6_GetScore',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.761620: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor' (uuid='co.com.ach.payment.executePayment.ExecBankPay_7_GetDebtor',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.762052: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer' (uuid='co.com.ach.payment.executePayment.ExecBankPay_8_GetCustomer',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.762516: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay' (uuid='co.com.ach.payment.executePayment.ExecBankPay_91_InitBankPay',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.763076: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay' (uuid='co.com.ach.payment.executePayment.ExecBankPay_92_RsInitBankPay',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.763588: BIP2269I: El recurso desplegado 'co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx' (uuid='co.com.ach.payment.executePayment.ExecBankPay_9_UpdTrx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.763788: BIP9332I: Application 'ftx_payment_initBankPayment' se ha changed correctamente. 
+2024-12-02 21:42:55.764012: BIP2155I: A punto de 'Start' el recurso desplegado 'ftx_payment_createPayment' de tipo 'Application'. 
+2024-12-02 21:42:55.764536: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_1' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_1',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.764988: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_2' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_2',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.765460: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_3' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_3',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.765932: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_4' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_4',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.766408: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_5' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_5',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.766880: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_6' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_6',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.767332: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_6_1' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_6_1',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.767824: BIP2269I: El recurso desplegado 'co.com.ach.payment.createPayment.CreateInitiatePayment_7' (uuid='co.com.ach.payment.createPayment.CreateInitiatePayment_7',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.768080: BIP9332I: Application 'ftx_payment_createPayment' se ha changed correctamente. 
+2024-12-02 21:42:55.768312: BIP2155I: A punto de 'Start' el recurso desplegado 'ftx_payment' de tipo 'RestAPI'. 
+2024-12-02 21:42:55.874516: BIP3132I: El escucha HTTP ha empezado a escuchar en el puerto '7801' para conexiones 'http'. 
+2024-12-02 21:42:55.874848: BIP1996I: Escuchando por el URL HTTP '/v1/pse-transaction/pse/payment*'. 
+Started native listener for HTTP input node on port 7801 for URL /v1/pse-transaction/pse/payment*
+2024-12-02 21:42:55.875900: BIP2269I: El recurso desplegado 'gen.ftx_payment' (uuid='gen.ftx_payment',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.876132: BIP9332I: RestAPI 'ftx_payment' se ha changed correctamente. 
+2024-12-02 21:42:55.876440: BIP9332I: SharedLibrary 'CommonLib' se ha changed correctamente. 
+2024-12-02 21:42:55.876680: BIP2155I: A punto de 'Start' el recurso desplegado 'ftx_payment_transversals' de tipo 'Application'. 
+2024-12-02 21:42:55.877288: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.Commons_EchoMessage' (uuid='co.com.ach.payment.transversals.Commons_EchoMessage',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.878252: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment' (uuid='co.com.ach.payment.transversals.EntidadBancariaExecuteBankPayment',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.878880: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode' (uuid='co.com.ach.payment.transversals.TransversalesBankByInstitucionalCode',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.879504: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesCustomerByIdentifier' (uuid='co.com.ach.payment.transversals.TransversalesCustomerByIdentifier',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.880096: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesDecryptCus' (uuid='co.com.ach.payment.transversals.TransversalesDecryptCus',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.881064: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesEncryptCus' (uuid='co.com.ach.payment.transversals.TransversalesEncryptCus',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.881884: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetCus' (uuid='co.com.ach.payment.transversals.TransversalesGetCus',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.882352: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetCustomerData' (uuid='co.com.ach.payment.transversals.TransversalesGetCustomerData',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.882888: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetDebtorByCUS' (uuid='co.com.ach.payment.transversals.TransversalesGetDebtorByCUS',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.883472: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetKeyList' (uuid='co.com.ach.payment.transversals.TransversalesGetKeyList',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.883940: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetProdByTag' (uuid='co.com.ach.payment.transversals.TransversalesGetProdByTag',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.884416: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetProductData' (uuid='co.com.ach.payment.transversals.TransversalesGetProductData',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.884868: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesGetToken' (uuid='co.com.ach.payment.transversals.TransversalesGetToken',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.885292: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesPostCreateTransaction' (uuid='co.com.ach.payment.transversals.TransversalesPostCreateTransaction',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.885792: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesPostValidateRules' (uuid='co.com.ach.payment.transversals.TransversalesPostValidateRules',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.886328: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS' (uuid='co.com.ach.payment.transversals.TransversalesScoreByProductAndCUS',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.886740: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesTrxByCUS' (uuid='co.com.ach.payment.transversals.TransversalesTrxByCUS',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.887184: BIP2269I: El recurso desplegado 'co.com.ach.payment.transversals.TransversalesUpdateTrx' (uuid='co.com.ach.payment.transversals.TransversalesUpdateTrx',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2024-12-02 21:42:55.887368: BIP9332I: Application 'ftx_payment_transversals' se ha changed correctamente. 
+2024-12-02 21:42:55.887548: BIP9326I: El origen 'ftx-payment-pse.bar' se ha desplegado correctamente. 
+2024-12-02 21:42:55.889052: BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
+Listening for transport dt_socket at address: 9998

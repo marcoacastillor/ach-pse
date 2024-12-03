@@ -1,1433 +1,1733 @@
-openapi: 3.0.3
-info:
-  title: PSE 3.0
-  description: |-
-    PSE 3.0 project service interface.
-
-    _Implementation of resources to make an online payment through PSE payment platform_
-    
-    Some useful links:
-  termsOfService: http://swagger.io/terms/
-  contact:
-    name: https://www.achcolombia.com.co/contactenos
-    url: https://www.achcolombia.com.co/contactenos
-    email: admin@ach.com.co
-  version: 3.0.0
-  
-servers:
-  - url: https://localhost:/v1/pse-transaction/pse/payment
-
-tags:
-  - name: x-initiate
-    description: CreateTransactionPayment
-  - name: x-execute-bank
-    description: InitBankPayment
-  - name: x-start-payment-bank
-    description: StartPayment
-  - name: x-notify
-    description: ConfirmTransactionPayment
-
-paths:
-  /x-initiate:
-    post:
-      tags:
-        - x-initiate
-      summary: Internal processing and validation of the transaction (e.g., validation of payment information, risk checks).
-      description: Create a unique record in the payment gateway
-      operationId: InitiatePayment
-      parameters:
-        - $ref: '#/components/parameters/message-uuid'
-        - $ref: '#/components/parameters/request-app-id'
-        - $ref: '#/components/parameters/session-storage'          
-        - $ref: '#/components/parameters/product-tag'
-      requestBody:
-        $ref: '#/components/requestBodies/CreateTransactionPaymentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/CustomerCreditTransferInitiationResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-      
-  /x-execute-bank:
-    post:
-      tags:
-        - x-execute-bank
-      summary: Execute payment in the financial entity
-      description: Execute a well-bounded financial transaction/task, typically involving largely automate/structured fulfillment processing. Execute a payment transaction.
-      operationId: ExecutePayment
-      parameters:
-        - $ref: '#/components/parameters/message-uuid'
-        - $ref: '#/components/parameters/request-app-id'
-        - $ref: '#/components/parameters/session-storage'          
-      requestBody:
-        $ref: '#/components/requestBodies/InitBankPaymentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/InitBankPaymentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-          
-  /x-start-payment-bank:
-    post:
-      tags:
-        - x-start-payment-bank
-      summary: Execute payment in the financial entity
-      description: Execute a well-bounded financial transaction/task, typically involving largely automate/structured fulfillment processing. Execute a payment transaction.
-      operationId: StartPayment
-      parameters:
-        - $ref: '#/components/parameters/message-uuid'
-        - $ref: '#/components/parameters/request-app-id'
-        - $ref: '#/components/parameters/session-storage'
-        - $ref: '#/components/parameters/product-tag'          
-      requestBody:
-        $ref: '#/components/requestBodies/StartPaymentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/StartPaymentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-      
-
-  /x-notify:
-    post:
-      tags:
-        - x-notify
-      summary: Execute payment in the financial entity
-      description: Execute a well-bounded financial transaction/task, typically involving largely automate/structured fulfillment processing. Execute a payment transaction.
-      operationId: NotifyPayment
-      parameters:
-        - $ref: '#/components/parameters/message-uuid'
-        - $ref: '#/components/parameters/request-app-id'          
-      requestBody:
-        $ref: '#/components/requestBodies/NotifyPaymentRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/NotifyPaymentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-      
-components:
-  schemas:
-    CreateTransactionPaymentRequest:
-      required:
-        - group_header
-        - payment_information
-      type: object
-      properties:
-        group_header:
-          $ref: '#/components/schemas/GroupHeader'
-        payment_information:
-          $ref: '#/components/schemas/PaymentInformation'
-          
-    InitBankPaymentRequest:
-      required:
-        - group_header
-        - payment_information
-      type: object
-      properties:
-        group_header:
-          $ref: '#/components/schemas/GroupHeader'
-        payment_information:
-          $ref: '#/components/schemas/PaymentInformationV2'
-          
-    StartPaymentRequest:
-      required:
-        - group_header
-        - payment_information
-      type: object
-      properties:
-        group_header:
-          $ref: '#/components/schemas/GroupHeader'
-        payment_information:
-          $ref: '#/components/schemas/PaymentInformationV4'
-          
-    NotifyPaymentRequest:
-      required:
-        - group_header
-        - payment_information
-      type: object
-      properties:
-        group_header:
-          $ref: '#/components/schemas/GroupHeader'
-        payment_information:
-          $ref: '#/components/schemas/PaymentInformationV3'
-          
-    
-    CustomerCreditTransferInitiationResponse:
-      required:
-        - group_header
-        - original_payment_information_and_status
-      type: object
-      properties:
-        group_header:
-          ##Conjunto de caracter韘ticas compartidas por una transacci贸n individual incluida en el mensaje
-          $ref: '#/components/schemas/GroupHeader'
-        original_payment_information_and_status:
-          type: array
-          items:
-            #Objeto que representa el resultado de la transacci贸n
-            $ref: '#/components/schemas/OriginalPaymentInformationAndStatus'
-        supplementary_data:
-          $ref: '#/components/schemas/SupplementaryData'
-            
-    InitBankPaymentResponse:
-      required:
-        - group_header
-        - original_payment_information_and_status
-      type: object
-      properties:
-        group_header:
-          $ref: '#/components/schemas/GroupHeader'
-        original_payment_information_and_status:
-          type: array
-          items:
-            $ref: '#/components/schemas/OriginalPaymentInformationAndStatusV2'
-            
-    StartPaymentResponse:
-      required:
-        - group_header
-        - original_payment_information_and_status
-      type: object
-      properties:
-        group_header:
-          $ref: '#/components/schemas/GroupHeader'
-        original_payment_information_and_status:
-          type: array
-          items:
-            $ref: '#/components/schemas/OriginalPaymentInformationAndStatusV2'
-            
-    NotifyPaymentResponse:
-      required:
-        - group_header
-        - original_payment_information_and_status
-      type: object
-      properties:
-        group_header:
-          ##Conjunto de caracter韘ticas compartidas por una transacci贸n individual incluida en el mensaje
-          $ref: '#/components/schemas/GroupHeader'
-        original_payment_information_and_status:
-          type: array
-          items:
-            #Objeto que representa el resultado de la transacci贸n
-            $ref: '#/components/schemas/OriginalPaymentInformationAndStatus'
-    
-    GroupHeader:
-      required:
-        - message_identification
-        - creation_date_time 
-      type: object
-      properties:
-        message_identification:
-          description: Point to point reference, as assigned by the instructing party, and sent to the next party in the chain to unambiguously identify the message.
-          type: string
-          minLength: 1
-          maxLength: 100
-          example: CUS
-          
-        creation_date_time:
-          description: Date and time at which the message was created.
-          type: string
-          minLength: 1
-          maxLength: 36
-          format: date-time
-          
-        number_of_transactions:
-          description: Number of individual transactions contained in the message.
-          type: number 
-          minLength: 1
-          maxLength: 5
-          example: 1
-          
-        control_sum:
-          description: Total of all individual amounts included in the message, irrespective of currencies.
-          type: string 
-          minLength: 1
-          maxLength: 18
-          example: 240000.00
-          
-    PaymentInformation:
-      required:
-        - payment_information_identification
-        - requested_execution_date
-        - debtor
-        - credit_transfer_transaction_information
-      type: object
-      properties:
-        payment_information_identification:
-          description: Unique identification, as assigned by a sending party, to unambiguously identify the payment information group within the message.
-          type: string 
-          minLength: 1
-          maxLength: 35
-          example: "000031"
-        requested_execution_date:
-          $ref: '#/components/schemas/RequestedExecutionDate'
-        debtor:
-          $ref: '#/components/schemas/Debtor'
-        credit_transfer_transaction_information:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreditTransferTransactionInformation'
-        supplementary_data:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupplementaryData'
-            
-    PaymentInformationV2:
-      required:
-        - payment_information_identification
-        - requested_execution_date
-        - debtor
-        - credit_transfer_transaction_information
-      type: object
-      properties:
-        payment_information_identification:
-          description: Unique identification, as assigned by a sending party, to unambiguously identify the payment information group within the message.
-          type: string 
-          minLength: 1
-          maxLength: 35
-          example: "000031"
-        requested_execution_date:
-          $ref: '#/components/schemas/RequestedExecutionDate'
-        debtor:
-          $ref: '#/components/schemas/Debtor'
-        credit_transfer_transaction_information:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreditTransferTransactionInformation'
-        supplementary_data:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupplementaryDataV2'
-            
-    PaymentInformationV3:
-      required:
-        - payment_information_identification
-        - requested_execution_date
-        - debtor
-        - credit_transfer_transaction_information
-      type: object
-      properties:
-        payment_information_identification:
-          description: Unique identification, as assigned by a sending party, to unambiguously identify the payment information group within the message.
-          type: string 
-          minLength: 1
-          maxLength: 35
-          example: "000031"
-        requested_execution_date:
-          $ref: '#/components/schemas/RequestedExecutionDate'
-        debtor:
-          $ref: '#/components/schemas/DebtorV2'
-        credit_transfer_transaction_information:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreditTransferTransactionInformation'
-        transaction_information_and_status:
-          $ref: '#/components/schemas/TransactionInformationAndStatusV2'
-        supplementary_data:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupplementaryDataV3'
-            
-    PaymentInformationV4:
-      type: object
-      properties:
-        supplementary_data:
-          type: array
-          items:
-            $ref: '#/components/schemas/SupplementaryDataV4'
-    
-    SupplementaryData:
-      type: object
-      properties:
-        place_and_name: 
-          description: Unambiguous reference to the location where the supplementary data must be inserted in the message instance.
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: additional_payment_info
-        any:
-          type: array
-          items:
-            $ref: '#/components/schemas/Any'
-            
-    SupplementaryDataV2:
-      type: object
-      properties:
-        place_and_name: 
-          description: Unambiguous reference to the location where the supplementary data must be inserted in the message instance.
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: additional_payment_info
-        any:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnyV2'
-            
-    SupplementaryDataV3:
-      type: object
-      properties:
-        place_and_name: 
-          description: Unambiguous reference to the location where the supplementary data must be inserted in the message instance.
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: additional_payment_info
-        any:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnyV3'
-            
-    SupplementaryDataV4:
-      type: object
-      properties:
-        place_and_name: 
-          description: Unambiguous reference to the location where the supplementary data must be inserted in the message instance.
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: additional_payment_info
-        any:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnyV4'
-            
-    SupplementaryDataV5:
-      type: object
-      properties:
-        place_and_name: 
-          description: Unambiguous reference to the location where the supplementary data must be inserted in the message instance.
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: additional_payment_info
-        any:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnyV5'
-            
-    Any:
-      type: object
-      properties:
-        additional_payment_info:
-          #Objeto que define los campos adicionales
-          $ref: '#/components/schemas/AdditionalPaymentInfo'
-          
-    AnyV5:
-      type: object
-      properties:
-        additional_payment_info:
-          #Objeto que define los campos adicionales
-          $ref: '#/components/schemas/AdditionalPaymentInfoV5'
-    
-    AdditionalPaymentInfoV5:
-      type: object
-      properties:
-        bank_url: 
-          description: bank url
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: 190.85.74.123
-          
-        bank_key_status:
-          description: Agile payment marking status
-          type: string
-          enum:
-          - OK
-          - UPDATED
-          - DELETED
-          minLength: 1
-          maxLength: 8
-          example: 'OK'
-          
-        bank_key:
-          description: Agile payment marking Registered in PSE 
-          type: string
-          example: ''
-          
-        bank_trazability_code:
-          description:  Transaction tracking identifier or unique code (CUS) plus the bank's retry counter
-          type: string
-          minLength: 1
-          maxLength: 35
-          example: "01"
-          
-    AnyV2:
-      type: object
-      properties:
-        additional_payment_info:
-          #Objeto que define los campos adicionales
-          $ref: '#/components/schemas/AdditionalPaymentInfoV4'
-        transunion_info:
-          #Objeto que define los campos adicionales
-          $ref: '#/components/schemas/Array1'
-        masivian_info:
-          #Objeto que define los campos adicionales
-          $ref: '#/components/schemas/Array2'
-        array3:
-          #Objeto que define los campos adicionales
-          $ref: '#/components/schemas/ArrayTmp'
-        array4:
-          #Objeto que define los campos adicionales
-          $ref: '#/components/schemas/ArrayTmp'
-        array5:
-          #Objeto que define los campos adicionales
-          $ref: '#/components/schemas/ArrayTmp'
-          
-    AnyV3:
-      type: object
-      properties:
-        additional_payment_info:
-          #Objeto que define los campos adicionales
-          $ref: '#/components/schemas/AdditionalPaymentInfoV2'
-          
-    AnyV4:
-      type: object
-      properties:
-        additional_payment_info:
-          #Objeto que define los campos adicionales
-          $ref: '#/components/schemas/AdditionalPaymentInfoV3'
-    
-          
-    ArrayTmp:
-      type: object
-      properties:
-        name:
-          description: PENDING IMPLEMENT
-          type: string
-          example: 'no defined'
-          
-    Array1:
-      type: object
-      properties:
-        email_basic_check_status:
-          description: Validation status. Taken from TransUnion service.
-          type: string
-          minLength: 1
-          maxLength: 35
-          enum:
-            - Valid
-            - Invalid
-            - Risky
-            - Unverifiable
-            - Unknown
-            - Corrected
-          example: ''
-        device_stated_ip: 
-          description: The IP address reported by the end user. Taken from Transunion's device verification service.
-          type: string
-          minLength: 1
-          maxLength: 20
-          example: '129.123.123.123.001'
-        device_dev_al:
-          description: This is the 18-digit numeric identifier given by Iovation for the device. Taken from Transunion's device verification service.
-          type: string
-          minLength: 1
-          maxLength: 18
-          example: ''
-        device_dev_br_ty:
-          description: Browser name. Taken from Transunion's device verification service.
-          type: string
-          minLength: 1
-          maxLength: 35
-          example: ''
-        device_dev_br_ve:
-          description: Browser version. Taken from Transunion device verification service.
-          type: string
-          minLength: 1
-          maxLength: 4
-          example: '1.4'
-        device_dev_os:
-          description: Device operating system. Taken from Transunion device verification service.
-          type: string
-          minLength: 1
-          maxLength: 35
-          example: 'Red Hat Enterprise'
-        device_dev_ty:
-          description: Device hardware
-          type: string
-          enum:
-          - MAC
-          - PC
-          - iOS
-          - ANDROID
-          - BLACKBERRY
-          - CHROMEOS
-          - HANDHELD_OTHER
-          - IPHONE
-          - IPOD
-          - IPAD
-          - LINUX
-          - MAC
-          - NINTENDO
-          - PLAYSTATION
-          - UNIX
-          - UNKNOWN
-          - WINDOWS
-          - WINDOWS_MOBILE
-          - XBOX
-          - N/A.
-          minLength: 1
-          maxLength: 256
-          example: 'XBOX'
-        device_rea_ad:
-          description: Real IP Address. Taken from Transunion's device verification service.
-          type: string
-          minLength: 1
-          maxLength: 20
-          example: '124.23.23.1'
-        device_rea_is:
-          description: Internet service provider of the provided IP address. Taken from Transunion's device verification service.
-          type: string
-          minLength: 1
-          maxLength: 20
-          example: '124.23.23.1'
-        device_rea_ip_ci:
-          description: City associated with the IP address. Taken from Transunion's device verification service.
-          type: string
-          minLength: 1
-          maxLength: 40
-          example: 'Bucaramanga'
-        device_rea_ip_co:
-          description:  Country associated with the IP address. Taken from Transunion's device verification service.
-          type: string
-          minLength: 1
-          maxLength: 40
-          example: 'Colombia'
-        device_mac_ml_va:
-          description: A score ranging from -10000 to 10000. -10000 indicates iovation's prediction that the transaction will be fraudulent while 10000 indicates iovation's prediction that the transaction will be trustworthy. Taken from Transunion's device verification service.
-          type: string
-          minLength: 1
-          maxLength: 8
-          example: '10000'
-        device_rea_bo_in:
-          description: Botnet risk score for the transaction. This is a range between 1 and 10, where 1 represents no botnet risk, and 10 represents high botnet risk.
-          type: string
-          minLength: 1
-          maxLength: 2
-          example: '1'
-          
-    Array2:
-      type: object
-      properties:
-        simcard_resume_advice: 
-          description: Security tip suggesting the likelihood that a number is potentially fraudulent
-          type: string
-          enum:
-            - SAFE
-            - UNKNOW
-            - SUSPICIOUS
-          minLength: 1
-          maxLength: 20
-          example: '12'
-        simcard_change_in_range:
-          description: Indicates whether the SimCard was changed within the established time range.
-          type: boolean
-          example: 'True'
-        simcard_last_change_date:
-          description: Date of last Sim Card change
-          type: string
-          format: date-time
-          example: ''
-        simcard_machine_learning_common_behavior_anomaly:
-          description: Quantification response of the associated anomaly of a telephone number at the time of the query. It indicates whether that cell phone line has presented a significant change in transactional behavior at the time of the query, where 0.0 is a low risk of anomaly or abnormal activities for the line, and 1.0 is a high anomaly.
-          type: string
-          minLength: 1
-          maxLength: 4
-          example: '1.00'
-        security_detail_machine_learning_common_behavior_distrust:
-          description: Distrust associated with a phone number at the time of the query. It indicates whether that cell phone line is new or has a transaction history at the time of the query, where 0.0 is a Zero distrust because it is a line with a history, and 1.0 is a High distrust, because it is a new line.
-          type: string
-          minLength: 1
-          maxLength: 4
-          example: '0.75'
-          
-    AdditionalPaymentInfoV4:
-      type: object
-      properties:
-        reference_1: 
-          description: additional field associated with the payment 
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: 190.85.74.123
-          
-        reference_2:
-          description: additional field associated with the payment 
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: NIT
-          
-        reference_3: 
-          description: additional field associated with the payment 
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: 43006
-          
-        service_code: 
-          description: additional field associated with the payment 
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: 30001
-          
-        creditor_ciiu:
-          description: additional field associated with the payment 
-          type: string
-          minLength: 1
-          maxLength: 8
-          example: 120023
-          
-        transaction_cycle:
-          description: Transaction creation cycle number
-          type: string
-          minLength: 1
-          maxLength: 2
-          example: 01
-        
-        device_finger_print:
-          description: Fingerprint with the information captured by the list of banks or the agile payment dialing list through a dynamic Javascript that was integrated into the new PSE site to which end users are directed. This javascript is a coded string that includes information from the device of the user who performs the transaction.
-          type: string
-          example: ''
-        
-        fraud_response_code:
-          description: Anti-Fraud system response,
-          type: string
-          enum:
-          - YES
-          - NO
-          minLength: 1
-          maxLength: 3
-          example: "YES"
-        
-        fraud_pre_authorization_score:
-          description: Anti-Fraud System Score This score fluctuates between zero and 100 points, where 100 is the limit for starting to pre-authorize or deny transactions. Zero is a low or no risk of fraud and 100 or higher is a high risk of fraud. 
-          type: string
-          minLength: 1
-          maxLength: 3
-          example: 75
-          
-        bank_trazability_code:
-          description:  Transaction tracking identifier or unique code (CUS) plus the bank's retry counter
-          type: string
-          minLength: 1
-          maxLength: 35
-          example: "01"
-          
-        flow_type:
-          description: Defines the type of flow True - fast payment; False - Registration
-          type: boolean
-          example: True
-          
-        bank_key:
-          description: Agile payment marking Registered in PSE 
-          type: string
-          example: ''
-          
-        bank_key_status:
-          description: Agile payment marking status
-          type: string
-          enum:
-          - OK
-          - UPDATED
-          - DELETED
-          minLength: 1
-          maxLength: 8
-          example: 'OK'
-          
-        indicator_exempt_account:
-          description: Indicator excent iva 
-          type: string
-          example: ''
-          
-    AdditionalPaymentInfo:
-      type: object
-      properties:
-        reference_1: 
-          description: additional field associated with the payment 
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: 190.85.74.123
-          
-        reference_2:
-          description: additional field associated with the payment 
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: NIT
-          
-        reference_3: 
-          description: additional field associated with the payment 
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: 43006
-          
-        service_code: 
-          description: additional field associated with the payment 
-          type: string
-          minLength: 1
-          maxLength: 350
-          example: 30001
-          
-        creditor_ciiu:
-          description: additional field associated with the payment 
-          type: string
-          minLength: 1
-          maxLength: 8
-          example: 120023
-          
-        transaction_cycle:
-          description: Transaction creation cycle number
-          type: string
-          minLength: 1
-          maxLength: 2
-          example: 01
-        
-        device_finger_print:
-          description: Fingerprint with the information captured by the list of banks or the agile payment dialing list through a dynamic Javascript that was integrated into the new PSE site to which end users are directed. This javascript is a coded string that includes information from the device of the user who performs the transaction.
-          type: string
-          example: ''
-        
-        fraud_response_code:
-          description: Anti-Fraud system response,
-          type: string
-          enum:
-          - YES
-          - NO
-          minLength: 1
-          maxLength: 3
-          example: "YES"
-        
-        fraud_pre_authorization_score:
-          description: Anti-Fraud System Score This score fluctuates between zero and 100 points, where 100 is the limit for starting to pre-authorize or deny transactions. Zero is a low or no risk of fraud and 100 or higher is a high risk of fraud. 
-          type: string
-          minLength: 1
-          maxLength: 3
-          example: 75
-          
-        bank_trazability_code:
-          description:  Transaction tracking identifier or unique code (CUS) plus the bank's retry counter
-          type: string
-          minLength: 1
-          maxLength: 35
-          example: "01"
-          
-        flow_type:
-          description: Defines the type of flow True - fast payment; False - Registration
-          type: boolean
-          example: True
-          
-        bank_key:
-          description: Agile payment marking Registered in PSE 
-          type: string
-          example: ''
-          
-        bank_key_status:
-          description: Agile payment marking status
-          type: string
-          enum:
-          - OK
-          - UPDATED
-          - DELETED
-          minLength: 1
-          maxLength: 8
-          example: 'OK'
-        
-    AdditionalPaymentInfoV2:
-      type: object
-      properties:
-        flow_type:
-          description: Defines the type of flow True - fast payment; False - Registration
-          type: boolean
-          example: True
-          
-        financial_institution_code:
-          description: Id of Bank 
-          type: string
-          example: ''
-          
-        payment_origin:
-          description: Origin of payment, 3 for debit and 4 for credit 
-          type: string
-          minLength: 1
-          maxLength: 1
-          example: '3'
-          
-        payment_mode:
-          description: Payment method 
-          type: string
-          minLength: 1
-          maxLength: 2
-          enum:
-          - '15'
-          - '50'
-          - '51'
-          - '52'
-          - '53'
-          - '54'
-          - '55'
-          - '56'
-          example: '15'
-    
-    AdditionalPaymentInfoV3:
-      type: object
-      properties:
-        financial_institution_code:
-          description: Id of Bank 
-          type: string
-          example: ''
-        
-        flow_type:
-          description: Defines the type of flow True - fast payment; False - Registration
-          type: boolean
-          example: True
-          
-        bank_key:
-          description: Agile payment marking Registered in PSE 
-          type: string
-          example: ''
-    
-        
-    Purpose:
-      type: object
-      properties:
-        code:
-          description: Underlying reason for the payment transaction, as published in an external purpose code list.
-          type: string
-          minLength: 1
-          maxLength: 4
-          example: 0001
-          
-        propietary:
-          description: Purpose, in a proprietary form.
-          type: string
-          minLength: 1
-          maxLength: 35
-          example: Pago factura
-          
-    Tax:
-    #modela informaci贸n sobre informaci贸n tributaria
-      type: object
-      properties:
-        total_taxable_base_amount:
-          description: Total amount of money on which the tax is based.
-          type: string
-          minLength: 1
-          maxLength: 18
-          example: 200000
-          
-        total_tax_amount:
-          description: Total amount of money as result of the calculation of the tax.
-          type: string
-          minLength: 1
-          maxLength: 18
-          example: 20000
-          
-        record:
-          $ref: '#/components/schemas/Record'   
-          
-    Record:
-      type: object
-      properties: 
-        type:
-          description: High level code to identify the type of tax details.
-          type: string
-          minLength: 1
-          maxLength: 35
-          example: IVA
-    
-    RequestedExecutionDate:
-      type: object
-      properties:
-        dateTime:
-          description: Date at which the initiating party requests the clearing agent to process the payment.Specified date and time.
-          type: string
-          format: date-time
-    
-    Debtor:
-      required:
-        - name
-        - identification
-      type: object
-      properties:
-        name:
-          description: Name by which a party is known and which is usually used to identify that party.
-          type: string 
-          minLength: 1
-          maxLength: 140
-          example: "Claudio Clavijo"
-        postal_address:
-          $ref: '#/components/schemas/PostalAddress'
-        identification:
-          $ref: '#/components/schemas/Identification'
-          
-    DebtorV2:
-      required:
-        - name
-        - identification
-      type: object
-      properties:
-        name:
-          description: Name by which a party is known and which is usually used to identify that party.
-          type: string 
-          minLength: 1
-          maxLength: 140
-          example: "Claudio Clavijo"
-        postal_address:
-          $ref: '#/components/schemas/PostalAddress'
-        identification:
-          $ref: '#/components/schemas/Identification'
-        debtor_account:
-          $ref: '#/components/schemas/DebtorAccount'
-          
-    DebtorAccount:
-      type: object
-      properties:
-        identification:
-          $ref: '#/components/schemas/IdentificationV3'
-          
-          
-    CreditTransferTransactionInformation:
-      type: object
-      properties:
-        payment_identification:
-          $ref: '#/components/schemas/PaymentIdentification'
-        amount:
-          $ref: '#/components/schemas/Amount'
-        creditor:
-          $ref: '#/components/schemas/Creditor'
-        purpose:
-          $ref: '#/components/schemas/Purpose'
-        tax:
-          $ref: '#/components/schemas/Tax'
-        
-    
-    PaymentIdentification:
-      type: object
-      properties:
-        instruction_identification:
-          description: Unique identification as assigned by an instructing party for an instructed party to unambiguously identify the instruction.
-          type: string
-          minLength: 1
-          maxLength: 18
-          example: 30001
-    
-    Amount:
-      type: object
-      properties:
-        instructed_amount:
-          description: Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the currency as ordered by the initiating party.
-          type: string
-          minLength: 1
-          maxLength: 18
-          example: 23455600
-          
-          
-    Creditor:
-      #Modela informaci贸n de un acreedor
-      type: object
-      properties:
-        name:
-          description: Name by which a party is known and which is usually used to identify that party.
-          type: string
-          minLength: 1
-          maxLength: 140
-          example: El sitio
-          
-        identification:
-          $ref: '#/components/schemas/Identification2'
-          
-    PostalAddress:
-      type: object
-      properties:
-        address_line:
-          description: Information that locates and identifies a specific address, as defined by postal services, presented in free format text.
-          type: string
-          minLength: 1
-          maxLength: 70
-          example: "Cll 32 # 45 -34"
-          
-          
-    Identification:
-      type: object
-      properties:
-        private_identification:
-          $ref: '#/components/schemas/PrivateIdentification'
-        contact_details:
-          $ref: '#/components/schemas/ContactDetails'
-    
-    Identification2:
-      type: object
-      properties:
-        organisation_identification:
-          $ref: '#/components/schemas/OrganisationIdentification'
-          
-    IdentificationV3:
-      type: object
-      properties:
-        other:
-          $ref: '#/components/schemas/Other'
-        
-    OrganisationIdentification:
-      type: object
-      properties:
-        anyBIC:
-          description: Business identification code of the organisation.
-          type: string
-          minLength: 1
-          maxLength: 12
-          example: 8349032221
-        other:
-          type: array
-          items:
-            $ref: '#/components/schemas/Other'
-            
-    
-    PrivateIdentification:
-      type: object
-      properties:
-        other:
-          $ref: '#/components/schemas/Other'
-          
-    Other:
-      type: object
-      properties:
-        identification:
-          description: Business identification code of the organisation.
-          type: string
-          minLength: 1
-          maxLength: 256
-          example: 79733157
-          
-        scheme_name:
-          $ref: '#/components/schemas/SchemeName'
-          
-    SchemeName:
-      type: object
-      properties:
-        code:
-          description: Name of the identification scheme, in a coded form as published in an external list.
-          type: string
-          minLength: 1
-          maxLength: 4
-          example: "NIT"
-        propieraty:
-          description: Name of the identification scheme, in a free text form.
-          type: string
-          minLength: 1
-          maxLength: 40
-          enum:
-            - RegistroCivilDeNacimiento
-            - TarjetaDeIdentidad
-            - CedulaDeCiudadania
-            - TarjetaDeExtranjeria
-            - CedulaDeExtranjeria
-            - Pasaporte
-            - DocumentoDeIdentificacionExtranjero
-            - NIT
-          example: "NIT"
-          
-          
-    ContactDetails: 
-      type: object
-      properties: 
-        mobile_number:
-          description: Collection of information that identifies a mobile phone number, as defined by telecom services.
-          type: string
-          minLength: 1
-          maxLength: 18
-          example: 322-4343432
-        email_address:
-          description: Address for electronic mail (e-mail).
-          type: string
-          minLength: 1
-          maxLength: 256
-          example: prueba.email@gmail.com
-            
-    OriginalPaymentInformationAndStatus:
-      required:
-        - original_payment_information_identification
-        - transaction_information_and_status
-      type: object
-      properties:
-        original_payment_information_identification:
-          description: Unique identification, as assigned by the original sending party, to unambiguously identify the original payment information group.
-          type: string
-          minLength: 1
-          maxLength: 35
-          example: ""
-          
-        transaction_information_and_status:
-          $ref: '#/components/schemas/TransactionInformationAndStatus'
-          
-    OriginalPaymentInformationAndStatusV2:
-      required:
-        - original_payment_information_identification
-        - transaction_information_and_status
-      type: object
-      properties:
-        original_payment_information_identification:
-          description: Unique identification, as assigned by the original sending party, to unambiguously identify the original payment information group.
-          type: string
-          minLength: 1
-          maxLength: 35
-          example: ""
-        transaction_information_and_status:
-          $ref: '#/components/schemas/TransactionInformationAndStatus'
-        original_transaction_reference:
-          $ref: '#/components/schemas/OriginalTransactionReference'
-        supplementary_data:
-          $ref: '#/components/schemas/SupplementaryDataV5'
-          
-    TransactionInformationAndStatus:
-      type: object
-      properties:
-        transaction_status:
-          description: Global transaction status
-          type: string
-          minLength: 1
-          maxLength: 4
-          example: 200
-
-        status_reason_information:
-          $ref: '#/components/schemas/StatusReasonInformation'
-          
-    TransactionInformationAndStatusV2:
-      type: object
-      properties:
-        transaction_status:
-          description: Global transaction status
-          type: string
-          minLength: 1
-          maxLength: 4
-          example: 200
-        status_identification:
-          description: Authorization or rejection code for the transaction. For approved transactions, it is an internal identifier of the bank; for rejected transactions, it must correspond to a rejection code registered in PSE.
-          type: string
-          minLength: 1
-          maxLength: 6
-          example: 20001
-        
-          
-    OriginalTransactionReference:
-      type: object
-      properties:
-        amount:
-          $ref: '#/components/schemas/Amount'
-        
-        
-    StatusReasonInformation:
-      type: object
-      properties:
-        originator:
-          $ref: '#/components/schemas/Originator'
-        reason:
-          $ref: '#/components/schemas/Reason'
-        additional_information:
-          description: Short description of the specific error
-          type: string
-          minLength: 1
-          maxLength: 256
-          example: Ocurri贸 un error en el m贸dulo de pagos de la entidad Bancaria.
-          
-    
-          
-    Originator:
-      type: object
-      properties:
-        name: 
-          description: Name by which a party is known and which is usually used to identify that party.
-          type: string
-          minLength: 1
-          maxLength: 140
-          example: 343435343
-        
-    Reason:
-      type: object
-      properties:
-        code:
-          description: Specific technical error code. Only for escenarios with error.
-          type: string
-          minLength: 1
-          maxLength: 8
-          example: "PSE.0010 | PSE.0000"
-          
-        property:
-          description: Technical description of the specific error
-          type: string
-          minLength: 1
-          maxLength: 140
-          example: Error en la transacci贸n
-            
-    #pattern: "[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z-9]{2,2}([A-Z0-9]{3,3]){0,1}"
-    
-  #parameters of resources
-  parameters:
-    message-uuid:
-      #unique id of transaction
-      name: message-uuid
-      description:
-        Message identifier is used for traceability. This identifier allows
-        you to identify the logs of the calls to the APIs in the log
-        repositories, it is recommended to send a UUID for this value.
-      in: header
-      required: true
-      style: simple
-      schema:
-        type: string
-        format: uuid
-        
-    request-app-id:
-      #unique id of application
-      name: request-app-id
-      description:
-        Message identifier is used for traceability. This identifier allows
-        you to identify the logs of the calls to the APIs in the log
-        repositories, it is recommended to send a UUID for this value.
-      in: header
-      required: true
-      style: simple
-      schema:
-        type: string
-        format: uuid
-        
-    session-storage:
-      #unique id of transaction
-      name: session-storage
-      description:
-        Message identifier is used for traceability. Token sesi髇 generado por navegador - (Se recomiendo generar el token como un UUID - sessionStorage.setItem('Token', UUID)).
-      in: header
-      required: true
-      style: simple
-      schema:
-        type: string
-        
-    product-tag:
-      #product tag pse
-      name: product-tag
-      description:
-        Message identifier of product pse
-      in: header
-      required: true
-      style: simple
-      schema:
-        type: string
-        
-  requestBodies:
-    CreateTransactionPaymentRequest:
-      description: The request message
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreateTransactionPaymentRequest'
-      required: true
-      
-    InitBankPaymentRequest:
-      description: The request message
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitBankPaymentRequest'
-      required: true
-      
-    StartPaymentRequest:
-      description: The request message
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/StartPaymentRequest'
-      required: true
-      
-    NotifyPaymentRequest:
-      description: The request message
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/NotifyPaymentRequest'
-      required: true
-
-  responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CustomerCreditTransferInitiationResponse'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CustomerCreditTransferInitiationResponse'
-    
-    NotFound:
-      description: NotFound
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CustomerCreditTransferInitiationResponse'
-            
-    InternalServerError:
-      description: InternalServerError
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CustomerCreditTransferInitiationResponse'
-            
-            
-    CustomerCreditTransferInitiationResponse:
-      description: The request succeded
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CustomerCreditTransferInitiationResponse'
-            
-    InitBankPaymentResponse:
-      description: The request succeded
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InitBankPaymentResponse'
-            
-    StartPaymentResponse:
-      description: The request succeded
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/StartPaymentResponse'
-            
-    NotifyPaymentResponse:
-      description: The request succeded
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/NotifyPaymentResponse'
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "PSE 3.0",
+    "description": "PSE 3.0 project service interface. _Implementation of resources to make an online payment through PSE payment platform_ Some useful links:",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "name": "https://www.achcolombia.com.co/contactenos",
+      "url": "https://www.achcolombia.com.co/contactenos",
+      "email": "admin@ach.com.co"
+    },
+    "version": "3.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://localhost:/v1/pse-transaction/pse/payment"
+    }
+  ],
+  "tags": [
+    {
+      "name": "x-initiate",
+      "description": "CreateTransactionPayment"
+    },
+    {
+      "name": "x-execute-bank",
+      "description": "InitBankPayment"
+    },
+    {
+      "name": "x-start-payment-bank",
+      "description": "StartPayment"
+    },
+    {
+      "name": "x-notify",
+      "description": "ConfirmTransactionPayment"
+    }
+  ],
+  "paths": {
+    "/x-initiate": {
+      "post": {
+        "tags": [
+          "x-initiate"
+        ],
+        "summary": "Internal processing and validation of the transaction (e.g., validation of payment information, risk checks).",
+        "description": "Create a unique record in the payment gateway",
+        "operationId": "InitiatePayment",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/message-uuid"
+          },
+          {
+            "$ref": "#/components/parameters/request-app-id"
+          },
+          {
+            "$ref": "#/components/parameters/session-storage"
+          },
+          {
+            "$ref": "#/components/parameters/product-tag"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreateTransactionPaymentRequest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/CustomerCreditTransferInitiationResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/x-execute-bank": {
+      "post": {
+        "tags": [
+          "x-execute-bank"
+        ],
+        "summary": "Execute payment in the financial entity",
+        "description": "Execute a well-bounded financial transaction/task, typically involving largely automate/structured fulfillment processing. Execute a payment transaction.",
+        "operationId": "ExecutePayment",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/message-uuid"
+          },
+          {
+            "$ref": "#/components/parameters/request-app-id"
+          },
+          {
+            "$ref": "#/components/parameters/session-storage"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/InitBankPaymentRequest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/InitBankPaymentResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/x-start-payment-bank": {
+      "post": {
+        "tags": [
+          "x-start-payment-bank"
+        ],
+        "summary": "Execute payment in the financial entity",
+        "description": "Execute a well-bounded financial transaction/task, typically involving largely automate/structured fulfillment processing. Execute a payment transaction.",
+        "operationId": "StartPayment",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/message-uuid"
+          },
+          {
+            "$ref": "#/components/parameters/request-app-id"
+          },
+          {
+            "$ref": "#/components/parameters/session-storage"
+          },
+          {
+            "$ref": "#/components/parameters/product-tag"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/StartPaymentRequest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/StartPaymentResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/x-notify": {
+      "post": {
+        "tags": [
+          "x-notify"
+        ],
+        "summary": "Execute payment in the financial entity",
+        "description": "Execute a well-bounded financial transaction/task, typically involving largely automate/structured fulfillment processing. Execute a payment transaction.",
+        "operationId": "NotifyPayment",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/message-uuid"
+          },
+          {
+            "$ref": "#/components/parameters/request-app-id"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/NotifyPaymentRequest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/NotifyPaymentResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateTransactionPaymentRequest": {
+        "required": [
+          "group_header",
+          "payment_information"
+        ],
+        "type": "object",
+        "properties": {
+          "group_header": {
+            "$ref": "#/components/schemas/GroupHeader"
+          },
+          "payment_information": {
+            "$ref": "#/components/schemas/PaymentInformation"
+          }
+        }
+      },
+      "InitBankPaymentRequest": {
+        "required": [
+          "group_header",
+          "payment_information"
+        ],
+        "type": "object",
+        "properties": {
+          "group_header": {
+            "$ref": "#/components/schemas/GroupHeader"
+          },
+          "payment_information": {
+            "$ref": "#/components/schemas/PaymentInformationV2"
+          }
+        }
+      },
+      "StartPaymentRequest": {
+        "required": [
+          "group_header",
+          "payment_information"
+        ],
+        "type": "object",
+        "properties": {
+          "group_header": {
+            "$ref": "#/components/schemas/GroupHeader"
+          },
+          "payment_information": {
+            "$ref": "#/components/schemas/PaymentInformationV4"
+          }
+        }
+      },
+      "NotifyPaymentRequest": {
+        "required": [
+          "group_header",
+          "payment_information"
+        ],
+        "type": "object",
+        "properties": {
+          "group_header": {
+            "$ref": "#/components/schemas/GroupHeader"
+          },
+          "payment_information": {
+            "$ref": "#/components/schemas/PaymentInformationV3"
+          }
+        }
+      },
+      "CustomerCreditTransferInitiationResponse": {
+        "required": [
+          "group_header",
+          "original_payment_information_and_status"
+        ],
+        "type": "object",
+        "properties": {
+          "group_header": {
+            "$ref": "#/components/schemas/GroupHeader"
+          },
+          "original_payment_information_and_status": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OriginalPaymentInformationAndStatus"
+            }
+          },
+          "supplementary_data": {
+            "$ref": "#/components/schemas/SupplementaryData"
+          }
+        }
+      },
+      "InitBankPaymentResponse": {
+        "required": [
+          "group_header",
+          "original_payment_information_and_status"
+        ],
+        "type": "object",
+        "properties": {
+          "group_header": {
+            "$ref": "#/components/schemas/GroupHeader"
+          },
+          "original_payment_information_and_status": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OriginalPaymentInformationAndStatusV2"
+            }
+          }
+        }
+      },
+      "StartPaymentResponse": {
+        "required": [
+          "group_header",
+          "original_payment_information_and_status"
+        ],
+        "type": "object",
+        "properties": {
+          "group_header": {
+            "$ref": "#/components/schemas/GroupHeader"
+          },
+          "original_payment_information_and_status": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OriginalPaymentInformationAndStatusV2"
+            }
+          }
+        }
+      },
+      "NotifyPaymentResponse": {
+        "required": [
+          "group_header",
+          "original_payment_information_and_status"
+        ],
+        "type": "object",
+        "properties": {
+          "group_header": {
+            "$ref": "#/components/schemas/GroupHeader"
+          },
+          "original_payment_information_and_status": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OriginalPaymentInformationAndStatus"
+            }
+          }
+        }
+      },
+      "GroupHeader": {
+        "required": [
+          "message_identification",
+          "creation_date_time"
+        ],
+        "type": "object",
+        "properties": {
+          "message_identification": {
+            "description": "Point to point reference, as assigned by the instructing party, and sent to the next party in the chain to unambiguously identify the message.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "example": "CUS"
+          },
+          "creation_date_time": {
+            "description": "Date and time at which the message was created.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 36,
+            "format": "date-time"
+          },
+          "number_of_transactions": {
+            "description": "Number of individual transactions contained in the message.",
+            "type": "number",
+            "minLength": 1,
+            "maxLength": 5,
+            "example": 1
+          },
+          "control_sum": {
+            "description": "Total of all individual amounts included in the message, irrespective of currencies.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 18,
+            "example": 240000
+          }
+        }
+      },
+      "PaymentInformation": {
+        "required": [
+          "payment_information_identification",
+          "requested_execution_date",
+          "debtor",
+          "credit_transfer_transaction_information"
+        ],
+        "type": "object",
+        "properties": {
+          "payment_information_identification": {
+            "description": "Unique identification, as assigned by a sending party, to unambiguously identify the payment information group within the message.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 35,
+            "example": "000031"
+          },
+          "requested_execution_date": {
+            "$ref": "#/components/schemas/RequestedExecutionDate"
+          },
+          "debtor": {
+            "$ref": "#/components/schemas/Debtor"
+          },
+          "credit_transfer_transaction_information": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreditTransferTransactionInformation"
+            }
+          },
+          "supplementary_data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SupplementaryData"
+            }
+          }
+        }
+      },
+      "PaymentInformationV2": {
+        "required": [
+          "payment_information_identification",
+          "requested_execution_date",
+          "debtor",
+          "credit_transfer_transaction_information"
+        ],
+        "type": "object",
+        "properties": {
+          "payment_information_identification": {
+            "description": "Unique identification, as assigned by a sending party, to unambiguously identify the payment information group within the message.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 35,
+            "example": "000031"
+          },
+          "requested_execution_date": {
+            "$ref": "#/components/schemas/RequestedExecutionDate"
+          },
+          "debtor": {
+            "$ref": "#/components/schemas/Debtor"
+          },
+          "credit_transfer_transaction_information": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreditTransferTransactionInformation"
+            }
+          },
+          "supplementary_data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SupplementaryDataV2"
+            }
+          }
+        }
+      },
+      "PaymentInformationV3": {
+        "required": [
+          "payment_information_identification",
+          "requested_execution_date",
+          "debtor",
+          "credit_transfer_transaction_information"
+        ],
+        "type": "object",
+        "properties": {
+          "payment_information_identification": {
+            "description": "Unique identification, as assigned by a sending party, to unambiguously identify the payment information group within the message.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 35,
+            "example": "000031"
+          },
+          "requested_execution_date": {
+            "$ref": "#/components/schemas/RequestedExecutionDate"
+          },
+          "debtor": {
+            "$ref": "#/components/schemas/DebtorV2"
+          },
+          "credit_transfer_transaction_information": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreditTransferTransactionInformation"
+            }
+          },
+          "transaction_information_and_status": {
+            "$ref": "#/components/schemas/TransactionInformationAndStatusV2"
+          },
+          "supplementary_data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SupplementaryDataV3"
+            }
+          }
+        }
+      },
+      "PaymentInformationV4": {
+        "type": "object",
+        "properties": {
+          "supplementary_data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SupplementaryDataV4"
+            }
+          }
+        }
+      },
+      "SupplementaryData": {
+        "type": "object",
+        "properties": {
+          "place_and_name": {
+            "description": "Unambiguous reference to the location where the supplementary data must be inserted in the message instance.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 350,
+            "example": "additional_payment_info"
+          },
+          "any": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Any"
+            }
+          }
+        }
+      },
+      "SupplementaryDataV2": {
+        "type": "object",
+        "properties": {
+          "place_and_name": {
+            "description": "Unambiguous reference to the location where the supplementary data must be inserted in the message instance.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 350,
+            "example": "additional_payment_info"
+          },
+          "any": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnyV2"
+            }
+          }
+        }
+      },
+      "SupplementaryDataV3": {
+        "type": "object",
+        "properties": {
+          "place_and_name": {
+            "description": "Unambiguous reference to the location where the supplementary data must be inserted in the message instance.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 350,
+            "example": "additional_payment_info"
+          },
+          "any": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnyV3"
+            }
+          }
+        }
+      },
+      "SupplementaryDataV4": {
+        "type": "object",
+        "properties": {
+          "place_and_name": {
+            "description": "Unambiguous reference to the location where the supplementary data must be inserted in the message instance.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 350,
+            "example": "additional_payment_info"
+          },
+          "any": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnyV4"
+            }
+          }
+        }
+      },
+      "SupplementaryDataV5": {
+        "type": "object",
+        "properties": {
+          "place_and_name": {
+            "description": "Unambiguous reference to the location where the supplementary data must be inserted in the message instance.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 350,
+            "example": "additional_payment_info"
+          },
+          "any": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AnyV5"
+            }
+          }
+        }
+      },
+      "Any": {
+        "type": "object",
+        "properties": {
+          "additional_payment_info": {
+            "$ref": "#/components/schemas/AdditionalPaymentInfo"
+          }
+        }
+      },
+      "AnyV5": {
+        "type": "object",
+        "properties": {
+          "additional_payment_info": {
+            "$ref": "#/components/schemas/AdditionalPaymentInfoV5"
+          }
+        }
+      },
+      "AdditionalPaymentInfoV5": {
+        "type": "object",
+        "properties": {
+          "bank_url": {
+            "description": "bank url",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 350,
+            "example": "190.85.74.123"
+          },
+          "bank_key_status": {
+            "description": "Agile payment marking status",
+            "type": "string",
+            "enum": [
+              "OK",
+              "UPDATED",
+              "DELETED"
+            ],
+            "minLength": 1,
+            "maxLength": 8,
+            "example": "OK"
+          },
+          "bank_key": {
+            "description": "Agile payment marking Registered in PSE",
+            "type": "string",
+            "example": ""
+          },
+          "bank_trazability_code": {
+            "description": "Transaction tracking identifier or unique code (CUS) plus the bank's retry counter",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 35,
+            "example": "01"
+          }
+        }
+      },
+      "AnyV2": {
+        "type": "object",
+        "properties": {
+          "additional_payment_info": {
+            "$ref": "#/components/schemas/AdditionalPaymentInfoV4"
+          },
+          "transunion_info": {
+            "$ref": "#/components/schemas/Array1"
+          },
+          "masivian_info": {
+            "$ref": "#/components/schemas/Array2"
+          },
+          "array3": {
+            "$ref": "#/components/schemas/ArrayTmp"
+          },
+          "array4": {
+            "$ref": "#/components/schemas/ArrayTmp"
+          },
+          "array5": {
+            "$ref": "#/components/schemas/ArrayTmp"
+          }
+        }
+      },
+      "AnyV3": {
+        "type": "object",
+        "properties": {
+          "additional_payment_info": {
+            "$ref": "#/components/schemas/AdditionalPaymentInfoV2"
+          }
+        }
+      },
+      "AnyV4": {
+        "type": "object",
+        "properties": {
+          "additional_payment_info": {
+            "$ref": "#/components/schemas/AdditionalPaymentInfoV3"
+          }
+        }
+      },
+      "ArrayTmp": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "PENDING IMPLEMENT",
+            "type": "string",
+            "example": "no defined"
+          }
+        }
+      },
+      "Array1": {
+        "type": "object",
+        "properties": {
+          "email_basic_check_status": {
+            "description": "Validation status. Taken from TransUnion service.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 35,
+            "enum": [
+              "Valid",
+              "Invalid",
+              "Risky",
+              "Unverifiable",
+              "Unknown",
+              "Corrected"
+            ],
+            "example": ""
+          },
+          "device_stated_ip": {
+            "description": "The IP address reported by the end user. Taken from Transunion's device verification service.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 20,
+            "example": "129.123.123.123.001"
+          },
+          "device_dev_al": {
+            "description": "This is the 18-digit numeric identifier given by Iovation for the device. Taken from Transunion's device verification service.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 18,
+            "example": ""
+          },
+          "device_dev_br_ty": {
+            "description": "Browser name. Taken from Transunion's device verification service.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 35,
+            "example": ""
+          },
+          "device_dev_br_ve": {
+            "description": "Browser version. Taken from Transunion device verification service.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4,
+            "example": "1.4"
+          },
+          "device_dev_os": {
+            "description": "Device operating system. Taken from Transunion device verification service.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 35,
+            "example": "Red Hat Enterprise"
+          },
+          "device_dev_ty": {
+            "description": "Device hardware",
+            "type": "string",
+            "enum": [
+              "MAC",
+              "PC",
+              "iOS",
+              "ANDROID",
+              "BLACKBERRY",
+              "CHROMEOS",
+              "HANDHELD_OTHER",
+              "IPHONE",
+              "IPOD",
+              "IPAD",
+              "LINUX",
+              "MAC",
+              "NINTENDO",
+              "PLAYSTATION",
+              "UNIX",
+              "UNKNOWN",
+              "WINDOWS",
+              "WINDOWS_MOBILE",
+              "XBOX",
+              "N/A."
+            ],
+            "minLength": 1,
+            "maxLength": 256,
+            "example": "XBOX"
+          },
+          "device_rea_ad": {
+            "description": "Real IP Address. Taken from Transunion's device verification service.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 20,
+            "example": "124.23.23.1"
+          },
+          "device_rea_is": {
+            "description": "Internet service provider of the provided IP address. Taken from Transunion's device verification service.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 20,
+            "example": "124.23.23.1"
+          },
+          "device_rea_ip_ci": {
+            "description": "City associated with the IP address. Taken from Transunion's device verification service.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "example": "Bucaramanga"
+          },
+          "device_rea_ip_co": {
+            "description": "Country associated with the IP address. Taken from Transunion's device verification service.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "example": "Colombia"
+          },
+          "device_mac_ml_va": {
+            "description": "A score ranging from -10000 to 10000. -10000 indicates iovation's prediction that the transaction will be fraudulent while 10000 indicates iovation's prediction that the transaction will be trustworthy. Taken from Transunion's device verification service.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 8,
+            "example": "10000"
+          },
+          "device_rea_bo_in": {
+            "description": "Botnet risk score for the transaction. This is a range between 1 and 10, where 1 represents no botnet risk, and 10 represents high botnet risk.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2,
+            "example": "1"
+          }
+        }
+      },
+      "Array2": {
+        "type": "object",
+        "properties": {
+          "simcard_resume_advice": {
+            "description": "Security tip suggesting the likelihood that a number is potentially fraudulent",
+            "type": "string",
+            "enum": [
+              "SAFE",
+              "UNKNOW",
+              "SUSPICIOUS"
+            ],
+            "minLength": 1,
+            "maxLength": 20,
+            "example": "12"
+          },
+          "simcard_change_in_range": {
+            "description": "Indicates whether the SimCard was changed within the established time range.",
+            "type": "boolean",
+            "example": "True"
+          },
+          "simcard_last_change_date": {
+            "description": "Date of last Sim Card change",
+            "type": "string",
+            "format": "date-time",
+            "example": ""
+          },
+          "simcard_machine_learning_common_behavior_anomaly": {
+            "description": "Quantification response of the associated anomaly of a telephone number at the time of the query. It indicates whether that cell phone line has presented a significant change in transactional behavior at the time of the query, where 0.0 is a low risk of anomaly or abnormal activities for the line, and 1.0 is a high anomaly.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4,
+            "example": "1.00"
+          },
+          "security_detail_machine_learning_common_behavior_distrust": {
+            "description": "Distrust associated with a phone number at the time of the query. It indicates whether that cell phone line is new or has a transaction history at the time of the query, where 0.0 is a Zero distrust because it is a line with a history, and 1.0 is a High distrust, because it is a new line.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4,
+            "example": "0.75"
+          }
+        }
+      },
+      "AdditionalPaymentInfoV4": {
+        "type": "object",
+        "properties": {
+          "reference_1": {
+            "description": "additional field associated with the payment",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 350,
+            "example": "190.85.74.123"
+          },
+          "reference_2": {
+            "description": "additional field associated with the payment",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 350,
+            "example": "NIT"
+          },
+          "reference_3": {
+            "description": "additional field associated with the payment",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 350,
+            "example": 43006
+          },
+          "service_code": {
+            "description": "additional field associated with the payment",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 350,
+            "example": 30001
+          },
+          "creditor_ciiu": {
+            "description": "additional field associated with the payment",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 8,
+            "example": 120023
+          },
+          "transaction_cycle": {
+            "description": "Transaction creation cycle number",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2,
+            "example": 1
+          },
+          "device_finger_print": {
+            "description": "Fingerprint with the information captured by the list of banks or the agile payment dialing list through a dynamic Javascript that was integrated into the new PSE site to which end users are directed. This javascript is a coded string that includes information from the device of the user who performs the transaction.",
+            "type": "string",
+            "example": ""
+          },
+          "fraud_response_code": {
+            "description": "Anti-Fraud system response,",
+            "type": "string",
+            "enum": [
+              "YES",
+              "NO"
+            ],
+            "minLength": 1,
+            "maxLength": 3,
+            "example": "YES"
+          },
+          "fraud_pre_authorization_score": {
+            "description": "Anti-Fraud System Score This score fluctuates between zero and 100 points, where 100 is the limit for starting to pre-authorize or deny transactions. Zero is a low or no risk of fraud and 100 or higher is a high risk of fraud.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 3,
+            "example": 75
+          },
+          "bank_trazability_code": {
+            "description": "Transaction tracking identifier or unique code (CUS) plus the bank's retry counter",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 35,
+            "example": "01"
+          },
+          "flow_type": {
+            "description": "Defines the type of flow True - fast payment; False - Registration",
+            "type": "boolean",
+            "example": true
+          },
+          "bank_key": {
+            "description": "Agile payment marking Registered in PSE",
+            "type": "string",
+            "example": ""
+          },
+          "bank_key_status": {
+            "description": "Agile payment marking status",
+            "type": "string",
+            "enum": [
+              "OK",
+              "UPDATED",
+              "DELETED"
+            ],
+            "minLength": 1,
+            "maxLength": 8,
+            "example": "OK"
+          },
+          "indicator_exempt_account": {
+            "description": "Indicator excent iva",
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "AdditionalPaymentInfo": {
+        "type": "object",
+        "properties": {
+          "reference_1": {
+            "description": "additional field associated with the payment",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 350,
+            "example": "190.85.74.123"
+          },
+          "reference_2": {
+            "description": "additional field associated with the payment",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 350,
+            "example": "NIT"
+          },
+          "reference_3": {
+            "description": "additional field associated with the payment",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 350,
+            "example": 43006
+          },
+          "service_code": {
+            "description": "additional field associated with the payment",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 350,
+            "example": 30001
+          },
+          "creditor_ciiu": {
+            "description": "additional field associated with the payment",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 8,
+            "example": 120023
+          },
+          "transaction_cycle": {
+            "description": "Transaction creation cycle number",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2,
+            "example": 1
+          },
+          "device_finger_print": {
+            "description": "Fingerprint with the information captured by the list of banks or the agile payment dialing list through a dynamic Javascript that was integrated into the new PSE site to which end users are directed. This javascript is a coded string that includes information from the device of the user who performs the transaction.",
+            "type": "string",
+            "example": ""
+          },
+          "fraud_response_code": {
+            "description": "Anti-Fraud system response,",
+            "type": "string",
+            "enum": [
+              "YES",
+              "NO"
+            ],
+            "minLength": 1,
+            "maxLength": 3,
+            "example": "YES"
+          },
+          "fraud_pre_authorization_score": {
+            "description": "Anti-Fraud System Score This score fluctuates between zero and 100 points, where 100 is the limit for starting to pre-authorize or deny transactions. Zero is a low or no risk of fraud and 100 or higher is a high risk of fraud.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 3,
+            "example": 75
+          },
+          "bank_trazability_code": {
+            "description": "Transaction tracking identifier or unique code (CUS) plus the bank's retry counter",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 35,
+            "example": "01"
+          },
+          "flow_type": {
+            "description": "Defines the type of flow True - fast payment; False - Registration",
+            "type": "boolean",
+            "example": true
+          },
+          "bank_key": {
+            "description": "Agile payment marking Registered in PSE",
+            "type": "string",
+            "example": ""
+          },
+          "bank_key_status": {
+            "description": "Agile payment marking status",
+            "type": "string",
+            "enum": [
+              "OK",
+              "UPDATED",
+              "DELETED"
+            ],
+            "minLength": 1,
+            "maxLength": 8,
+            "example": "OK"
+          }
+        }
+      },
+      "AdditionalPaymentInfoV2": {
+        "type": "object",
+        "properties": {
+          "flow_type": {
+            "description": "Defines the type of flow True - fast payment; False - Registration",
+            "type": "boolean",
+            "example": true
+          },
+          "financial_institution_code": {
+            "description": "Id of Bank",
+            "type": "string",
+            "example": ""
+          },
+          "payment_origin": {
+            "description": "Origin of payment, 3 for debit and 4 for credit",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1,
+            "example": "3"
+          },
+          "payment_mode": {
+            "description": "Payment method",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2,
+            "enum": [
+              "15",
+              "50",
+              "51",
+              "52",
+              "53",
+              "54",
+              "55",
+              "56"
+            ],
+            "example": "15"
+          }
+        }
+      },
+      "AdditionalPaymentInfoV3": {
+        "type": "object",
+        "properties": {
+          "financial_institution_code": {
+            "description": "Id of Bank",
+            "type": "string",
+            "example": ""
+          },
+          "flow_type": {
+            "description": "Defines the type of flow True - fast payment; False - Registration",
+            "type": "boolean",
+            "example": true
+          },
+          "bank_key": {
+            "description": "Agile payment marking Registered in PSE",
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "Purpose": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "description": "Underlying reason for the payment transaction, as published in an external purpose code list.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4,
+            "example": 1
+          },
+          "propietary": {
+            "description": "Purpose, in a proprietary form.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 35,
+            "example": "Pago factura"
+          }
+        }
+      },
+      "Tax": {
+        "type": "object",
+        "properties": {
+          "total_taxable_base_amount": {
+            "description": "Total amount of money on which the tax is based.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 18,
+            "example": 200000
+          },
+          "total_tax_amount": {
+            "description": "Total amount of money as result of the calculation of the tax.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 18,
+            "example": 20000
+          },
+          "record": {
+            "$ref": "#/components/schemas/Record"
+          }
+        }
+      },
+      "Record": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "High level code to identify the type of tax details.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 35,
+            "example": "IVA"
+          }
+        }
+      },
+      "RequestedExecutionDate": {
+        "type": "object",
+        "properties": {
+          "dateTime": {
+            "description": "Date at which the initiating party requests the clearing agent to process the payment.Specified date and time.",
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Debtor": {
+        "required": [
+          "name",
+          "identification"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name by which a party is known and which is usually used to identify that party.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 140,
+            "example": "Claudio Clavijo"
+          },
+          "postal_address": {
+            "$ref": "#/components/schemas/PostalAddress"
+          },
+          "identification": {
+            "$ref": "#/components/schemas/Identification"
+          }
+        }
+      },
+      "DebtorV2": {
+        "required": [
+          "name",
+          "identification"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name by which a party is known and which is usually used to identify that party.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 140,
+            "example": "Claudio Clavijo"
+          },
+          "postal_address": {
+            "$ref": "#/components/schemas/PostalAddress"
+          },
+          "identification": {
+            "$ref": "#/components/schemas/Identification"
+          },
+          "debtor_account": {
+            "$ref": "#/components/schemas/DebtorAccount"
+          }
+        }
+      },
+      "DebtorAccount": {
+        "type": "object",
+        "properties": {
+          "identification": {
+            "$ref": "#/components/schemas/IdentificationV3"
+          }
+        }
+      },
+      "CreditTransferTransactionInformation": {
+        "type": "object",
+        "properties": {
+          "payment_identification": {
+            "$ref": "#/components/schemas/PaymentIdentification"
+          },
+          "amount": {
+            "$ref": "#/components/schemas/Amount"
+          },
+          "creditor": {
+            "$ref": "#/components/schemas/Creditor"
+          },
+          "purpose": {
+            "$ref": "#/components/schemas/Purpose"
+          },
+          "tax": {
+            "$ref": "#/components/schemas/Tax"
+          }
+        }
+      },
+      "PaymentIdentification": {
+        "type": "object",
+        "properties": {
+          "instruction_identification": {
+            "description": "Unique identification as assigned by an instructing party for an instructed party to unambiguously identify the instruction.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 18,
+            "example": 30001
+          }
+        }
+      },
+      "Amount": {
+        "type": "object",
+        "properties": {
+          "instructed_amount": {
+            "description": "Amount of money to be moved between the debtor and creditor, before deduction of charges, expressed in the currency as ordered by the initiating party.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 18,
+            "example": 23455600
+          }
+        }
+      },
+      "Creditor": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name by which a party is known and which is usually used to identify that party.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 140,
+            "example": "El sitio"
+          },
+          "identification": {
+            "$ref": "#/components/schemas/Identification2"
+          }
+        }
+      },
+      "PostalAddress": {
+        "type": "object",
+        "properties": {
+          "address_line": {
+            "description": "Information that locates and identifies a specific address, as defined by postal services, presented in free format text.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 70,
+            "example": "Cll 32 # 45 -34"
+          }
+        }
+      },
+      "Identification": {
+        "type": "object",
+        "properties": {
+          "private_identification": {
+            "$ref": "#/components/schemas/PrivateIdentification"
+          },
+          "contact_details": {
+            "$ref": "#/components/schemas/ContactDetails"
+          }
+        }
+      },
+      "Identification2": {
+        "type": "object",
+        "properties": {
+          "organisation_identification": {
+            "$ref": "#/components/schemas/OrganisationIdentification"
+          }
+        }
+      },
+      "IdentificationV3": {
+        "type": "object",
+        "properties": {
+          "other": {
+            "$ref": "#/components/schemas/Other"
+          }
+        }
+      },
+      "OrganisationIdentification": {
+        "type": "object",
+        "properties": {
+          "anyBIC": {
+            "description": "Business identification code of the organisation.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12,
+            "example": 8349032221
+          },
+          "other": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Other"
+            }
+          }
+        }
+      },
+      "PrivateIdentification": {
+        "type": "object",
+        "properties": {
+          "other": {
+            "$ref": "#/components/schemas/Other"
+          }
+        }
+      },
+      "Other": {
+        "type": "object",
+        "properties": {
+          "identification": {
+            "description": "Business identification code of the organisation.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256,
+            "example": 79733157
+          },
+          "scheme_name": {
+            "$ref": "#/components/schemas/SchemeName"
+          }
+        }
+      },
+      "SchemeName": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "description": "Name of the identification scheme, in a coded form as published in an external list.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4,
+            "example": "NIT"
+          },
+          "propieraty": {
+            "description": "Name of the identification scheme, in a free text form.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "enum": [
+              "RegistroCivilDeNacimiento",
+              "TarjetaDeIdentidad",
+              "CedulaDeCiudadania",
+              "TarjetaDeExtranjeria",
+              "CedulaDeExtranjeria",
+              "Pasaporte",
+              "DocumentoDeIdentificacionExtranjero",
+              "NIT"
+            ],
+            "example": "NIT"
+          }
+        }
+      },
+      "ContactDetails": {
+        "type": "object",
+        "properties": {
+          "mobile_number": {
+            "description": "Collection of information that identifies a mobile phone number, as defined by telecom services.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 18,
+            "example": "322-4343432"
+          },
+          "email_address": {
+            "description": "Address for electronic mail (e-mail).",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256,
+            "example": "prueba.email@gmail.com"
+          }
+        }
+      },
+      "OriginalPaymentInformationAndStatus": {
+        "required": [
+          "original_payment_information_identification",
+          "transaction_information_and_status"
+        ],
+        "type": "object",
+        "properties": {
+          "original_payment_information_identification": {
+            "description": "Unique identification, as assigned by the original sending party, to unambiguously identify the original payment information group.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 35,
+            "example": ""
+          },
+          "transaction_information_and_status": {
+            "$ref": "#/components/schemas/TransactionInformationAndStatus"
+          }
+        }
+      },
+      "OriginalPaymentInformationAndStatusV2": {
+        "required": [
+          "original_payment_information_identification",
+          "transaction_information_and_status"
+        ],
+        "type": "object",
+        "properties": {
+          "original_payment_information_identification": {
+            "description": "Unique identification, as assigned by the original sending party, to unambiguously identify the original payment information group.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 35,
+            "example": ""
+          },
+          "transaction_information_and_status": {
+            "$ref": "#/components/schemas/TransactionInformationAndStatus"
+          },
+          "original_transaction_reference": {
+            "$ref": "#/components/schemas/OriginalTransactionReference"
+          },
+          "supplementary_data": {
+            "$ref": "#/components/schemas/SupplementaryDataV5"
+          }
+        }
+      },
+      "TransactionInformationAndStatus": {
+        "type": "object",
+        "properties": {
+          "transaction_status": {
+            "description": "Global transaction status",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4,
+            "example": 200
+          },
+          "status_reason_information": {
+            "$ref": "#/components/schemas/StatusReasonInformation"
+          }
+        }
+      },
+      "TransactionInformationAndStatusV2": {
+        "type": "object",
+        "properties": {
+          "transaction_status": {
+            "description": "Global transaction status",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4,
+            "example": 200
+          },
+          "status_identification": {
+            "description": "Authorization or rejection code for the transaction. For approved transactions, it is an internal identifier of the bank; for rejected transactions, it must correspond to a rejection code registered in PSE.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 6,
+            "example": 20001
+          }
+        }
+      },
+      "OriginalTransactionReference": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "$ref": "#/components/schemas/Amount"
+          }
+        }
+      },
+      "StatusReasonInformation": {
+        "type": "object",
+        "properties": {
+          "originator": {
+            "$ref": "#/components/schemas/Originator"
+          },
+          "reason": {
+            "$ref": "#/components/schemas/Reason"
+          },
+          "additional_information": {
+            "description": "Short description of the specific error",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256,
+            "example": "Ocurri贸 un error en el m贸dulo de pagos de la entidad Bancaria."
+          }
+        }
+      },
+      "Originator": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name by which a party is known and which is usually used to identify that party.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 140,
+            "example": 343435343
+          }
+        }
+      },
+      "Reason": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "description": "Specific technical error code. Only for escenarios with error.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 8,
+            "example": "PSE.0010 | PSE.0000"
+          },
+          "property": {
+            "description": "Technical description of the specific error",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 140,
+            "example": "Error en la transacci贸n"
+          }
+        }
+      }
+    },
+    "parameters": {
+      "message-uuid": {
+        "in": "header",
+        "name": "message-uuid",
+        "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "request-app-id": {
+        "name": "request-app-id",
+        "description": "Message identifier is used for traceability. This identifier allows you to identify the logs of the calls to the APIs in the log repositories, it is recommended to send a UUID for this value.",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "session-storage": {
+        "name": "session-storage",
+        "description": "Message identifier is used for traceability. Token sesi锟絥 generado por navegador - (Se recomiendo generar el token como un UUID - sessionStorage.setItem('Token', UUID)).",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "product-tag": {
+        "name": "product-tag",
+        "description": "Message identifier of product pse",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "requestBodies": {
+      "CreateTransactionPaymentRequest": {
+        "description": "The request message",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CreateTransactionPaymentRequest"
+            }
+          }
+        },
+        "required": true
+      },
+      "InitBankPaymentRequest": {
+        "description": "The request message",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/InitBankPaymentRequest"
+            }
+          }
+        },
+        "required": true
+      },
+      "StartPaymentRequest": {
+        "description": "The request message",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/StartPaymentRequest"
+            }
+          }
+        },
+        "required": true
+      },
+      "NotifyPaymentRequest": {
+        "description": "The request message",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/NotifyPaymentRequest"
+            }
+          }
+        },
+        "required": true
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "BadRequest",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CustomerCreditTransferInitiationResponse"
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "Unauthorized",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CustomerCreditTransferInitiationResponse"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "NotFound",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CustomerCreditTransferInitiationResponse"
+            }
+          }
+        }
+      },
+      "InternalServerError": {
+        "description": "InternalServerError",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CustomerCreditTransferInitiationResponse"
+            }
+          }
+        }
+      },
+      "CustomerCreditTransferInitiationResponse": {
+        "description": "The request succeded",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CustomerCreditTransferInitiationResponse"
+            }
+          }
+        }
+      },
+      "InitBankPaymentResponse": {
+        "description": "The request succeded",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/InitBankPaymentResponse"
+            }
+          }
+        }
+      },
+      "StartPaymentResponse": {
+        "description": "The request succeded",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/StartPaymentResponse"
+            }
+          }
+        }
+      },
+      "NotifyPaymentResponse": {
+        "description": "The request succeded",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/NotifyPaymentResponse"
+            }
+          }
+        }
+      }
+    }
+  }
+}

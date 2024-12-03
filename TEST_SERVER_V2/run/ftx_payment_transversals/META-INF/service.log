@@ -1,0 +1,170 @@
+
+==============================================
+
+!Mon Dec 02 21:42:39 COT 2024
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesUpdateTrx.msgflow to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesTrxByCUS.msgflow to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesScoreByProductAndCUS.msgflow to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesPostValidateRules.msgflow to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesPostCreateTransaction.msgflow to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetToken.msgflow to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetProductData.msgflow to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetProdByTag.msgflow to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetKeyList.msgflow to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetDebtorByCUS.msgflow to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetCustomerData.msgflow to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetCus.msgflow to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesEncryptCus.msgflow to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesDecryptCus.msgflow to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesCustomerByIdentifier.msgflow to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesBankByInstitucionalCode.msgflow to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\EntidadBancariaExecuteBankPayment.msgflow to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\Commons_EchoMessage.msgflow to BAR file.
+
+Successfully added file ftx_payment_transversals\application.descriptor to BAR file.
+
+Successfully added file ftx_payment_transversals\application.descriptor to BAR file.
+
+Successfully added file ftx_payment_transversals\application.descriptor to BAR file.
+
+Successfully added file ftx_payment_transversals\application.descriptor to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\Commons_EchoMessage_EchoMessage.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\EntidadBancariaExecuteBankPayment_PrepareRequest.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\EntidadBancariaExecuteBankPayment_PrepareRequest.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\EntidadBancariaExecuteBankPayment_PrepareResponse.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesBankByInstitucionalCode_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesBankByInstitucionalCode_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesBankByInstitucionalCode_Prepare_response.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesCustomerByIdentifier_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesCustomerByIdentifier_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesCustomerByIdentifier_Prepare_response.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesDecryptCus_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesDecryptCus_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesDecryptCus_Prepare_response.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesEncriptCus_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesEncriptCus_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetCus_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetCus_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetCustomerData_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetCustomerData_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetDebtorByCUS_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetDebtorByCUS_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetDebtorByCUS_Prepare_response.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetKeyList_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetKeyList_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetProdByTag_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetProdByTag_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetProdByTag_Prepare_response.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetProductData_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetToken_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetToken_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesGetToken_Prepare_response.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesPostCreateTransaction_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesPostCreateTransaction_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesPostValidateRules_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesPostValidateRules_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesScoreByProductAndCUS_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesScoreByProductAndCUS_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesScoreByProductAndCUS_Prepare_response.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesTrxByCUS_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesTrxByCUS_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesTrxByCUS_Prepare_response.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesUpdateTrx_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesUpdateTrx_Prepare_request.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\TransversalesUpdateTrx_Prepare_response.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\co\com\ach\payment\transversals\spec_Prepare_response.esql to BAR file.
+
+Successfully added file ftx_payment_transversals\yamls\ConsultarTX_AWS.yaml to BAR file.
+
+Successfully added file ftx_payment_transversals\yamls\ConsultarTX_AWS.yaml to BAR file.
+
+Successfully added file ftx_payment_transversals\yamls\ContratoListadellaves.yaml to BAR file.
+
+Successfully added file ftx_payment_transversals\yamls\ContratoListadellaves.yaml to BAR file.
+
+Successfully added file ftx_payment_transversals\yamls\CrearTansaccion.yaml to BAR file.
+
+Successfully added file ftx_payment_transversals\yamls\CrearTansaccion.yaml to BAR file.
+
+Successfully added file ftx_payment_transversals\yamls\GeneradorIDAWS.yaml to BAR file.
+
+Successfully added file ftx_payment_transversals\yamls\GeneradorIDAWS.yaml to BAR file.
+
+Successfully added file ftx_payment_transversals\yamls\Middleware.yaml to BAR file.
+
+Successfully added file ftx_payment_transversals\yamls\Middleware.yaml to BAR file.
+
+Successfully added file ftx_payment_transversals\yamls\PSE3.0Capa.yaml to BAR file.
+
+Successfully added file ftx_payment_transversals\yamls\PSE3.0Capa.yaml to BAR file.
+
+Successfully added file ftx_payment_transversals\yamls\TransversalesUserVaultMgmt.yaml to BAR file.
+
+Successfully added file ftx_payment_transversals\yamls\TransversalesUserVaultMgmt.yaml to BAR file.
+
+Successfully added file ftx_payment_transversals\yamls\ValidatedRulesAWS.yaml to BAR file.
+
+Successfully added file ftx_payment_transversals\yamls\ValidatedRulesAWS.yaml to BAR file.
