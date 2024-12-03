@@ -1,8 +1,0 @@
----
-RestAdminListener:
-    port: 7601
-ResourceManagers:
-  HTTPConnector:
-    ListenerPort: 7801
-  JVM:
-    jvmDebugPort: 9999
